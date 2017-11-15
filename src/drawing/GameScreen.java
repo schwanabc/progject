@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import model_general.Board;
 
-public class GameScreen extends UI{
+public class GameScreen extends Canvas{
 	public static double GAMESCREEN_WIDTH=Main.SCREEN_WIDTH*0.75;
 	public static double GAMESCREEN_HEIGHT=Main.SCREEN_HEIGHT;
 	
@@ -20,6 +20,7 @@ public class GameScreen extends UI{
 	{
 		super(GAMESCREEN_WIDTH,GAMESCREEN_HEIGHT);
 		this.setVisible(true);
+		addListerner();
 	}
 	
 	public void PaintComponent()
@@ -34,13 +35,47 @@ public class GameScreen extends UI{
 			}
 		}
 	}
-	@Override
-	public void addListerner()
-	{
-		super.addListerner();
+	public void addListerner() {
+		System.out.println("hearing");
+		this.setOnKeyPressed((KeyEvent event) -> {
+			System.out.println("pressed");
+			InputUtility.setKeyPressed(event.getCode(), true);
+		});
+		this.setOnKeyReleased((KeyEvent event) -> {
+			InputUtility.setKeyPressed(event.getCode(), false);
+		});
+
+		this.setOnMousePressed((MouseEvent event) -> {
+			System.out.println("clicked");
+			if (event.getButton() == MouseButton.PRIMARY)
+				InputUtility.mouseLeftDown();
+		});
+
+		this.setOnMouseReleased((MouseEvent event) -> {
+			if (event.getButton() == MouseButton.PRIMARY)
+				InputUtility.mouseLeftRelease();
+		});
+
 		this.setOnMouseEntered((MouseEvent event) -> {
 			InputUtility.mouseOnScreen = true;
 			InputUtility.currentUI="GAME";
+		});
+		this.setOnMouseExited((MouseEvent event) -> {
+			InputUtility.mouseOnScreen = false;
+		});
+
+		this.setOnMouseMoved((MouseEvent event) -> {
+			if (InputUtility.mouseOnScreen) {
+				InputUtility.mouseX = event.getX();
+				InputUtility.mouseY = event.getY();
+			}
+		});
+
+		this.setOnMouseDragged((MouseEvent event) -> {
+			if (InputUtility.mouseOnScreen) {
+				InputUtility.mouseX = event.getX();
+				InputUtility.mouseY = event.getY();
+			}
 		});
 	}
 
@@ -49,5 +84,4 @@ public class GameScreen extends UI{
 		if(InputUtility.currentUI.equals("GAME"))return true;
 		return false;
 	}
-	
 }

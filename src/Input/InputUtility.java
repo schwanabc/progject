@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode;
 public class InputUtility {
 
 	public static double mouseX,mouseY;
-	public static String currentUI;
+	public static String currentUI="x";
 	public static boolean mouseOnScreen = true;
 	private static boolean isLeftDown = false;
 	private static boolean isLeftClickedLastTick = false;
@@ -26,14 +26,12 @@ public class InputUtility {
 		}
 		System.out.println(keyPressed);
 	}
-	public static void mouseLeftDown(String UI){
-		currentUI=UI;
+	public static void mouseLeftDown(){
 		isLeftDown = true;
 		isLeftClickedLastTick = true;
 	}
 	
 	public static void mouseLeftRelease(){
-		currentUI="X";
 		isLeftDown = false;
 	}
 	

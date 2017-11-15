@@ -22,7 +22,7 @@ public class Weak_1 extends Attacker{
 		this.posX=x;
 		this.posY=y;
 		this.speed=2.5;
-		this.RADIUS=8;
+		this.RADIUS=4;
 		this.DIAMETER=this.RADIUS*2;
 		this.setHP(100);
 		this.MaxHP=getHP();

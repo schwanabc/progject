@@ -10,12 +10,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import model_general.Board;
 
-public class Menubar extends UI{
+public class Menubar extends VBox{
 	private static double MENU_WIDTH,MENU_HEIGHT;
 	private static final Font TEXT_FONT = new Font("Monospace", 30);
 	private static final int VTAB=4;
@@ -23,71 +25,77 @@ public class Menubar extends UI{
 	private static double ICONPOS;
 	private static double ICONHEIGHT;
 	private static double ICONWIDTH;
-	private static final int[][] menu=new int[VTAB][HTAB];
+	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
+	GridPane gp=new GridPane();
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
-		super(SCREEN_WIDTH,SCREEN_HEIGHT);
 		MENU_WIDTH=SCREEN_WIDTH;
 		MENU_HEIGHT=SCREEN_HEIGHT;
 		ICONPOS= MENU_HEIGHT*0.2;
 		ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
 		ICONWIDTH=MENU_WIDTH/HTAB;
-		this.setVisible(true);
+		setMenu();
+		
 	}
-	public void PaintComponent()
-	{
-		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(0, 0, MENU_WIDTH, MENU_HEIGHT);
-		gc.setFont(TEXT_FONT);
-		gc.setTextAlign(TextAlignment.CENTER);
-		gc.setTextBaseline(VPos.CENTER);
+	private void setMenu() {
+		setMenutab();
+		setIcon();
+		// TODO Auto-generated method stub
+	}
+	private void setIcon() {
+		// TODO Auto-generated method stub
+		int count=0;
 		for(int i=0;i<VTAB;i++)
 		{
 			for(int j=0;j<HTAB;j++)
 			{
+				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
+				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
 				if((i+j)%2==0)gc.setFill(Color.LIGHTGRAY);
-				else gc.setFill(Color.LIGHTCORAL);
-				gc.fillRect(ICONWIDTH*j, ICONPOS+ICONHEIGHT*i,ICONWIDTH, ICONHEIGHT);
+				else gc.setFill(Color.ALICEBLUE);
+				gc.fillRect(0, 0, ICONWIDTH, ICONHEIGHT);
+				gc.setFont(TEXT_FONT);
+				gc.setTextAlign(TextAlignment.CENTER);
+				gc.setTextBaseline(VPos.CENTER);
 				gc.setFill(Color.BLACK);
-				gc.fillText("BOT"+(2*i+j), ICONWIDTH*(j+0.5),ICONPOS+ICONHEIGHT*(i+0.5));
+				gc.fillText("BOT"+count++, ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gp.add(menu[i][j], j, i);
+				Checkevent(menu[i][j],i,j);
 			}
 		}
-		gc.setFill(Color.BLACK);
-		gc.fillText("MENU", MENU_WIDTH*0.5,MENU_HEIGHT*0.1);
+		this.getChildren().add(gp);
 	}
-	@Override
-	public void addListerner()
-	{
-		super.addListerner();
-		this.setOnMouseEntered((MouseEvent event) -> {
-			InputUtility.mouseOnScreen = true;
-			InputUtility.currentUI="MENU";
+	private void Checkevent(Canvas canvas, int row, int column) {
+		// TODO Auto-generated method stub
+		GraphicsContext gc=canvas.getGraphicsContext2D();
+		canvas.setOnMouseEntered(ev->
+		{
+			setHover(gc,Color.LIGHTGREEN);
+		});
+		canvas.setOnMouseExited(ev->
+		{
+			if((row+column)%2==0)setHover(gc,Color.LIGHTGRAY);
+			else setHover(gc,Color.ALICEBLUE);
 		});
 	}
-	public static boolean isInMenuscreen() {
+	private void setHover(GraphicsContext gc,Color color) {
 		// TODO Auto-generated method stub
-		if(InputUtility.currentUI.equals("MENU"))return true;
-		return false;
+		gc.setLineWidth(20);
+		gc.setStroke(color);
+		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
 	}
-	public void update()
-	{
-		System.out.println(InputUtility.currentUI);
-		//if(InputUtility.currentUI.equals("MENU"))
-		{
-			double mouseX=InputUtility.mouseX;
-			double mouseY=InputUtility.mouseX;
-		//	if(InputUtility.mouseOnScreen && isInchoosetab(mouseY))
-			{
-		//		System.out.println("IN CHOOSE");
-			}
-		}
-	}
-	private boolean isInchoosetab(double mouseY) {
+	private void setMenutab() {
 		// TODO Auto-generated method stub
-		if(mouseY>=ICONPOS)return true;
-		return false;
+		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
+		GraphicsContext gc=canvas.getGraphicsContext2D();
+		gc.setFill(Color.ALICEBLUE);
+		gc.fillRect(0, 0, MENU_WIDTH, ICONPOS);
+		gc.setFont(TEXT_FONT);
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.setTextBaseline(VPos.CENTER);
+		gc.setFill(Color.BLACK);
+		gc.fillText("MENU", MENU_WIDTH*0.5,ICONPOS*0.5);
+		this.getChildren().add(canvas);
 	}
-	
 	
 }

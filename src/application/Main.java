@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import logic.Gamelogic;
 import model_attacker.Weak_1;
 import model_general.Board;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -28,7 +29,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			HBox root = new HBox(8);
+			HBox root = new HBox();
 			GameScreen gamescreen=new GameScreen();
 			Menubar menubar=new Menubar(SCREEN_WIDTH*0.25,SCREEN_HEIGHT);
 			root.getChildren().add(gamescreen);
@@ -38,13 +39,13 @@ public class Main extends Application {
 			primaryStage.setTitle("Final_Prog_METH");
 			primaryStage.show();
 			gamescreen.requestFocus();
-			menubar.requestFocus();
 			Gamelogic gamelogic=new Gamelogic();
 			new AnimationTimer(){
 				public void handle(long now)
 				{
 					gamescreen.PaintComponent();
-					menubar.PaintComponent();
+				//	menubar.PaintComponent();
+				//	menubar.update();
 					gamelogic.update();
 					RenderableHolder.getInstance().update();
 					InputUtility.updateInputState();
