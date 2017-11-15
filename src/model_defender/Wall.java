@@ -13,6 +13,7 @@ public class Wall extends Defender{
 		this.posY=y;
 		this.setHP(1000);
 		this.MaxHP=getHP();
+		this.Shootrange=0;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {

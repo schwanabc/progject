@@ -13,6 +13,9 @@ public abstract class Entity implements IRenderable{
 	protected double HP;
 	protected double MaxHP;
 	protected boolean destroyed,visible;
+	protected double speed;
+	protected int currentATKTick;
+	protected int AttackTick;
 	protected Entity()
 	{
 		destroyed=false;
@@ -23,19 +26,20 @@ public abstract class Entity implements IRenderable{
 		chekdestroyed();
 		return destroyed;
 	}
-
 	@Override
 	public boolean isVisible() {
 		return visible;
 	}
 	public void chekdestroyed()
 	{
+	//	System.out.println("-----------");
 		if(getHP()<=0||
 		   posX<0||
 		   posY<0||
 		   posX>GameScreen.GAMESCREEN_WIDTH||
 		   posY>GameScreen.GAMESCREEN_HEIGHT)
 			destroyed=true;
+
 	}
 	
 	public abstract void update();//need UPGRADE

@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model_attacker.Weak_1;
 import model_attacker.Weak_2;
+import model_defender.Bullet;
 import model_defender.Wall;
 import model_defender.weak_tower;
 
@@ -21,6 +22,7 @@ public class Board implements IRenderable {
 	private static final int BOARD_COLUMN=30;
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
+	private static final double BOARD_RANGE=Math.sqrt(BOARD_HEIGHT*BOARD_HEIGHT+BOARD_WIDTH*BOARD_WIDTH);
 	private boolean paused=false;
 	private static int board[][]=
 			{
@@ -33,17 +35,17 @@ public class Board implements IRenderable {
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,2,2,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,2,0,0,0,2,2,0,0,0,2,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
+					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,2,2,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
+					{0,0,0,0,0,0,1,0,0,1,2,0,0,0,2,2,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
+					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -54,10 +56,6 @@ public class Board implements IRenderable {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-					
-					
-					
-					
 			};
 	private static int[][] accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
 	public Board()
@@ -129,7 +127,7 @@ public class Board implements IRenderable {
 		{
 			String bot_type=InputUtility.currentChosed;
 			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
-			else if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
+			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
 		}
 		
 	}
@@ -159,6 +157,9 @@ public class Board implements IRenderable {
 	}
 	public static double getBOARD_WIDTH() {
 		return BOARD_WIDTH;
+	}
+	public static double getBoardRange() {
+		return BOARD_RANGE;
 	}
 
 }

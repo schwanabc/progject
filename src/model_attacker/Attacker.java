@@ -9,11 +9,10 @@ import model_defender.Defender;
 import model_general.Entity;
 
 public abstract class Attacker extends Entity{
-	protected double speed;
-	protected  double RADIUS;
-	protected  double DIAMETER;
-	protected  int currentTick;
-	protected  int AttackTick;
+	protected double RADIUS;
+	protected double DIAMETER;
+	protected int HiringCost;
+
 	public void foward(double xAxis,double yAxis)
 	{
 		posX+=xAxis*speed;
@@ -22,8 +21,7 @@ public abstract class Attacker extends Entity{
 	protected boolean ColliedwithDefender()
 	{
 		int count=0;
-		currentTick++;
-		System.out.println(currentTick+" "+AttackTick);
+		currentATKTick++;
 		for(Defender defender: logic.Gamelogic.getDefendercontainer())
 		{
 			Circle c=new Circle( posX, posY, RADIUS);
@@ -31,7 +29,7 @@ public abstract class Attacker extends Entity{
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
 			//	System.out.println(defender.getPosX()+" "+defender.getPosY());
 		        count++;
-		        if(currentTick>=AttackTick)
+		        if(currentATKTick>=AttackTick)
 		        {
 		        	Attack(defender);
 		        }
@@ -42,18 +40,13 @@ public abstract class Attacker extends Entity{
 		return false;
 		
 	}
-	protected void Attack(Defender defender) {
-		defender.setHP(defender.getHP() - (ATK-defender.getDEF()));//temp
-        defender.chekdestroyed(); //temp
-        currentTick=0;
-	}
 	protected boolean ColliedwithAttacker()
 	{
 		int count=0;
 		for(Attacker attacker: logic.Gamelogic.getAttackercontainer())
 		{
 			Circle c1=new Circle( posX, posY, RADIUS);
-			Circle c2=new Circle( attacker.getPosX(), attacker.getPosY(), attacker.RADIUS);
+			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.RADIUS);
 			if (c1.getBoundsInParent().intersects(c2.getBoundsInParent())) {
 		        count++;
 		      }
@@ -69,4 +62,13 @@ public abstract class Attacker extends Entity{
 		gc.setFill(Color.ORANGERED);
 		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS-3, DIAMETER*(1-ratio), 4);
 	}
+	protected void Attack(Defender defender) {
+		defender.setHP(defender.getHP() - (ATK-defender.getDEF()));//temp
+        defender.chekdestroyed(); //temp
+        currentATKTick=0;
+	}
+	public double getRADIUS() {
+		return RADIUS;
+	}
+
 }

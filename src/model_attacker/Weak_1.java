@@ -21,13 +21,14 @@ public class Weak_1 extends Attacker{
 		this.DEF=5;
 		this.posX=x;
 		this.posY=y;
-		this.speed=2.5;
 		this.RADIUS=4;
+		this.speed=1.5;
 		this.DIAMETER=this.RADIUS*2;
 		this.setHP(100);
 		this.MaxHP=getHP();
-		this.currentTick=0;
+		this.currentATKTick=0;
 		this.AttackTick=60;
+		this.HiringCost=50;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -57,7 +58,6 @@ public class Weak_1 extends Attacker{
 				foward(0,-1); //if collied go backward
 			}
 	}
-	
 
 	@Override
 	public int getZ() {

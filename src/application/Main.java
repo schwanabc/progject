@@ -44,8 +44,6 @@ public class Main extends Application {
 				public void handle(long now)
 				{
 					gamescreen.PaintComponent();
-				//	menubar.PaintComponent();
-				//	menubar.update();
 					gamelogic.update();
 					RenderableHolder.getInstance().update();
 					InputUtility.updateInputState();
