@@ -12,6 +12,8 @@ public abstract class Attacker extends Entity{
 	protected double speed;
 	protected  double RADIUS;
 	protected  double DIAMETER;
+	protected  int currentTick;
+	protected  int AttackTick;
 	public void foward(double xAxis,double yAxis)
 	{
 		posX+=xAxis*speed;
@@ -20,6 +22,8 @@ public abstract class Attacker extends Entity{
 	protected boolean ColliedwithDefender()
 	{
 		int count=0;
+		currentTick++;
+		System.out.println(currentTick+" "+AttackTick);
 		for(Defender defender: logic.Gamelogic.getDefendercontainer())
 		{
 			Circle c=new Circle( posX, posY, RADIUS);
@@ -27,13 +31,21 @@ public abstract class Attacker extends Entity{
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
 			//	System.out.println(defender.getPosX()+" "+defender.getPosY());
 		        count++;
-		        defender.setHP(defender.getHP() - ATK);//temp
-		        defender.chekdestroyed(); //temp
+		        if(currentTick>=AttackTick)
+		        {
+		        	Attack(defender);
+		        }
+		        
 		      }
 		}
 		if(count>0) return true;
 		return false;
 		
+	}
+	protected void Attack(Defender defender) {
+		defender.setHP(defender.getHP() - (ATK-defender.getDEF()));//temp
+        defender.chekdestroyed(); //temp
+        currentTick=0;
 	}
 	protected boolean ColliedwithAttacker()
 	{

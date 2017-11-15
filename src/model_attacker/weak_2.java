@@ -17,7 +17,7 @@ public class Weak_2 extends Attacker{
 	public Weak_2(double x,double y)
 	{
 		//all stat is temporary
-		this.ATK=20;
+		this.ATK=100;
 		this.DEF=5;
 		this.posX=x;
 		this.posY=y;
@@ -26,6 +26,8 @@ public class Weak_2 extends Attacker{
 		this.DIAMETER=this.RADIUS*2;
 		this.setHP(100);
 		this.MaxHP=getHP();
+		this.currentTick=0;
+		this.AttackTick=150;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {

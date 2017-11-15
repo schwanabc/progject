@@ -51,5 +51,8 @@ public abstract class Entity implements IRenderable{
 	public void setHP(double hP) {
 		HP = hP;
 	}
+	public double getDEF() {
+		return DEF;
+	}
 
 }
