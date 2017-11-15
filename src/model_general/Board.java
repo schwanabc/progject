@@ -11,42 +11,68 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import model_attacker.weak_1;
+import model_attacker.Weak_1;
 import model_defender.Wall;
 import model_defender.weak_tower;
 
 public class Board implements IRenderable {
-	private static int BOARD_ROW=20;
-	private static int BOARD_COLUMN=20;
-	private static double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
-	private static double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
+	private static final int BOARD_ROW=22;
+	private static final int BOARD_COLUMN=22;
+	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
+	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	private boolean paused=false;
 	private static int board[][]=
 			{
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
-					{0,0,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,0,0},
-					{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-					{0,0,0,0,1,0,0,2,0,0,0,0,2,0,0,1,0,0,0,0},
-					{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-					{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-					{0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0},
-					{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-					{0,0,0,0,1,0,0,2,0,0,0,0,2,0,0,1,0,0,0,0},
-					{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
-					{0,0,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,0,0},
-					{0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0},
+					{0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,2,0,0,0,0,2,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,0,0,2,2,0,0,0,0,1,0,0,0,0,0},
+					{0,0,0,1,1,1,0,0,0,0,2,2,0,0,0,0,1,1,1,0,0,0},
+					{0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,2,0,0,0,0,2,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
+					{0,0,0,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0},
+					{0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+					
 			};
+	private static int[][] accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
 	public Board()
 	{
+		fillacessibleboard();
 		setboard();
+	}
+	private void fillacessibleboard() {
+		// TODO Auto-generated method stub
+		for(int i=0;i<BOARD_ROW;i++)
+			for(int j=0;j<BOARD_COLUMN;j++)
+			{
+				if(board[i][j]!=0)
+				{
+					for(int k=-1*2;k<=2;k++)
+					{
+						for(int l=-1*2;l<=2;l++)
+						{
+							accessibleboard[i+k][j+l]=1;
+						}
+					}
+				}
+				else
+				{
+					if(accessibleboard[i][j]!=1)accessibleboard[i][j]=0;
+				}
+			}
 	}
 	public void setboard() {
 		// TODO Auto-generated method stub
@@ -72,38 +98,36 @@ public class Board implements IRenderable {
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
 
-				if((i+j)%2==0) gc.setFill(Color.ANTIQUEWHITE);
-				else gc.setFill(Color.ROSYBROWN);
+				 gc.setFill(Color.ANTIQUEWHITE);				
+				if(accessibleboard[i][j]==1)gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
-				
 			}
 	}
 	public static int getBOARD_ROW() {
 		return BOARD_ROW;
 	}
-	public static void setBOARD_ROW(int bOARD_ROW) {
-		BOARD_ROW = bOARD_ROW;
-	}
 	public static int getBOARD_COLUMN() {
 		return BOARD_COLUMN;
 	}
-	public static void setBOARD_COLUMN(int bOARD_COLUMN) {
-		BOARD_COLUMN = bOARD_COLUMN;
-	}
+
 	public void update()
 	{
-		if(InputUtility.isLeftClickTriggered() && GameScreen.isIngamescreen())
+		if(InputUtility.isLeftClickTriggered() && Placeable(InputUtility.mouseX,InputUtility.mouseY))
 		{
-			Gamelogic.addNewObject(new weak_1(InputUtility.mouseX,InputUtility.mouseY));	
+			Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
 			if(InputUtility.getKeyPressed(KeyCode.SHIFT))
 					{
-						Gamelogic.addNewObject(new weak_1(InputUtility.mouseX+weak_1.getDIAMETER(),InputUtility.mouseY));
-						Gamelogic.addNewObject(new weak_1(InputUtility.mouseX-weak_1.getDIAMETER(),InputUtility.mouseY));
-						Gamelogic.addNewObject(new weak_1(InputUtility.mouseX,InputUtility.mouseY+weak_1.getDIAMETER()));
-						Gamelogic.addNewObject(new weak_1(InputUtility.mouseX,InputUtility.mouseY-weak_1.getDIAMETER()));
+						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX+Weak_1.getDIAMETER(),InputUtility.mouseY));
+						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX-Weak_1.getDIAMETER(),InputUtility.mouseY));
+						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY+Weak_1.getDIAMETER()));
+						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY-Weak_1.getDIAMETER()));
 					}
 		}
 		
+	}
+	private boolean Placeable(double mouseX, double mouseY) {
+		// TODO Auto-generated method stub
+		return GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0;
 	}
 	@Override
 	public int getZ() {

@@ -49,7 +49,6 @@ public class Gamelogic {
 				Defendercontainer.remove(i);
 		}	
 		
-		
 	}
 	public static ArrayList<Entity> getEntitycontainer() {
 		return Entitycontainer;

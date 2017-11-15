@@ -51,7 +51,6 @@ public abstract class Attacker extends Entity{
 	}
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		System.out.println(RADIUS);
 		double ratio=HP/MaxHP;
 		gc.setFill(Color.LIGHTGREEN);
 		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS-3, DIAMETER, 4);

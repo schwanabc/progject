@@ -1,5 +1,7 @@
 package model_attacker;
 
+import java.util.Random;
+
 import Input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -10,9 +12,9 @@ import model_defender.Defender;
 import model_general.Board;
 import model_general.Entity;
 
-public class weak_1 extends Attacker{
+public class Weak_1 extends Attacker{
 
-	public weak_1(double x,double y)
+	public Weak_1(double x,double y)
 	{
 		//all stat is temporary
 		this.ATK=10;
@@ -37,9 +39,11 @@ public class weak_1 extends Attacker{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-		foward(1,0);//only test (can be delete)
+		Random rand = new Random();
+
+		int  n = rand.nextInt(100) + 1;
+		foward(0,1);//only test (can be delete)
 		boolean goback=false;
-		HP-=2; //temp
 		/*if(ColliedwithAttacker()) //collide with another attacker ****BUG****
 			{
 				goback=true;
@@ -51,7 +55,7 @@ public class weak_1 extends Attacker{
 			}
 		if(goback==true) 
 			{
-				foward(-1,0); //if collied go backward
+				foward(0,-1); //if collied go backward
 			}
 	}
 	

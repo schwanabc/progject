@@ -9,7 +9,7 @@ import javafx.application.Application;
 import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import logic.Gamelogic;
-import model_attacker.weak_1;
+import model_attacker.Weak_1;
 import model_general.Board;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
