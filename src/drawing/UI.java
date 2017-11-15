@@ -25,7 +25,7 @@ public class UI extends Canvas{
 		this.setOnMousePressed((MouseEvent event) -> {
 			System.out.println("clicked");
 			if (event.getButton() == MouseButton.PRIMARY)
-				InputUtility.mouseLeftDown("X");
+				InputUtility.mouseLeftDown();
 		});
 
 		this.setOnMouseReleased((MouseEvent event) -> {

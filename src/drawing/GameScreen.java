@@ -15,6 +15,7 @@ import model_general.Board;
 public class GameScreen extends UI{
 	public static double GAMESCREEN_WIDTH=Main.SCREEN_WIDTH*0.75;
 	public static double GAMESCREEN_HEIGHT=Main.SCREEN_HEIGHT;
+	
 	public GameScreen()
 	{
 		super(GAMESCREEN_WIDTH,GAMESCREEN_HEIGHT);
@@ -37,9 +38,9 @@ public class GameScreen extends UI{
 	public void addListerner()
 	{
 		super.addListerner();
-		this.setOnMousePressed((MouseEvent event) -> {
-			if (event.getButton() == MouseButton.PRIMARY)
-				InputUtility.mouseLeftDown("GAME");
+		this.setOnMouseEntered((MouseEvent event) -> {
+			InputUtility.mouseOnScreen = true;
+			InputUtility.currentUI="GAME";
 		});
 	}
 
