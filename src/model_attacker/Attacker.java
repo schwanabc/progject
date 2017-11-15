@@ -10,8 +10,8 @@ import model_general.Entity;
 
 public abstract class Attacker extends Entity{
 	protected double speed;
-	protected static double RADIUS;
-	protected static double DIAMETER;
+	protected  double RADIUS;
+	protected  double DIAMETER;
 	public void foward(double xAxis,double yAxis)
 	{
 		posX+=xAxis*speed;
@@ -27,7 +27,7 @@ public abstract class Attacker extends Entity{
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
 			//	System.out.println(defender.getPosX()+" "+defender.getPosY());
 		        count++;
-		        defender.setHP(defender.getHP() - 10);//temp
+		        defender.setHP(defender.getHP() - ATK);//temp
 		        defender.chekdestroyed(); //temp
 		      }
 		}

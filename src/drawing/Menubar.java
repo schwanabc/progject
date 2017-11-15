@@ -27,6 +27,9 @@ public class Menubar extends VBox{
 	private static double ICONWIDTH;
 	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
 	GridPane gp=new GridPane();
+	private static int choseRow=-1;
+	private static int choseColumn=-1;
+	private static boolean hasbeenclick=false;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
 		MENU_WIDTH=SCREEN_WIDTH;
@@ -40,10 +43,8 @@ public class Menubar extends VBox{
 	private void setMenu() {
 		setMenutab();
 		setIcon();
-		// TODO Auto-generated method stub
 	}
 	private void setIcon() {
-		// TODO Auto-generated method stub
 		int count=0;
 		for(int i=0;i<VTAB;i++)
 		{
@@ -66,26 +67,50 @@ public class Menubar extends VBox{
 		this.getChildren().add(gp);
 	}
 	private void Checkevent(Canvas canvas, int row, int column) {
-		// TODO Auto-generated method stub
 		GraphicsContext gc=canvas.getGraphicsContext2D();
 		canvas.setOnMouseEntered(ev->
 		{
+			if(!(row==choseRow &&column==choseColumn))
 			setHover(gc,Color.LIGHTGREEN);
 		});
 		canvas.setOnMouseExited(ev->
 		{
+			if(!(row==choseRow &&column==choseColumn))
+			{
 			if((row+column)%2==0)setHover(gc,Color.LIGHTGRAY);
 			else setHover(gc,Color.ALICEBLUE);
+			}
+		});
+		canvas.setOnMouseClicked(ev->
+		{
+			hasbeenclick=true;
+			if(row!=choseRow ||column!=choseColumn)
+			{
+				try
+				{
+					GraphicsContext temp=menu[choseRow][choseColumn].getGraphicsContext2D();
+					if((choseRow+choseColumn)%2==0)setHover(temp,Color.LIGHTGRAY);
+					else setHover(temp,Color.ALICEBLUE);
+				}
+				catch(Exception e) {}//Do nothing
+				choseRow=row;
+				choseColumn=column;
+			}
+			setHover(gc,Color.CORNFLOWERBLUE);
+			Choosecurrentbot(row,column);
 		});
 	}
+	private void Choosecurrentbot(int row, int column) {
+		if(row==0&&column==0)InputUtility.currentChosed ="Weak_1";
+		else if(row==0&&column==1)InputUtility.currentChosed ="Weak_2";
+		else InputUtility.currentChosed ="x";
+	}
 	private void setHover(GraphicsContext gc,Color color) {
-		// TODO Auto-generated method stub
 		gc.setLineWidth(20);
 		gc.setStroke(color);
 		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
 	}
 	private void setMenutab() {
-		// TODO Auto-generated method stub
 		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
 		GraphicsContext gc=canvas.getGraphicsContext2D();
 		gc.setFill(Color.ALICEBLUE);

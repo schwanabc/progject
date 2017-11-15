@@ -8,6 +8,7 @@ public class InputUtility {
 
 	public static double mouseX,mouseY;
 	public static String currentUI="x";
+	public static String currentChosed="x"; //currentChosed is called in Menubar.Choosecurrentbot 
 	public static boolean mouseOnScreen = true;
 	private static boolean isLeftDown = false;
 	private static boolean isLeftClickedLastTick = false;

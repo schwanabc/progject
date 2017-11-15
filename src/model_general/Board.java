@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model_attacker.Weak_1;
+import model_attacker.Weak_2;
 import model_defender.Wall;
 import model_defender.weak_tower;
 
@@ -124,18 +125,18 @@ public class Board implements IRenderable {
 
 	public void update()
 	{
-		if(InputUtility.isLeftClickTriggered() && Placeable(InputUtility.mouseX,InputUtility.mouseY))
+		if(Checktoadd())
 		{
-			Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
-			if(InputUtility.getKeyPressed(KeyCode.SHIFT))
-					{
-						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX+Weak_1.getDIAMETER(),InputUtility.mouseY));
-						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX-Weak_1.getDIAMETER(),InputUtility.mouseY));
-						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY+Weak_1.getDIAMETER()));
-						Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY-Weak_1.getDIAMETER()));
-					}
+			String bot_type=InputUtility.currentChosed;
+			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
+			else if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
 		}
 		
+	}
+	private boolean Checktoadd() {
+		return InputUtility.isLeftClickTriggered() 
+				&& Placeable(InputUtility.mouseX,InputUtility.mouseY) 
+				&& !InputUtility.currentChosed.equals("x");
 	}
 	private boolean Placeable(double mouseX, double mouseY) {
 		// TODO Auto-generated method stub

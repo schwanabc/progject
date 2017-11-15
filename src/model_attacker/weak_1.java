@@ -39,9 +39,6 @@ public class Weak_1 extends Attacker{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-		Random rand = new Random();
-
-		int  n = rand.nextInt(100) + 1;
 		foward(0,1);//only test (can be delete)
 		boolean goback=false;
 		/*if(ColliedwithAttacker()) //collide with another attacker ****BUG****
@@ -59,13 +56,7 @@ public class Weak_1 extends Attacker{
 			}
 	}
 	
-	
-	public static double getRADIUS() {
-		return RADIUS;
-	}
-	public static double getDIAMETER() {
-		return DIAMETER;
-	}
+
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
