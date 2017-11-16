@@ -1,6 +1,6 @@
 # progject
-This is progmeth project.\n
-Latest fix\n
-Changing direction of HP bar.\n
-Add HQ,of which value in board=3,it takes up 2 x 2 space\n
-Show Winscreen after HQ is destroyed by Attacker.\n
+This is progmeth project.<br />
+Latest fix<br />
+Changing direction of HP bar.<br />
+Add HQ,of which value in board=3,it takes up 2 x 2 space.<br />
+Show Winscreen after HQ is destroyed by Attacker.<br />
