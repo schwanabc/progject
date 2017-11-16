@@ -13,7 +13,7 @@ public class Gamelogic {
 	private static CopyOnWriteArrayList<Attacker> Attackercontainer;
 	private static CopyOnWriteArrayList<Defender> Defendercontainer;
 	private static CopyOnWriteArrayList<Bullet> Bulletcontainer;
-	private Board board;
+	private static Board board;
 	public Gamelogic()
 	{
 		Entitycontainer=new CopyOnWriteArrayList<Entity>();
@@ -70,5 +70,8 @@ public class Gamelogic {
 	}
 	public static CopyOnWriteArrayList<Bullet> getBulletcontainer() {
 		return Bulletcontainer;
+	}
+	public static Board getBoard() {
+		return board;
 	}
 }

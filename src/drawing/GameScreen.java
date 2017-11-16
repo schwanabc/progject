@@ -77,6 +77,7 @@ public class GameScreen extends Canvas{
 				InputUtility.mouseY = event.getY();
 			}
 		});
+		
 	}
 
 	public static boolean isIngamescreen() {

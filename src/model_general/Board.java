@@ -6,6 +6,7 @@ import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
 import application.Main;
 import drawing.GameScreen;
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -23,7 +24,7 @@ public class Board implements IRenderable {
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	private static final double BOARD_RANGE=Math.sqrt(BOARD_HEIGHT*BOARD_HEIGHT+BOARD_WIDTH*BOARD_WIDTH);
-	private boolean paused=false;
+	private boolean pausedstate=false;
 	private static int board[][]=
 			{
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -39,9 +40,9 @@ public class Board implements IRenderable {
 					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,2,2,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,2,0,0,0,2,2,0,0,0,2,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
+					{1,1,1,1,1,1,1,0,0,1,0,0,0,0,2,2,0,0,0,0,1,0,2,1,1,1,1,1,1,1},
+					{1,1,1,1,1,1,1,0,0,1,2,0,0,0,2,2,0,0,0,2,1,0,0,1,1,1,1,1,1,1},
+					{0,2,2,2,2,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,2,2,2,2,0},
 					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
@@ -74,7 +75,10 @@ public class Board implements IRenderable {
 					{
 						for(int l=-1*2;l<=2;l++)
 						{
+							try {
 							accessibleboard[i+k][j+l]=1;
+							}
+							catch (Exception e) {}
 						}
 					}
 				}
@@ -123,13 +127,38 @@ public class Board implements IRenderable {
 
 	public void update()
 	{
+		Checkadded();
+		Checkpaused();
+	}
+	private void Checkadded() {
+		// TODO Auto-generated method stub
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;
 			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
 			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
 		}
-		
+	}
+	private void Checkpaused() {
+		// TODO Auto-generated method stub
+		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
+		{
+			if(pausedstate==false)
+			{
+				pausedstate=true;
+				System.out.print("pause");
+				application.Main.AT.stop();
+				application.Main.AT2.start();
+			}
+			else
+			{
+				pausedstate=false;
+				System.out.print("unpause");
+				application.Main.AT2.stop();
+				application.Main.AT.start();
+			}
+			InputUtility.Lastkey=null;
+		}
 	}
 	private boolean Checktoadd() {
 		return InputUtility.isLeftClickTriggered() 

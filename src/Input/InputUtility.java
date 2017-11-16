@@ -8,9 +8,11 @@ public class InputUtility {
 
 	public static double mouseX,mouseY;
 	public static String currentUI="x";
+	public static KeyCode Lastkey;
 	public static String currentChosed="x"; //currentChosed is called in Menubar.Choosecurrentbot 
 	public static boolean mouseOnScreen = true;
 	private static boolean isLeftDown = false;
+	private static boolean isKeyPress = false;
 	private static boolean isLeftClickedLastTick = false;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>(); 
 	
@@ -21,11 +23,13 @@ public class InputUtility {
 		if(pressed){
 			if(!keyPressed.contains(keycode)){
 				keyPressed.add(keycode);
+				Lastkey=keycode;
 			}
 		}else{
 			keyPressed.remove(keycode);
 		}
-		System.out.println(keyPressed);
+		isKeyPress=pressed;
+		//System.out.println(keyPressed);
 	}
 	public static void mouseLeftDown(){
 		isLeftDown = true;
@@ -42,6 +46,9 @@ public class InputUtility {
 	
 	public static void updateInputState(){
 		isLeftClickedLastTick = false;
+	}
+	public static boolean isKeyPress() {
+		return isKeyPress;
 	}
 	
 }

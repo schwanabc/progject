@@ -26,6 +26,7 @@ import javafx.scene.text.TextAlignment;
 public class Main extends Application {
 	public static double SCREEN_WIDTH=800;
 	public static double SCREEN_HEIGHT=600;
+	public static AnimationTimer AT,AT2;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -40,7 +41,7 @@ public class Main extends Application {
 			primaryStage.show();
 			gamescreen.requestFocus();
 			Gamelogic gamelogic=new Gamelogic();
-			new AnimationTimer(){
+			AT=new AnimationTimer(){
 				public void handle(long now)
 				{
 					gamescreen.PaintComponent();
@@ -48,7 +49,17 @@ public class Main extends Application {
 					RenderableHolder.getInstance().update();
 					InputUtility.updateInputState();
 				}
-			}.start();
+			};
+			AT2=new AnimationTimer(){
+				public void handle(long now)
+				{
+					Gamelogic.getBoard().update();
+					gamescreen.PaintComponent();
+					RenderableHolder.getInstance().update();
+					InputUtility.updateInputState();
+				}
+			};
+			AT.start();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
