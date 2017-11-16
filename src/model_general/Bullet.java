@@ -15,7 +15,7 @@ public class Bullet extends Entity{
 		this.ATK=ATK;
 		this.DEF=0;
 		this.radius=2;
-		this.HP=Shootrange*1.5*60; //Bullet HP=time left until bullet disappeared
+		this.HP=Shootrange*60*1.8; //Bullet HP=tick left until bullet disappeared
 		this.speed=Math.sqrt(Board.getBOARD_HEIGHT()*Board.getBOARD_HEIGHT() + Board.getBOARD_COLUMN()*Board.getBOARD_COLUMN())/20;
 		this.posX=posX;
 		this.posY=posY;
@@ -56,7 +56,7 @@ public class Bullet extends Entity{
 	{
 		posX+=xAxis*speed;
 		posY+=yAxis*speed;
-		HP-=4;
+		HP-=6;
 	}
 	@Override
 	public void update() {

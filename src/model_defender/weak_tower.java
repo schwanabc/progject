@@ -21,7 +21,7 @@ public class weak_tower extends Defender{
 		this.MaxHP=getHP();
 		this.Shootrange=5;
 		Currentshootingtick=0;
-		Shootingtick=40;
+		Shootingtick=60;
 		this.Wallwidth=Board.getBOARD_WIDTH();
 		this.Wallheight=Board.getBOARD_HEIGHT();
 	}

@@ -35,6 +35,8 @@ public class RenderableHolder {
 			{
 				if(entities.get(i) instanceof Defender)
 				{
+					Defender defender=(Defender) entities.get(i);
+					Board.setBoard(defender.getPosI(), defender.getPosJ(), -1);
 					if(entities.get(i) instanceof HQ)
 					{
 						Board.setIswin(true);

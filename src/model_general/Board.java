@@ -119,6 +119,7 @@ public class Board implements IRenderable {
 
 				 gc.setFill(Color.ANTIQUEWHITE);				
 				if(accessibleboard[i][j]==1)gc.setFill(Color.LIGHTGOLDENRODYELLOW);
+				if(board[i][j]==-1)gc.setFill(Color.PURPLE);
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH+1, BOARD_HEIGHT+1);
 				
 			}
@@ -199,6 +200,12 @@ public class Board implements IRenderable {
 	}
 	public static void setIswin(boolean iswin) {
 		Iswin = iswin;
+	}
+	public static int[][] getBoard() {
+		return board;
+	}
+	public static void setBoard(int i,int j,int val) {
+		Board.board[i][j]=val;
 	}
 
 }

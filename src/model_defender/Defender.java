@@ -36,5 +36,11 @@ public abstract class Defender extends Entity {
 	public double getWallheight() {
 		return Wallheight;
 	}
+	public int getPosI() {
+		return posI;
+	}
+	public int getPosJ() {
+		return posJ;
+	}
 
 }
