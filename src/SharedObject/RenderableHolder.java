@@ -3,6 +3,9 @@ package SharedObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import model_defender.HQ;
+import model_general.Board;
 public class RenderableHolder {
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
@@ -28,7 +31,13 @@ public class RenderableHolder {
 		for(int i=entities.size()-1;i>=0;i--)
 		{
 			if(entities.get(i).isDestroyed()==true)
+			{					
+				if(entities.get(i) instanceof HQ)
+				{
+					Board.setIswin(true);
+				}
 				entities.remove(i);
+			}
 		}
 	}
 	public static RenderableHolder getInstance() {

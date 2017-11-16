@@ -12,20 +12,17 @@ public class Gamelogic {
 	private static CopyOnWriteArrayList<Entity> Entitycontainer;
 	private static CopyOnWriteArrayList<Attacker> Attackercontainer;
 	private static CopyOnWriteArrayList<Defender> Defendercontainer;
-	private static CopyOnWriteArrayList<Bullet> Bulletcontainer;
 	private static Board board;
 	public Gamelogic()
 	{
 		Entitycontainer=new CopyOnWriteArrayList<Entity>();
 		Attackercontainer=new CopyOnWriteArrayList<Attacker>();
 		Defendercontainer=new CopyOnWriteArrayList<Defender>();
-		Bulletcontainer=new CopyOnWriteArrayList<Bullet>();
 		board=new Board();
 		RenderableHolder.getInstance().add(board);
 	}
 	public static void addNewObject(Entity entity){
 		Entitycontainer.add(entity);
-		if(entity instanceof Bullet)Bulletcontainer.add((Bullet) entity);
 		if(entity instanceof Attacker)Attackercontainer.add((Attacker) entity);
 		if(entity instanceof Defender)Defendercontainer.add((Defender) entity);
 		RenderableHolder.getInstance().add(entity);
@@ -52,12 +49,7 @@ public class Gamelogic {
 			if(Defendercontainer.get(i).isDestroyed())
 				Defendercontainer.remove(i);
 		}	
-		
-		for(int i=Bulletcontainer.size()-1;i>=0;i--)
-		{ 
-			if(Bulletcontainer.get(i).isDestroyed())
-				Bulletcontainer.remove(i);
-		}	
+
 	}
 	public static CopyOnWriteArrayList<Entity> getEntitycontainer() {
 		return Entitycontainer;
@@ -67,9 +59,6 @@ public class Gamelogic {
 	}
 	public static CopyOnWriteArrayList<Defender> getDefendercontainer() {
 		return Defendercontainer;
-	}
-	public static CopyOnWriteArrayList<Bullet> getBulletcontainer() {
-		return Bulletcontainer;
 	}
 	public static Board getBoard() {
 		return board;

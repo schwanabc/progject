@@ -17,7 +17,7 @@ public class Bullet extends Entity{
 		this.ATK=ATK;
 		this.DEF=0;
 		this.radius=2;
-		this.HP=Shootrange*1.5*60;
+		this.HP=Shootrange*1.5*60; //Bullet HP=time left until bullet disappeared
 		this.speed=Math.sqrt(Board.getBOARD_HEIGHT()*Board.getBOARD_HEIGHT() + Board.getBOARD_COLUMN()*Board.getBOARD_COLUMN())/20;
 		this.posX=posX;
 		this.posY=posY;
@@ -27,7 +27,7 @@ public class Bullet extends Entity{
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
-		return 3;
+		return 999;
 	}
 	protected void ColliedwithAttacker()
 	{
@@ -45,7 +45,6 @@ public class Bullet extends Entity{
 	private void BulletAttack(Attacker attacker) {
 		// TODO Auto-generated method stub
 		attacker.setHP(attacker.getHP() - (ATK-attacker.getDEF()));//temp
-		attacker.chekdestroyed();
 		this.destroyed=true;
 		
 	}

@@ -62,7 +62,7 @@ public class Weak_1 extends Attacker{
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
-		return 1;
+		return 10;
 	}
 
 }

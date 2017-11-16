@@ -17,7 +17,7 @@ public class Weak_2 extends Attacker{
 	public Weak_2(double x,double y)
 	{
 		//all stat is temporary
-		this.ATK=200;
+		this.ATK=100;
 		this.DEF=5;
 		this.posX=x;
 		this.posY=y;
@@ -64,7 +64,7 @@ public class Weak_2 extends Attacker{
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
-		return 1;
+		return 11;
 	}
 
 }

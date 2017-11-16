@@ -4,12 +4,15 @@ import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
 import application.Main;
 import Input.InputUtility;
+import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import model_general.Board;
 
 public class GameScreen extends Canvas{
@@ -34,6 +37,18 @@ public class GameScreen extends Canvas{
 				entity.draw(gc);
 			}
 		}
+	}
+	public void PaintWinScreen()
+	{
+		GraphicsContext gc=this.getGraphicsContext2D();
+		gc.setFill(Color.WHITE);
+		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
+		Font TEXT_FONT = new Font("Monospace", 100);
+		gc.setFont(TEXT_FONT);
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.setTextBaseline(VPos.CENTER);
+		gc.setFill(Color.BLACK);
+		gc.fillText("YOU WIN", GAMESCREEN_WIDTH*0.5,GAMESCREEN_HEIGHT*0.5);
 	}
 	public void addListerner() {
 		System.out.println("hearing");

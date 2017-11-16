@@ -1,11 +1,14 @@
 package application;
 	
+import java.util.concurrent.TimeUnit;
+
 import Input.InputUtility;
 import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import drawing.Menubar;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import logic.Gamelogic;
@@ -44,10 +47,14 @@ public class Main extends Application {
 			AT=new AnimationTimer(){
 				public void handle(long now)
 				{
-					gamescreen.PaintComponent();
 					gamelogic.update();
-					RenderableHolder.getInstance().update();
+					gamescreen.PaintComponent();
 					InputUtility.updateInputState();
+					RenderableHolder.getInstance().update();
+					if(Board.isIswin())
+						{
+							Pausewin(gamescreen);
+						}
 				}
 			};
 			AT2=new AnimationTimer(){
@@ -64,7 +71,11 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+	private void Pausewin(GameScreen gamescreen) {
+		// TODO Auto-generated method stub
+		gamescreen.PaintWinScreen();
+		application.Main.AT.stop();
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}

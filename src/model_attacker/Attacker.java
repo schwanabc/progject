@@ -25,7 +25,7 @@ public abstract class Attacker extends Entity{
 		for(Defender defender: logic.Gamelogic.getDefendercontainer())
 		{
 			Circle c=new Circle( posX, posY, RADIUS);
-			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWALL_WIDTH(),defender.getWALL_HEIGHT());
+			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallwidth(),defender.getWallheight());
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
 			//	System.out.println(defender.getPosX()+" "+defender.getPosY());
 		        count++;
@@ -56,11 +56,12 @@ public abstract class Attacker extends Entity{
 	}
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		double ratio=HP/MaxHP;
+		double ratio=(HP/MaxHP);
+		if(ratio<0)ratio=0;
 		gc.setFill(Color.LIGHTGREEN);
 		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS-3, DIAMETER, 4);
 		gc.setFill(Color.ORANGERED);
-		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS-3, DIAMETER*(1-ratio), 4);
+		if(ratio!=1)gc.fillRect(posX-RADIUS+DIAMETER*(ratio), posY-RADIUS-3, DIAMETER*(1-ratio), 4);
 	}
 	protected void Attack(Defender defender) {
 		defender.setHP(defender.getHP() - (ATK-defender.getDEF()));//temp

@@ -14,12 +14,14 @@ public class Wall extends Defender{
 		this.setHP(1000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
+		this.Wallwidth=Board.getBOARD_WIDTH();
+		this.Wallheight=Board.getBOARD_WIDTH();
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.setFill(Color.SLATEGRAY);
-		gc.fillRect(posX, posY, WALL_WIDTH, WALL_HEIGHT);
+		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 	}
 	
@@ -29,7 +31,7 @@ public class Wall extends Defender{
 		
 	}
 	public int getZ() {
-		return 0;
+		return 1;
 	}
 
 }

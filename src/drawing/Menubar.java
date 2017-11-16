@@ -29,7 +29,6 @@ public class Menubar extends VBox{
 	GridPane gp=new GridPane();
 	private static int choseRow=-1;
 	private static int choseColumn=-1;
-	private static boolean hasbeenclick=false;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
 		MENU_WIDTH=SCREEN_WIDTH;
@@ -83,7 +82,6 @@ public class Menubar extends VBox{
 		});
 		canvas.setOnMouseClicked(ev->
 		{
-			hasbeenclick=true;
 			if(row!=choseRow ||column!=choseColumn)
 			{
 				try

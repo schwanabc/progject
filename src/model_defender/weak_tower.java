@@ -13,7 +13,7 @@ public class weak_tower extends Defender{
 	protected int Shootingtick;
 	public weak_tower(double x,double y)
 	{
-		this.ATK=40;
+		this.ATK=20;
 		this.DEF=10;
 		this.posX=x;
 		this.posY=y;
@@ -22,12 +22,14 @@ public class weak_tower extends Defender{
 		this.Shootrange=5;
 		Currentshootingtick=0;
 		Shootingtick=40;
+		this.Wallwidth=Board.getBOARD_WIDTH();
+		this.Wallheight=Board.getBOARD_WIDTH();
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.setFill(Color.YELLOWGREEN);
-		gc.fillRect(posX, posY, WALL_WIDTH, WALL_HEIGHT);
+		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 	}
 	protected void ColliedwithAttacker()//find nearest target
@@ -37,7 +39,7 @@ public class weak_tower extends Defender{
 		int count=0;
 		for(Attacker attacker:Gamelogic.getAttackercontainer())
 		{
-			double dist=Math.hypot(posX+Defender.WALL_WIDTH/2-attacker.getPosX(),posY+Defender.WALL_HEIGHT/2-attacker.getPosY());
+			double dist=Math.hypot(posX+Wallwidth/2-attacker.getPosX(),posY+Wallheight/2-attacker.getPosY());
 			if(dist<min)
 			{
 				min=dist;
@@ -48,8 +50,8 @@ public class weak_tower extends Defender{
 		try
 		{
 			Attacker attacker=Gamelogic.getAttackercontainer().get(idx);
-			double x0=posX+Defender.WALL_WIDTH/2;
-			double y0=posY+Defender.WALL_HEIGHT/2;
+			double x0=posX+Wallwidth/2;
+			double y0=posY+Wallheight/2;
 			double r0=Shootrange*Board.getBoardRange();
 			double x1=attacker.getPosX();
 			double y1=attacker.getPosY();
@@ -91,9 +93,9 @@ public class weak_tower extends Defender{
 	private void shoot(double theta,int direction) {
 		// TODO Auto-generated method stub
 		//Gamelogic.addNewObject(new Weak_1(posX,posY));
-		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Defender.WALL_WIDTH/2,posY+Defender.WALL_HEIGHT/2,ATK,theta,direction));
+		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
 	}
 	public int getZ() {
-		return 0;
+		return 2;
 	}
 }
