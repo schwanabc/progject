@@ -5,17 +5,16 @@ import javafx.scene.paint.Color;
 import model_general.Board;
 
 public class Wall extends Defender{
-	public Wall(double x,double y)
+	public Wall(double posX,double posY,int posI,int posJ)
 	{
+		super(posX,posY,posI,posJ);
 		this.ATK=0;
 		this.DEF=0;
-		this.posX=x;
-		this.posY=y;
 		this.setHP(1000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
 		this.Wallwidth=Board.getBOARD_WIDTH();
-		this.Wallheight=Board.getBOARD_WIDTH();
+		this.Wallheight=Board.getBOARD_HEIGHT();
 	}
 	@Override
 	public void draw(GraphicsContext gc) {

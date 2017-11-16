@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import model_defender.Defender;
 import model_defender.HQ;
 import model_general.Board;
 public class RenderableHolder {
@@ -31,10 +32,14 @@ public class RenderableHolder {
 		for(int i=entities.size()-1;i>=0;i--)
 		{
 			if(entities.get(i).isDestroyed()==true)
-			{					
-				if(entities.get(i) instanceof HQ)
+			{
+				if(entities.get(i) instanceof Defender)
 				{
-					Board.setIswin(true);
+					if(entities.get(i) instanceof HQ)
+					{
+						Board.setIswin(true);
+					}
+					
 				}
 				entities.remove(i);
 			}

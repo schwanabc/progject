@@ -6,20 +6,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import SharedObject.RenderableHolder;
 import model_attacker.Attacker;
 import model_defender.Defender;
-import model_defender.Bullet;
 import model_general.*;
 public class Gamelogic {
 	private static CopyOnWriteArrayList<Entity> Entitycontainer;
 	private static CopyOnWriteArrayList<Attacker> Attackercontainer;
 	private static CopyOnWriteArrayList<Defender> Defendercontainer;
-	private static Board board;
 	public Gamelogic()
 	{
 		Entitycontainer=new CopyOnWriteArrayList<Entity>();
 		Attackercontainer=new CopyOnWriteArrayList<Attacker>();
 		Defendercontainer=new CopyOnWriteArrayList<Defender>();
-		board=new Board();
-		RenderableHolder.getInstance().add(board);
+		RenderableHolder.getInstance().add(new Board());
 	}
 	public static void addNewObject(Entity entity){
 		Entitycontainer.add(entity);
@@ -29,7 +26,7 @@ public class Gamelogic {
 	}
 	public void update() {
 		// TODO Auto-generated method stub
-		board.update();
+		Board.update();
 		for(Entity entity: Entitycontainer)
 		{
 			entity.update();
@@ -60,7 +57,5 @@ public class Gamelogic {
 	public static CopyOnWriteArrayList<Defender> getDefendercontainer() {
 		return Defendercontainer;
 	}
-	public static Board getBoard() {
-		return board;
-	}
+
 }

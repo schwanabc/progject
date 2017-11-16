@@ -7,23 +7,23 @@ import logic.Gamelogic;
 import model_attacker.Attacker;
 import model_attacker.Weak_1;
 import model_general.Board;
+import model_general.Bullet;
 
 public class weak_tower extends Defender{
 	protected int Currentshootingtick;
 	protected int Shootingtick;
-	public weak_tower(double x,double y)
+	public weak_tower(double posX,double posY,int posI,int posJ)
 	{
+		super(posX,posY,posI,posJ);
 		this.ATK=20;
 		this.DEF=10;
-		this.posX=x;
-		this.posY=y;
 		this.setHP(500);
 		this.MaxHP=getHP();
 		this.Shootrange=5;
 		Currentshootingtick=0;
 		Shootingtick=40;
 		this.Wallwidth=Board.getBOARD_WIDTH();
-		this.Wallheight=Board.getBOARD_WIDTH();
+		this.Wallheight=Board.getBOARD_HEIGHT();
 	}
 	@Override
 	public void draw(GraphicsContext gc) {

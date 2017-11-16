@@ -1,11 +1,9 @@
-package model_defender;
+package model_general;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import model_attacker.Attacker;
-import model_general.Board;
-import model_general.Entity;
 
 public class Bullet extends Entity{
 	protected double angle;

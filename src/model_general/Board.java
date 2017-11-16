@@ -14,7 +14,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model_attacker.Weak_1;
 import model_attacker.Weak_2;
-import model_defender.Bullet;
 import model_defender.HQ;
 import model_defender.Wall;
 import model_defender.weak_tower;
@@ -25,7 +24,7 @@ public class Board implements IRenderable {
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	private static final double BOARD_RANGE=Math.sqrt(BOARD_HEIGHT*BOARD_HEIGHT+BOARD_WIDTH*BOARD_WIDTH);
-	private boolean pausedstate=false;
+	private static boolean pausedstate=false;
 	private static boolean Iswin=false;
 	private static int board[][]=
 			{
@@ -43,9 +42,9 @@ public class Board implements IRenderable {
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
 					{1,1,1,1,1,1,1,0,0,1,0,0,0,0,3,0,0,0,0,0,1,0,2,1,1,1,1,1,1,1},
-					{1,1,1,1,1,1,1,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,1,1,1,1,1,1,1},
-					{0,2,2,2,2,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,2,2,2,2,0},
-					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
+					{1,2,2,2,2,1,1,0,0,1,2,0,0,0,0,0,0,0,0,2,1,0,0,1,1,2,2,2,2,1},
+					{1,2,2,2,2,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,1,2,2,2,2,1},
+					{1,1,1,1,1,1,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1,1,1,1,1},
 					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0},
@@ -99,15 +98,15 @@ public class Board implements IRenderable {
 			{
 				if(board[i][j]==1)
 				{
-					Gamelogic.addNewObject(new Wall(BOARD_WIDTH*j, BOARD_HEIGHT*i));
+					Gamelogic.addNewObject(new Wall(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 				if(board[i][j]==2)
 				{
-					Gamelogic.addNewObject(new weak_tower(BOARD_WIDTH*j, BOARD_HEIGHT*i));
+					Gamelogic.addNewObject(new weak_tower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 				if(board[i][j]==3)
 				{
-					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i));
+					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 			}
 	}
@@ -131,12 +130,12 @@ public class Board implements IRenderable {
 		return BOARD_COLUMN;
 	}
 
-	public void update()
+	public static void update()
 	{
 		Checkadded();
 		Checkpaused();
 	}
-	private void Checkadded() {
+	private static void Checkadded() {
 		// TODO Auto-generated method stub
 		if(Checktoadd())
 		{
@@ -145,7 +144,7 @@ public class Board implements IRenderable {
 			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
 		}
 	}
-	private void Checkpaused() {
+	private static void Checkpaused() {
 		// TODO Auto-generated method stub
 		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
 		{
@@ -166,12 +165,12 @@ public class Board implements IRenderable {
 			InputUtility.Lastkey=null;
 		}
 	}
-	private boolean Checktoadd() {
+	private static boolean Checktoadd() {
 		return InputUtility.isLeftClickTriggered() 
 				&& Placeable(InputUtility.mouseX,InputUtility.mouseY) 
 				&& !InputUtility.currentChosed.equals("x");
 	}
-	private boolean Placeable(double mouseX, double mouseY) {
+	private static boolean Placeable(double mouseX, double mouseY) {
 		return GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0;
 	}
 	@Override

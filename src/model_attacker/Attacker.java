@@ -12,7 +12,11 @@ public abstract class Attacker extends Entity{
 	protected double RADIUS;
 	protected double DIAMETER;
 	protected int HiringCost;
-
+	public Attacker(double posX,double posY)
+	{
+		this.posX=posX;
+		this.posY=posY;
+	}
 	public void foward(double xAxis,double yAxis)
 	{
 		posX+=xAxis*speed;

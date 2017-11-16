@@ -12,10 +12,17 @@ public abstract class Defender extends Entity {
 	protected double Wallwidth;
 	protected double Wallheight;
 	protected double Shootrange;
+	protected int posI,posJ;
+	public Defender(double posX,double posY,int posI,int posJ)
+	{
+		this.posX=posX;
+		this.posY=posY;
+		this.posI=posI;
+		this.posJ=posJ;
+	}
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
-		if(this instanceof HQ)System.out.println(ratio);
 		if(ratio<0)ratio=0;
 		gc.setFill(Color.LIGHTGREEN);
 		if(ratio!=1)gc.fillRect(posX, posY, Wallwidth, 4);

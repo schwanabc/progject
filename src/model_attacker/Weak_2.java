@@ -14,18 +14,17 @@ import model_general.Entity;
 
 public class Weak_2 extends Attacker{
 
-	public Weak_2(double x,double y)
+	public Weak_2(double posX,double posY)
 	{
 		//all stat is temporary
+		super(posX,posY);
 		this.ATK=100;
 		this.DEF=5;
-		this.posX=x;
-		this.posY=y;
 		this.speed=2;
 		this.RADIUS=8;
 		this.DIAMETER=this.RADIUS*2;
-		this.setHP(100);
-		this.MaxHP=getHP();
+		this.HP=100;
+		this.MaxHP=HP;
 		this.currentATKTick=0;
 		this.AttackTick=100;
 		this.HiringCost=120;

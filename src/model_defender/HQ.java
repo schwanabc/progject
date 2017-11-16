@@ -12,17 +12,16 @@ import javafx.scene.paint.Color;
 import model_general.Board;
 
 public class HQ extends Defender{
-	public HQ(double x,double y)
+	public HQ(double posX,double posY,int posI,int posJ)
 	{
+		super(posX,posY,posI,posJ);
 		this.ATK=0;
 		this.DEF=0;
-		this.posX=x;
-		this.posY=y;
 		this.setHP(5000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
 		this.Wallwidth=Board.getBOARD_WIDTH()*2;
-		this.Wallheight=Board.getBOARD_WIDTH()*2;
+		this.Wallheight=Board.getBOARD_HEIGHT()*2;
 	}
 	@Override
 	public int getZ() {

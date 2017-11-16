@@ -1,29 +1,16 @@
 package application;
 	
-import java.util.concurrent.TimeUnit;
-
 import Input.InputUtility;
 import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import drawing.Menubar;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.geometry.VPos;
 import javafx.stage.Stage;
 import logic.Gamelogic;
-import model_attacker.Weak_1;
 import model_general.Board;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 
 
 public class Main extends Application {
@@ -60,7 +47,7 @@ public class Main extends Application {
 			AT2=new AnimationTimer(){
 				public void handle(long now)
 				{
-					Gamelogic.getBoard().update();
+					Board.update();
 					gamescreen.PaintComponent();
 					RenderableHolder.getInstance().update();
 					InputUtility.updateInputState();
