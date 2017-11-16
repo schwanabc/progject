@@ -13,7 +13,7 @@ public class weak_tower extends Defender{
 	protected int Shootingtick;
 	public weak_tower(double x,double y)
 	{
-		this.ATK=40;
+		this.ATK=10;
 		this.DEF=10;
 		this.posX=x;
 		this.posY=y;

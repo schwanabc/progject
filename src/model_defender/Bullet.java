@@ -2,6 +2,8 @@ package model_defender;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import model_attacker.Attacker;
 import model_general.Board;
 import model_general.Entity;
 
@@ -27,7 +29,26 @@ public class Bullet extends Entity{
 		// TODO Auto-generated method stub
 		return 3;
 	}
+	protected void ColliedwithAttacker()
+	{
+		for(Attacker attacker: logic.Gamelogic.getAttackercontainer())
+		{
+			Circle c1=new Circle( posX, posY, radius);
+			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.getRADIUS());
+			if (c1.getBoundsInParent().intersects(c2.getBoundsInParent())) {
+		        BulletAttack(attacker);
+		        break;
+		      }
+		}
+	}
 
+	private void BulletAttack(Attacker attacker) {
+		// TODO Auto-generated method stub
+		attacker.setHP(attacker.getHP() - (ATK-attacker.getDEF()));//temp
+		attacker.chekdestroyed();
+		this.destroyed=true;
+		
+	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -38,6 +59,7 @@ public class Bullet extends Entity{
 	{
 		posX+=xAxis*speed;
 		posY+=yAxis*speed;
+		HP-=4;
 	}
 	@Override
 	public void update() {
@@ -45,6 +67,7 @@ public class Bullet extends Entity{
 		//System.out.println(angle+" "+direction);
 		if(direction<2)foward(Math.cos(Math.toRadians(angle)),Math.sin(Math.toRadians(angle)));
 		else foward(-1*Math.cos(Math.toRadians(angle)),-1*Math.sin(Math.toRadians(angle)));
+		ColliedwithAttacker();
 	}
 
 }

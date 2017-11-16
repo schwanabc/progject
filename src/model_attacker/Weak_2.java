@@ -27,7 +27,7 @@ public class Weak_2 extends Attacker{
 		this.setHP(100);
 		this.MaxHP=getHP();
 		this.currentATKTick=0;
-		this.AttackTick=150;
+		this.AttackTick=100;
 		this.HiringCost=120;
 
 	}
