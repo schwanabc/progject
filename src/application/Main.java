@@ -1,5 +1,7 @@
 package application;
 	
+import java.util.concurrent.TimeUnit;
+
 import Input.InputUtility;
 import SharedObject.RenderableHolder;
 import drawing.GameScreen;
@@ -60,6 +62,12 @@ public class Main extends Application {
 	}
 	private void Pausewin(GameScreen gamescreen) {
 		// TODO Auto-generated method stub
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		gamescreen.PaintWinScreen();
 		application.Main.AT.stop();
 	}

@@ -5,14 +5,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import logic.Gamelogic;
 import model_attacker.Attacker;
-import model_attacker.Weak_1;
+import model_attacker.Bot0;
 import model_general.Board;
 import model_general.Bullet;
 
-public class weak_tower extends Defender{
+public class Tower extends Defender{
 	protected int Currentshootingtick;
 	protected int Shootingtick;
-	public weak_tower(double posX,double posY,int posI,int posJ)
+	public Tower(double posX,double posY,int posI,int posJ)
 	{
 		super(posX,posY,posI,posJ);
 		this.ATK=20;

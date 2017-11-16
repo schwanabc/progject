@@ -12,27 +12,28 @@ import model_defender.Defender;
 import model_general.Board;
 import model_general.Entity;
 
-public class Weak_1 extends Attacker{
+public class Bot1 extends Attacker{
 
-	public Weak_1(double posX,double posY)
+	public Bot1(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=50;
+		this.ATK=100;
 		this.DEF=5;
-		this.RADIUS=4;
-		this.speed=1.5;
+		this.speed=2;
+		this.RADIUS=8;
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=100;
 		this.MaxHP=HP;
 		this.currentATKTick=0;
-		this.AttackTick=60;
-		this.HiringCost=50;
+		this.AttackTick=100;
+		this.HiringCost=120;
+
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.RED);
+		gc.setFill(Color.INDIANRED);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
@@ -57,11 +58,12 @@ public class Weak_1 extends Attacker{
 				foward(0,-1); //if collied go backward
 			}
 	}
+	
 
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
-		return 10;
+		return 11;
 	}
 
 }

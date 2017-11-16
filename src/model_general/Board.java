@@ -12,11 +12,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import model_attacker.Weak_1;
-import model_attacker.Weak_2;
+import model_attacker.Bot0;
+import model_attacker.Bot1;
 import model_defender.HQ;
 import model_defender.Wall;
-import model_defender.weak_tower;
+import model_defender.Tower;
 
 public class Board implements IRenderable {
 	private static final int BOARD_ROW=30;
@@ -102,7 +102,7 @@ public class Board implements IRenderable {
 				}
 				if(board[i][j]==2)
 				{
-					Gamelogic.addNewObject(new weak_tower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
+					Gamelogic.addNewObject(new Tower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 				if(board[i][j]==3)
 				{
@@ -141,8 +141,8 @@ public class Board implements IRenderable {
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;
-			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Weak_1(InputUtility.mouseX,InputUtility.mouseY));	
-			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Weak_2(InputUtility.mouseX,InputUtility.mouseY));	
+			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));	
+			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
 		}
 	}
 	private static void Checkpaused() {
