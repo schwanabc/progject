@@ -1,6 +1,7 @@
 package model_general;
 
 import Input.InputUtility;
+import Scenemanager.SceneManager;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
@@ -153,15 +154,15 @@ public class Board implements IRenderable {
 			{
 				pausedstate=true;
 				System.out.print("pause");
-				application.Main.AT.stop();
-				application.Main.AT2.start();
+				SceneManager.AT.stop();
+				SceneManager.AT2.start();
 			}
 			else
 			{
 				pausedstate=false;
 				System.out.print("unpause");
-				application.Main.AT2.stop();
-				application.Main.AT.start();
+				SceneManager.AT2.stop();
+				SceneManager.AT.start();
 			}
 			InputUtility.Lastkey=null;
 		}

@@ -4,6 +4,7 @@ import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
 import application.Main;
 import Input.InputUtility;
+import Scenemanager.SceneManager;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,8 +17,8 @@ import javafx.scene.text.TextAlignment;
 import model_general.Board;
 
 public class GameScreen extends Canvas{
-	public static double GAMESCREEN_WIDTH=Main.SCREEN_WIDTH*0.75;
-	public static double GAMESCREEN_HEIGHT=Main.SCREEN_HEIGHT;
+	public static double GAMESCREEN_WIDTH=SceneManager.SCREEN_WIDTH*0.75;
+	public static double GAMESCREEN_HEIGHT=SceneManager.SCREEN_HEIGHT;
 	
 	public GameScreen()
 	{

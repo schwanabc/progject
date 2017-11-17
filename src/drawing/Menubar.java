@@ -16,10 +16,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import model_general.Board;
-
+import model_general.Gamestate;
 public class Menubar extends VBox{
 	private static double MENU_WIDTH,MENU_HEIGHT;
 	private static final Font TEXT_FONT = new Font("Monospace", 30);
+	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
 	private static double ICONPOS;
@@ -29,8 +30,10 @@ public class Menubar extends VBox{
 	GridPane gp=new GridPane();
 	private static int choseRow=-1;
 	private static int choseColumn=-1;
+	private Gamestate Gamestate;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
+		Gamestate=new Gamestate();
 		MENU_WIDTH=SCREEN_WIDTH;
 		MENU_HEIGHT=SCREEN_HEIGHT;
 		ICONPOS= MENU_HEIGHT*0.2;
@@ -108,17 +111,44 @@ public class Menubar extends VBox{
 		gc.setStroke(color);
 		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
 	}
-	private void setMenutab() {
+	public void setMenutab() {
 		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
 		GraphicsContext gc=canvas.getGraphicsContext2D();
 		gc.setFill(Color.ALICEBLUE);
 		gc.fillRect(0, 0, MENU_WIDTH, ICONPOS);
 		gc.setFont(TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
-		gc.setTextBaseline(VPos.CENTER);
+		gc.setTextBaseline(VPos.BOTTOM);
 		gc.setFill(Color.BLACK);
 		gc.fillText("MENU", MENU_WIDTH*0.5,ICONPOS*0.5);
+
+		gc.setFill(Color.BLACK);
+		gc.setFont(TIME_TEXT_FONT);
+		gc.setTextAlign(TextAlignment.LEFT);
+		gc.setTextBaseline(VPos.TOP);
+		System.out.println(Gamestate.getSecond());
+		gc.fillText("Time left:"+Gamestate.getSecond(), 5, ICONPOS*0.5);
+		
 		this.getChildren().add(canvas);
 	}
+	public void update() {
+		// TODO Auto-generated method stub
+		if(Gamestate.getRemainingNanoTime()<=0)
+		{
+			Gamestate.setLose(true);
+		}
+		if(Board.isIswin())
+		{
+			Gamestate.setWin(true);
+		}
+
+	}
+	public Gamestate getGamestate() {
+		return Gamestate;
+	}
+	public void setGamestate(Gamestate gamestate) {
+		Gamestate = gamestate;
+	}
+	
 	
 }
