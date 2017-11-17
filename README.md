@@ -1,5 +1,5 @@
 # progject
-This is progmeth project.<br />
+This is progmeth project.<br />###Timedisplay is little bit buggy(time depend on animation time)<br />
 Latest fix<br />
 Change destroyed block's color to Color.PURPLE.<br />
 Changing direction of HP bar.<br />

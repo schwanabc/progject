@@ -28,11 +28,11 @@ public class Menubar extends VBox{
 	private static double ICONHEIGHT;
 	private static double ICONWIDTH;
 	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
-	GridPane gp;
-	StackPane sp;
+	private GridPane gp;
 	private static int choseRow=-1;
 	private static int choseColumn=-1;
 	private Gamestate Gamestate;
+	private Canvas Menucanvas;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
 		Gamestate=new Gamestate();
@@ -125,13 +125,11 @@ public class Menubar extends VBox{
 		gc.fillText("MENU", MENU_WIDTH*0.5,ICONPOS*0.5);
 	}
 	public void setMenutab() {
-		sp=new StackPane();
-		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
-		GraphicsContext gc=canvas.getGraphicsContext2D();
+		Menucanvas=new Canvas(MENU_WIDTH,ICONPOS);
+		GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 		PaintMenucanvas(gc);
-		sp.getChildren().add(canvas);
 		
-		this.getChildren().add(sp);
+		this.getChildren().add(Menucanvas);
 	}
 	public void update() {
 		// TODO Auto-generated method stub
@@ -143,15 +141,14 @@ public class Menubar extends VBox{
 		{
 			Gamestate.setWin(true);
 		}
-		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
-		GraphicsContext gc=canvas.getGraphicsContext2D();
+		GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 		PaintMenucanvas(gc);
 		gc.setFill(Color.BLACK);
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.LEFT);
 		gc.setTextBaseline(VPos.TOP);
 		gc.fillText("Time left: "+Gamestate.displayTime(), 5, ICONPOS*0.5);
-		sp.getChildren().add(canvas);
+//		System.out.println(Gamestate.displayTime());
 		
 	}
 	public Gamestate getGamestate() {
