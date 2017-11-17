@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,7 +28,8 @@ public class Menubar extends VBox{
 	private static double ICONHEIGHT;
 	private static double ICONWIDTH;
 	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
-	GridPane gp=new GridPane();
+	GridPane gp;
+	StackPane sp;
 	private static int choseRow=-1;
 	private static int choseColumn=-1;
 	private Gamestate Gamestate;
@@ -47,6 +49,7 @@ public class Menubar extends VBox{
 		setIcon();
 	}
 	private void setIcon() {
+		gp=new GridPane();
 		int count=0;
 		for(int i=0;i<VTAB;i++)
 		{
@@ -111,9 +114,8 @@ public class Menubar extends VBox{
 		gc.setStroke(color);
 		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
 	}
-	public void setMenutab() {
-		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
-		GraphicsContext gc=canvas.getGraphicsContext2D();
+	private void PaintMenucanvas(GraphicsContext gc)
+	{
 		gc.setFill(Color.ALICEBLUE);
 		gc.fillRect(0, 0, MENU_WIDTH, ICONPOS);
 		gc.setFont(TEXT_FONT);
@@ -121,15 +123,15 @@ public class Menubar extends VBox{
 		gc.setTextBaseline(VPos.BOTTOM);
 		gc.setFill(Color.BLACK);
 		gc.fillText("MENU", MENU_WIDTH*0.5,ICONPOS*0.5);
-
-		gc.setFill(Color.BLACK);
-		gc.setFont(TIME_TEXT_FONT);
-		gc.setTextAlign(TextAlignment.LEFT);
-		gc.setTextBaseline(VPos.TOP);
-		System.out.println(Gamestate.getSecond());
-		gc.fillText("Time left:"+Gamestate.getSecond(), 5, ICONPOS*0.5);
+	}
+	public void setMenutab() {
+		sp=new StackPane();
+		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
+		GraphicsContext gc=canvas.getGraphicsContext2D();
+		PaintMenucanvas(gc);
+		sp.getChildren().add(canvas);
 		
-		this.getChildren().add(canvas);
+		this.getChildren().add(sp);
 	}
 	public void update() {
 		// TODO Auto-generated method stub
@@ -141,7 +143,16 @@ public class Menubar extends VBox{
 		{
 			Gamestate.setWin(true);
 		}
-
+		Canvas canvas=new Canvas(MENU_WIDTH,ICONPOS);
+		GraphicsContext gc=canvas.getGraphicsContext2D();
+		PaintMenucanvas(gc);
+		gc.setFill(Color.BLACK);
+		gc.setFont(TIME_TEXT_FONT);
+		gc.setTextAlign(TextAlignment.LEFT);
+		gc.setTextBaseline(VPos.TOP);
+		gc.fillText("Time left: "+Gamestate.displayTime(), 5, ICONPOS*0.5);
+		sp.getChildren().add(canvas);
+		
 	}
 	public Gamestate getGamestate() {
 		return Gamestate;

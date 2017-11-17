@@ -2,23 +2,32 @@ package model_general;
 
 
 public class Gamestate {
-	private static final long START_NANO_TIME = 6000000000L;
+	private static final long TIMELIMIT = 125*100000000L;
 	private long remainingNanoTime;
 	private boolean isWin;
 	private boolean isLose;
 	public Gamestate() 
 	{
-		remainingNanoTime = START_NANO_TIME;
+		remainingNanoTime = TIMELIMIT;
 		isWin=false;
 		isLose=false;
 	}
 	public long getSecond()
 	{
-		return (remainingNanoTime/(100000000L));
+		return (remainingNanoTime/(100000000L))%60;
 	}
 	public long getMinute()
 	{
 		return  (remainingNanoTime/(60*100000000L));
+	}
+	public String displayTime()
+	{
+		String ans="";
+		ans+=getMinute();
+		ans+=" : ";
+		if(getSecond()<10)ans+="0";
+		ans+=getSecond();
+		return ans;
 	}
 	public void TimeElapsed(long elapsedTime) {
 		// TODO Auto-generated method stub

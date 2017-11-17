@@ -50,7 +50,7 @@ public class SceneManager {
 				RenderableHolder.getInstance().update();
 				long elapsedTime = System.nanoTime() - lastLoopStartTime;
 				menubar.getGamestate().TimeElapsed(elapsedTime);
-				menubar.setMenutab();
+				menubar.update();
 			}
 
 		};
