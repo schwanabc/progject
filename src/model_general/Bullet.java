@@ -3,9 +3,10 @@ package model_general;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import logic.Ismovable;
 import model_attacker.Attacker;
 
-public class Bullet extends Entity{
+public class Bullet extends Entity implements Ismovable{
 	protected double angle;
 	protected double radius;
 	protected double speed;
@@ -52,11 +53,19 @@ public class Bullet extends Entity{
 		gc.setFill(Color.BLUE);
 		gc.fillOval(posX-radius, posY-radius, radius*2, radius*2);
 	}
+	@Override
 	public void foward(double xAxis,double yAxis)
 	{
-		posX+=xAxis*speed;
-		posY+=yAxis*speed;
+		double Calibrator=Math.abs(xAxis)+Math.abs(yAxis);
+		posX+=Calibrate(xAxis,Calibrator)*speed;
+		posY+=Calibrate(yAxis,Calibrator)*speed;
 		HP-=6;
+	}
+	@Override
+	public double Calibrate(double velocity, double speed) {
+		// TODO Auto-generated method stub
+		if(speed!=0)return velocity/speed;
+		else return 0;
 	}
 	@Override
 	public void update() {
@@ -66,5 +75,6 @@ public class Bullet extends Entity{
 		else foward(-1*Math.cos(Math.toRadians(angle)),-1*Math.sin(Math.toRadians(angle)));
 		ColliedwithAttacker();
 	}
+	
 
 }

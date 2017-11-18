@@ -42,7 +42,7 @@ public class GameScreen extends Canvas{
 	public void PaintWinScreen()
 	{
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.CORAL);
+		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
 		Font TEXT_FONT = new Font("Monospace", 100);
 		gc.setFont(TEXT_FONT);
@@ -54,13 +54,13 @@ public class GameScreen extends Canvas{
 	public void PaintLoseScreen() {
 		// TODO Auto-generated method stub
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.ANTIQUEWHITE);
+		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
 		Font TEXT_FONT = new Font("Monospace", 100);
 		gc.setFont(TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.CENTER);
-		gc.setFill(Color.BLACK);
+		gc.setFill(Color.WHITE);
 		gc.fillText("YOU LOSE", GAMESCREEN_WIDTH*0.5,GAMESCREEN_HEIGHT*0.5);
 	}
 	public void addListerner() {

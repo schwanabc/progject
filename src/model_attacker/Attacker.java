@@ -5,10 +5,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import logic.Ismovable;
 import model_defender.Defender;
 import model_general.Entity;
 
-public abstract class Attacker extends Entity{
+public abstract class Attacker extends Entity implements Ismovable{
 	protected double RADIUS;
 	protected double DIAMETER;
 	protected static int HiringCost;
@@ -19,19 +20,24 @@ public abstract class Attacker extends Entity{
 		this.posX=posX;
 		this.posY=posY;
 	}
+	@Override
 	public void foward(double xAxis,double yAxis)
 	{
-		posX+=xAxis*speed;
-		posY+=yAxis*speed;
+		double Calibrator=Math.abs(xAxis)+Math.abs(yAxis);
+		posX+=Calibrate(xAxis,Calibrator)*speed;
+		posY+=Calibrate(yAxis,Calibrator)*speed;
+	}
+	@Override
+	public double Calibrate(double velocity, double speed) {
+		if(speed!=0)return velocity/speed;
+		else return 0;
 	}
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
 		return 10;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.setFill(Color.RED);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
@@ -42,11 +48,7 @@ public abstract class Attacker extends Entity{
 		//need decent moving algorithm
 		foward(0,1);//only test (can be delete)
 		boolean goback=false;
-		/*if(ColliedwithAttacker()) //collide with another attacker ****BUG****
-			{
-				goback=true;
-			}
-		*/
+
 		 if(ColliedwithDefender())//collide with another Defender
 			{
 				goback=true;
@@ -65,7 +67,6 @@ public abstract class Attacker extends Entity{
 			Circle c=new Circle( posX, posY, RADIUS);
 			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallwidth(),defender.getWallheight());
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
-			//	System.out.println(defender.getPosX()+" "+defender.getPosY());
 		        count++;
 		        if(currentATKTick>=AttackTick)
 		        {
@@ -78,20 +79,7 @@ public abstract class Attacker extends Entity{
 		return false;
 		
 	}
-	protected boolean ColliedwithAttacker()
-	{
-		int count=0;
-		for(Attacker attacker: logic.Gamelogic.getAttackercontainer())
-		{
-			Circle c1=new Circle( posX, posY, RADIUS);
-			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.RADIUS);
-			if (c1.getBoundsInParent().intersects(c2.getBoundsInParent())) {
-		        count++;
-		      }
-		}
-		if(count>1) return true;
-		return false;
-	}
+
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
