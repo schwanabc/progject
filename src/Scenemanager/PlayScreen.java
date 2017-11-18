@@ -43,28 +43,25 @@ public class PlayScreen extends HBox{
 			}
 		};
 	}
-
-	private void Resetgame() {
+	private void Initialize() {
 		// TODO Auto-generated method stub
-		//AT.stop();
+		gamescreen=new GameScreen();
+		menubar=new Menubar(SceneManager.SCREEN_WIDTH*0.25,SceneManager.SCREEN_HEIGHT);
+		Gamelogic=new Gamelogic();
+		Gamestate=new Gamestate();
+		this.getChildren().add(gamescreen);
+		this.getChildren().add(menubar);
+	}
+	private void Resetgame() {
+		//Dont use gotoplayscreen,as it will make the game blink
 		RenderableHolder.getInstance().reboot();
 		Gamelogic=new Gamelogic();
 		Gamestate=new Gamestate();
 		menubar.setdefault();
 		AT2.stop();
 		pausedstate=false;
-		//AT.start();
 	}
 		
-		private void Initialize() {
-			// TODO Auto-generated method stub
-			gamescreen=new GameScreen();
-			menubar=new Menubar(SceneManager.SCREEN_WIDTH*0.25,SceneManager.SCREEN_HEIGHT);
-			Gamelogic=new Gamelogic();
-			Gamestate=new Gamestate();
-			this.getChildren().add(gamescreen);
-			this.getChildren().add(menubar);
-		}
 	protected void Paintupdated() {
 		// TODO Auto-generated method stub
 		gamescreen.PaintComponent();
@@ -85,9 +82,11 @@ public class PlayScreen extends HBox{
 		// TODO Auto-generated method stub
 		if(Gamestate.isWin())
 		{
-			gamescreen.PaintWinScreen();
+			Resetgame();
+			AT.stop();
+			SceneManager.gotoWaitScreen();
 		}
-		if(Gamestate.isLose())
+		else if(Gamestate.isLose())
 		{
 			gamescreen.PaintLoseScreen();
 		}

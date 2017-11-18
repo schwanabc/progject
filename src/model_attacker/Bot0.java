@@ -19,7 +19,7 @@ public class Bot0 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=20;
+		this.ATK=40;
 		this.DEF=5;
 		this.RADIUS=4;
 		this.speed=1.5;

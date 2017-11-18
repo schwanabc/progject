@@ -28,10 +28,10 @@ public class Menubar extends VBox{
 	private static double ICONPOS;
 	private static double ICONHEIGHT;
 	private static double ICONWIDTH;
-	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
+	private Canvas[][] menu=new Canvas[VTAB][HTAB];
 	private GridPane gp;
-	private static int choseRow;
-	private static int choseColumn;
+	private int choseRow;
+	private int choseColumn;
 	private Gamestate Gamestate;
 	private Canvas Menucanvas;
 	private boolean isReset;
@@ -60,6 +60,7 @@ public class Menubar extends VBox{
 		{
 			for(int j=0;j<HTAB;j++)
 			{
+				fillicon(menu[i][j]);
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
 				gc.setFill(Color.ALICEBLUE);
@@ -76,6 +77,10 @@ public class Menubar extends VBox{
 			}
 		}
 		this.getChildren().add(gp);
+	}
+	private void fillicon(Canvas canvas) {
+		// TODO Auto-generated method stub
+		
 	}
 	private void Checkevent(Canvas canvas, int row, int column) {
 		GraphicsContext gc=canvas.getGraphicsContext2D();
@@ -148,10 +153,7 @@ public class Menubar extends VBox{
 	public void update() {
 		// TODO Auto-generated method stub
 
-		if(Board.isIswin())
-		{
-			Gamestate.setWin(true);
-		}
+		if(Board.isIswin())Gamestate.setWin(true);
 		GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 		PaintMenucanvas(gc);
 		gc.setFill(Color.BLACK);
@@ -177,9 +179,11 @@ public class Menubar extends VBox{
 	public void setdefault() {
 		// TODO Auto-generated method stub
 		isReset=false;
+		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
+		setUnHover(gc,Color.ALICEBLUE);
+		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setHover(menu[VTAB-1][HTAB-1].getGraphicsContext2D(),Color.LIGHTGREEN);
 		choseRow=-1;
 		choseColumn=-1;
-		setHover(menu[VTAB-1][HTAB-1].getGraphicsContext2D(),Color.LIGHTGREEN);
 	}
 	
 	

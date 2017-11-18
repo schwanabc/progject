@@ -34,7 +34,7 @@ public class Bot1 extends Attacker{
 	}
 
 	public static int getHiringCost() {
-		HiringCost=300;
+		HiringCost=240;
 		return HiringCost;
 	}
 	@Override
