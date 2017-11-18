@@ -22,21 +22,21 @@ public class PlayScreen extends HBox{
 	Gamestate Gamestate;
 	PlayScreen()
 	{
-		gamescreen=new GameScreen();
-		menubar=new Menubar(SceneManager.SCREEN_WIDTH*0.25,SceneManager.SCREEN_HEIGHT);
-		this.getChildren().add(gamescreen);
-		this.getChildren().add(menubar);
-		Gamelogic=new Gamelogic();
-		Gamestate=new Gamestate();
+		Initialize();
 		AT=new AnimationTimer(){
 			public void handle(long now)
 			{
 				Gamelogic.update();
 				Paintupdated();
 				Checkcondition();
+				if(menubar.isReset())
+				{
+					Resetgame();
+				}
 				if(!Gamestate.isOngoing())
 					{stop();Checkend();}
 			}
+
 		};
 		AT2=new AnimationTimer(){
 			public void handle(long now)
@@ -46,6 +46,35 @@ public class PlayScreen extends HBox{
 			}
 		};
 	}
+
+	private void Resetgame() {
+		// TODO Auto-generated method stub
+		AT.stop();
+		RenderableHolder.getInstance().reboot();
+		Gamelogic=new Gamelogic();
+	//	gamescreen.PaintComponent();
+		/*
+		this.getChildren().removeAll();
+		Initialize();
+		RenderableHolder.reboot();
+		System.out.println(RenderableHolder.getInstance().getEntities().size());
+		gamescreen.PaintComponent();
+		new Board();
+		Paintupdated();*/
+		Board.setMoney(1500);
+		menubar.setReset(false);
+		AT.start();
+	}
+		
+		private void Initialize() {
+			// TODO Auto-generated method stub
+			gamescreen=new GameScreen();
+			menubar=new Menubar(SceneManager.SCREEN_WIDTH*0.25,SceneManager.SCREEN_HEIGHT);
+			Gamelogic=new Gamelogic();
+			Gamestate=new Gamestate();
+			this.getChildren().add(gamescreen);
+			this.getChildren().add(menubar);
+		}
 	protected void Paintupdated() {
 		// TODO Auto-generated method stub
 		gamescreen.PaintComponent();

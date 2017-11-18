@@ -32,7 +32,7 @@ public class HQ extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.GOLD);
+		gc.setFill(Color.BLACK);
 		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 	}

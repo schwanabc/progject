@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import logic.Gamelogic;
 import model_general.Board;
 import model_general.Gamestate;
 public class Menubar extends VBox{
@@ -33,6 +34,7 @@ public class Menubar extends VBox{
 	private static int choseColumn=-1;
 	private Gamestate Gamestate;
 	private Canvas Menucanvas;
+	private boolean isReset=false;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
 		Gamestate=new Gamestate();
@@ -63,7 +65,8 @@ public class Menubar extends VBox{
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				gc.setFill(Color.BLACK);
-				gc.fillText("BOT"+count++, ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				if(!(i+1==VTAB&& j+1==HTAB))gc.fillText("BOT"+count++, ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				else gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 				this.Fillborder(gc, Color.BROWN,1);
 				gp.add(menu[i][j], j, i);
 				Checkevent(menu[i][j],i,j);
@@ -98,13 +101,15 @@ public class Menubar extends VBox{
 				choseRow=row;
 				choseColumn=column;
 			}
-			setHover(gc,Color.CORNFLOWERBLUE);
+			if(!(choseRow+1==VTAB&& choseColumn+1==HTAB))setHover(gc,Color.CORNFLOWERBLUE);
+			else setUnHover(gc,Color.ALICEBLUE);
 			Choosecurrentbot(row,column);
 		});
 	}
 	private void Choosecurrentbot(int row, int column) {
 		if(row==0&&column==0)InputUtility.currentChosed ="Weak_1";
 		else if(row==0&&column==1)InputUtility.currentChosed ="Weak_2";
+		else if(row==VTAB-1 && column==HTAB-1)isReset=true;
 		else InputUtility.currentChosed ="x";
 	}
 	private void setHover(GraphicsContext gc,Color color) {
@@ -159,6 +164,12 @@ public class Menubar extends VBox{
 	}
 	public void setGamestate(Gamestate gamestate) {
 		Gamestate = gamestate;
+	}
+	public boolean isReset() {
+		return isReset;
+	}
+	public void setReset(boolean isReset) {
+		this.isReset = isReset;
 	}
 	
 	

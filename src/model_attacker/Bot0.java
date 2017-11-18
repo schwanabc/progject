@@ -17,18 +17,20 @@ public class Bot0 extends Attacker{
 	
 	public Bot0(double posX,double posY)
 	{
-		
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=50;
+		this.ATK=20;
 		this.DEF=5;
 		this.RADIUS=4;
 		this.speed=1.5;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=300;
+		this.HP=100;
 		this.MaxHP=HP;
 		this.AttackTick=60;
 		this.currentATKTick=AttackTick;
+		this.WallPriority=10;
+		this.TowerPriority=10;
+		this.HQPriority=80;
 	}
 
 	public static int getHiringCost() {

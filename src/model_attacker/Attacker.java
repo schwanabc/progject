@@ -12,6 +12,9 @@ import model_general.Entity;
 public abstract class Attacker extends Entity implements Ismovable{
 	protected double RADIUS;
 	protected double DIAMETER;
+	protected double WallPriority;
+	protected double TowerPriority;
+	protected double HQPriority;
 	protected static int HiringCost;
 	protected static int MinCost=50;
 	public Attacker(){}

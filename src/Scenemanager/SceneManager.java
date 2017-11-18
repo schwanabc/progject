@@ -30,9 +30,9 @@ public class SceneManager {
 	public void gotoPlayScreen() {
 		//TODO Fill Code
 		InitializeplayScene();
-		Playscreen.AT.start();
 		primaryStage.setScene(playScene);
 		primaryStage.show();
+		Playscreen.AT.start();
 	}
 	private void InitializeplayScene() {
 		// TODO Auto-generated method stub

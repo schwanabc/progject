@@ -10,7 +10,7 @@ import model_general.Board;
 public class RenderableHolder {
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
-	private static final RenderableHolder instance = new RenderableHolder();
+	private static RenderableHolder instance = new RenderableHolder();
 	RenderableHolder()
 	{
 		entities=new ArrayList<IRenderable>();
@@ -52,6 +52,9 @@ public class RenderableHolder {
 	}
 	public ArrayList<IRenderable> getEntities() {
 		return entities;
+	}
+	public static void reboot() {
+		instance = new RenderableHolder();
 	}
 	
 	

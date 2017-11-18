@@ -20,7 +20,7 @@ public class Tower extends Defender{
 		this.setHP(1000);
 		this.MaxHP=getHP();
 		this.Shootrange=5;
-		Currentshootingtick=0;
+		Currentshootingtick=60;
 		Shootingtick=60;
 		this.Wallwidth=Board.getBOARD_WIDTH();
 		this.Wallheight=Board.getBOARD_HEIGHT();
@@ -31,6 +31,11 @@ public class Tower extends Defender{
 		gc.setFill(Color.YELLOWGREEN);
 		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
+		/*
+		gc.setStroke(Color.RED);
+		gc.setLineWidth(1);
+		gc.strokeOval(posX-Shootrange*Wallwidth, posY-Shootrange*Wallheight,Wallwidth+2*Shootrange*Wallwidth,Wallheight+2*Shootrange*Wallheight);
+		*/
 	}
 	protected void ColliedwithAttacker()//find nearest target
 	{
@@ -62,7 +67,6 @@ public class Tower extends Defender{
 			//	System.out.println(Math.hypot(x0-x1, y0-y1)+" "+(r0 + r1));
 			//	System.out.println("Shootable");
 				int direction=0;
-				Currentshootingtick++;
 				double dy = y1 - y0;
 				double dx = x1 - x0;
 				if(dy<0)direction+=1;
@@ -88,6 +92,7 @@ public class Tower extends Defender{
 	public void update() {
 		
 		// TODO Auto-generated method stub
+		Currentshootingtick++;
 		ColliedwithAttacker();
 	}
 	private void shoot(double theta,int direction) {
