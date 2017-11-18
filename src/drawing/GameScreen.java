@@ -42,7 +42,7 @@ public class GameScreen extends Canvas{
 	public void PaintWinScreen()
 	{
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.WHITE);
+		gc.setFill(Color.CORAL);
 		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
 		Font TEXT_FONT = new Font("Monospace", 100);
 		gc.setFont(TEXT_FONT);
@@ -54,7 +54,7 @@ public class GameScreen extends Canvas{
 	public void PaintLoseScreen() {
 		// TODO Auto-generated method stub
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.WHITE);
+		gc.setFill(Color.ANTIQUEWHITE);
 		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
 		Font TEXT_FONT = new Font("Monospace", 100);
 		gc.setFont(TEXT_FONT);
@@ -64,9 +64,7 @@ public class GameScreen extends Canvas{
 		gc.fillText("YOU LOSE", GAMESCREEN_WIDTH*0.5,GAMESCREEN_HEIGHT*0.5);
 	}
 	public void addListerner() {
-		System.out.println("hearing");
 		this.setOnKeyPressed((KeyEvent event) -> {
-			System.out.println("pressed");
 			InputUtility.setKeyPressed(event.getCode(), true);
 		});
 		this.setOnKeyReleased((KeyEvent event) -> {
@@ -74,7 +72,6 @@ public class GameScreen extends Canvas{
 		});
 
 		this.setOnMousePressed((MouseEvent event) -> {
-			System.out.println("clicked");
 			if (event.getButton() == MouseButton.PRIMARY)
 				InputUtility.mouseLeftDown();
 		});
@@ -90,6 +87,7 @@ public class GameScreen extends Canvas{
 		});
 		this.setOnMouseExited((MouseEvent event) -> {
 			InputUtility.mouseOnScreen = false;
+			InputUtility.currentUI="x";
 		});
 
 		this.setOnMouseMoved((MouseEvent event) -> {
@@ -98,20 +96,15 @@ public class GameScreen extends Canvas{
 				InputUtility.mouseY = event.getY();
 			}
 		});
-
 		this.setOnMouseDragged((MouseEvent event) -> {
-			if(InputUtility.isLeftDown())InputUtility.addTick();
 			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
 			}
 		});
-		
-		
 	}
 
 	public static boolean isIngamescreen() {
-		// TODO Auto-generated method stub
 		if(InputUtility.currentUI.equals("GAME"))return true;
 		return false;
 	}

@@ -131,7 +131,7 @@ public class Board implements IRenderable {
 	}
 	private static void Checkadded() {
 		// TODO Auto-generated method stub
-		System.out.println(InputUtility.getTick());
+	//	System.out.println(InputUtility.getTick());
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;

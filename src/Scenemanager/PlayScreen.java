@@ -32,35 +32,35 @@ public class PlayScreen extends HBox{
 			public void handle(long now)
 			{
 				Gamelogic.update();
-				gamescreen.PaintComponent();
-				InputUtility.updateInputState();
-				RenderableHolder.getInstance().update();
-				menubar.update();
-				Checkpaused();
+				Paintupdated();
 				Checkcondition();
 				if(!Gamestate.isOngoing())
 					{stop();Checkend();}
-			}
-
-			private void Checkcondition() {
-				// TODO Auto-generated method stub
-				if(Board.isIswin())Gamestate.setWin(true);
-				if(Board.getMoney()<=Attacker.getMinCost() 
-						&& logic.Gamelogic.getAttackercontainer().size()==0)
-					Gamestate.setLose(true);
 			}
 		};
 		AT2=new AnimationTimer(){
 			public void handle(long now)
 			{
 				Board.update();
-				gamescreen.PaintComponent();
-				RenderableHolder.getInstance().update();
-				InputUtility.updateInputState();
-				menubar.update();
-				Checkpaused();
+				Paintupdated();
 			}
 		};
+	}
+	protected void Paintupdated() {
+		// TODO Auto-generated method stub
+		gamescreen.PaintComponent();
+		RenderableHolder.getInstance().update();
+		menubar.update();
+		InputUtility.checkTick();
+		Checkpaused();
+		
+	}
+	private void Checkcondition() {
+		// TODO Auto-generated method stub
+		if(Board.isIswin())Gamestate.setWin(true);
+		if(Board.getMoney()<=Attacker.getMinCost() 
+				&& logic.Gamelogic.getAttackercontainer().size()==0)
+			Gamestate.setLose(true);
 	}
 	void Checkend() {
 		// TODO Auto-generated method stub
