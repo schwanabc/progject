@@ -59,6 +59,7 @@ public class PlayScreen extends HBox{
 		Gamestate=new Gamestate();
 		menubar.setdefault();
 		AT2.stop();
+		if(pausedstate)AT.start();
 		pausedstate=false;
 	}
 		
