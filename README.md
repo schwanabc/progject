@@ -1,6 +1,7 @@
 # progject
 This is progmeth project.<br />
 Latest fix<br />
+**ควรหลีกเลี่ยงการ initialize scene หรือ class ใหญ่ๆ ใหม่ เนื่องจากทำให้จอกระพริบ** <br />
 ---------------<br />
 คลิกค้างปล่อยบอทได้แล้ว<br />
 ---------------<br />
