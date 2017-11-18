@@ -29,12 +29,8 @@ public class PlayScreen extends HBox{
 				Gamelogic.update();
 				Paintupdated();
 				Checkcondition();
-				if(menubar.isReset())
-				{
-					Resetgame();
-				}
-				if(!Gamestate.isOngoing())
-					{stop();Checkend();}
+				if(menubar.isReset())Resetgame();
+				Checkend();
 			}
 
 		};
@@ -52,16 +48,9 @@ public class PlayScreen extends HBox{
 		AT.stop();
 		RenderableHolder.getInstance().reboot();
 		Gamelogic=new Gamelogic();
-	//	gamescreen.PaintComponent();
-		/*
-		this.getChildren().removeAll();
-		Initialize();
-		RenderableHolder.reboot();
-		System.out.println(RenderableHolder.getInstance().getEntities().size());
-		gamescreen.PaintComponent();
-		new Board();
-		Paintupdated();*/
+		Gamestate=new Gamestate();
 		Board.setMoney(1500);
+		Board.setIswin(false);
 		menubar.setReset(false);
 		AT.start();
 	}

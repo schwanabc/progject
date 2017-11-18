@@ -53,7 +53,7 @@ public class RenderableHolder {
 	public ArrayList<IRenderable> getEntities() {
 		return entities;
 	}
-	public static void reboot() {
+	public void reboot() {
 		instance = new RenderableHolder();
 	}
 	
