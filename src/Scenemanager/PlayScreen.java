@@ -39,20 +39,21 @@ public class PlayScreen extends HBox{
 			{
 				Board.update();
 				Paintupdated();
+				if(menubar.isReset())Resetgame();
 			}
 		};
 	}
 
 	private void Resetgame() {
 		// TODO Auto-generated method stub
-		AT.stop();
+		//AT.stop();
 		RenderableHolder.getInstance().reboot();
 		Gamelogic=new Gamelogic();
 		Gamestate=new Gamestate();
-		Board.setMoney(1500);
-		Board.setIswin(false);
-		menubar.setReset(false);
-		AT.start();
+		menubar.setdefault();
+		AT2.stop();
+		pausedstate=false;
+		//AT.start();
 	}
 		
 		private void Initialize() {

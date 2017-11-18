@@ -17,10 +17,10 @@ public class Board implements IRenderable {
 	private static final int BOARD_COLUMN=30;
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
-	private static final double BOARD_RANGE=Math.sqrt(BOARD_HEIGHT*BOARD_HEIGHT+BOARD_WIDTH*BOARD_WIDTH);
-	private static boolean Iswin=false;
-	private static int Money=1500;
-	public static boolean Isreset=false;
+	private static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
+	private static boolean Iswin;
+	private static int DefaultMoney=1500;
+	private static int Money;
 	private int templateboard[][]=
 			{
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -58,7 +58,8 @@ public class Board implements IRenderable {
 	private static int[][] accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
 	public Board()
 	{
-		Money=1500;
+		Iswin=false;
+		Money=DefaultMoney;
 		board=templateboard;
 		fillacessibleboard();
 		setboard();

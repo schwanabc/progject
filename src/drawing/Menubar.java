@@ -30,13 +30,16 @@ public class Menubar extends VBox{
 	private static double ICONWIDTH;
 	private static final Canvas[][] menu=new Canvas[VTAB][HTAB];
 	private GridPane gp;
-	private static int choseRow=-1;
-	private static int choseColumn=-1;
+	private static int choseRow;
+	private static int choseColumn;
 	private Gamestate Gamestate;
 	private Canvas Menucanvas;
-	private boolean isReset=false;
+	private boolean isReset;
 	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
 	{
+		isReset=false;
+		choseRow=-1;
+		choseColumn=-1;
 		Gamestate=new Gamestate();
 		MENU_WIDTH=SCREEN_WIDTH;
 		MENU_HEIGHT=SCREEN_HEIGHT;
@@ -170,6 +173,13 @@ public class Menubar extends VBox{
 	}
 	public void setReset(boolean isReset) {
 		this.isReset = isReset;
+	}
+	public void setdefault() {
+		// TODO Auto-generated method stub
+		isReset=false;
+		choseRow=-1;
+		choseColumn=-1;
+		setHover(menu[VTAB-1][HTAB-1].getGraphicsContext2D(),Color.LIGHTGREEN);
 	}
 	
 	
