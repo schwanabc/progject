@@ -16,65 +16,29 @@ import model_general.Board;
 
 public class SceneManager {
 
-	private static Stage primaryStage;
-	private static Scene playScene;
+	private  Stage primaryStage;
+	private  Scene playScene;
+	private  PlayScreen Playscreen;
 	public static double SCREEN_WIDTH=800;
 	public static double SCREEN_HEIGHT=600;
-	public static AnimationTimer AT,AT2;
-	public static void initialize(Stage stage) {
-		primaryStage = stage;
+	public SceneManager(Stage primaryStage) {
+		// TODO Auto-generated constructor stub
+		this.primaryStage=primaryStage;
 	}
-	public static void gotoPlayScreen() {
+
+	public void gotoPlayScreen() {
 		//TODO Fill Code
 		InitializeplayScene();
+		Playscreen.AT.start();
 		primaryStage.setScene(playScene);
 		primaryStage.show();
 	}
-	private static void InitializeplayScene() {
+	private void InitializeplayScene() {
 		// TODO Auto-generated method stub
-		HBox root = new HBox();
-		GameScreen gamescreen=new GameScreen();
-		Menubar menubar=new Menubar(SCREEN_WIDTH*0.25,SCREEN_HEIGHT);
-		root.getChildren().add(gamescreen);
-		root.getChildren().add(menubar);
-		playScene = new Scene(root,SCREEN_WIDTH,SCREEN_HEIGHT);
-		gamescreen.requestFocus();
-		Gamelogic gamelogic=new Gamelogic();
-		AT=new AnimationTimer(){
-			public void handle(long now)
-			{
-				long lastLoopStartTime = System.nanoTime();
-				gamelogic.update();
-				gamescreen.PaintComponent();
-				InputUtility.updateInputState();
-				RenderableHolder.getInstance().update();
-				long elapsedTime = System.nanoTime() - lastLoopStartTime;
-				menubar.getGamestate().TimeElapsed(elapsedTime);
-				menubar.update();
-			}
+		Playscreen=new PlayScreen();
+		playScene=new Scene(Playscreen,SCREEN_WIDTH,SCREEN_HEIGHT);
+		Playscreen.gamescreen.requestFocus();
+	}
 
-		};
-		AT2=new AnimationTimer(){
-			public void handle(long now)
-			{
-				Board.update();
-				gamescreen.PaintComponent();
-				RenderableHolder.getInstance().update();
-				InputUtility.updateInputState();
-			}
-		};
-		AT.start();
-	}
-	private void Pausewin(GameScreen gamescreen) {
-		// TODO Auto-generated method stub
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		gamescreen.PaintWinScreen();
-		AT.stop();
-	}
 	
 }

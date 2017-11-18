@@ -17,11 +17,12 @@ import model_general.Gamestate;
 import model_general.Gamestate;
 public class Main extends Application {
 
+	SceneManager Sm;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			SceneManager.initialize(primaryStage);
-			SceneManager.gotoPlayScreen();
+			Sm=new SceneManager(primaryStage);
+			Sm.gotoPlayScreen();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

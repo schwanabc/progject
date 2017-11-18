@@ -1,17 +1,10 @@
 package model_general;
 
 import Input.InputUtility;
-import Scenemanager.SceneManager;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
-import SharedObject.RenderableHolder;
-import application.Main;
 import drawing.GameScreen;
-import javafx.animation.AnimationTimer;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model_attacker.Bot0;
 import model_attacker.Bot1;
@@ -25,15 +18,15 @@ public class Board implements IRenderable {
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	private static final double BOARD_RANGE=Math.sqrt(BOARD_HEIGHT*BOARD_HEIGHT+BOARD_WIDTH*BOARD_WIDTH);
-	private static boolean pausedstate=false;
 	private static boolean Iswin=false;
+	private static int Money=3000;
 	private static int board[][]=
 			{
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -135,37 +128,34 @@ public class Board implements IRenderable {
 	public static void update()
 	{
 		Checkadded();
-		Checkpaused();
 	}
 	private static void Checkadded() {
 		// TODO Auto-generated method stub
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;
-			if(bot_type=="Weak_1") Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));	
-			if(bot_type=="Weak_2") Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
+			if(bot_type=="Weak_1") 
+			{ 
+				if(buyable(Bot0.getHiringCost()))
+				{
+				decreaseMoney(Bot0.getHiringCost());
+				Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));
+				}
+			}
+			if(bot_type=="Weak_2") 
+			{
+				if(buyable(Bot1.getHiringCost()))
+				{
+				decreaseMoney(Bot1.getHiringCost());
+				Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
 		}
 	}
-	private static void Checkpaused() {
+	private static boolean buyable(int hiringCost) {
 		// TODO Auto-generated method stub
-		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
-		{
-			if(pausedstate==false)
-			{
-				pausedstate=true;
-				System.out.print("pause");
-				SceneManager.AT.stop();
-				SceneManager.AT2.start();
-			}
-			else
-			{
-				pausedstate=false;
-				System.out.print("unpause");
-				SceneManager.AT2.stop();
-				SceneManager.AT.start();
-			}
-			InputUtility.Lastkey=null;
-		}
+		if(Money-hiringCost>=0)return true;
+		return false;
 	}
 	private static boolean Checktoadd() {
 		return InputUtility.isLeftClickTriggered() 
@@ -207,6 +197,12 @@ public class Board implements IRenderable {
 	}
 	public static void setBoard(int i,int j,int val) {
 		Board.board[i][j]=val;
+	}
+	public static int getMoney() {
+		return Money;
+	}
+	private static void decreaseMoney(int money) {
+		if(Money-money>=0) Money -= money;
 	}
 
 }

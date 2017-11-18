@@ -57,14 +57,14 @@ public class Menubar extends VBox{
 			{
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
-				if((i+j)%2==0)gc.setFill(Color.LIGHTGRAY);
-				else gc.setFill(Color.ALICEBLUE);
+				gc.setFill(Color.ALICEBLUE);
 				gc.fillRect(0, 0, ICONWIDTH, ICONHEIGHT);
 				gc.setFont(TEXT_FONT);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				gc.setFill(Color.BLACK);
 				gc.fillText("BOT"+count++, ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				this.Fillborder(gc, Color.BROWN,1);
 				gp.add(menu[i][j], j, i);
 				Checkevent(menu[i][j],i,j);
 			}
@@ -82,8 +82,7 @@ public class Menubar extends VBox{
 		{
 			if(!(row==choseRow &&column==choseColumn))
 			{
-			if((row+column)%2==0)setHover(gc,Color.LIGHTGRAY);
-			else setHover(gc,Color.ALICEBLUE);
+			setUnHover(gc,Color.ALICEBLUE);
 			}
 		});
 		canvas.setOnMouseClicked(ev->
@@ -93,8 +92,7 @@ public class Menubar extends VBox{
 				try
 				{
 					GraphicsContext temp=menu[choseRow][choseColumn].getGraphicsContext2D();
-					if((choseRow+choseColumn)%2==0)setHover(temp,Color.LIGHTGRAY);
-					else setHover(temp,Color.ALICEBLUE);
+					setUnHover(temp,Color.ALICEBLUE);
 				}
 				catch(Exception e) {}//Do nothing
 				choseRow=row;
@@ -110,9 +108,17 @@ public class Menubar extends VBox{
 		else InputUtility.currentChosed ="x";
 	}
 	private void setHover(GraphicsContext gc,Color color) {
-		gc.setLineWidth(20);
+		Fillborder(gc,color,20);
+		
+	}
+	private void Fillborder(GraphicsContext gc, Color color,double linewidth) {
+		gc.setLineWidth(linewidth);
 		gc.setStroke(color);
 		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
+	}
+	private void setUnHover(GraphicsContext gc,Color color) {
+		Fillborder(gc,color,20);
+		Fillborder(gc,Color.BROWN,1);
 	}
 	private void PaintMenucanvas(GraphicsContext gc)
 	{
@@ -133,10 +139,7 @@ public class Menubar extends VBox{
 	}
 	public void update() {
 		// TODO Auto-generated method stub
-		if(Gamestate.getRemainingNanoTime()<=0)
-		{
-			Gamestate.setLose(true);
-		}
+
 		if(Board.isIswin())
 		{
 			Gamestate.setWin(true);
@@ -147,7 +150,7 @@ public class Menubar extends VBox{
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.LEFT);
 		gc.setTextBaseline(VPos.TOP);
-		gc.fillText("Time left: "+Gamestate.displayTime(), 5, ICONPOS*0.5);
+		gc.fillText("Money: "+Board.getMoney(), 5, ICONPOS*0.5);
 //		System.out.println(Gamestate.displayTime());
 		
 	}

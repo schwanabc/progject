@@ -11,7 +11,8 @@ import model_general.Entity;
 public abstract class Attacker extends Entity{
 	protected double RADIUS;
 	protected double DIAMETER;
-	protected int HiringCost;
+	protected static int HiringCost;
+	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
 		this.posX=posX;
@@ -21,6 +22,38 @@ public abstract class Attacker extends Entity{
 	{
 		posX+=xAxis*speed;
 		posY+=yAxis*speed;
+	}
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 10;
+	}
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		gc.setFill(Color.RED);
+		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		drawHPbar(gc);
+	}
+	@Override
+	public void update() {
+		// UPGRADING
+		//need decent moving algorithm
+		foward(0,1);//only test (can be delete)
+		boolean goback=false;
+		/*if(ColliedwithAttacker()) //collide with another attacker ****BUG****
+			{
+				goback=true;
+			}
+		*/
+		 if(ColliedwithDefender())//collide with another Defender
+			{
+				goback=true;
+			}
+		if(goback==true) 
+			{
+				foward(0,-1); //if collied go backward
+			}
 	}
 	protected boolean ColliedwithDefender()
 	{

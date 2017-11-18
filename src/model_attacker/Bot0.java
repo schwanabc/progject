@@ -14,8 +14,10 @@ import model_general.Entity;
 
 public class Bot0 extends Attacker{
 
+	
 	public Bot0(double posX,double posY)
 	{
+		
 		//all stat is temporary
 		super(posX,posY);
 		this.ATK=50;
@@ -27,7 +29,11 @@ public class Bot0 extends Attacker{
 		this.MaxHP=HP;
 		this.currentATKTick=0;
 		this.AttackTick=60;
-		this.HiringCost=50;
+	}
+
+	public static int getHiringCost() {
+		HiringCost=50;
+		return HiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -35,33 +41,6 @@ public class Bot0 extends Attacker{
 		gc.setFill(Color.RED);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
-	}
-	
-	@Override
-	public void update() {
-		// UPGRADING
-		//need decent moving algorithm
-		foward(0,1);//only test (can be delete)
-		boolean goback=false;
-		/*if(ColliedwithAttacker()) //collide with another attacker ****BUG****
-			{
-				goback=true;
-			}
-		*/
-		 if(ColliedwithDefender())//collide with another Defender
-			{
-				goback=true;
-			}
-		if(goback==true) 
-			{
-				foward(0,-1); //if collied go backward
-			}
-	}
-
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 10;
 	}
 
 }
