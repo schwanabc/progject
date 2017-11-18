@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import logic.Gamelogic;
+import model_attacker.Attacker;
 import model_general.Board;
 import model_general.Gamestate;
 public class PlayScreen extends HBox{
@@ -44,6 +45,9 @@ public class PlayScreen extends HBox{
 			private void Checkcondition() {
 				// TODO Auto-generated method stub
 				if(Board.isIswin())Gamestate.setWin(true);
+				if(Board.getMoney()<=Attacker.getMinCost() 
+						&& logic.Gamelogic.getAttackercontainer().size()==0)
+					Gamestate.setLose(true);
 			}
 		};
 		AT2=new AnimationTimer(){
@@ -53,6 +57,7 @@ public class PlayScreen extends HBox{
 				gamescreen.PaintComponent();
 				RenderableHolder.getInstance().update();
 				InputUtility.updateInputState();
+				menubar.update();
 				Checkpaused();
 			}
 		};
@@ -63,12 +68,16 @@ public class PlayScreen extends HBox{
 		{
 			gamescreen.PaintWinScreen();
 		}
+		if(Gamestate.isLose())
+		{
+			gamescreen.PaintLoseScreen();
+		}
+		
 	}
 	private void Checkpaused() {
 		// TODO Auto-generated method stub
 		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
 		{
-			System.out.println("i");
 			if(pausedstate==false)
 			{
 				pausedstate=true;

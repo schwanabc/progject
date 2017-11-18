@@ -12,6 +12,7 @@ public abstract class Attacker extends Entity{
 	protected double RADIUS;
 	protected double DIAMETER;
 	protected static int HiringCost;
+	protected static int MinCost=50;
 	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
@@ -107,6 +108,9 @@ public abstract class Attacker extends Entity{
 	}
 	public double getRADIUS() {
 		return RADIUS;
+	}
+	public static int getMinCost() {
+		return MinCost;
 	}
 
 }

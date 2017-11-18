@@ -19,20 +19,20 @@ public class Bot1 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=100;
+		this.ATK=500;
 		this.DEF=5;
 		this.speed=2;
 		this.RADIUS=8;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=100;
+		this.HP=1000;
 		this.MaxHP=HP;
-		this.currentATKTick=0;
 		this.AttackTick=100;
+		this.currentATKTick=AttackTick;
 
 	}
 
 	public static int getHiringCost() {
-		HiringCost=120;
+		HiringCost=500;
 		return HiringCost;
 	}
 	@Override

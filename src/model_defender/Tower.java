@@ -15,9 +15,9 @@ public class Tower extends Defender{
 	public Tower(double posX,double posY,int posI,int posJ)
 	{
 		super(posX,posY,posI,posJ);
-		this.ATK=20;
+		this.ATK=50;
 		this.DEF=10;
-		this.setHP(500);
+		this.setHP(1000);
 		this.MaxHP=getHP();
 		this.Shootrange=5;
 		Currentshootingtick=0;

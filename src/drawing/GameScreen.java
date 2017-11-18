@@ -51,6 +51,18 @@ public class GameScreen extends Canvas{
 		gc.setFill(Color.BLACK);
 		gc.fillText("YOU WIN", GAMESCREEN_WIDTH*0.5,GAMESCREEN_HEIGHT*0.5);
 	}
+	public void PaintLoseScreen() {
+		// TODO Auto-generated method stub
+		GraphicsContext gc=this.getGraphicsContext2D();
+		gc.setFill(Color.WHITE);
+		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
+		Font TEXT_FONT = new Font("Monospace", 100);
+		gc.setFont(TEXT_FONT);
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.setTextBaseline(VPos.CENTER);
+		gc.setFill(Color.BLACK);
+		gc.fillText("YOU LOSE", GAMESCREEN_WIDTH*0.5,GAMESCREEN_HEIGHT*0.5);
+	}
 	public void addListerner() {
 		System.out.println("hearing");
 		this.setOnKeyPressed((KeyEvent event) -> {
@@ -101,4 +113,5 @@ public class GameScreen extends Canvas{
 		if(InputUtility.currentUI.equals("GAME"))return true;
 		return false;
 	}
+
 }

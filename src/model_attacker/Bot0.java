@@ -25,14 +25,14 @@ public class Bot0 extends Attacker{
 		this.RADIUS=4;
 		this.speed=1.5;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=100;
+		this.HP=300;
 		this.MaxHP=HP;
-		this.currentATKTick=0;
 		this.AttackTick=60;
+		this.currentATKTick=AttackTick;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=50;
+		HiringCost=MinCost;
 		return HiringCost;
 	}
 	@Override

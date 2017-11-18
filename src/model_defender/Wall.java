@@ -10,7 +10,7 @@ public class Wall extends Defender{
 		super(posX,posY,posI,posJ);
 		this.ATK=0;
 		this.DEF=0;
-		this.setHP(1000);
+		this.setHP(2000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
 		this.Wallwidth=Board.getBOARD_WIDTH();
