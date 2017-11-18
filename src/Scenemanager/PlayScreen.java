@@ -80,7 +80,7 @@ public class PlayScreen extends HBox{
 		{
 			if(pausedstate==false)
 			{
-				pausedstate=true;
+				pausedstate=true; 
 				System.out.print("pause");
 				AT.stop();
 				AT2.start();

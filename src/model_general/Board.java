@@ -26,7 +26,7 @@ public class Board implements IRenderable {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					{0,0,0,0,0 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -131,6 +131,7 @@ public class Board implements IRenderable {
 	}
 	private static void Checkadded() {
 		// TODO Auto-generated method stub
+		System.out.println(InputUtility.getTick());
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;
@@ -158,9 +159,16 @@ public class Board implements IRenderable {
 		return false;
 	}
 	private static boolean Checktoadd() {
-		return InputUtility.isLeftClickTriggered() 
-				&& Placeable(InputUtility.mouseX,InputUtility.mouseY) 
-				&& !InputUtility.currentChosed.equals("x");
+		return isDeyployable() && Placeable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
+	}
+	private static boolean isDeyployable()
+	{
+		if(InputUtility.isLeftDown()&& InputUtility.getTick()>=InputUtility.Maxtick)
+		{
+			InputUtility.setTick(0);
+			return true;
+		}
+		return false;
 	}
 	private static boolean Placeable(double mouseX, double mouseY) {
 		return GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0;

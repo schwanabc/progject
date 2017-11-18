@@ -100,11 +100,13 @@ public class GameScreen extends Canvas{
 		});
 
 		this.setOnMouseDragged((MouseEvent event) -> {
+			if(InputUtility.isLeftDown())InputUtility.addTick();
 			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
 			}
 		});
+		
 		
 	}
 

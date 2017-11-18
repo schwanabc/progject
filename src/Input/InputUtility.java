@@ -13,6 +13,8 @@ public class InputUtility {
 	public static boolean mouseOnScreen = true;
 	private static boolean isLeftDown = false;
 	private static boolean isKeyPress = false;
+	private static int tick= 5;
+	public static int Maxtick= 5;
 	private static boolean isLeftClickedLastTick = false;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>(); 
 	
@@ -38,6 +40,7 @@ public class InputUtility {
 	
 	public static void mouseLeftRelease(){
 		isLeftDown = false;
+		tick= 20;
 	}
 	
 	public static boolean isLeftClickTriggered(){
@@ -49,6 +52,18 @@ public class InputUtility {
 	}
 	public static boolean isKeyPress() {
 		return isKeyPress;
+	}
+	public static boolean isLeftDown() {
+		return isLeftDown;
+	}
+	public static int getTick() {
+		return tick;
+	}
+	public static void setTick(int tick) {
+		InputUtility.tick = tick;
+	}
+	public static void addTick() {
+		InputUtility.tick+=1;
 	}
 	
 }
