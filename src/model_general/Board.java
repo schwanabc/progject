@@ -5,6 +5,7 @@ import logic.Gamelogic;
 import SharedObject.IRenderable;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model_attacker.Bot0;
 import model_attacker.Bot1;
@@ -24,6 +25,7 @@ public class Board implements IRenderable {
 	private static int DefaultNumboard=0;
 	private static int Numboard=0;
 	private static int Money;
+	private static Image grass=new Image("file:res/grass.png");
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
 	private static int board[][];
 	private static int[][] accessibleboard;
@@ -97,8 +99,8 @@ public class Board implements IRenderable {
 				 gc.setFill(Color.ANTIQUEWHITE);				
 				if(accessibleboard[i][j]==1)gc.setFill(Color.LIGHTGOLDENRODYELLOW);
 				if(board[i][j]==-1)gc.setFill(Color.PURPLE);
-				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH+1, BOARD_HEIGHT+1);
-				
+				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+				if(accessibleboard[i][j]==0)gc.drawImage(grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 			}
 	}
 	public static int getBOARD_ROW() {
