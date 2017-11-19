@@ -24,6 +24,7 @@ public class SceneManager {
 	public static  void gotoPlayScreen() { 
 		//TODO Fill Code
 		primaryStage.setScene(playScene);
+		SceneManager.primaryStage.centerOnScreen();
 		Playscreen.AT.start();
 	}
 	private static void InitializeplayScene() {
