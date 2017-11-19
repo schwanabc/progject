@@ -9,24 +9,27 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import model_general.boarddata;
 import drawing.WaitScreen;
+import drawing.WinScreen;
 
 public class SceneManager {
 
 	private  static Stage primaryStage;
 	private  static Scene playScene;
 	private  static Scene waitScene;
+	private  static Scene winScene;
 	private  static PlayScreen Playscreen;
 	public static double SCREEN_HEIGHT=660;
 	public static double SCREEN_WIDTH=(SCREEN_HEIGHT*4)/3;
-	public SceneManager(Stage primaryStage) {
+	public static void setStage(Stage primaryStage) {
 		// TODO Auto-generated constructor stub
-		this.primaryStage=primaryStage;
+		SceneManager.primaryStage=primaryStage;
 		InitializeplayScene();
 		primaryStage.show();
-	}
+	} 
 
-	public static  void gotoPlayScreen() {
+	public static  void gotoPlayScreen() { 
 		//TODO Fill Code
 		primaryStage.setScene(playScene);
 		Playscreen.AT.start();
@@ -42,6 +45,13 @@ public class SceneManager {
 		WaitScreen WaitScreen=new WaitScreen();
 		waitScene=new Scene(WaitScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
 		primaryStage.setScene(waitScene);
+	}
+
+	public static void gotoWinScreen() {
+		WinScreen WinScreen=new WinScreen();
+		waitScene=new Scene(WinScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
+		primaryStage.setScene(waitScene);
+		
 	}
 	
 }

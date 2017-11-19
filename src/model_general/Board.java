@@ -18,54 +18,32 @@ public class Board implements IRenderable {
 	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	private static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
+	public static final int TOTALBOARD=2;
 	private static boolean Iswin;
-	private static int DefaultMoney=1500;
+	private static int[] DefaultMoney= {1500,3000};
+	private static int DefaultNumboard=0;
+	private static int Numboard=0;
 	private static int Money;
-	private int templateboard[][]=
-			{
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,2,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,2,0,2,0,2,0,2,0,2,0,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,0,2,0,2,0,2,0,2,0,2,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,3,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,2,0,1,2,0,0,0,0,0,0,0,0,2,1,0,2,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,2,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-			};
+	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
 	private static int board[][];
-	private static int[][] accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
+	private static int[][] accessibleboard;
 	public Board()
 	{
-		Iswin=false;
-		Money=DefaultMoney;
-		board=templateboard;
+		boarddata.fillboard();
+		Numboard=DefaultNumboard;
+		Iswin=false; 
+		Money=DefaultMoney[Numboard];
+		try {
+		board=templateboard[Numboard];
+		}
+		catch (java.lang.NullPointerException e) {System.out.println("NO board left"); }
 		fillacessibleboard();
 		setboard();
 	}
 	private void fillacessibleboard() {
 		// TODO Auto-generated method stub
+		System.out.println("Board is refilled");
+		accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
@@ -219,6 +197,19 @@ public class Board implements IRenderable {
 	}
 	public static void setMoney(int money) {
 		Money = money;
+	}
+	public static void setTemplateboard(int[][] board,int idx) {
+		try {
+			templateboard[idx] = board;
+			}
+			catch (java.lang.NullPointerException e) {System.out.println("Board Overflow"); }
+	} 
+	public static void addNumboard() {
+		// TODO Auto-generated method stub
+		DefaultNumboard++;
+	}
+	public static int getDefaultNumboard() {
+		return DefaultNumboard;
 	}
 
 }

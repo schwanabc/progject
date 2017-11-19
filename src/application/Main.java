@@ -21,8 +21,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Sm=new SceneManager(primaryStage);
-			Sm.gotoPlayScreen();
+			SceneManager.setStage(primaryStage);
+			SceneManager.gotoPlayScreen();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

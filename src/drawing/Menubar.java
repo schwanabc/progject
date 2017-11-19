@@ -161,6 +161,7 @@ public class Menubar extends VBox{
 		gc.setTextAlign(TextAlignment.LEFT);
 		gc.setTextBaseline(VPos.TOP);
 		gc.fillText("Money: "+Board.getMoney(), 5, ICONPOS*0.5);
+		gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 5, ICONPOS*0.7);
 //		System.out.println(Gamestate.displayTime());
 		
 	}

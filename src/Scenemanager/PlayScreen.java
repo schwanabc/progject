@@ -83,9 +83,15 @@ public class PlayScreen extends HBox{
 		// TODO Auto-generated method stub
 		if(Gamestate.isWin())
 		{
+			System.out.println("win");
+			Board.addNumboard();
+			if(Board.getDefaultNumboard()==Board.TOTALBOARD) {AT.stop();SceneManager.gotoWinScreen();}
+			else
+			{
 			Resetgame();
 			AT.stop();
 			SceneManager.gotoWaitScreen();
+			}
 		}
 		else if(Gamestate.isLose())
 		{

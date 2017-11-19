@@ -25,7 +25,7 @@ public class RenderableHolder {
 	{
 		entities.add(entity);
 		Collections.sort(entities,comparator);
-		System.out.println(entity.getClass().getSimpleName()+" added");
+		//System.out.println(entity.getClass().getSimpleName()+" added");
 	}
 	public void update()
 	{
@@ -42,7 +42,7 @@ public class RenderableHolder {
 						Board.setIswin(true);
 					}
 				}
-				System.out.println(entities.get(i).getClass().getSimpleName()+" removed");
+			//	System.out.println(entities.get(i).getClass().getSimpleName()+" removed");
 				entities.remove(i);
 			}
 		}

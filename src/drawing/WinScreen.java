@@ -1,5 +1,6 @@
 package drawing;
 
+import javafx.application.Platform;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,9 +12,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import model_general.Board;
 import Scenemanager.SceneManager;
-public class WaitScreen extends StackPane{
+public class WinScreen extends StackPane{
 	Canvas canvas,canvas2;
-	public WaitScreen()
+	public WinScreen()
 	{
 		canvas=new Canvas(SceneManager.SCREEN_WIDTH,SceneManager.SCREEN_HEIGHT);
 		GraphicsContext gc=canvas.getGraphicsContext2D();
@@ -35,7 +36,7 @@ public class WaitScreen extends StackPane{
 		gc.setFont(TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.CENTER);
-		gc.fillText("Click to go next", SceneManager.SCREEN_WIDTH*0.5,SceneManager.SCREEN_HEIGHT*0.6);
+		gc.fillText("Click to end game", SceneManager.SCREEN_WIDTH*0.5,SceneManager.SCREEN_HEIGHT*0.6);
 		canvas2.requestFocus();
 		AddtoListerner(canvas2);
 		this.getChildren().add(canvas2);
@@ -45,8 +46,7 @@ public class WaitScreen extends StackPane{
 		canvas.setOnMouseClicked(ev-> {
 			if (ev.getButton()== MouseButton.PRIMARY)
 			{
-				System.out.println("hello");
-				if(Board.getDefaultNumboard()!=Board.TOTALBOARD)SceneManager.gotoPlayScreen();
+				Platform.exit();
 			}
 		});
 	}
