@@ -2,8 +2,6 @@ package model_general;
 
 import SharedObject.IRenderable;
 import drawing.GameScreen;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public abstract class Entity implements IRenderable{
 	protected double posX;

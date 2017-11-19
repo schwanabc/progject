@@ -2,10 +2,6 @@ package model_defender;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import model_attacker.Attacker;
-import model_general.Board;
 import model_general.Entity;
 
 public abstract class Defender extends Entity {

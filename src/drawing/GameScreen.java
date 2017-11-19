@@ -2,7 +2,6 @@ package drawing;
 
 import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
-import application.Main;
 import Input.InputUtility;
 import Scenemanager.SceneManager;
 import javafx.geometry.VPos;
@@ -14,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import model_general.Board;
 
 public class GameScreen extends Canvas{
 	public static double GAMESCREEN_WIDTH=SceneManager.SCREEN_WIDTH*0.75;

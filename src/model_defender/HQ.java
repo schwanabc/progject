@@ -1,13 +1,6 @@
 package model_defender;
 
-import java.sql.Time;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-import application.Main;
-import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
 import model_general.Board;
 

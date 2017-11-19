@@ -1,15 +1,7 @@
 package Scenemanager;
 
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import model_general.boarddata;
 import drawing.WaitScreen;
 import drawing.WinScreen;
 
@@ -49,8 +41,8 @@ public class SceneManager {
 
 	public static void gotoWinScreen() {
 		WinScreen WinScreen=new WinScreen();
-		waitScene=new Scene(WinScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
-		primaryStage.setScene(waitScene);
+		winScene=new Scene(WinScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
+		primaryStage.setScene(winScene);
 		
 	}
 	

@@ -1,6 +1,5 @@
 package model_attacker;
 
-import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;

@@ -1,6 +1,4 @@
 package logic;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import SharedObject.RenderableHolder;

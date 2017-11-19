@@ -2,10 +2,8 @@ package model_defender;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import logic.Gamelogic;
 import model_attacker.Attacker;
-import model_attacker.Bot0;
 import model_general.Board;
 import model_general.Bullet;
 

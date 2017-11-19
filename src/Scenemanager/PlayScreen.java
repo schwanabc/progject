@@ -5,8 +5,6 @@ import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import drawing.Menubar;
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import logic.Gamelogic;

@@ -1,22 +1,14 @@
 package drawing;
 
 import Input.InputUtility;
-import SharedObject.IRenderable;
-import SharedObject.RenderableHolder;
-import application.Main;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import logic.Gamelogic;
 import model_general.Board;
 import model_general.Gamestate;
 public class Menubar extends VBox{

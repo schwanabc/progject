@@ -1,16 +1,7 @@
 package model_attacker;
 
-import java.util.Random;
-
-import Input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import logic.Gamelogic;
-import model_defender.Defender;
-import model_general.Board;
-import model_general.Entity;
 
 public class Bot0 extends Attacker{
 
