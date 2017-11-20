@@ -56,11 +56,11 @@ public class PlayScreen extends HBox{
 		Gamelogic=new Gamelogic();
 		Gamestate=new Gamestate();
 		menubar.setdefault();
+		InputUtility.currentChosed="x";
 		AT2.stop();
 		if(pausedstate)AT.start();
 		pausedstate=false;
-	}
-		
+	}	
 	protected void Paintupdated() {
 		// TODO Auto-generated method stub
 		gamescreen.PaintComponent();
