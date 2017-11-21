@@ -1,5 +1,7 @@
 package model_attacker;
 
+import java.util.Random;
+
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -55,7 +57,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
 		ColliedwithAttacker();
 		 if(ColliedwithDefender()) {return;}
-		foward(0,1); //if collied go backward
+		 else foward(0,1); //if collied go backward
 	}
 	protected boolean ColliedwithDefender()
 	{
@@ -92,16 +94,26 @@ public abstract class Attacker extends Entity implements Ismovable{
 					double y1=attacker.getPosY();
 					double r1=attacker.getRADIUS();
 					
-					if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1))
+					if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1) && Math.hypot(x0-x1, y0-y1)!=0)
 					{
-						attacker.foward(-1*(x0-x1),-1*(y0-y1));
-						ColliedwithDefender();
+						Random rand = new Random();
+						int  n = rand.nextInt(2) + 1;
+						if(n%2==0)
+						{
+							attacker.foward(-1*(x0-x1+0.01),-1*(y0-y1));
+							if(attacker.ColliedwithDefender())attacker.foward((x0-x1+0.01),(y0-y1));
+						}
+						else
+						{
+							attacker.foward(-1*(x0-x1-0.01),-1*(y0-y1));
+							if(attacker.ColliedwithDefender())attacker.foward((x0-x1-0.01),(y0-y1));
+						}
 						count++;
 					}
 			}
 			catch(Exception e) {}
 		}
-		if(count>1) return true;
+		if(count>0) return true;
 		return false;
 	}
 	protected void drawHPbar(GraphicsContext gc) {
