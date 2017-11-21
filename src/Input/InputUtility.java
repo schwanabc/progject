@@ -14,9 +14,8 @@ public class InputUtility {
 	private static boolean isLeftDown = false;
 	private static boolean isKeyPress = false;
 	private static int tick= 10;
-	public static int Maxtick= 10;
+	public static final int Maxtick= 10;
 	private static ArrayList<KeyCode> keyPressed = new ArrayList<>(); 
-	
 	public static boolean getKeyPressed(KeyCode keycode) {
 		return keyPressed.contains(keycode);
 	}

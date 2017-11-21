@@ -1,9 +1,11 @@
 package model_attacker;
 
+import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import logic.Gamelogic;
 import logic.Ismovable;
 import model_defender.Defender;
 import model_general.Entity;
@@ -48,17 +50,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-		foward(0,1);//only test (can be delete)
-		boolean goback=false;
-
-		 if(ColliedwithDefender())//collide with another Defender
-			{
-				goback=true;
-			}
-		if(goback==true) 
-			{
-				foward(0,-1); //if collied go backward
-			}
+	//	foward(0,1);//only test (can be delete)
+		double Xregion=GameScreen.GAMESCREEN_WIDTH/2;
+		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
+		ColliedwithAttacker();
+		 if(ColliedwithDefender()) {return;}
+		foward(0,1); //if collied go backward
 	}
 	protected boolean ColliedwithDefender()
 	{
@@ -81,7 +78,32 @@ public abstract class Attacker extends Entity implements Ismovable{
 		return false;
 		
 	}
-
+	protected boolean ColliedwithAttacker()
+	{
+		int count=0;
+		for(Attacker attacker:Gamelogic.getAttackercontainer())
+		{
+			try
+			{
+					double x0=posX;
+					double y0=posY;
+					double r0=RADIUS;
+					double x1=attacker.getPosX();
+					double y1=attacker.getPosY();
+					double r1=attacker.getRADIUS();
+					
+					if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1))
+					{
+						attacker.foward(-1*(x0-x1),-1*(y0-y1));
+						ColliedwithDefender();
+						count++;
+					}
+			}
+			catch(Exception e) {}
+		}
+		if(count>1) return true;
+		return false;
+	}
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);

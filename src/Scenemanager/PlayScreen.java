@@ -35,7 +35,6 @@ public class PlayScreen extends HBox{
 		AT2=new AnimationTimer(){
 			public void handle(long now)
 			{
-				Board.update();
 				Paintupdated();
 				if(menubar.isReset())Resetgame();
 			}
