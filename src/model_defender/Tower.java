@@ -29,6 +29,7 @@ public class Tower extends Defender{
 		gc.setFill(Color.YELLOWGREEN);
 		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
+		
 		/*
 		gc.setStroke(Color.RED);
 		gc.setLineWidth(1);

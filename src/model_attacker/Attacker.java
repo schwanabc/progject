@@ -61,28 +61,42 @@ public abstract class Attacker extends Entity implements Ismovable{
 	}
 	protected boolean ColliedwithDefender()
 	{
-		int count=0;
+		int count2=0;
 		currentATKTick++;
-		for(Defender defender: logic.Gamelogic.getDefendercontainer())
+		double min=999999999;
+		int idx=-1;
+		boolean iscollide=false;
+		for(Defender defender: Gamelogic.getDefendercontainer())
 		{
 			Circle c=new Circle( posX, posY, RADIUS);
 			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallwidth(),defender.getWallheight());
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
-		        count++;
-		        if(currentATKTick>=AttackTick)
-		        {
-		        	Attack(defender);
-		        }
-		        
+		        double dist=Math.hypot(defender.getPosX()+defender.getWallwidth()/2-getPosX(),defender.getPosY()+defender.getWallheight()/2-getPosY());
+				if(dist<min)
+				{
+					min=dist;
+					idx=count2;
+				}
+		        iscollide=true;
 		      }
+			count2++;
 		}
-		if(count>0) return true;
-		return false;
+		if(currentATKTick>=AttackTick&&iscollide)
+		{
+			currentATKTick=0;
+			Attack(Gamelogic.getDefendercontainer().get(idx));
+		}
+		return iscollide;
 		
 	}
-	protected boolean ColliedwithAttacker()
+	protected void ColliedwithAttacker()
 	{
-		int count=0;
+		// push 2 time to reduced chance that it will move forward and it only take O(n) time
+		Fluidpush();
+		Fluidpush();
+	}
+	private void Fluidpush() 
+	{
 		for(Attacker attacker:Gamelogic.getAttackercontainer())
 		{
 			try
@@ -108,13 +122,11 @@ public abstract class Attacker extends Entity implements Ismovable{
 							attacker.foward(-1*(x0-x1-0.01),-1*(y0-y1));
 							if(attacker.ColliedwithDefender())attacker.foward((x0-x1-0.01),(y0-y1));
 						}
-						count++;
 					}
 			}
 			catch(Exception e) {}
 		}
-		if(count>0) return true;
-		return false;
+		
 	}
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
