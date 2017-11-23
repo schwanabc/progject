@@ -17,7 +17,7 @@ public class Bullet extends Entity implements Ismovable{
 		this.DEF=0;
 		this.radius=2;
 		this.HP=Shootrange*60*1.8; //Bullet HP=tick left until bullet disappeared
-		this.speed=Math.sqrt(Board.getBOARD_HEIGHT()*Board.getBOARD_HEIGHT() + Board.getBOARD_COLUMN()*Board.getBOARD_COLUMN())/20;
+		this.speed=Math.sqrt(Board.BOARD_HEIGHT*Board.BOARD_HEIGHT + Board.BOARD_WIDTH*Board.BOARD_WIDTH)/20;
 		this.posX=posX;
 		this.posY=posY;
 		this.angle=angle;

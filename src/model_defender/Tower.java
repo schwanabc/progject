@@ -15,13 +15,13 @@ public class Tower extends Defender{
 		super(posX,posY,posI,posJ);
 		this.ATK=50;
 		this.DEF=10;
-		this.setHP(1000);
+		this.setHP(500);
 		this.MaxHP=getHP();
 		this.Shootrange=5;
 		Currentshootingtick=60;
 		Shootingtick=60;
-		this.Wallwidth=Board.getBOARD_WIDTH();
-		this.Wallheight=Board.getBOARD_HEIGHT();
+		this.Wallwidth=Board.BOARD_WIDTH;
+		this.Wallheight=Board.BOARD_HEIGHT;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -56,9 +56,9 @@ public class Tower extends Defender{
 			Attacker attacker=Gamelogic.getAttackercontainer().get(idx);
 			double x0=posX+Wallwidth/2;
 			double y0=posY+Wallheight/2;
-			double r0=Shootrange*Board.getBoardRange();
+			double r0=Shootrange*Board.BOARD_RANGE;
 			double x1=attacker.getPosX();
-			double y1=attacker.getPosY();
+			double y1=attacker.getPosY();  
 			double r1=attacker.getRADIUS();
 			
 			if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1))

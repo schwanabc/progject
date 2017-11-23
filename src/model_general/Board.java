@@ -14,12 +14,14 @@ import model_defender.Wall;
 import model_defender.Tower;
 
 public class Board implements IRenderable {
-	private static final int BOARD_ROW=30;
-	private static final int BOARD_COLUMN=30;
-	private static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
-	private static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
-	private static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
+	public static final int BOARD_ROW=30;
+	public static final int BOARD_COLUMN=30;
+	public static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
+	public static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
+	public static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
 	public static final int TOTALBOARD=2;
+	public static double HQPOSX;
+	public static double HQPOSY;
 	private static boolean Iswin;
 	private static int[] DefaultMoney= {1500,3000};
 	private static int DefaultNumboard=0;
@@ -83,8 +85,10 @@ public class Board implements IRenderable {
 				{
 					Gamelogic.addNewObject(new Tower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
-				if(board[i][j]==3)
+				if(board[i][j]==3)//HQ
 				{
+					HQPOSY=(i+1)*BOARD_HEIGHT;
+					HQPOSX=(j+1)*BOARD_WIDTH;
 					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 			}
@@ -103,13 +107,6 @@ public class Board implements IRenderable {
 				if(accessibleboard[i][j]==0)gc.drawImage(grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 			}
 	}
-	public static int getBOARD_ROW() {
-		return BOARD_ROW;
-	}
-	public static int getBOARD_COLUMN() {
-		return BOARD_COLUMN;
-	}
-
 	public static void update()
 	{
 		Checkadded();
@@ -169,15 +166,6 @@ public class Board implements IRenderable {
 	@Override
 	public boolean isVisible() {
 		return true;
-	}
-	public static double getBOARD_HEIGHT() {
-		return BOARD_HEIGHT;
-	}
-	public static double getBOARD_WIDTH() {
-		return BOARD_WIDTH;
-	}
-	public static double getBoardRange() {
-		return BOARD_RANGE;
 	}
 	public static boolean isIswin() {
 		return Iswin;

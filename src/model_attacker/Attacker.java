@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import logic.Gamelogic;
 import logic.Ismovable;
 import model_defender.Defender;
+import model_general.Board;
 import model_general.Entity;
 
 public abstract class Attacker extends Entity implements Ismovable{
@@ -57,7 +58,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
 		ColliedwithAttacker();
 		 if(ColliedwithDefender()) {return;}
-		 else foward(0,1); //if collied go backward
+		 else foward(Board.HQPOSX-posX,Board.HQPOSY-posY); //if collied go backward
 	}
 	protected boolean ColliedwithDefender()
 	{

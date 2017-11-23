@@ -13,8 +13,8 @@ public class HQ extends Defender{
 		this.setHP(5000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
-		this.Wallwidth=Board.getBOARD_WIDTH()*2;
-		this.Wallheight=Board.getBOARD_HEIGHT()*2;
+		this.Wallwidth=Board.BOARD_WIDTH*2;
+		this.Wallheight=Board.BOARD_HEIGHT*2;
 	}
 	@Override
 	public int getZ() {
