@@ -53,12 +53,26 @@ public abstract class Attacker extends Entity implements Ismovable{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-	//	foward(0,1);//only test (can be delete)
 		double Xregion=GameScreen.GAMESCREEN_WIDTH/2;
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
 		ColliedwithAttacker();
-		 if(ColliedwithDefender()) {return;}
-		 else foward(Board.HQPOSX-posX,Board.HQPOSY-posY); //if collied go backward
+		if(ColliedwithDefender()) {
+			 return;
+		}
+		else {
+			double min = 999999999;
+			double walkX = 0,walkY = 0;
+			for(Defender defender: Gamelogic.getDefendercontainer()) {
+				double dist = Math.hypot(defender.getPosX()-getPosX(), defender.getPosY()-getPosY());
+				if(dist < min && !(defender instanceof model_defender.Wall)) {
+					min = dist;
+					walkX = defender.getPosX()-getPosX();
+					walkY = defender.getPosY()-getPosY();
+				}
+			}
+			foward(walkX,walkY);
+			//foward(Board.HQPOSX-posX,Board.HQPOSY-posY); //if collied go backward
+		}
 	}
 	protected boolean ColliedwithDefender()
 	{
