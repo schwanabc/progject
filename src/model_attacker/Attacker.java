@@ -19,6 +19,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	protected double WallPriority;
 	protected double TowerPriority;
 	protected double HQPriority;
+	protected model_defender.Defender currentTarget;
 	protected static int HiringCost;
 	protected static int MinCost=50;
 	public Attacker(){}
@@ -26,6 +27,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	{
 		this.posX=posX;
 		this.posY=posY;
+		currentTarget = null;
 	}
 	@Override
 	public void foward(double xAxis,double yAxis)
@@ -59,6 +61,10 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(ColliedwithDefender()) {
 			 return;
 		}
+		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
+			foward(currentTarget.getPosX()-getPosX(),currentTarget.getPosY()-getPosY());
+			//System.out.println("Save time");
+		}
 		else {
 			double min = 999999999;
 			double walkX = 0,walkY = 0;
@@ -69,6 +75,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;
+					currentTarget = defender;
 					walkX = defender.getPosX()-getPosX();
 					walkY = defender.getPosY()-getPosY();
 				}

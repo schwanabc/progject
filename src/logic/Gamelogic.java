@@ -55,5 +55,8 @@ public class Gamelogic {
 	public static CopyOnWriteArrayList<Defender> getDefendercontainer() {
 		return Defendercontainer;
 	}
+	public static boolean isDefenderContain(Defender x) {
+		return Defendercontainer.contains(x);
+	}
 
 }
