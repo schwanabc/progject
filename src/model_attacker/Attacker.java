@@ -64,6 +64,9 @@ public abstract class Attacker extends Entity implements Ismovable{
 			double walkX = 0,walkY = 0;
 			for(Defender defender: Gamelogic.getDefendercontainer()) {
 				double dist = Math.hypot(defender.getPosX()-getPosX(), defender.getPosY()-getPosY());
+				if(defender instanceof model_defender.HQ) {
+					dist *= 0.7; //HQ High Priority
+				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;
 					walkX = defender.getPosX()-getPosX();
