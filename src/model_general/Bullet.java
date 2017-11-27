@@ -43,7 +43,9 @@ public class Bullet extends Entity implements Ismovable{
 
 	private void BulletAttack(Attacker attacker) {
 		// TODO Auto-generated method stub
-		attacker.setHP(attacker.getHP() - (ATK-attacker.getDEF()));//temp
+		double downHP=ATK-attacker.getDEF();
+		if(downHP<=0)downHP=1;
+		attacker.setHP(attacker.getHP() -downHP);//temp
 		this.destroyed=true;
 		
 	}

@@ -71,7 +71,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			for(Defender defender: Gamelogic.getDefendercontainer()) {
 				double dist = Math.hypot(defender.getPosX()-getPosX(), defender.getPosY()-getPosY());
 				if(defender instanceof model_defender.HQ) {
-					dist *= 0.7; //HQ High Priority
+					dist *= 0.1; //HQ High Priority
 				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;
@@ -163,7 +163,9 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(ratio!=1)gc.fillRect(posX-RADIUS+DIAMETER*(ratio), posY-RADIUS-3, DIAMETER*(1-ratio), 4);
 	}
 	protected void Attack(Defender defender) {
-		defender.setHP(defender.getHP() - (ATK-defender.getDEF()));//temp
+		double downHP=ATK-defender.getDEF();
+		if(downHP<0)downHP=1;
+		defender.setHP(defender.getHP()-downHP);//temp
         defender.chekdestroyed(); //temp
         currentATKTick=0;
 	}

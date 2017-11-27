@@ -12,7 +12,7 @@ import model_attacker.Bot1;
 import model_defender.HQ;
 import model_defender.Wall;
 import model_defender.Tower;
-
+//1==wall 2==tower 3==HQ (HQ eat 2 tile)
 public class Board implements IRenderable {
 	public static final int BOARD_ROW=30;
 	public static final int BOARD_COLUMN=30;
@@ -27,7 +27,8 @@ public class Board implements IRenderable {
 	private static int DefaultNumboard=0;
 	private static int Numboard=0;
 	private static int Money;
-	private static Image grass=new Image("file:res/grass.png");
+	private static Image grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
+	private static Image stripe=new Image("file:res/stripe.jpg");	
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
 	private static int board[][];
 	private static int[][] accessibleboard;
@@ -99,12 +100,28 @@ public class Board implements IRenderable {
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
-
-				 gc.setFill(Color.ANTIQUEWHITE);				
-				if(accessibleboard[i][j]==1)gc.setFill(Color.LIGHTGOLDENRODYELLOW);
-				if(board[i][j]==-1)gc.setFill(Color.PURPLE);
+				gc.setFill(Color.WHITE);
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
-				if(accessibleboard[i][j]==0)gc.drawImage(grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+				if(accessibleboard[i][j]==1)
+				{
+					//gc.drawImage(grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.setGlobalAlpha(0.4);
+					gc.drawImage(stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
+					gc.setGlobalAlpha(1);
+					
+				}
+				if(board[i][j]==-1)
+				{
+					gc.setFill(Color.PURPLE);
+					gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+				}
+				if(accessibleboard[i][j]==0)
+				{
+					gc.setGlobalAlpha(0.2);
+					gc.setFill(Color.LIGHTGREEN);
+					gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.setGlobalAlpha(1);
+				}
 			}
 	}
 	public static void update()
@@ -175,6 +192,9 @@ public class Board implements IRenderable {
 	}
 	public static int[][] getBoard() {
 		return board;
+	}
+	public static int getBoard(int i,int j) {
+		return board[i][j];
 	}
 	public static void setBoard(int i,int j,int val) {
 		Board.board[i][j]=val;

@@ -10,9 +10,9 @@ public class Bot0 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=50;
+		this.ATK=35;
 		this.DEF=5;
-		this.RADIUS=4;
+		this.RADIUS=6;
 		this.speed=1;
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=150;

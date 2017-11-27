@@ -6,6 +6,7 @@ public class Main extends Application {
 
 	SceneManager Sm;
 	@Override
+	
 	public void start(Stage primaryStage) {
 		try {
 			SceneManager.setStage(primaryStage);
