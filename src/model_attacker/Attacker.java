@@ -62,9 +62,10 @@ public abstract class Attacker extends Entity implements Ismovable{
 			 return;
 		}
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
-			foward(currentTarget.getPosX()-getPosX(),currentTarget.getPosY()-getPosY());
 			if(currentTarget instanceof model_defender.HQ)
-				System.out.println(currentTarget.getPosX());
+				foward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
+			else
+				foward((currentTarget.getPosX()+Board.BOARD_WIDTH/2)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
 			//System.out.println("Save time");
 		}
 		else {

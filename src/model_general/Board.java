@@ -80,17 +80,17 @@ public class Board implements IRenderable {
 			{
 				if(board[i][j]==1)
 				{
-					Gamelogic.addNewObject(new Wall(BOARD_WIDTH*j+BOARD_WIDTH/2, BOARD_HEIGHT*i+BOARD_HEIGHT/2,i,j));
+					Gamelogic.addNewObject(new Wall(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 				if(board[i][j]==2)
 				{
-					Gamelogic.addNewObject(new Tower(BOARD_WIDTH*j+BOARD_WIDTH/2, BOARD_HEIGHT*i+BOARD_HEIGHT/2,i,j));
+					Gamelogic.addNewObject(new Tower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 				if(board[i][j]==3)//HQ
 				{
 					HQPOSY=(i+1)*BOARD_HEIGHT;
 					HQPOSX=(j+1)*BOARD_WIDTH;
-					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j+BOARD_WIDTH, BOARD_HEIGHT*i+BOARD_HEIGHT,i,j));
+					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 			}
 	}
