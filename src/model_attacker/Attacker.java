@@ -63,24 +63,35 @@ public abstract class Attacker extends Entity implements Ismovable{
 		}
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
 			foward(currentTarget.getPosX()-getPosX(),currentTarget.getPosY()-getPosY());
+			if(currentTarget instanceof model_defender.HQ)
+				System.out.println(currentTarget.getPosX());
 			//System.out.println("Save time");
 		}
 		else {
 			double min = 999999999;
 			double walkX = 0,walkY = 0;
 			for(Defender defender: Gamelogic.getDefendercontainer()) {
-				double dist = Math.hypot(defender.getPosX()-getPosX(), defender.getPosY()-getPosY());
+				double dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
 				if(defender instanceof model_defender.HQ) {
-					dist *= 0.1; //HQ High Priority
+					dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY());
+					dist *= 0.7; //HQ High Priority
 				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;
 					currentTarget = defender;
-					walkX = defender.getPosX()-getPosX();
-					walkY = defender.getPosY()-getPosY();
+					walkX = (defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX();
+					walkY = (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY();
+					if(defender instanceof model_defender.HQ) {
+						System.out.println("HQ " +walkX +" "+ walkY +" " + Board.BOARD_WIDTH+" "+Board.BOARD_HEIGHT);
+						walkX = (defender.getPosX()+Board.BOARD_WIDTH)-getPosX();
+						walkY = (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY();
+						System.out.println("HQ2 " +walkX +" "+ walkY);
+					}
 				}
 			}
 			foward(walkX,walkY);
+			if(currentTarget instanceof model_defender.HQ)
+				System.out.println("HQ3 " +walkX +" "+ walkY);
 			//foward(Board.HQPOSX-posX,Board.HQPOSY-posY); //if collied go backward
 		}
 	}
