@@ -17,12 +17,12 @@ public class SceneManager {
 	public static void setStage(Stage primaryStage) {
 		// TODO Auto-generated constructor stub
 		SceneManager.primaryStage=primaryStage;
-		InitializeplayScene();
 		primaryStage.show();
 	} 
 
 	public static  void gotoPlayScreen() { 
 		//TODO Fill Code
+		InitializeplayScene();
 		primaryStage.setScene(playScene);
 		SceneManager.primaryStage.centerOnScreen();
 		Playscreen.AT.start();

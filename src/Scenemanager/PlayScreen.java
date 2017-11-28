@@ -8,22 +8,22 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import logic.Gamelogic;
+import logic.Gamestate;
 import model_attacker.Attacker;
 import model_general.Board;
-import model_general.Gamestate;
 public class PlayScreen extends HBox{
 	private static boolean pausedstate;
 	GameScreen gamescreen;
 	Menubar menubar;
 	AnimationTimer AT,AT2;
 	Gamelogic Gamelogic;
-	Gamestate Gamestate;
 	PlayScreen()
 	{
 		Initialize();
 		AT=new AnimationTimer(){
 			public void handle(long now)
 			{
+			//	System.out.println(Gamestate.getTotaltime()/600000000L);
 				Gamelogic.update();
 				Paintupdated();
 				Checkcondition();
@@ -35,7 +35,7 @@ public class PlayScreen extends HBox{
 		AT2=new AnimationTimer(){
 			public void handle(long now)
 			{
-				Paintupdated();
+				if(menubar.getGamestate().isLose()==false)Paintupdated();
 				if(menubar.isReset())Resetgame();
 			}
 		};
@@ -45,7 +45,6 @@ public class PlayScreen extends HBox{
 		gamescreen=new GameScreen();
 		menubar=new Menubar(SceneManager.SCREEN_WIDTH*0.25,SceneManager.SCREEN_HEIGHT);
 		Gamelogic=new Gamelogic();
-		Gamestate=new Gamestate();
 		this.getChildren().add(gamescreen);
 		this.getChildren().add(menubar);
 	}
@@ -53,7 +52,6 @@ public class PlayScreen extends HBox{
 		//Dont use gotoplayscreen,as it will make the game blink
 		RenderableHolder.getInstance().reboot();
 		Gamelogic=new Gamelogic();
-		Gamestate=new Gamestate();
 		menubar.setdefault();
 		InputUtility.currentChosed="x";
 		AT2.stop();
@@ -71,14 +69,14 @@ public class PlayScreen extends HBox{
 	}
 	private void Checkcondition() {
 		// TODO Auto-generated method stub
-		if(Board.isIswin())Gamestate.setWin(true);
-		if(Board.getMoney()<=Attacker.getMinCost() 
-				&& logic.Gamelogic.getAttackercontainer().size()==0)
-			Gamestate.setLose(true);
+		if(Board.isIswin())menubar.getGamestate().setWin(true);
+		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackercontainer().size()==0)
+			menubar.getGamestate().setLose(true);
+		if(menubar.getGamestate().isTimeup())menubar.getGamestate().setLose(true);
 	}
 	void Checkend() {
 		// TODO Auto-generated method stub
-		if(Gamestate.isWin())
+		if(menubar.getGamestate().isWin())
 		{
 			System.out.println("win");
 			Board.addNumboard();
@@ -87,12 +85,16 @@ public class PlayScreen extends HBox{
 			{
 			Resetgame();
 			AT.stop();
+			RenderableHolder.getInstance().getEntities().clear();
 			SceneManager.gotoWaitScreen();
 			}
 		}
-		else if(Gamestate.isLose())
+		else if(menubar.getGamestate().isLose())
 		{
 			gamescreen.PaintLoseScreen();
+			AT.stop();
+			AT2.start();
+			pausedstate=true; 
 		}
 		
 	}
@@ -116,5 +118,8 @@ public class PlayScreen extends HBox{
 			}
 			InputUtility.Lastkey=null;
 		}
+	}
+	public static boolean isPausedstate() {
+		return pausedstate;
 	}
 }

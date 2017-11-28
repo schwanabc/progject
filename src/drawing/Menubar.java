@@ -9,17 +9,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import logic.Gamestate;
 import model_general.Board;
-import model_general.Gamestate;
 public class Menubar extends VBox{
-	private static double MENU_WIDTH,MENU_HEIGHT;
+	public static double MENU_WIDTH,MENU_HEIGHT;
 	private static final Font TEXT_FONT = new Font("Monospace", 30);
 	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
-	private static double ICONPOS;
-	private static double ICONHEIGHT;
-	private static double ICONWIDTH;
+	public static double ICONPOS;
+	public static double ICONHEIGHT;
+	public static double ICONWIDTH;
 	private Canvas[][] menu=new Canvas[VTAB][HTAB];
 	private GridPane gp;
 	private int choseRow;
@@ -52,7 +52,6 @@ public class Menubar extends VBox{
 		{
 			for(int j=0;j<HTAB;j++)
 			{
-				fillicon(menu[i][j]);
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
 				gc.setFill(Color.ALICEBLUE);
@@ -69,10 +68,6 @@ public class Menubar extends VBox{
 			}
 		}
 		this.getChildren().add(gp);
-	}
-	private void fillicon(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
 	}
 	private void Checkevent(Canvas canvas, int row, int column) {
 		GraphicsContext gc=canvas.getGraphicsContext2D();
@@ -154,14 +149,16 @@ public class Menubar extends VBox{
 		gc.setTextBaseline(VPos.TOP);
 		gc.fillText("Money: "+Board.getMoney(), 5, ICONPOS*0.5);
 		gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 5, ICONPOS*0.7);
+		gc.setTextAlign(TextAlignment.LEFT);
+		Long sec=Gamestate.getsecond();
+		String second=sec.toString();
+		if(sec<10)second="0"+second;
+		gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,ICONWIDTH-25 , ICONPOS*0.7);
 //		System.out.println(Gamestate.displayTime());
 		
 	}
 	public Gamestate getGamestate() {
 		return Gamestate;
-	}
-	public void setGamestate(Gamestate gamestate) {
-		Gamestate = gamestate;
 	}
 	public boolean isReset() {
 		return isReset;
@@ -171,6 +168,7 @@ public class Menubar extends VBox{
 	}
 	public void setdefault() {
 		// TODO Auto-generated method stub
+		Gamestate.initialize();
 		isReset=false;
 		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
 		setUnHover(gc,Color.ALICEBLUE);

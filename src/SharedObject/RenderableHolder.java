@@ -56,6 +56,6 @@ public class RenderableHolder {
 	public void reboot() {
 		instance = new RenderableHolder();
 	}
-	
+
 	
 }
