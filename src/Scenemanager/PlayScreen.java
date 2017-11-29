@@ -80,6 +80,7 @@ public class PlayScreen extends HBox{
 		{
 			System.out.println("win");
 			Board.addNumboard();
+			menubar.getGamestate().EndTimethread();
 			if(Board.getDefaultNumboard()==Board.TOTALBOARD) {AT.stop();SceneManager.gotoWinScreen();}
 			else
 			{

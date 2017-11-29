@@ -14,6 +14,7 @@ public class Gamestate {
 	public Gamestate()
 	{
 		initialize();
+		System.out.println("threadstart");
 		Timethread=new Thread(new Runnable()
 		{
 			@Override
@@ -23,7 +24,6 @@ public class Gamestate {
 					currenttime=System.nanoTime();	
 					if(PlayScreen.isPausedstate()==false&&isLose==false &&isWin==false)
 					{
-						System.out.println(isLose);
 						Timeleft-=currenttime-prevtime;
 						if(Timeleft<=0)Timeleft=0;
 					}
@@ -71,5 +71,10 @@ public class Gamestate {
 	public Thread getTimethread() {
 		// TODO Auto-generated method stub
 		return Timethread;
+	}
+	public void EndTimethread() {
+		// TODO Auto-generated method stub
+		System.out.println("threadstop");
+		Timethread.interrupt();
 	}
 }
