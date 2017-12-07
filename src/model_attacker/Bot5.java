@@ -2,6 +2,7 @@ package model_attacker;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import model_defender.Defender;
 
 public class Bot5 extends Attacker{
 	
@@ -10,14 +11,14 @@ public class Bot5 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=50;
-		this.DEF=30;
-		this.speed=1;
+		this.ATK=25;
+		this.DEF=5;
+		this.speed=2;
 		this.RADIUS=8;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=1500;
+		this.HP=150;
 		this.MaxHP=HP;
-		this.AttackTick=100;
+		this.AttackTick=20;
 		this.currentATKTick=AttackTick;
 		this.WallPriority=20;
 		this.TowerPriority=30;
@@ -25,7 +26,7 @@ public class Bot5 extends Attacker{
 	}
 
 	public static int getHiringCost() {
-		HiringCost=240;
+		HiringCost=200;
 		return HiringCost;
 	}
 	@Override
@@ -34,6 +35,19 @@ public class Bot5 extends Attacker{
 		gc.setFill(Color.SADDLEBROWN);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
+	}
+	@Override
+	protected void Attack(Defender defender) {
+		double downHP=ATK-defender.getDEF();
+		if(defender instanceof model_defender.HQ){
+			downHP=ATK*6-defender.getDEF();
+		}
+		if(downHP<0)
+			downHP=1;
+		defender.setHP(defender.getHP()-downHP);//temp
+        defender.chekdestroyed(); //temp
+        currentATKTick=0;
+        
 	}
 
 }
