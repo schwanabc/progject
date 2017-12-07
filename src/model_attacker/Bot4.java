@@ -18,7 +18,7 @@ public class Bot4 extends Attacker{
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=500;
 		this.MaxHP=HP;
-		this.AttackTick=40;
+		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
 		this.WallPriority=20;
 		this.TowerPriority=30;
@@ -39,7 +39,7 @@ public class Bot4 extends Attacker{
 	@Override
 	protected void Attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
-		if(defender instanceof model_defender.Wall)
+		if(defender instanceof model_defender.Wall && defender.getHP() != 1000)
 		{
 			downHP = 999999;
 			HP = 0;
