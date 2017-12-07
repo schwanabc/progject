@@ -4,14 +4,11 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 public class Main extends Application {
-
-	SceneManager Sm;
 	@Override
-	
 	public void start(Stage primaryStage) {
 		try {
 			SceneManager.setStage(primaryStage);
-			SceneManager.gotoPlayScreen();
+			SceneManager.gotoStartScreen();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -39,6 +39,7 @@ public class PlayScreen extends HBox{
 				if(menubar.isReset())Resetgame();
 			}
 		};
+
 	}
 	private void Initialize() {
 		// TODO Auto-generated method stub
