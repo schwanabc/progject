@@ -17,7 +17,7 @@ public class Bot0 extends Attacker{
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=150;
 		this.MaxHP=HP;
-		this.AttackTick=20;
+		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
 		this.WallPriority=10;
 		this.TowerPriority=10;
