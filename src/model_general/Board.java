@@ -10,6 +10,10 @@ import javafx.scene.paint.Color;
 import model_attacker.Bot0;
 import model_attacker.Bot1;
 import model_attacker.Bot2;
+import model_attacker.Bot3;
+import model_attacker.Bot4;
+import model_attacker.Bot5;
+import model_attacker.Bot6;
 import model_defender.HQ;
 import model_defender.Wall;
 import model_defender.Tower;
@@ -157,6 +161,38 @@ public class Board implements IRenderable {
 				{
 					decreaseMoney(Bot2.getHiringCost());
 					Gamelogic.addNewObject(new Bot2(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
+			if(bot_type=="Weak_4") 
+			{
+				if(buyable(Bot3.getHiringCost()))
+				{
+					decreaseMoney(Bot3.getHiringCost());
+					Gamelogic.addNewObject(new Bot3(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
+			if(bot_type=="Weak_5") 
+			{
+				if(buyable(Bot4.getHiringCost()))
+				{
+					decreaseMoney(Bot4.getHiringCost());
+					Gamelogic.addNewObject(new Bot4(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
+			if(bot_type=="Weak_6") 
+			{
+				if(buyable(Bot5.getHiringCost()))
+				{
+					decreaseMoney(Bot5.getHiringCost());
+					Gamelogic.addNewObject(new Bot5(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
+			if(bot_type=="Weak_7") 
+			{
+				if(buyable(Bot6.getHiringCost()))
+				{
+					decreaseMoney(Bot6.getHiringCost());
+					Gamelogic.addNewObject(new Bot6(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 		}
