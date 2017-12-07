@@ -1,51 +1,51 @@
 package drawing;
 
-import javafx.application.Platform;
-import javafx.geometry.VPos;
+import java.util.concurrent.TimeUnit;
+
+import Button.ExitButton;
+import Button.MenuButton;
+import Button.ReplayButton;
+import Scenemanager.SceneManager;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
-import Scenemanager.SceneManager;
-public class WinScreen extends StackPane{
-	Canvas canvas,canvas2;
+public class WinScreen extends Pane{
+	private static Image Background=new Image("file:res/Wiki-background.jpg");	
+	private Canvas Back;
+	private ExitButton Exit;
+	private ReplayButton Replay;
+	private MenuButton Menu;
+	private Label Title;
+	private static Font TEXT_FONT = new Font("Monospace", 80);
 	public WinScreen()
 	{
-		canvas=new Canvas(SceneManager.SCREEN_WIDTH,SceneManager.SCREEN_HEIGHT);
-		GraphicsContext gc=canvas.getGraphicsContext2D();
-		gc.setFill(Color.WHITE);
-		gc.fillRect(0, 0, SceneManager.SCREEN_WIDTH,SceneManager.SCREEN_HEIGHT);
-		Font TEXT_FONT = new Font("Monospace", 100);
-		gc.setFont(TEXT_FONT);
-		gc.setTextAlign(TextAlignment.CENTER);
-		gc.setTextBaseline(VPos.CENTER);
+		System.out.println("Waitscreen");
+		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		Back=new Canvas(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		GraphicsContext gc=Back.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
-		gc.fillText("YOU WIN", SceneManager.SCREEN_WIDTH*0.5,SceneManager.SCREEN_HEIGHT*0.3);
-		this.getChildren().add(canvas);
-		canvas2=new Canvas(SceneManager.SCREEN_WIDTH,SceneManager.SCREEN_HEIGHT);
-		gc=canvas2.getGraphicsContext2D();
-		gc.setFill(Color.ALICEBLUE);
-		gc.fillRect(SceneManager.SCREEN_WIDTH*0.2, SceneManager.SCREEN_HEIGHT*0.5+10, 535, 100);
-		TEXT_FONT = new Font("Monospace", 60);
-		gc.setFill(Color.BLACK);
-		gc.setFont(TEXT_FONT);
-		gc.setTextAlign(TextAlignment.CENTER);
-		gc.setTextBaseline(VPos.CENTER);
-		gc.fillText("Click to end game", SceneManager.SCREEN_WIDTH*0.5,SceneManager.SCREEN_HEIGHT*0.6);
-		canvas2.requestFocus();
-		AddtoListerner(canvas2);
-		this.getChildren().add(canvas2);
+		gc.fillRect(0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		gc.drawImage(Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		Back.relocate(0, 0);
+		Replay=new ReplayButton("Play Again");
+		Replay.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.4);
+		Menu=new MenuButton("Main Menu");
+		Menu.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.6);
+		Exit=new ExitButton("Exit");
+		Exit.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.8);
+		Title=new Label("YOU CLEAR THE GAME!!!");
+		Title.setFont(TEXT_FONT);
+		Title.setTextFill(Color.RED);
+		Title.relocate(SceneManager.SCREEN_WIDTH*0.1, SceneManager.SCREEN_HEIGHT*0.1);
+		this.getChildren().addAll(Back,Menu,Replay,Exit,Title);
 	}
-	private void AddtoListerner(Canvas canvas) {
-		// TODO Auto-generated method stub
-		canvas.setOnMouseClicked(ev-> {
-			if (ev.getButton()== MouseButton.PRIMARY)
-			{
-				Platform.exit();
-			}
-		});
-	}
+
 }

@@ -263,6 +263,14 @@ public class Board implements IRenderable {
 		// TODO Auto-generated method stub
 		DefaultNumboard++;
 	}
+	public static void resetNumboard() {
+		// TODO Auto-generated method stub
+		DefaultNumboard=0;
+	}
+	public static void decreaseNumboard() {
+		// TODO Auto-generated method stub
+		if(DefaultNumboard>0)DefaultNumboard--;
+	}
 	public static int getDefaultNumboard() {
 		return DefaultNumboard;
 	}

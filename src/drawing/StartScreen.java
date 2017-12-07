@@ -2,6 +2,8 @@ package drawing;
 
 import java.util.concurrent.TimeUnit;
 
+import Button.ExitButton;
+import Button.PlayButton;
 import Scenemanager.SceneManager;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;

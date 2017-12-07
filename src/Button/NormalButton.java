@@ -1,4 +1,7 @@
-package drawing;
+package Button;
+
+import com.sun.javafx.tk.FontLoader;
+import com.sun.javafx.tk.Toolkit;
 
 import Scenemanager.SceneManager;
 import javafx.geometry.Insets;
@@ -21,20 +24,25 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class PlayButton extends Canvas{
-	private static Font BUTTON_FONT = new Font("Monospace", 48);
-	private static Image ReleaseButtonBackground=new Image("file:res/releasebutton.jpg");
-	private static ColorAdjust colorAdjust = new ColorAdjust();
-	public PlayButton(String text)
+public class NormalButton extends Canvas{
+	protected static Font BUTTON_FONT = new Font("Monospace", 48);
+	protected static Image ReleaseButtonBackground=new Image("file:res/releasebutton.jpg");
+	protected ColorAdjust colorAdjust;
+	public NormalButton(String text)
 	{
 		super(400, 100);
+		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
 		gc.drawImage(ReleaseButtonBackground, 0, 0, 400, 100);
 		gc.setFont(BUTTON_FONT);
 		gc.setTextBaseline(VPos.CENTER);
-		gc.fillText(text, 150, 50);
-		//setOpacity(0.7);
-		
+		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
+		double font_width = fontLoader.computeStringWidth(text, gc.getFont());
+		gc.fillText(text, 200-font_width/2, 50);
+		Addtolisterner();
+
+	}
+	protected void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
 			colorAdjust.setBrightness(0.1);
@@ -52,6 +60,5 @@ public class PlayButton extends Canvas{
 				SceneManager.gotoPlayScreen();
 				}
 		});
-
 	}
 }
