@@ -1,0 +1,39 @@
+package model_attacker;
+
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+public class Bot2 extends Attacker{
+
+	//HIGHSPEED ATK
+	public Bot2(double posX,double posY)
+	{
+		//all stat is temporary
+		super(posX,posY);
+		this.ATK=45;
+		this.DEF=5;
+		this.RADIUS=4;
+		this.speed=3;
+		this.DIAMETER=this.RADIUS*2;
+		this.HP=80;
+		this.MaxHP=HP;
+		this.AttackTick=15;
+		this.currentATKTick=AttackTick;
+		this.WallPriority=10;
+		this.TowerPriority=10;
+		this.HQPriority=80;
+	}
+
+	public static int getHiringCost() {
+		HiringCost = 100;
+		return HiringCost;
+	}
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		gc.setFill(Color.RED);
+		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		drawHPbar(gc);
+	}
+
+}

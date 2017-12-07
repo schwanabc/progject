@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model_attacker.Bot0;
 import model_attacker.Bot1;
+import model_attacker.Bot2;
 import model_defender.HQ;
 import model_defender.Wall;
 import model_defender.Tower;
@@ -138,16 +139,24 @@ public class Board implements IRenderable {
 			{ 
 				if(buyable(Bot0.getHiringCost()))
 				{
-				decreaseMoney(Bot0.getHiringCost());
-				Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));
+					decreaseMoney(Bot0.getHiringCost());
+					Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));
 				}
 			}
 			if(bot_type=="Weak_2") 
 			{
 				if(buyable(Bot1.getHiringCost()))
 				{
-				decreaseMoney(Bot1.getHiringCost());
-				Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Bot1.getHiringCost());
+					Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
+				}
+			}
+			if(bot_type=="Weak_3") 
+			{
+				if(buyable(Bot2.getHiringCost()))
+				{
+					decreaseMoney(Bot2.getHiringCost());
+					Gamelogic.addNewObject(new Bot2(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 		}

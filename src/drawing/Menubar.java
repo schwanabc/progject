@@ -104,6 +104,7 @@ public class Menubar extends VBox{
 	private void Choosecurrentbot(int row, int column) {
 		if(row==0&&column==0)InputUtility.currentChosed ="Weak_1";
 		else if(row==0&&column==1)InputUtility.currentChosed ="Weak_2";
+		else if(row==1&&column==0)InputUtility.currentChosed ="Weak_3";
 		else if(row==VTAB-1 && column==HTAB-1)isReset=true;
 		else InputUtility.currentChosed ="x";
 	}

@@ -83,17 +83,14 @@ public abstract class Attacker extends Entity implements Ismovable{
 					walkX = (defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX();
 					walkY = (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY();
 					if(defender instanceof model_defender.HQ) {
-						System.out.println("HQ " +walkX +" "+ walkY +" " + Board.BOARD_WIDTH+" "+Board.BOARD_HEIGHT);
+						//System.out.println("HQ " +walkX +" "+ walkY +" " + Board.BOARD_WIDTH+" "+Board.BOARD_HEIGHT);
 						walkX = (defender.getPosX()+Board.BOARD_WIDTH)-getPosX();
 						walkY = (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY();
-						System.out.println("HQ2 " +walkX +" "+ walkY);
+						//System.out.println("HQ2 " +walkX +" "+ walkY);
 					}
 				}
 			}
 			foward(walkX,walkY);
-			if(currentTarget instanceof model_defender.HQ)
-				System.out.println("HQ3 " +walkX +" "+ walkY);
-			//foward(Board.HQPOSX-posX,Board.HQPOSY-posY); //if collied go backward
 		}
 	}
 	protected boolean ColliedwithDefender()
