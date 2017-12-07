@@ -181,6 +181,7 @@ public class Menubar extends VBox{
 	public void setdefault() {
 		// TODO Auto-generated method stub
 		Gamestate.initialize();
+		update();
 		isReset=false;
 		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
 		setUnHover(gc,Color.ALICEBLUE);

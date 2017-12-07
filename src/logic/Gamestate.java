@@ -14,13 +14,13 @@ public class Gamestate {
 	public Gamestate()
 	{
 		initialize();
-		System.out.println("threadstart");
 		Timethread=new Thread(new Runnable()
 		{
 			@Override
 			public void run() {
 				while(true)
 				{
+				//	System.out.println(Timeleft);
 					currenttime=System.nanoTime();	
 					if(PlayScreen.isPausedstate()==false&&isLose==false &&isWin==false)
 					{
@@ -28,6 +28,7 @@ public class Gamestate {
 						if(Timeleft<=0)Timeleft=0;
 					}
 					prevtime=currenttime;
+					Thread.yield();
 				}
 			}
 		});
@@ -62,7 +63,7 @@ public class Gamestate {
 	}
 	public void initialize() {
 		// TODO Auto-generated method stub
-		System.out.println("reset");
+		System.out.println("reset"+GAMEBASETIME);
 		isWin=false;
 		isLose=false;
 		Timeleft=GAMEBASETIME;
@@ -77,4 +78,5 @@ public class Gamestate {
 		System.out.println("threadstop");
 		Timethread.interrupt();
 	}
+
 }
