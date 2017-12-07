@@ -28,6 +28,7 @@ import javafx.scene.text.Font;
 public class NormalButton extends Canvas{
 	protected static final Font BUTTON_FONT = new Font("Monospace", 48);
 	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
+	private static Image PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());	
 	protected ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=400;
 	public static final double BUTTON_HEIGHT=100;

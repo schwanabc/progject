@@ -4,6 +4,8 @@ import Input.InputUtility;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -17,6 +19,8 @@ public class Menubar extends VBox{
 	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
+	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
+	private static Image PressedButtonBackground=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
 	public static double ICONPOS;
 	public static double ICONHEIGHT;
 	public static double ICONWIDTH;
@@ -54,75 +58,93 @@ public class Menubar extends VBox{
 			{
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
-				gc.setFill(Color.ALICEBLUE);
-				gc.fillRect(0, 0, ICONWIDTH, ICONHEIGHT);
+				gc.drawImage(ReleaseButtonBackground,0,0, ICONWIDTH, ICONHEIGHT);
 				gc.setFont(TEXT_FONT);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
-				gc.setFill(Color.BLACK);
-				if(i+1==VTAB&& j+1==HTAB)
-					gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				else {
-					if(i == 0 && j == 0){
-						gc.fillText("NORMAL\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 0 && j == 1){
-						gc.fillText("TANK\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 1 && j == 0){
-						gc.fillText("FAST\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 1 && j == 1){
-						gc.fillText("DESTROY\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 2 && j == 0){
-						gc.fillText("WALL\nBOMBER\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 2 && j == 1){
-						gc.fillText("HQ ATK\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-					else if(i == 3 && j == 0){
-						gc.fillText("BOSS\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-					}
-				}
-				this.Fillborder(gc, Color.BROWN,1);
+				Filltext(gc,i,j);
+				
 				gp.add(menu[i][j], j, i);
 				Checkevent(menu[i][j],i,j);
 			}
 		}
 		this.getChildren().add(gp);
 	}
+	private void Filltext(GraphicsContext gc,int i, int j) {
+		// TODO Auto-generated method stub
+		if(i+1==VTAB&& j+1==HTAB)
+			gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
+		else {
+			if(i == 0 && j == 0){
+				gc.fillText("NORMAL\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 0 && j == 1){
+				gc.fillText("TANK\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 1 && j == 0){
+				gc.fillText("FAST\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 1 && j == 1){
+				gc.fillText("DESTROY\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 2 && j == 0){
+				gc.fillText("WALL\nBOMBER\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 2 && j == 1){
+				gc.fillText("HQ ATK\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+			else if(i == 3 && j == 0){
+				gc.fillText("BOSS\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			}
+		}
+	}
 	private void Checkevent(Canvas canvas, int row, int column) {
 		GraphicsContext gc=canvas.getGraphicsContext2D();
 		canvas.setOnMouseEntered(ev->
 		{
 			if(!(row==choseRow &&column==choseColumn))
-			setHover(gc,Color.LIGHTGREEN);
+			{
+				setHover(gc,row,column);
+			}
 		});
 		canvas.setOnMouseExited(ev->
 		{
 			if(!(row==choseRow &&column==choseColumn))
 			{
-			setUnHover(gc,Color.ALICEBLUE);
+				setUnHover(gc,row,column);
 			}
 		});
 		canvas.setOnMouseClicked(ev->
 		{
+			
 			if(row!=choseRow ||column!=choseColumn)
 			{
 				try
 				{
 					GraphicsContext temp=menu[choseRow][choseColumn].getGraphicsContext2D();
-					setUnHover(temp,Color.ALICEBLUE);
+					setUnClick(temp,choseRow,choseColumn);
+					setUnHover(temp,choseRow,choseColumn);
 				}
 				catch(Exception e) {}//Do nothing
 				choseRow=row;
 				choseColumn=column;
 			}
-			if(!(choseRow+1==VTAB&& choseColumn+1==HTAB))setHover(gc,Color.CORNFLOWERBLUE);
-			else setUnHover(gc,Color.ALICEBLUE);
+			if(!(choseRow+1==VTAB&& choseColumn+1==HTAB))setClick(gc, row, column);
+			else setUnClick(gc, row, column);
 			Choosecurrentbot(row,column);
 		});
+	}
+
+	private void setHover(GraphicsContext gc,int row,int column) {
+		ColorAdjust colorAdjust=new ColorAdjust();
+		colorAdjust.setBrightness(0.2);
+		menu[row][column].setEffect(colorAdjust);
+	}
+	private void setUnHover(GraphicsContext gc,int row,int column) {
+		
+		ColorAdjust colorAdjust=new ColorAdjust();
+		colorAdjust.setBrightness(0.0);
+		menu[row][column].setEffect(colorAdjust);
 	}
 	private void Choosecurrentbot(int row, int column) {
 		if(row == 0 && column == 0)
@@ -142,19 +164,16 @@ public class Menubar extends VBox{
 		else if(row == VTAB-1 && column == HTAB-1)isReset=true;
 		else InputUtility.currentChosed ="x";
 	}
-	private void setHover(GraphicsContext gc,Color color) {
-		Fillborder(gc,color,20);
+	private void setClick(GraphicsContext gc,int row,int column) {
+		gc.drawImage(PressedButtonBackground, 0, 0, ICONWIDTH, ICONHEIGHT);
+		Filltext(gc,row,column);
+	}
+	private void setUnClick(GraphicsContext gc,int row,int column) {
 		
+		gc.drawImage(ReleaseButtonBackground, 0, 0, ICONWIDTH, ICONHEIGHT);
+		Filltext(gc,row,column);
 	}
-	private void Fillborder(GraphicsContext gc, Color color,double linewidth) {
-		gc.setLineWidth(linewidth);
-		gc.setStroke(color);
-		gc.strokeRect(0, 0, ICONWIDTH, ICONHEIGHT);
-	}
-	private void setUnHover(GraphicsContext gc,Color color) {
-		Fillborder(gc,color,20);
-		Fillborder(gc,Color.BROWN,1);
-	}
+	
 	private void PaintMenucanvas(GraphicsContext gc)
 	{
 		gc.setFill(Color.ALICEBLUE);
@@ -202,13 +221,12 @@ public class Menubar extends VBox{
 		this.isReset = isReset;
 	}
 	public void setdefault() {
-		// TODO Auto-generated method stub
 		Gamestate.initialize();
 		update();
 		isReset=false;
 		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
-		setUnHover(gc,Color.ALICEBLUE);
-		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setHover(menu[VTAB-1][HTAB-1].getGraphicsContext2D(),Color.LIGHTGREEN);
+		setUnClick(gc, choseRow, choseColumn);
+		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setUnClick(menu[VTAB-1][HTAB-1].getGraphicsContext2D(), VTAB-1, HTAB-1);
 		choseRow=-1;
 		choseColumn=-1;
 	}
