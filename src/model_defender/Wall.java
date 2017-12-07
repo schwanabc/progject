@@ -1,10 +1,13 @@
 package model_defender;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model_general.Board;
 
 public class Wall extends Defender{
+	private static Image Wall=new Image(ClassLoader.getSystemResource("Wall.jpg").toString());
+
 	public Wall(double posX,double posY,int posI,int posJ)
 	{
 		super(posX,posY,posI,posJ);
@@ -19,8 +22,8 @@ public class Wall extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.SLATEGRAY);
-		gc.fillRect(posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(Wall, posX, posY, Wallwidth, Wallheight);
+
 		drawHPbar(gc);
 	}
 	

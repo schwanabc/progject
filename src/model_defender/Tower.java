@@ -26,7 +26,7 @@ public class Tower extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.YELLOWGREEN);
+		gc.setFill(Color.CRIMSON);
 		gc.fillRect(posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 		
