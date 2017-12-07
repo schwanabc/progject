@@ -18,7 +18,7 @@ public class SceneManager {
 	private  static Scene winScene;
 	private  static Scene StartScene;
 	private  static PlayScreen Playscreen;
-	public static String GAMENAME="Game Name Please";
+	public static String GAMENAME="TOWER HATER 2.0";
 	public static double SCREEN_HEIGHT=660;
 	public static double SCREEN_WIDTH=(SCREEN_HEIGHT*4)/3;
 	public static void setStage(Stage primaryStage) {

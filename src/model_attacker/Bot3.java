@@ -10,14 +10,14 @@ public class Bot3 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=50;
-		this.DEF=30;
-		this.speed=1;
+		this.ATK=100;
+		this.DEF=10;
+		this.speed=1.5;
 		this.RADIUS=8;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=1500;
+		this.HP=200;
 		this.MaxHP=HP;
-		this.AttackTick=100;
+		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
 		this.WallPriority=20;
 		this.TowerPriority=30;
@@ -25,13 +25,13 @@ public class Bot3 extends Attacker{
 	}
 
 	public static int getHiringCost() {
-		HiringCost=240;
+		HiringCost=300;
 		return HiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.SADDLEBROWN);
+		gc.setFill(Color.GREEN);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
