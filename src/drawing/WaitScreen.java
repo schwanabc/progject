@@ -7,6 +7,7 @@ import Button.MenuButton;
 import Button.PlayButton;
 import Button.ReplayButton;
 import Scenemanager.SceneManager;
+import Utility.Utility;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,12 +20,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class WaitScreen extends Pane{
-	private static Image Background=new Image("file:res/Wiki-background.jpg");	
+	private static final Image Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());	
 	private Canvas Back;
 	private PlayButton Play;
 	private ExitButton Exit;
 	private ReplayButton Replay;
 	private Label Title;
+	private static final String WAIT_TEXT="YOU WIN";
 	private static Font TEXT_FONT = new Font("Monospace", 80);
 	public WaitScreen()
 	{
@@ -42,10 +44,10 @@ public class WaitScreen extends Pane{
 		Replay.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.6);
 		Exit=new ExitButton("Exit");
 		Exit.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.8);
-		Title=new Label("YOU WIN");
+		Title=new Label(WAIT_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.1);
+		Title.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WAIT_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Back,Play,Replay,Exit,Title);
 	}
 

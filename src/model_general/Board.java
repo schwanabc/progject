@@ -33,7 +33,7 @@ public class Board implements IRenderable {
 	private static int Numboard=0;
 	private static int Money;
 	private static Image grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
-	private static Image stripe=new Image("file:res/stripe.jpg");	
+	private static Image stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
 	private static int board[][];
 	private static int[][] accessibleboard;

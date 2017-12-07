@@ -82,7 +82,11 @@ public class PlayScreen extends HBox{
 			System.out.println("win");
 			Board.addNumboard();
 			menubar.getGamestate().EndTimethread();
-			if(Board.getDefaultNumboard()==Board.TOTALBOARD) {AT.stop();SceneManager.gotoWinScreen();}
+			if(Board.getDefaultNumboard()==Board.TOTALBOARD) 
+			{
+				AT.stop();
+				RenderableHolder.getInstance().getEntities().clear();
+				SceneManager.gotoWinScreen();}
 			else
 			{
 			Resetgame();

@@ -4,6 +4,7 @@ import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 
 import Scenemanager.SceneManager;
+import Utility.Utility;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -25,20 +26,20 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 public class NormalButton extends Canvas{
-	protected static Font BUTTON_FONT = new Font("Monospace", 48);
-	protected static Image ReleaseButtonBackground=new Image("file:res/releasebutton.jpg");
+	protected static final Font BUTTON_FONT = new Font("Monospace", 48);
+	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 	protected ColorAdjust colorAdjust;
+	public static final double BUTTON_WIDTH=400;
+	public static final double BUTTON_HEIGHT=100;
 	public NormalButton(String text)
 	{
-		super(400, 100);
+		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(ReleaseButtonBackground, 0, 0, 400, 100);
+		gc.drawImage(ReleaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 		gc.setFont(BUTTON_FONT);
 		gc.setTextBaseline(VPos.CENTER);
-		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
-		double font_width = fontLoader.computeStringWidth(text, gc.getFont());
-		gc.fillText(text, 200-font_width/2, 50);
+		gc.fillText(text,Utility.TextStartWidht(BUTTON_WIDTH,Utility.getFont_width(text,gc.getFont())), BUTTON_HEIGHT/2);
 		Addtolisterner();
 
 	}

@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import Button.ExitButton;
 import Button.PlayButton;
 import Scenemanager.SceneManager;
+import Utility.Utility;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,12 +18,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class StartScreen extends Pane{
-	private static Image Background=new Image("file:res/Wiki-background.jpg");	
+	private static final Image Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());	
 	private Canvas Back;
 	private PlayButton Play;
 	private ExitButton Exit;
 	private Label Gametitle;
-	private static Font TEXT_FONT = new Font("Monospace", 80);
+	private static final Font TEXT_FONT = new Font("Monospace", 80);
 	public StartScreen()
 	{
 		System.out.println("startscreen");
@@ -40,7 +41,7 @@ public class StartScreen extends Pane{
 		Gametitle=new Label(SceneManager.GAMENAME);
 		Gametitle.setFont(TEXT_FONT);
 		Gametitle.setTextFill(Color.RED);
-		Gametitle.relocate(SceneManager.SCREEN_WIDTH*0.1, SceneManager.SCREEN_HEIGHT*0.1);
+		Gametitle.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Back,Play,Exit,Gametitle);
 	}
 
