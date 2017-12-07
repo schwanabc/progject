@@ -13,7 +13,7 @@ import logic.Gamestate;
 import model_general.Board;
 public class Menubar extends VBox{
 	public static double MENU_WIDTH,MENU_HEIGHT;
-	private static final Font TEXT_FONT = new Font("Monospace", 30);
+	private static final Font TEXT_FONT = new Font("Monospace", 20);
 	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
@@ -60,8 +60,31 @@ public class Menubar extends VBox{
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				gc.setFill(Color.BLACK);
-				if(!(i+1==VTAB&& j+1==HTAB))gc.fillText("BOT"+count++, ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				else gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				if(i+1==VTAB&& j+1==HTAB)
+					gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				else {
+					if(i == 0 && j == 0){
+						gc.fillText("NORMAL\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 0 && j == 1){
+						gc.fillText("TANK\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 1 && j == 0){
+						gc.fillText("FAST\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 1 && j == 1){
+						gc.fillText("DESTROY\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 2 && j == 0){
+						gc.fillText("WALL\nBOMBER\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 2 && j == 1){
+						gc.fillText("HQ ATK\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+					else if(i == 3 && j == 0){
+						gc.fillText("BOSS\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+					}
+				}
 				this.Fillborder(gc, Color.BROWN,1);
 				gp.add(menu[i][j], j, i);
 				Checkevent(menu[i][j],i,j);
