@@ -1,8 +1,11 @@
 package model_attacker;
 
+import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import logic.Gamelogic;
 import model_defender.Defender;
+import model_general.Board;
 
 public class Bot4 extends Attacker{
 	
@@ -50,6 +53,44 @@ public class Bot4 extends Attacker{
         defender.chekdestroyed(); //temp
         currentATKTick=0;
         
+	}
+	@Override
+	public void update() {
+		// UPGRADING
+		//need decent moving algorithm
+		ColliedwithAttacker();
+		if(ColliedwithDefender()) {
+			 return;
+		}
+		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
+			if(currentTarget instanceof model_defender.HQ)
+				foward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
+			else
+				foward((currentTarget.getPosX()+Board.BOARD_WIDTH/2)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
+			//System.out.println("Save time");
+		}
+		else {
+			double min = 999999999;
+			double walkX = 0,walkY = 0;
+			for(Defender defender: Gamelogic.getDefendercontainer()) {
+				if(!(defender instanceof model_defender.Wall))
+					continue;
+				double dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
+				if(dist < min) {
+					min = dist;
+					currentTarget = defender;
+					walkX = (defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX();
+					walkY = (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY();
+					if(defender instanceof model_defender.HQ) {
+						//System.out.println("HQ " +walkX +" "+ walkY +" " + Board.BOARD_WIDTH+" "+Board.BOARD_HEIGHT);
+						walkX = (defender.getPosX()+Board.BOARD_WIDTH)-getPosX();
+						walkY = (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY();
+						//System.out.println("HQ2 " +walkX +" "+ walkY);
+					}
+				}
+			}
+			foward(walkX,walkY);
+		}
 	}
 
 }

@@ -75,7 +75,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 				double dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
 				if(defender instanceof model_defender.HQ) {
 					dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY());
-					dist *= 0.7; //HQ High Priority
+					dist *= 0.6; //HQ High Priority
 				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;

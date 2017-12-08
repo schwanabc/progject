@@ -13,7 +13,7 @@ public class Bot2 extends Attacker{
 		this.ATK=40;
 		this.DEF=5;
 		this.RADIUS=4;
-		this.speed=5;
+		this.speed=4;
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=100;
 		this.MaxHP=HP;

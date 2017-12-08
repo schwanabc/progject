@@ -28,7 +28,7 @@ public class Board implements IRenderable {
 	public static double HQPOSX;
 	public static double HQPOSY;
 	private static boolean Iswin;
-	private static int[] DefaultMoney= {1500,3000};
+	private static int[] DefaultMoney= {1500,5000};
 	private static int DefaultNumboard=0;
 	private static int Numboard=0;
 	private static int Money;
