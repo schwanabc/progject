@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import logic.Gamestate;
 import model_general.Board;
@@ -21,12 +22,10 @@ public class Menubar extends VBox{
 	public static double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
 	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Aaargh.ttf");
 	private static InputStream fontStream2 = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
-	private static final Font TEXT_FONT = Font.loadFont(fontStream, 20);
+	private static final Font TEXT_FONT = Font.loadFont(fontStream,20);
 	private static final Font TIME_TEXT_FONT = Font.loadFont(fontStream2, 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
-	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
-	private static Image PressedButtonBackground=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
 	public static double ICONPOS;
 	public static double ICONHEIGHT;
 	public static double ICONWIDTH;
@@ -62,7 +61,7 @@ public class Menubar extends VBox{
 			{
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
-				gc.drawImage(ReleaseButtonBackground,0,0, ICONWIDTH, ICONHEIGHT);
+				gc.drawImage(RenderableHolder.ReleaseButton,0,0, ICONWIDTH, ICONHEIGHT);
 				gc.setFont(TEXT_FONT);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
@@ -80,10 +79,12 @@ public class Menubar extends VBox{
 			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 		else {
 			if(i == 0 && j == 0){
-				gc.fillText("Normal\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Normal\n\n\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Armed_Peasant, ICONWIDTH*0.3, ICONHEIGHT*0.35, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 0 && j == 1){
-				gc.fillText("Tank\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Tank\n\n\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Footman, ICONWIDTH*0.3, ICONHEIGHT*0.35, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 0){
 				gc.fillText("Fast\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
@@ -170,12 +171,13 @@ public class Menubar extends VBox{
 		else InputUtility.currentChosed ="x";
 	}
 	private void setClick(GraphicsContext gc,int row,int column) {
-		gc.drawImage(PressedButtonBackground, 0, 0, ICONWIDTH, ICONHEIGHT);
+		RenderableHolder.Clickedsound.play();
+		gc.drawImage(RenderableHolder.PressButton, 0, 0, ICONWIDTH, ICONHEIGHT);
 		Filltext(gc,row,column);
 	}
 	private void setUnClick(GraphicsContext gc,int row,int column) {
-		
-		gc.drawImage(ReleaseButtonBackground, 0, 0, ICONWIDTH, ICONHEIGHT);
+		//RenderableHolder.Clickedmenu.play();
+		gc.drawImage(RenderableHolder.ReleaseButton, 0, 0, ICONWIDTH, ICONHEIGHT);
 		Filltext(gc,row,column);
 	}
 	

@@ -17,7 +17,10 @@ public class RenderableHolder {
 	public static Image Footman;
 	public static Image StoneTile;
 	public static Image stripe;
+	public static Image ReleaseButton;
+	public static Image PressButton;
 	public static AudioClip Clickedsound; 
+	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
 	public static AudioClip Attack_sword;
 	private ArrayList<IRenderable> entities;
@@ -45,9 +48,13 @@ public class RenderableHolder {
 	    Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
+	    Clickedmenu=new AudioClip(ClassLoader.getSystemResource("buttonmenu.wav").toString());
 	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
 		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
 		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
+		ReleaseButton=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
+		PressButton=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
+
 	}
 	public void add(IRenderable entity)
 	{
