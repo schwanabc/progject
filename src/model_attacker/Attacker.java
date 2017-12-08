@@ -144,17 +144,28 @@ public abstract class Attacker extends Entity implements Ismovable{
 					
 					if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1) && Math.hypot(x0-x1, y0-y1)!=0)
 					{
+						
 						Random rand = new Random();
-						int  n = rand.nextInt(2) + 1;
+						int  n = rand.nextInt(4) + 1;
 						if(n%2==0)
 						{
 							attacker.foward(-1*(x0-x1+0.01),-1*(y0-y1));
 							if(attacker.ColliedwithDefender())attacker.foward((x0-x1+0.01),(y0-y1));
 						}
-						else
+						else if(n%2==1)
 						{
 							attacker.foward(-1*(x0-x1-0.01),-1*(y0-y1));
 							if(attacker.ColliedwithDefender())attacker.foward((x0-x1-0.01),(y0-y1));
+						}
+						else if(n%2==2)
+						{
+							attacker.foward(-1*(x0-x1),-1*(y0-y1-0.01));
+							if(attacker.ColliedwithDefender())attacker.foward((x0-x1),(y0-y1-0.01));
+						}
+						else if(n%2==3)
+						{
+							attacker.foward(-1*(x0-x1),-1*(y0-y1+0.01));
+							if(attacker.ColliedwithDefender())attacker.foward((x0-x1),(y0-y1+0.01));
 						}
 					}
 			}
@@ -166,10 +177,13 @@ public abstract class Attacker extends Entity implements Ismovable{
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
-		gc.setFill(Color.LIGHTGREEN);
-		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS-3, DIAMETER, 4);
+		gc.setFill(Color.DARKGREEN);
+		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS, DIAMETER-1, 4);
 		gc.setFill(Color.ORANGERED);
-		if(ratio!=1)gc.fillRect(posX-RADIUS+DIAMETER*(ratio), posY-RADIUS-3, DIAMETER*(1-ratio), 4);
+		if(ratio!=1)gc.fillRect(posX-RADIUS+DIAMETER*(ratio)-0.3, posY-RADIUS, DIAMETER*(1-ratio), 4);
+
+		gc.setStroke(Color.BLACK);
+		if(ratio!=1)gc.strokeRect(posX-RADIUS, posY-RADIUS, DIAMETER-1, 4);
 	}
 	protected void Attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();

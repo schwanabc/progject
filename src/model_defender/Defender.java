@@ -20,10 +20,12 @@ public abstract class Defender extends Entity {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
-		gc.setFill(Color.LIGHTGREEN);
+		gc.setFill(Color.DARKGREEN);
 		if(ratio!=1)gc.fillRect(posX, posY, Wallwidth, 4);
 		gc.setFill(Color.ORANGERED) ;
 		if(ratio!=1)gc.fillRect(posX+Wallwidth*(ratio), posY, Wallwidth*(1-ratio), 4);
+		gc.setStroke(Color.BLACK);
+		if(ratio!=1)gc.strokeRect(posX, posY, Wallwidth, 4);
 	}
 	 //UPGRADING BOT
 	public double getWallwidth() {

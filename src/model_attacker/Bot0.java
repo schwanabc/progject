@@ -13,7 +13,7 @@ public class Bot0 extends Attacker{
 		super(posX,posY);
 		this.ATK=35;
 		this.DEF=5;
-		this.RADIUS=7;
+		this.RADIUS=8;
 		this.speed=2;
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=150;
@@ -32,7 +32,7 @@ public class Bot0 extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(Armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
+		gc.drawImage(Armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 

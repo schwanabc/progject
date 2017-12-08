@@ -14,7 +14,8 @@ import javafx.scene.text.TextAlignment;
 import logic.Gamestate;
 import model_general.Board;
 public class Menubar extends VBox{
-	public static double MENU_WIDTH,MENU_HEIGHT;
+	public static double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
+	public static double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
 	private static final Font TEXT_FONT = new Font("Monospace", 20);
 	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
 	private static final int VTAB=4;
@@ -31,14 +32,12 @@ public class Menubar extends VBox{
 	private Gamestate Gamestate;
 	private Canvas Menucanvas;
 	private boolean isReset;
-	public Menubar(double SCREEN_WIDTH, double SCREEN_HEIGHT)
+	public Menubar()
 	{
 		isReset=false;
 		choseRow=-1;
 		choseColumn=-1;
 		Gamestate=new Gamestate();
-		MENU_WIDTH=SCREEN_WIDTH;
-		MENU_HEIGHT=SCREEN_HEIGHT;
 		ICONPOS= MENU_HEIGHT*0.2;
 		ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
 		ICONWIDTH=MENU_WIDTH/HTAB;

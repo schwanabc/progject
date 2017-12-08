@@ -15,12 +15,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class GameScreen extends Canvas{
-	public static double GAMESCREEN_WIDTH=SceneManager.SCREEN_WIDTH*0.75;
 	public static double GAMESCREEN_HEIGHT=SceneManager.SCREEN_HEIGHT;
+	public static double GAMESCREEN_WIDTH=GAMESCREEN_HEIGHT;
 	
 	public GameScreen()
 	{
 		super(GAMESCREEN_WIDTH,GAMESCREEN_HEIGHT);
+		System.out.println(GAMESCREEN_WIDTH);
+		System.out.println(GAMESCREEN_HEIGHT);
 		this.setVisible(true);
 		addListerner();
 	}

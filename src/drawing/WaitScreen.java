@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import Button.ExitButton;
 import Button.MenuButton;
+import Button.NormalButton;
 import Button.PlayButton;
 import Button.ReplayButton;
 import Scenemanager.SceneManager;
@@ -39,11 +40,11 @@ public class WaitScreen extends Pane{
 		gc.drawImage(Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back.relocate(0, 0);
 		Play=new PlayButton("Next Stage");
-		Play.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.4);	
+		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);	
 		Replay=new ReplayButton("Play Again");
-		Replay.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.6);
+		Replay.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.6);
 		Exit=new ExitButton("Exit");
-		Exit.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.8);
+		Exit.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.8);
 		Title=new Label(WAIT_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);

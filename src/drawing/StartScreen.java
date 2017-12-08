@@ -3,6 +3,7 @@ package drawing;
 import java.util.concurrent.TimeUnit;
 
 import Button.ExitButton;
+import Button.NormalButton;
 import Button.PlayButton;
 import Scenemanager.SceneManager;
 import Utility.Utility;
@@ -35,9 +36,9 @@ public class StartScreen extends Pane{
 		gc.drawImage(Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back.relocate(0, 0);
 		Play=new PlayButton("Play");
-		Play.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.4);	
+		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);	
 		Exit=new ExitButton("Exit");
-		Exit.relocate(SceneManager.SCREEN_WIDTH*0.3, SceneManager.SCREEN_HEIGHT*0.6);
+		Exit.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.6);
 		Gametitle=new Label(SceneManager.GAMENAME);
 		Gametitle.setFont(TEXT_FONT);
 		Gametitle.setTextFill(Color.RED);
