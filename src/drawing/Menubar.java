@@ -1,6 +1,7 @@
 package drawing;
 
 import Input.InputUtility;
+import SharedObject.RenderableHolder;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -135,6 +136,7 @@ public class Menubar extends VBox{
 	}
 
 	private void setHover(GraphicsContext gc,int row,int column) {
+		RenderableHolder.Buttonhover.play();
 		ColorAdjust colorAdjust=new ColorAdjust();
 		colorAdjust.setBrightness(0.2);
 		menu[row][column].setEffect(colorAdjust);

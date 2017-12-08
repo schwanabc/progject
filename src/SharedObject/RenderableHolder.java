@@ -19,6 +19,7 @@ public class RenderableHolder {
 	public static Image stripe;
 	public static AudioClip Clickedsound; 
 	public static AudioClip Buttonhover;
+	public static AudioClip Attack_sword;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -43,6 +44,7 @@ public class RenderableHolder {
 		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
 	    Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
+	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
 	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
 		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
 		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	

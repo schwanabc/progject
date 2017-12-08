@@ -2,6 +2,7 @@ package model_attacker;
 
 import java.util.Random;
 
+import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -190,6 +191,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(downHP<0)downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp
         defender.chekdestroyed(); //temp
+        RenderableHolder.Attack_sword.setVolume(0.1);
+        RenderableHolder.Attack_sword.play();
         currentATKTick=0;
 	}
 	public double getRADIUS() {

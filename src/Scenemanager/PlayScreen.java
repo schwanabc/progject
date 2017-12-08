@@ -52,8 +52,6 @@ public class PlayScreen extends HBox{
 	}
 	private void Initialize() {
 		// TODO Auto-generated method stub
-		//this.setSpacing(10);
-		//this.setPadding(new Insets(5,5,5,5));
 		FillMiscscreen();
 		gamescreen=new GameScreen();
 		menubar=new Menubar();
