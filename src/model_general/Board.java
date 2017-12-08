@@ -77,6 +77,11 @@ public class Board implements IRenderable {
 				}
 			}
 	}
+	public static int getTowerAttack(int posX,int posY) {
+		//Not finish
+		int towerATK = 0;
+		return towerATK;
+	}
 	public void setboard() {
 		// TODO Auto-generated method stub
 		for(int i=0;i<BOARD_ROW;i++)

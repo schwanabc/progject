@@ -11,14 +11,14 @@ public class Bot0 extends Attacker{
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=35;
+		this.ATK=30;
 		this.DEF=5;
 		this.RADIUS=8;
 		this.speed=2;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=150;
+		this.HP=100;
 		this.MaxHP=HP;
-		this.AttackTick=25;
+		this.AttackTick=30;
 		this.currentATKTick=AttackTick;
 		this.WallPriority=10;
 		this.TowerPriority=10;
