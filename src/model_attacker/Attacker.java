@@ -11,6 +11,9 @@ import javafx.scene.shape.Rectangle;
 import logic.Gamelogic;
 import logic.Ismovable;
 import model_defender.Defender;
+import model_defender.HQ;
+import model_defender.Tower;
+import model_defender.Wall;
 import model_general.Board;
 import model_general.Entity;
 
@@ -23,23 +26,84 @@ public abstract class Attacker extends Entity implements Ismovable{
 	protected model_defender.Defender currentTarget;
 	protected static int HiringCost;
 	protected static int MinCost=50;
+	protected int posXOnBoard,posYOnBoard;
+	protected int boardDMG[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
+	protected boolean boardVisited[][] = new boolean[Board.BOARD_ROW][Board.BOARD_COLUMN];
+	protected int lastRow[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
+	protected int lastColumn[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
 		this.posX=posX;
 		this.posY=posY;
+		posXOnBoard = (int) (posX/Board.BOARD_WIDTH);
+		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
+		//HQPOSY/BOARD_HEIGHT-1;
+		//HQPOSX/BOARD_WIDTH-1*;
+		//System.out.println(posXOnBoard+" "+posYOnBoard);
+		int inQueueX[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
+		int inQueueY[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
+		int queueFront = 0,queueLastPos = 1;
+		boardVisited[posXOnBoard][posYOnBoard] = false;
+		inQueueX[0] = posXOnBoard;
+		inQueueY[0] = posYOnBoard;
+		while(queueFront != queueLastPos) {
+			int nowX = inQueueX[queueFront];
+			int nowY = inQueueY[queueFront];
+			queueFront++;
+			if(Board.getBoard(nowX, nowY) == 3) {
+				break;
+			}
+			if(nowX != 0 && boardVisited[nowX-1][nowY]) {
+				inQueueX[queueLastPos] = nowX-1;
+				inQueueY[queueLastPos] = nowY;
+				boardVisited[nowX-1][nowY] = false;
+				lastRow[nowX-1][nowY] = nowX;
+				lastColumn[nowX-1][nowY] = nowY;
+				boardDMG[nowX-1][nowY] = Board.getTowerAttack(nowX-1,nowY);
+				queueLastPos++;
+			}
+			if(nowY != 0 && boardVisited[nowX][nowY-1]) {
+				inQueueX[queueLastPos] = nowX;
+				inQueueY[queueLastPos] = nowY-1;
+				boardVisited[nowX][nowY-1] = false;
+				lastRow[nowX][nowY-1] = nowX;
+				lastColumn[nowX][nowY-1] = nowY;
+				boardDMG[nowX][nowY-1] = Board.getTowerAttack(nowX,nowY-1);
+				queueLastPos++;
+			}
+			if(nowX+1 != Board.BOARD_ROW && boardVisited[nowX+1][nowY]) {
+				inQueueX[queueLastPos] = nowX+1;
+				inQueueY[queueLastPos] = nowY;
+				boardVisited[nowX+1][nowY] = false;
+				lastRow[nowX+1][nowY] = nowX;
+				lastColumn[nowX+1][nowY] = nowY;
+				boardDMG[nowX+1][nowY] = Board.getTowerAttack(nowX+1,nowY);
+				queueLastPos++;
+			}
+			if(nowY+1 != Board.BOARD_COLUMN && boardVisited[nowX][nowY+1]) {
+				inQueueX[queueLastPos] = nowX;
+				inQueueY[queueLastPos] = nowY+1;
+				boardVisited[nowX][nowY+1] = false;
+				lastRow[nowX][nowY+1] = nowX;
+				lastColumn[nowX][nowY+1] = nowY;
+				boardDMG[nowX][nowY+1] = Board.getTowerAttack(nowX,nowY+1);
+				queueLastPos++;
+			}
+		}
 		currentTarget = null;
 	}
 	@Override
 	public void foward(double xAxis,double yAxis)
 	{
 		double Calibrator=Math.abs(xAxis)+Math.abs(yAxis);
-		posX+=Calibrate(xAxis,Calibrator)*speed;
-		posY+=Calibrate(yAxis,Calibrator)*speed;
+		posX += Calibrate(xAxis,Calibrator)*speed;
+		posY += Calibrate(yAxis,Calibrator)*speed;
 	}
 	@Override
 	public double Calibrate(double velocity, double speed) {
-		if(speed!=0)return velocity/speed;
+		if(speed != 0)
+			return velocity/speed;
 		else return 0;
 	}
 	@Override
@@ -62,6 +126,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(ColliedwithDefender()) {
 			 return;
 		}
+		/*
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
 			if(currentTarget instanceof model_defender.HQ)
 				foward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
@@ -91,8 +156,9 @@ public abstract class Attacker extends Entity implements Ismovable{
 					}
 				}
 			}
-			foward(walkX,walkY);
+			//foward(walkX,walkY);
 		}
+			*/
 	}
 	protected boolean ColliedwithDefender()
 	{
@@ -201,5 +267,4 @@ public abstract class Attacker extends Entity implements Ismovable{
 	public static int getMinCost() {
 		return MinCost;
 	}
-
 }
