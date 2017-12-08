@@ -1,5 +1,7 @@
 package drawing;
 
+import java.io.InputStream;
+
 import Input.InputUtility;
 import SharedObject.RenderableHolder;
 import javafx.geometry.VPos;
@@ -17,8 +19,10 @@ import model_general.Board;
 public class Menubar extends VBox{
 	public static double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
 	public static double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
-	private static final Font TEXT_FONT = new Font("Monospace", 20);
-	private static final Font TIME_TEXT_FONT = new Font("Monospace", 20);
+	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Aaargh.ttf");
+	private static InputStream fontStream2 = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
+	private static final Font TEXT_FONT = Font.loadFont(fontStream, 20);
+	private static final Font TIME_TEXT_FONT = Font.loadFont(fontStream2, 20);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
 	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
@@ -73,28 +77,28 @@ public class Menubar extends VBox{
 	private void Filltext(GraphicsContext gc,int i, int j) {
 		// TODO Auto-generated method stub
 		if(i+1==VTAB&& j+1==HTAB)
-			gc.fillText("RESET", ICONWIDTH*0.5,ICONHEIGHT*0.5);
+			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 		else {
 			if(i == 0 && j == 0){
-				gc.fillText("NORMAL\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Normal\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 0 && j == 1){
-				gc.fillText("TANK\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Tank\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 1 && j == 0){
-				gc.fillText("FAST\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Fast\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 1 && j == 1){
-				gc.fillText("DESTROY\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Destroy\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 2 && j == 0){
-				gc.fillText("WALL\nBOMBER\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Wall\nBomber\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 2 && j == 1){
-				gc.fillText("HQ ATK\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("HQ\nAttack\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 3 && j == 0){
-				gc.fillText("BOSS\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Boss\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 		}
 	}
@@ -179,7 +183,7 @@ public class Menubar extends VBox{
 	{
 		gc.setFill(Color.ALICEBLUE);
 		gc.fillRect(0, 0, MENU_WIDTH, ICONPOS);
-		gc.setFont(TEXT_FONT);
+		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.BOTTOM);
 		gc.setFill(Color.BLACK);
@@ -202,8 +206,8 @@ public class Menubar extends VBox{
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.LEFT);
 		gc.setTextBaseline(VPos.TOP);
-		gc.fillText("Money: "+Board.getMoney(), 5, ICONPOS*0.5);
-		gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 5, ICONPOS*0.7);
+		gc.fillText("Money: "+Board.getMoney(), 10, ICONPOS*0.5);
+		gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 10, ICONPOS*0.7);
 		gc.setTextAlign(TextAlignment.LEFT);
 		Long sec=Gamestate.getsecond();
 		String second=sec.toString();

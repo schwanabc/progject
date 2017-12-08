@@ -1,5 +1,6 @@
 package drawing;
 
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 import Button.ExitButton;
@@ -24,7 +25,8 @@ public class StartScreen extends Pane{
 	private PlayButton Play;
 	private ExitButton Exit;
 	private Label Gametitle;
-	private static final Font TEXT_FONT = new Font("Monospace", 80);
+	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf");
+	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public StartScreen()
 	{
 		System.out.println("startscreen");
@@ -41,7 +43,7 @@ public class StartScreen extends Pane{
 		Exit.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.6);
 		Gametitle=new Label(SceneManager.GAMENAME);
 		Gametitle.setFont(TEXT_FONT);
-		Gametitle.setTextFill(Color.RED);
+		Gametitle.setTextFill(Color.CORAL);
 		Gametitle.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Back,Play,Exit,Gametitle);
 	}
