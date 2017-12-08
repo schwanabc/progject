@@ -8,6 +8,7 @@ import Button.NormalButton;
 import Button.PlayButton;
 import Button.ReplayButton;
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import Utility.Utility;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -21,7 +22,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class WaitScreen extends Pane{
-	private static final Image Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());	
 	private Canvas Back;
 	private PlayButton Play;
 	private ExitButton Exit;
@@ -37,7 +37,7 @@ public class WaitScreen extends Pane{
 		GraphicsContext gc=Back.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		gc.drawImage(Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		gc.drawImage(RenderableHolder.Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back.relocate(0, 0);
 		Play=new PlayButton("Next Stage");
 		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);	

@@ -1,12 +1,12 @@
 package model_attacker;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Bot1 extends Attacker{
 	
-	private static Image Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
 
 	public Bot1(double posX,double posY)
 	{
@@ -33,7 +33,7 @@ public class Bot1 extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(Footman, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
+		gc.drawImage(RenderableHolder.Footman, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
 		drawHPbar(gc);
 	}
 

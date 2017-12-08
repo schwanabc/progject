@@ -1,6 +1,7 @@
 package Button;
 
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
 import model_general.Board;
 
@@ -14,6 +15,7 @@ public class ReplayButton extends NormalButton{
 	protected void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
+			RenderableHolder.Buttonhover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -26,6 +28,7 @@ public class ReplayButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.Clickedsound.play();
 				Board.decreaseNumboard();
 				SceneManager.gotoPlayScreen();
 				}

@@ -4,13 +4,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 import model_defender.Defender;
 import model_defender.HQ;
 import model_general.Board;
 public class RenderableHolder {
+	public static Image ReleaseButtonBackground;	
+	public static Image PressedButtonBackground;
+	public static Image Background;
+	public static Image Armed_Peasant;
+	public static Image Footman;
+	public static Image StoneTile;
+	public static Image stripe;
+	public static AudioClip Clickedsound; 
+	public static AudioClip Buttonhover;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
+	static
+	{
+		Loadresource();
+	};
 	RenderableHolder()
 	{
 		entities=new ArrayList<IRenderable>();
@@ -20,6 +35,17 @@ public class RenderableHolder {
 				return 1;
 			return -1;
 		};
+	}
+	public static void Loadresource() {
+		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
+		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
+	    Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());
+		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
+	    Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
+	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
+	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
+		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
+		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
 	}
 	public void add(IRenderable entity)
 	{

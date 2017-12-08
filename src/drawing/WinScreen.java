@@ -7,6 +7,7 @@ import Button.MenuButton;
 import Button.NormalButton;
 import Button.ReplayButton;
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import Utility.Utility;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -20,7 +21,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class WinScreen extends Pane{
-	private static final Image Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());	
 	private Canvas Back;
 	private ExitButton Exit;
 	private ReplayButton Replay;
@@ -36,7 +36,7 @@ public class WinScreen extends Pane{
 		GraphicsContext gc=Back.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		gc.drawImage(Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
+		gc.drawImage(RenderableHolder.Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back.relocate(0, 0);
 		Replay=new ReplayButton("Play Again");
 		Replay.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);

@@ -3,6 +3,7 @@ package model_general;
 import Input.InputUtility;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
+import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -32,10 +33,6 @@ public class Board implements IRenderable {
 	private static int DefaultNumboard=0;
 	private static int Numboard=0;
 	private static int Money;
-//	private static Image grass1=new Image(ClassLoader.getSystemResource("grass_1.png").toString());
-//	private static Image bush=new Image(ClassLoader.getSystemResource("bush.png").toString());
-	private static Image StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
-	private static Image stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
 	private static int board[][];
 	private static int[][] accessibleboard;
@@ -111,9 +108,9 @@ public class Board implements IRenderable {
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 				if(accessibleboard[i][j]==1)
 				{
-					gc.drawImage(StoneTile, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.drawImage(RenderableHolder.StoneTile, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 					gc.setGlobalAlpha(0.15);
-					gc.drawImage(stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
+					gc.drawImage(RenderableHolder.stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
 					gc.setGlobalAlpha(1);
 					
 				}

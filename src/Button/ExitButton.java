@@ -1,6 +1,7 @@
 package Button;
 
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
 
 public class ExitButton extends NormalButton{
@@ -13,6 +14,7 @@ public class ExitButton extends NormalButton{
 	protected void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
+			RenderableHolder.Buttonhover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -25,6 +27,7 @@ public class ExitButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.Clickedsound.play();
 				System.exit(0);
 				}
 		});

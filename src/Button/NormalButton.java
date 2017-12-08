@@ -4,6 +4,7 @@ import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import Utility.Utility;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,13 +23,12 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 public class NormalButton extends Canvas{
 	protected static final Font BUTTON_FONT = new Font("Monospace", 48);
-	private static Image ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
-	private static Image PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());	
 	protected ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=400;
 	public static final double BUTTON_HEIGHT=100;
@@ -37,7 +37,7 @@ public class NormalButton extends Canvas{
 		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(ReleaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		gc.drawImage(RenderableHolder.ReleaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 		gc.setFont(BUTTON_FONT);
 		gc.setTextBaseline(VPos.CENTER);
 		gc.fillText(text,Utility.TextStartWidht(BUTTON_WIDTH,Utility.getFont_width(text,gc.getFont())), BUTTON_HEIGHT/2);
@@ -47,6 +47,7 @@ public class NormalButton extends Canvas{
 	protected void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
+			RenderableHolder.Buttonhover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -59,6 +60,7 @@ public class NormalButton extends Canvas{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.Clickedsound.play();
 				SceneManager.gotoPlayScreen();
 				}
 		});
