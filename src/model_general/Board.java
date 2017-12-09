@@ -92,7 +92,7 @@ public class Board implements IRenderable {
 				if(board[i][j]!=0)
 				{
 					int range=2;
-					if(board[i][j]==3)range++; //HQ
+					if(board[i][j]==3)range+=3; //HQ
 					for(int k=-1*2;k<=range;k++)
 					{
 						for(int l=-1*2;l<=range;l++)
@@ -146,8 +146,8 @@ public class Board implements IRenderable {
 				}
 				if(board[i][j]==3)//HQ
 				{
-					HQPOSY=(i+1)*BOARD_HEIGHT;
-					HQPOSX=(j+1)*BOARD_WIDTH;
+					HQPOSY=(i+2)*BOARD_HEIGHT;
+					HQPOSX=(j+2)*BOARD_WIDTH;
 					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 			}
@@ -170,8 +170,12 @@ public class Board implements IRenderable {
 				}
 				if(board[i][j]==-1)
 				{
-					gc.setFill(Color.PURPLE);
-					gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+			
+					gc.drawImage(RenderableHolder.Rubble,BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.setGlobalAlpha(0.15);
+					gc.drawImage(RenderableHolder.stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
+					gc.setGlobalAlpha(1);
+
 				}
 				if(accessibleboard[i][j]==0)
 				{

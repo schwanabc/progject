@@ -30,6 +30,7 @@ public class WinScreen extends Pane{
 	private static final Font TEXT_FONT = new Font("Monospace", 80);
 	public WinScreen()
 	{
+		RenderableHolder.Victory.play();
 		System.out.println("Winscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back=new Canvas(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);

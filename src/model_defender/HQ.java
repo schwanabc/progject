@@ -1,5 +1,6 @@
 package model_defender;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_general.Board;
@@ -13,8 +14,8 @@ public class HQ extends Defender{
 		this.setHP(5000);
 		this.MaxHP=getHP();
 		this.Shootrange=0;
-		this.Wallwidth=Board.BOARD_WIDTH*2;
-		this.Wallheight=Board.BOARD_HEIGHT*2;
+		this.Wallwidth=Board.BOARD_WIDTH*4;
+		this.Wallheight=Board.BOARD_HEIGHT*4;
 	}
 	@Override
 	public int getZ() {
@@ -25,8 +26,7 @@ public class HQ extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLACK);
-		gc.fillRect(posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.HQ, posX-5, posY-5, Wallwidth+5, Wallheight+10);
 		drawHPbar(gc);
 	}
 

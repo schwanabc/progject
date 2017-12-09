@@ -63,6 +63,7 @@ public class NormalButton extends Canvas{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.StopAudio();
 				RenderableHolder.Clickedsound.play();
 				SceneManager.gotoPlayScreen();
 				}

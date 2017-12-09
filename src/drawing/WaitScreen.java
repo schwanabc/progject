@@ -31,6 +31,7 @@ public class WaitScreen extends Pane{
 	private static Font TEXT_FONT = new Font("Monospace", 80);
 	public WaitScreen()
 	{
+		RenderableHolder.Victory.play();
 		System.out.println("Waitscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		Back=new Canvas(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);

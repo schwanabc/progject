@@ -70,7 +70,6 @@ public class PlayScreen extends HBox{
 	}
 	private void Resetgame() {
 		//Dont use gotoplayscreen,as it will make the game blink
-		RenderableHolder.StopAudio();
 		RenderableHolder.getInstance().reboot();
 		Gamelogic=new Gamelogic();
 		menubar.setdefault();
@@ -99,6 +98,7 @@ public class PlayScreen extends HBox{
 		// TODO Auto-generated method stub
 		if(menubar.getGamestate().isWin())
 		{
+			RenderableHolder.StopAudio();
 			System.out.println("win");
 			Board.addNumboard();
 			menubar.getGamestate().EndTimethread();
