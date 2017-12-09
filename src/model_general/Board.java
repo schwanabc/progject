@@ -79,7 +79,7 @@ public class Board implements IRenderable {
 	}
 	public static int getTowerAttack(int posX,int posY) {
 		//Not finish
-		int towerATK = 0;
+		int towerATK = 1;
 		return towerATK;
 	}
 	public void setboard() {

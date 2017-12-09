@@ -26,11 +26,13 @@ public abstract class Attacker extends Entity implements Ismovable{
 	protected model_defender.Defender currentTarget;
 	protected static int HiringCost;
 	protected static int MinCost=50;
-	protected int posXOnBoard,posYOnBoard;
+	protected int posXOnBoard,posYOnBoard,countPathLength;
 	protected int boardDMG[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	protected boolean boardVisited[][] = new boolean[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	protected int lastRow[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	protected int lastColumn[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
+	protected int posToGoX[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
+	protected int posToGoY[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
 	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
@@ -40,7 +42,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
 		//HQPOSY/BOARD_HEIGHT-1;
 		//HQPOSX/BOARD_WIDTH-1*;
-		//System.out.println(posXOnBoard+" "+posYOnBoard);
+		System.out.println("Start Pos " +posXOnBoard+" "+posYOnBoard);
 		int inQueueX[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int inQueueY[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int queueFront = 0,queueLastPos = 1;
@@ -65,7 +67,25 @@ public abstract class Attacker extends Entity implements Ismovable{
 			int nowX = inQueueX[queueFront];
 			int nowY = inQueueY[queueFront];
 			queueFront++;
-			if(Board.getBoard(nowX, nowY) == 3) {
+			if(Board.getBoard(nowX, nowY) == 3) { //HQ
+				countPathLength = 0;
+				for(int i=0;i<Board.BOARD_ROW;i++) {
+					for(int j=0;j<Board.BOARD_COLUMN;j++) {
+						System.out.print(boardDMG[j][i]+" ");
+					}
+					System.out.printf("\n");
+				}
+				while(nowX != posXOnBoard || nowY != posYOnBoard) {
+					System.out.println(nowX +" "+ nowY);
+					posToGoX[countPathLength] = nowX;
+					posToGoY[countPathLength] = nowY;
+					countPathLength++;
+					int tempX = lastRow[nowX][nowY];
+					int tempY = lastColumn[nowX][nowY];
+					nowX = tempX;
+					nowY = tempY;
+				}
+				countPathLength--;
 				break;
 			}
 			if(nowX != 0 && !boardVisited[nowX-1][nowY]) {
@@ -79,6 +99,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 			}
 			else if(nowX != 0 && boardDMG[nowX-1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY)) {
 				boardDMG[nowX-1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY);
+				lastRow[nowX-1][nowY] = nowX;
+				lastColumn[nowX-1][nowY] = nowY;
 			}
 			if(nowY != 0 && !boardVisited[nowX][nowY-1]) {
 				inQueueX[queueLastPos] = nowX;
@@ -91,6 +113,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 			}
 			else if(nowY != 0 && boardDMG[nowX][nowY-1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1)) {
 				boardDMG[nowX][nowY-1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1);
+				lastRow[nowX][nowY-1] = nowX;
+				lastColumn[nowX][nowY-1] = nowY;
 			}
 			if(nowX+1 != Board.BOARD_ROW && !boardVisited[nowX+1][nowY]) {
 				inQueueX[queueLastPos] = nowX+1;
@@ -103,6 +127,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 			}
 			else if(nowX+1 != Board.BOARD_ROW && boardDMG[nowX+1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY)) {
 				boardDMG[nowX+1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY);
+				lastRow[nowX+1][nowY] = nowX;
+				lastColumn[nowX+1][nowY] = nowY;
 			}
 			if(nowY+1 != Board.BOARD_COLUMN && !boardVisited[nowX][nowY+1]) {
 				inQueueX[queueLastPos] = nowX;
@@ -115,10 +141,11 @@ public abstract class Attacker extends Entity implements Ismovable{
 			}
 			else if(nowY+1 != Board.BOARD_COLUMN && boardDMG[nowX][nowY+1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1)) {
 				boardDMG[nowX][nowY+1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1);
+				lastRow[nowX][nowY+1] = nowX;
+				lastColumn[nowX][nowY+1] = nowY;
 			}
 			//System.out.println(nowX + " " + nowY);
 		}
-		currentTarget = null;
 	}
 	@Override
 	public void foward(double xAxis,double yAxis)
@@ -154,6 +181,21 @@ public abstract class Attacker extends Entity implements Ismovable{
 			 return;
 		}
 		
+		
+		if(countPathLength >= 0) {
+			double walkX = posToGoX[countPathLength]*Board.BOARD_WIDTH-getPosX();
+			double walkY = posToGoY[countPathLength]*Board.BOARD_HEIGHT-getPosY();
+			if(walkX <= 10 && walkY <= 10) {
+				countPathLength--;
+			}
+			foward(walkX,walkY);
+		}
+		else {
+			double walkX = Board.HQPOSX-getPosX();
+			double walkY = Board.HQPOSY-getPosY();
+			foward(walkX,walkY);
+		}
+		/*
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
 			if(currentTarget instanceof model_defender.HQ)
 				foward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
@@ -169,6 +211,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 				if(defender instanceof model_defender.HQ) {
 					dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT)-getPosY());
 					dist *= 0.6; //HQ High Priority
+					dist -= 10;
 				}
 				if(dist < min && !(defender instanceof model_defender.Wall)) {
 					min = dist;
@@ -185,7 +228,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			}
 			foward(walkX,walkY);
 		}
-			
+		*/
 	}
 	protected boolean ColliedwithDefender()
 	{
