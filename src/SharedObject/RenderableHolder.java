@@ -21,6 +21,7 @@ public class RenderableHolder {
 	public static Image ReleaseButton;
 	public static Image PressButton;
 	public static Image HQ;
+	public static Image NormalTower;
 	public static AudioClip Clickedsound; 
 	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
@@ -64,6 +65,7 @@ public class RenderableHolder {
 		PressButton=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
 		Rubble=new Image(ClassLoader.getSystemResource("rubble.png").toString());
 		HQ=new Image(ClassLoader.getSystemResource("HQ.png").toString());
+		NormalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
 		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());

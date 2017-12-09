@@ -1,5 +1,6 @@
 package model_defender;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import logic.Gamelogic;
@@ -26,8 +27,7 @@ public class Tower extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.CRIMSON);
-		gc.fillRect(posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.NormalTower,posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 		
 		/*
