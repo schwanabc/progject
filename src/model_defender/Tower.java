@@ -97,6 +97,8 @@ public class Tower extends Defender{
 	private void shoot(double theta,int direction) {
 		// TODO Auto-generated method stub
 		//Gamelogic.addNewObject(new Weak_1(posX,posY));
+		RenderableHolder.Arrow.setVolume(0.05);
+		RenderableHolder.Arrow.play();
 		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
 	}
 	public int getZ() {

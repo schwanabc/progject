@@ -28,6 +28,7 @@ public class RenderableHolder {
 	public static AudioClip Attack_sword;
 	public static AudioClip BuildingCollapsed;
 	public static AudioClip Victory;
+	public static AudioClip Arrow;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -72,6 +73,7 @@ public class RenderableHolder {
 	    Clickedmenu=new AudioClip(ClassLoader.getSystemResource("buttonmenu.wav").toString());
 	    BuildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
 	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.wav").toString());
+	    Arrow=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
 	}
 	public void add(IRenderable entity)
 	{
