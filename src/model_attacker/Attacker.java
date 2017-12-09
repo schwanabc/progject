@@ -67,11 +67,18 @@ public abstract class Attacker extends Entity implements Ismovable{
 			int nowX = inQueueX[queueFront];
 			int nowY = inQueueY[queueFront];
 			queueFront++;
-			if(Board.getBoard(nowX, nowY) == 3) { //HQ
+			
+			if(Board.getBoard(nowX,nowY) == -1)
+				System.out.println("Hole "+boardDMG[nowX][nowY]);
+			
+			if(Board.getBoard(nowX, nowY) == 3 || (nowX != 0 && nowY != 0 && Board.getBoard(nowX-1,nowY-1) == 3)) { //HQ
 				countPathLength = 0;
 				for(int i=0;i<Board.BOARD_ROW;i++) {
 					for(int j=0;j<Board.BOARD_COLUMN;j++) {
-						System.out.print(boardDMG[j][i]+" ");
+						if(Board.getBoard(i,j) == -1)
+							System.out.print("*"+boardDMG[i][j]+"* ");	
+						else
+							System.out.print(boardDMG[i][j]+" ");	
 					}
 					System.out.printf("\n");
 				}
@@ -183,16 +190,16 @@ public abstract class Attacker extends Entity implements Ismovable{
 		
 		
 		if(countPathLength >= 0) {
-			double walkX = posToGoX[countPathLength]*Board.BOARD_WIDTH-getPosX();
-			double walkY = posToGoY[countPathLength]*Board.BOARD_HEIGHT-getPosY();
-			if(walkX <= 10 && walkY <= 10) {
+			double walkX = posToGoX[countPathLength]*Board.BOARD_WIDTH+Board.BOARD_WIDTH/2-getPosX();
+			double walkY = posToGoY[countPathLength]*Board.BOARD_HEIGHT+Board.BOARD_HEIGHT/2-getPosY();
+			if(walkX <= 3 && walkY <= 3) {
 				countPathLength--;
 			}
 			foward(walkX,walkY);
 		}
 		else {
-			double walkX = Board.HQPOSX-getPosX();
-			double walkY = Board.HQPOSY-getPosY();
+			double walkX = Board.HQPOSX+Board.BOARD_WIDTH-getPosX();
+			double walkY = Board.HQPOSY+Board.BOARD_HEIGHT-getPosY();
 			foward(walkX,walkY);
 		}
 		/*

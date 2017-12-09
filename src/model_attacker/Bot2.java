@@ -2,6 +2,7 @@ package model_attacker;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import model_defender.Defender;
 
 public class Bot2 extends Attacker{
 
@@ -34,6 +35,19 @@ public class Bot2 extends Attacker{
 		gc.setFill(Color.RED);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
+	}
+	@Override
+	protected void Attack(Defender defender) {
+		double downHP=ATK-defender.getDEF();
+		if(defender instanceof model_defender.HQ){
+			downHP/=2;
+		}
+		if(downHP<0)
+			downHP=1;
+		defender.setHP(defender.getHP()-downHP);//temp
+        defender.chekdestroyed(); //temp
+        currentATKTick=0;
+        
 	}
 
 }

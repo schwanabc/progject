@@ -79,8 +79,24 @@ public class Board implements IRenderable {
 	}
 	public static int getTowerAttack(int posX,int posY) {
 		//Not finish
-		int towerATK = 1;
-		return towerATK;
+		int countTower = 0;
+		for(int i=0;i<BOARD_ROW;i++) {
+			for(int j=0;j<BOARD_COLUMN;j++) {
+				int diff = (posX-i>0)?(posX-i):(i-posX);
+				diff += (posY-j>0)?(posY-j):(j-posY);
+				if(board[i][j] == 2 && diff <= 5) {
+					countTower++;
+				}
+			}
+		}
+		int towerATK = countTower;
+		if(board[posX][posY] == 1)
+			towerATK *= 5000;
+		else if(board[posX][posY] == -1) {
+			System.out.println("Find Hole");
+			towerATK *= 0;
+		}
+		return towerATK+1;
 	}
 	public void setboard() {
 		// TODO Auto-generated method stub
