@@ -40,6 +40,13 @@ public class RenderableHolder {
 			return -1;
 		};
 	}
+	public static void StopAudio() {
+		Clickedsound.stop(); 
+		Clickedmenu.stop();
+		Buttonhover.stop();
+		Attack_sword.stop();
+		
+	}
 	public static void Loadresource() {
 		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());

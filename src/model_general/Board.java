@@ -1,5 +1,10 @@
 package model_general;
 
+
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.util.Scanner;
+
 import Input.InputUtility;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
@@ -37,17 +42,45 @@ public class Board implements IRenderable {
 	private static int board[][];
 	private static int[][] accessibleboard;
 	public Board()
-	{			
-		boarddata.fillboard();
+	{	
+
 		Numboard=DefaultNumboard;
 		Iswin=false; 
 		Money=DefaultMoney[Numboard];
 		try {
-		board=templateboard[Numboard];
+		board=ReadBoard(Numboard);
 		}
 		catch (java.lang.NullPointerException e) {System.out.println("NO board left"); }
 		fillacessibleboard();
 		setboard();
+	}
+	private int[][] ReadBoard(int Numboard) {
+		
+		int[][] tempboard=new int[BOARD_ROW][BOARD_COLUMN];
+			String fileName="/Stage_"+Integer.toString(Numboard)+".txt";
+			System.out.println("reading");
+			try {
+				Scanner in = new Scanner(new InputStreamReader(Files.class.getResourceAsStream(fileName)));
+				int numline=0;
+				System.out.println("readalbe");
+
+				while(in.hasNextLine())
+				{
+					System.out.println(numline);
+					String line;
+						line = in.nextLine().trim();
+						if(line==null)break;
+						for(int i=0;i<line.length();i++)
+						{
+							tempboard[numline][i]=Integer.parseInt(line.substring(i, i+1));
+						}
+						numline++;
+				}
+				System.out.println("endread");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return tempboard;
 	}
 	private void fillacessibleboard() {
 		// TODO Auto-generated method stub

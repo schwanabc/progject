@@ -1,5 +1,6 @@
 package application;
 import Scenemanager.SceneManager;
+import SharedObject.RenderableHolder;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ public class Main extends Application {
 	public void stop()
 	{
 		System.out.println("end");
+		RenderableHolder.StopAudio();
 	    System.exit(0);
 	}
 	public static void main(String[] args) { 

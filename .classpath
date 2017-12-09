@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res/File_Stage"/>
 	<classpathentry kind="src" path="res/Font"/>
 	<classpathentry kind="src" path="res/Background"/>
 	<classpathentry kind="src" path="res/Attacker"/>
