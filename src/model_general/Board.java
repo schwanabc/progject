@@ -31,12 +31,13 @@ public class Board implements IRenderable {
 	public static final double BOARD_HEIGHT=GameScreen.GAMESCREEN_HEIGHT/BOARD_ROW;
 	public static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	public static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
-	public static final int TOTALBOARD=4;
+	public static final int TOTALBOARD=3;
+	
 	public static double HQPOSX;
 	public static double HQPOSY;
 	private static boolean Iswin;
-	private static int[] DefaultMoney= {1500,2500,4000,3000};
-	private static int DefaultNumboard=0;
+	private static int[] DefaultMoney= {1500,4000,3000};
+	private static int DefaultNumboard=1;
 	private static int Numboard=0;
 	private static int Money;
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];

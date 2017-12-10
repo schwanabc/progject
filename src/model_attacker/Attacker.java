@@ -297,6 +297,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		// push 2 time to reduced chance that it will move forward and it only take O(n) time
 		Fluidpush();
 		Fluidpush();
+		Fluidpush();
 	}
 	private void Fluidpush() 
 	{
@@ -318,30 +319,22 @@ public abstract class Attacker extends Entity implements Ismovable{
 						int  n = rand.nextInt(4) + 1;
 						if(n%2==0)
 						{
-							attacker.foward(-1*(x0-x1+0.01),-1*(y0-y1));
+							attacker.foward(-(x0-x1+0.01),-(y0-y1));
 							if(attacker.ColliedwithDefender())attacker.foward((x0-x1+0.01),(y0-y1));
 						}
 						else if(n%2==1)
 						{
-							attacker.foward(-1*(x0-x1-0.01),-1*(y0-y1));
+							attacker.foward(-(x0-x1-0.01),-(y0-y1));
 							if(attacker.ColliedwithDefender())attacker.foward((x0-x1-0.01),(y0-y1));
 						}
-						else if(n%2==2)
-						{
-							attacker.foward(-1*(x0-x1),-1*(y0-y1-0.01));
-							if(attacker.ColliedwithDefender())attacker.foward((x0-x1),(y0-y1-0.01));
-						}
-						else if(n%2==3)
-						{
-							attacker.foward(-1*(x0-x1),-1*(y0-y1+0.01));
-							if(attacker.ColliedwithDefender())attacker.foward((x0-x1),(y0-y1+0.01));
-						}
+
 					}
 			}
 			catch(Exception e) {}
 		}
 		
 	}
+
 	protected void drawHPbar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
