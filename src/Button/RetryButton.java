@@ -3,9 +3,10 @@ package Button;
 import Scenemanager.SceneManager;
 import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
+import model_general.Board;
 
-public class ExitButton extends NormalButton{
-	public ExitButton(String text)
+public class RetryButton extends ReplayButton{
+	public RetryButton(String text)
 	{
 		super(text);
 		Addtolisterner();
@@ -27,8 +28,9 @@ public class ExitButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.StopAudio();
 				RenderableHolder.Clickedsound.play();
-				System.exit(0);
+				SceneManager.gotoPlayScreen();
 				}
 		});
 	}

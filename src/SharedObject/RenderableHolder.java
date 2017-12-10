@@ -12,6 +12,10 @@ import model_general.Board;
 public class RenderableHolder {
 	public static Image ReleaseButtonBackground;	
 	public static Image PressedButtonBackground;
+	public static Image ReleaseHome;	
+	public static Image PressedHome;
+	public static Image ReleaseExit;	
+	public static Image PressedExit;
 	public static Image Background;
 	public static Image LoseBackground;
 	public static Image Armed_Peasant;
@@ -27,6 +31,7 @@ public class RenderableHolder {
 	public static Image Victorybackground;
 	public static Image ErrorFrame;
 	public static Image Grass;
+	public static Image Cash;
 	public static AudioClip Clickedsound; 
 	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
@@ -64,6 +69,10 @@ public class RenderableHolder {
 	public static void Loadresource() {
 		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
+		ReleaseHome=new Image(ClassLoader.getSystemResource("releasehome.jpg").toString());	
+		PressedHome=new Image(ClassLoader.getSystemResource("presshome.jpg").toString());
+		ReleaseExit=new Image(ClassLoader.getSystemResource("releaseexit.jpg").toString());	
+		PressedExit=new Image(ClassLoader.getSystemResource("pressexit.jpg").toString());
 	    Background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
 	    LoseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
 		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	

@@ -29,7 +29,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class NormalButton extends Canvas{
+public class NormalButton extends Canvas implements IsButton{
 	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
 	private static final Font BUTTON_FONT = Font.loadFont(fontStream, 48);
 	protected ColorAdjust colorAdjust;
@@ -47,7 +47,7 @@ public class NormalButton extends Canvas{
 		Addtolisterner();
 
 	}
-	protected void Addtolisterner() {
+	public void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
 			RenderableHolder.Buttonhover.play();

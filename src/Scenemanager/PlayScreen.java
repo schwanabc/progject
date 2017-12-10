@@ -98,6 +98,7 @@ public class PlayScreen extends HBox{
 	}
 	void Checkend() {
 		// TODO Auto-generated method stub
+		
 		if(menubar.getGamestate().isWin())
 		{
 			RenderableHolder.StopAudio();
@@ -112,8 +113,7 @@ public class PlayScreen extends HBox{
 			else
 			{
 			Resetgame();
-			AT.stop();
-			RenderableHolder.getInstance().getEntities().clear();
+			Forceend();
 			SceneManager.gotoWaitScreen();
 			}
 		}
@@ -123,11 +123,14 @@ public class PlayScreen extends HBox{
 			System.out.println("lose");
 			menubar.getGamestate().EndTimethread();
 			Resetgame();
-			AT.stop();
-			RenderableHolder.getInstance().getEntities().clear();
+			Forceend();
 			SceneManager.gotoLoseScreen();
 		}
-		
+	}
+	public void Forceend() {
+		AT.stop();
+		RenderableHolder.getInstance().getEntities().clear();
+
 	}
 	private void Checkpaused() {
 		// TODO Auto-generated method stub

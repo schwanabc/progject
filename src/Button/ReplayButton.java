@@ -12,7 +12,7 @@ public class ReplayButton extends NormalButton{
 		Addtolisterner();
 	}
 	@Override
-	protected void Addtolisterner() {
+	public void Addtolisterner() {
 		this.setOnMouseEntered(ev->
 		{
 			RenderableHolder.Buttonhover.play();

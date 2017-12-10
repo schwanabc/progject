@@ -1,4 +1,6 @@
 package drawing;
+import Button.HomeIcon;
+import Button.ExitIcon;
 
 import java.io.InputStream;
 
@@ -42,6 +44,8 @@ public class Menubar extends VBox{
 	private Gamestate Gamestate;
 	private Canvas Menucanvas;
 	private boolean isReset;
+	private HomeIcon HomeIcon;
+	private ExitIcon ExitIcon;
 	public Menubar()
 	{
 	//	this.setBackground(new Background(new BackgroundImage(RenderableHolder.Menubackground, null, null, null, new BackgroundSize(MENU_WIDTH, ICONPOS,true,false,true,false))));
@@ -79,6 +83,15 @@ public class Menubar extends VBox{
 			}
 		}
 		this.getChildren().add(gp);
+		HomeIcon=new HomeIcon();
+		HomeIcon.setManaged(false);
+		this.getChildren().add(HomeIcon);
+		HomeIcon.relocate(MENU_WIDTH*0.8, 0);
+		ExitIcon=new ExitIcon();
+		ExitIcon.setManaged(false);
+		this.getChildren().add(ExitIcon);
+		ExitIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*0.33);
+	
 	}
 	private void Filltext(GraphicsContext gc,int i, int j) {
 		// TODO Auto-generated method stub
@@ -190,13 +203,13 @@ public class Menubar extends VBox{
 	
 	private void PaintMenucanvas(GraphicsContext gc)
 	{
-		gc.drawImage(RenderableHolder.Menubackground, 0, 0, MENU_WIDTH+2, ICONPOS*0.8);
+		gc.drawImage(RenderableHolder.Menubackground, 0, 0, MENU_WIDTH*0.8, ICONPOS*0.8);
 		gc.drawImage(RenderableHolder.ErrorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.BOTTOM);
 		gc.setFill(Color.BLACK);
-		gc.fillText("MENU", MENU_WIDTH*0.5,ICONPOS*0.2);
+		gc.fillText("MENU", MENU_WIDTH*0.4,ICONPOS*0.2);
 	}
 	public void setMenutab() {
 		Menucanvas=new Canvas(MENU_WIDTH,ICONPOS);
