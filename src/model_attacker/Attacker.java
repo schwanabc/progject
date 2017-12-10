@@ -33,6 +33,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	protected int lastColumn[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	protected int posToGoX[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
 	protected int posToGoY[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
+	protected int countNotMove;
 	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
@@ -198,12 +199,15 @@ public abstract class Attacker extends Entity implements Ismovable{
 			double walkY = (posToGoY[countPathLength])*Board.BOARD_HEIGHT+Board.BOARD_HEIGHT/2-getPosY();
 			double disWalkX = (walkX > 0)?walkX:-walkX;
 			double disWalkY = (walkY > 0)?walkY:-walkY;
-			if(disWalkX <= 5 && disWalkY <= 5) {
+			countNotMove++;
+			System.out.println("count"+countNotMove);
+			if((disWalkX <= 5 && disWalkY <= 5) || countNotMove*speed >= 40.0) {
 //				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
 //					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
 //					//while(true);
 //				}else
 				countPathLength--;
+				countNotMove = 0;
 			}
 			foward(walkX,walkY);
 		}
