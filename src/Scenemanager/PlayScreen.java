@@ -1,5 +1,5 @@
 package Scenemanager;
-
+import Button.PauseIcon;
 import Input.InputUtility;
 import SharedObject.RenderableHolder;
 import drawing.GameScreen;
@@ -8,6 +8,7 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -79,6 +80,7 @@ public class PlayScreen extends HBox{
 		AT2.stop();
 		if(pausedstate)AT.start();
 		pausedstate=false;
+		PauseIcon.instance.DrawUnpaused();
 	}	
 	protected void Paintupdated() {
 		// TODO Auto-generated method stub
@@ -136,21 +138,26 @@ public class PlayScreen extends HBox{
 		// TODO Auto-generated method stub
 		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
 		{
-			if(pausedstate==false)
-			{
-				pausedstate=true; 
-				System.out.print("pause");
-				AT.stop();
-				AT2.start();
-			}
-			else
-			{
-				pausedstate=false;
-				System.out.print("unpause");
-				AT2.stop();
-				AT.start();
-			}
+			Pause();
 			InputUtility.Lastkey=null;
+		}
+	}
+	public void Pause() {
+		if(pausedstate==false)
+		{
+			PauseIcon.instance.Drawpaused();
+			pausedstate=true; 
+			System.out.print("pause");
+			AT.stop();
+			AT2.start();
+		}
+		else
+		{
+			PauseIcon.instance.DrawUnpaused();
+			pausedstate=false;
+			System.out.print("unpause");
+			AT2.stop();
+			AT.start();
 		}
 	}
 	public static boolean isPausedstate() {

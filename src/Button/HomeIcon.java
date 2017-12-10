@@ -13,8 +13,8 @@ import javafx.scene.input.MouseButton;
 import model_general.Board;
 
 public class HomeIcon extends Canvas implements IsButton{
-	protected ColorAdjust colorAdjust;
-	public static final double BUTTON_WIDTH=Menubar.MENU_WIDTH*0.2;
+	private ColorAdjust colorAdjust;
+	public static final double BUTTON_WIDTH=Menubar.MENU_WIDTH*0.2+1;
 	public static final double BUTTON_HEIGHT=Menubar.ICONPOS*0.8/3;
 
 	public HomeIcon() {
