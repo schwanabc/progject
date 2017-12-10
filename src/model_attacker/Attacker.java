@@ -41,14 +41,14 @@ public abstract class Attacker extends Entity implements Ismovable{
 		this.posY=posY;
 		posXOnBoard = (int) (posX/Board.BOARD_WIDTH);
 		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
-//		if(posXOnBoard >= Board.BOARD_COLUMN/2)
-//			posXOnBoard--;
-//		else
-//			posXOnBoard++;
-//		if(posYOnBoard >= Board.BOARD_ROW/2)
-//			posYOnBoard--;
-//		else
-//			posYOnBoard++;
+		if(posXOnBoard >= Board.BOARD_COLUMN/2)
+			posXOnBoard--;
+		else
+			posXOnBoard++;
+		if(posYOnBoard >= Board.BOARD_ROW/2)
+			posYOnBoard--;
+		else
+			posYOnBoard++;
 		findBestPath();
 		//HQPOSY/BOARD_HEIGHT-1;
 		//HQPOSX/BOARD_WIDTH-1*;
@@ -83,7 +83,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			if(Board.getBoard(nowY,nowX) == -1)
 				System.out.println("Hole "+boardDMG[nowX][nowY]);
 			
-			if(Board.getBoard(nowX, nowY) == 3 || (nowX > 1 && nowY > 1 && Board.getBoard(nowX-2,nowY-2) == 3)) { //HQ
+			if(isHQPos(nowX,nowY)) { //HQ
 				countPathLength = 0;
 				for(int i=0;i<Board.BOARD_ROW;i++) {
 					for(int j=0;j<Board.BOARD_COLUMN;j++) {
@@ -211,7 +211,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			double disWalkX = (walkX > 0)?walkX:-walkX;
 			double disWalkY = (walkY > 0)?walkY:-walkY;
 			countNotMove++;
-			System.out.println("count"+countNotMove);
+			//System.out.println("count"+countNotMove);
 			if((disWalkX <= 5 && disWalkY <= 5) || countNotMove*speed >= 35.0) {
 //				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
 //					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
@@ -362,6 +362,17 @@ public abstract class Attacker extends Entity implements Ismovable{
         RenderableHolder.Attack_sword.setVolume(0.1);
         RenderableHolder.Attack_sword.play();
         currentATKTick=0;
+	}
+	protected boolean isHQPos(int nowY,int nowX) {
+		if(Board.getBoard(nowX, nowY) == 3)
+			return true;
+		if(nowX > 3 && nowY > 3 && Board.getBoard(nowX-3,nowY-3) == 3)
+			return true;
+		if(nowX > 3 && Board.getBoard(nowX-3,nowY) == 3)
+			return true;
+		if(nowY > 3 && Board.getBoard(nowX,nowY-3) == 3)
+			return true;
+		return false;
 	}
 	public double getRADIUS() {
 		return RADIUS;

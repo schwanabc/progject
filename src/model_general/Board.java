@@ -125,7 +125,7 @@ public class Board implements IRenderable {
 		}
 		int towerATK = countTower;
 		if(board[posX][posY] == 1)
-			towerATK *= 5;
+			towerATK *= 6;
 //		else if(board[posX][posY] == -1) {
 //			System.out.println("Find Hole");
 //			towerATK *= 0;
