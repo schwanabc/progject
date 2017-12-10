@@ -184,6 +184,8 @@ public class Board implements IRenderable {
 					//gc.drawImage(bush, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 					gc.setFill(Color.BLANCHEDALMOND);
 					gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.drawImage(RenderableHolder.Grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+
 				}
 			}
 	}

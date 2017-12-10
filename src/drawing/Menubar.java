@@ -13,15 +13,10 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import logic.Gamestate;
 import model_general.Board;
@@ -195,7 +190,7 @@ public class Menubar extends VBox{
 	
 	private void PaintMenucanvas(GraphicsContext gc)
 	{
-		gc.drawImage(RenderableHolder.Menubackground, 0, 0, MENU_WIDTH+2, ICONPOS*0.55);
+		gc.drawImage(RenderableHolder.Menubackground, 0, 0, MENU_WIDTH+2, ICONPOS*0.8);
 		gc.drawImage(RenderableHolder.ErrorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
@@ -223,13 +218,13 @@ public class Menubar extends VBox{
 				gc.setFont(TIME_TEXT_FONT);
 				gc.setTextAlign(TextAlignment.LEFT);
 				gc.setTextBaseline(VPos.TOP);
-				gc.fillText("Money: "+Board.getMoney(), 25, ICONPOS*0.2);
-				gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 25, ICONPOS*0.35);
+				gc.fillText("Money: "+Board.getMoney(), 25, ICONPOS*0.25);
+				gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 25, ICONPOS*0.40);
 				gc.setTextAlign(TextAlignment.LEFT);
 				Long sec=Gamestate.getsecond();
 				String second=sec.toString();
 				if(sec<10)second="0"+second;
-				gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,ICONWIDTH-15 , ICONPOS*0.35);
+				gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,25 , ICONPOS*0.55);
 				Thread.yield();
 			});
 		});
