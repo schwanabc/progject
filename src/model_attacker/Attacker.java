@@ -201,7 +201,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			double disWalkY = (walkY > 0)?walkY:-walkY;
 			countNotMove++;
 			System.out.println("count"+countNotMove);
-			if((disWalkX <= 5 && disWalkY <= 5) || countNotMove*speed >= 40.0) {
+			if((disWalkX <= 5 && disWalkY <= 5) || countNotMove*speed >= 35.0) {
 //				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
 //					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
 //					//while(true);
