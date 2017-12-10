@@ -1,4 +1,5 @@
 package drawing;
+import Button.PauseIcon;
 import Button.HomeIcon;
 import Button.ExitIcon;
 
@@ -46,6 +47,7 @@ public class Menubar extends VBox{
 	private boolean isReset;
 	private HomeIcon HomeIcon;
 	private ExitIcon ExitIcon;
+	private PauseIcon PauseIcon;
 	public Menubar()
 	{
 	//	this.setBackground(new Background(new BackgroundImage(RenderableHolder.Menubackground, null, null, null, new BackgroundSize(MENU_WIDTH, ICONPOS,true,false,true,false))));
@@ -90,7 +92,11 @@ public class Menubar extends VBox{
 		ExitIcon=new ExitIcon();
 		ExitIcon.setManaged(false);
 		this.getChildren().add(ExitIcon);
-		ExitIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*0.33);
+		ExitIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8/3);
+		PauseIcon=new PauseIcon();
+		PauseIcon.setManaged(false);
+		this.getChildren().add(PauseIcon);
+		PauseIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*2/3);
 	
 	}
 	private void Filltext(GraphicsContext gc,int i, int j) {

@@ -16,6 +16,8 @@ public class RenderableHolder {
 	public static Image PressedHome;
 	public static Image ReleaseExit;	
 	public static Image PressedExit;
+	public static Image ReleasePaused;	
+	public static Image PressedPaused;
 	public static Image Background;
 	public static Image LoseBackground;
 	public static Image Armed_Peasant;
@@ -73,6 +75,8 @@ public class RenderableHolder {
 		PressedHome=new Image(ClassLoader.getSystemResource("presshome.jpg").toString());
 		ReleaseExit=new Image(ClassLoader.getSystemResource("releaseexit.jpg").toString());	
 		PressedExit=new Image(ClassLoader.getSystemResource("pressexit.jpg").toString());
+		ReleasePaused=new Image(ClassLoader.getSystemResource("releasepause.jpg").toString());	
+		PressedPaused=new Image(ClassLoader.getSystemResource("presspause.jpg").toString());
 	    Background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
 	    LoseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
 		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
