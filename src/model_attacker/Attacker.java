@@ -41,9 +41,20 @@ public abstract class Attacker extends Entity implements Ismovable{
 		this.posY=posY;
 		posXOnBoard = (int) (posX/Board.BOARD_WIDTH);
 		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
+		if(posXOnBoard >= Board.BOARD_COLUMN/2)
+			posXOnBoard--;
+		else
+			posXOnBoard++;
+		if(posYOnBoard >= Board.BOARD_ROW/2)
+			posYOnBoard--;
+		else
+			posYOnBoard++;
+		findBestPath();
 		//HQPOSY/BOARD_HEIGHT-1;
 		//HQPOSX/BOARD_WIDTH-1*;
-		System.out.println("Start Pos " +posXOnBoard+" "+posYOnBoard);
+//		System.out.println("Start Pos " +posXOnBoard+" "+posYOnBoard);
+	}
+	protected void findBestPath() {
 		int inQueueX[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int inQueueY[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int queueFront = 0,queueLastPos = 1;
@@ -97,7 +108,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 				countPathLength--;
 				break;
 			}
-			if(nowX != 0 && !boardVisited[nowX-1][nowY]) {
+			if(nowX != 0 && !boardVisited[nowX-1][nowY] && nowX >= Board.BOARD_COLUMN/2) {
 				inQueueX[queueLastPos] = nowX-1;
 				inQueueY[queueLastPos] = nowY;
 				boardVisited[nowX-1][nowY] = true;
@@ -106,12 +117,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 				boardDMG[nowX-1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY);
 				queueLastPos++;
 			}
-			else if(nowX != 0 && boardDMG[nowX-1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY)) {
+			else if(nowX != 0 && boardDMG[nowX-1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY) && nowX >= Board.BOARD_COLUMN/2) {
 				boardDMG[nowX-1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX-1,nowY);
 				lastRow[nowX-1][nowY] = nowX;
 				lastColumn[nowX-1][nowY] = nowY;
 			}
-			if(nowY != 0 && !boardVisited[nowX][nowY-1]) {
+			if(nowY != 0 && !boardVisited[nowX][nowY-1]  && nowY >= Board.BOARD_ROW/2) {
 				inQueueX[queueLastPos] = nowX;
 				inQueueY[queueLastPos] = nowY-1;
 				boardVisited[nowX][nowY-1] = true;
@@ -120,12 +131,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 				boardDMG[nowX][nowY-1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1);
 				queueLastPos++;
 			}
-			else if(nowY != 0 && boardDMG[nowX][nowY-1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1)) {
+			else if(nowY != 0 && boardDMG[nowX][nowY-1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1) && nowY >= Board.BOARD_ROW/2) {
 				boardDMG[nowX][nowY-1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY-1);
 				lastRow[nowX][nowY-1] = nowX;
 				lastColumn[nowX][nowY-1] = nowY;
 			}
-			if(nowX+1 != Board.BOARD_ROW && !boardVisited[nowX+1][nowY]) {
+			if(nowX+1 != Board.BOARD_ROW && !boardVisited[nowX+1][nowY] && nowX < Board.BOARD_COLUMN/2) {
 				inQueueX[queueLastPos] = nowX+1;
 				inQueueY[queueLastPos] = nowY;
 				boardVisited[nowX+1][nowY] = true;
@@ -134,12 +145,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 				boardDMG[nowX+1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY);
 				queueLastPos++;
 			}
-			else if(nowX+1 != Board.BOARD_ROW && boardDMG[nowX+1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY)) {
+			else if(nowX+1 != Board.BOARD_ROW && boardDMG[nowX+1][nowY] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY) && nowX < Board.BOARD_COLUMN/2) {
 				boardDMG[nowX+1][nowY] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX+1,nowY);
 				lastRow[nowX+1][nowY] = nowX;
 				lastColumn[nowX+1][nowY] = nowY;
 			}
-			if(nowY+1 != Board.BOARD_COLUMN && !boardVisited[nowX][nowY+1]) {
+			if(nowY+1 != Board.BOARD_COLUMN && !boardVisited[nowX][nowY+1] && nowY < Board.BOARD_ROW/2) {
 				inQueueX[queueLastPos] = nowX;
 				inQueueY[queueLastPos] = nowY+1;
 				boardVisited[nowX][nowY+1] = true;
@@ -148,7 +159,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 				boardDMG[nowX][nowY+1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1);
 				queueLastPos++;
 			}
-			else if(nowY+1 != Board.BOARD_COLUMN && boardDMG[nowX][nowY+1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1)) {
+			else if(nowY+1 != Board.BOARD_COLUMN && boardDMG[nowX][nowY+1] > boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1) && nowY < Board.BOARD_ROW/2) {
 				boardDMG[nowX][nowY+1] = boardDMG[nowX][nowY]+Board.getTowerAttack(nowX,nowY+1);
 				lastRow[nowX][nowY+1] = nowX;
 				lastColumn[nowX][nowY+1] = nowY;
