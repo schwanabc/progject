@@ -68,22 +68,23 @@ public abstract class Attacker extends Entity implements Ismovable{
 			int nowY = inQueueY[queueFront];
 			queueFront++;
 			
-			if(Board.getBoard(nowX,nowY) == -1)
+			if(Board.getBoard(nowY,nowX) == -1)
 				System.out.println("Hole "+boardDMG[nowX][nowY]);
 			
-			if(Board.getBoard(nowX, nowY) == 3 || (nowX != 0 && nowY != 0 && Board.getBoard(nowX-1,nowY-1) == 3)) { //HQ
+			if(Board.getBoard(nowX, nowY) == 3 || (nowX > 1 && nowY > 1 && Board.getBoard(nowX-2,nowY-2) == 3)) { //HQ
 				countPathLength = 0;
 				for(int i=0;i<Board.BOARD_ROW;i++) {
 					for(int j=0;j<Board.BOARD_COLUMN;j++) {
 						if(Board.getBoard(i,j) == -1)
 							System.out.println(i+" "+j+" *"+boardDMG[i][j]+"* ");	
+//							System.out.print(boardDMG[i][j]+" ");	
 //						else
 //							System.out.print(boardDMG[i][j]+" ");	
 					}
 					System.out.printf("\n");
 				}
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
-					System.out.println(nowX +" "+ nowY);
+					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
 					posToGoX[countPathLength] = nowX;
 					posToGoY[countPathLength] = nowY;
 					countPathLength++;
@@ -185,14 +186,23 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
 		ColliedwithAttacker();
 		if(ColliedwithDefender()) {
+//			posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
+//			posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
+//			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
 			 return;
 		}
 		
 		
 		if(countPathLength >= 0) {
-			double walkX = posToGoX[countPathLength]*Board.BOARD_WIDTH+Board.BOARD_WIDTH/2-getPosX();
-			double walkY = posToGoY[countPathLength]*Board.BOARD_HEIGHT+Board.BOARD_HEIGHT/2-getPosY();
-			if(walkX <= 3 && walkY <= 3) {
+			double walkX = (posToGoX[countPathLength])*Board.BOARD_WIDTH+Board.BOARD_WIDTH/2-getPosX();
+			double walkY = (posToGoY[countPathLength])*Board.BOARD_HEIGHT+Board.BOARD_HEIGHT/2-getPosY();
+			double disWalkX = (walkX > 0)?walkX:-walkX;
+			double disWalkY = (walkY > 0)?walkY:-walkY;
+			if(disWalkX <= 5 && disWalkY <= 5) {
+//				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
+//					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
+//					//while(true);
+//				}else
 				countPathLength--;
 			}
 			foward(walkX,walkY);
