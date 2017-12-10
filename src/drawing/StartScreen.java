@@ -17,11 +17,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class StartScreen extends Pane{
-	private Canvas Back;
 	private PlayButton Play;
 	private ExitButton Exit;
 	private Label Gametitle;
@@ -29,14 +31,10 @@ public class StartScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public StartScreen()
 	{
+		
 		System.out.println("startscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		Back=new Canvas(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		GraphicsContext gc=Back.getGraphicsContext2D();
-		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		gc.drawImage(RenderableHolder.Background, 0, 0, SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		Back.relocate(0, 0);
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.Background, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
 		Play=new PlayButton("Play");
 		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);	
 		Exit=new ExitButton("Exit");
@@ -45,7 +43,7 @@ public class StartScreen extends Pane{
 		Gametitle.setFont(TEXT_FONT);
 		Gametitle.setTextFill(Color.CORAL);
 		Gametitle.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
-		this.getChildren().addAll(Back,Play,Exit,Gametitle);
+		this.getChildren().addAll(Play,Exit,Gametitle);
 	}
 
 }

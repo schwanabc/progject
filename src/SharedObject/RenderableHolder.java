@@ -13,6 +13,7 @@ public class RenderableHolder {
 	public static Image ReleaseButtonBackground;	
 	public static Image PressedButtonBackground;
 	public static Image Background;
+	public static Image LoseBackground;
 	public static Image Armed_Peasant;
 	public static Image Footman;
 	public static Image StoneTile;
@@ -22,6 +23,8 @@ public class RenderableHolder {
 	public static Image PressButton;
 	public static Image HQ;
 	public static Image NormalTower;
+	public static Image Menubackground;
+	public static Image ErrorFrame;
 	public static AudioClip Clickedsound; 
 	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
@@ -29,6 +32,7 @@ public class RenderableHolder {
 	public static AudioClip BuildingCollapsed;
 	public static AudioClip Victory;
 	public static AudioClip Arrow;
+	public static AudioClip Lose;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -53,11 +57,13 @@ public class RenderableHolder {
 		Attack_sword.stop();
 		BuildingCollapsed.stop();
 		Victory.stop();
+		Lose.stop();
 	}
 	public static void Loadresource() {
 		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
-	    Background=new Image(ClassLoader.getSystemResource("Wiki-background.jpg").toString());
+	    Background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
+	    LoseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
 		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
 	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
 		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
@@ -67,6 +73,8 @@ public class RenderableHolder {
 		Rubble=new Image(ClassLoader.getSystemResource("rubble.png").toString());
 		HQ=new Image(ClassLoader.getSystemResource("HQ.png").toString());
 		NormalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
+		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
+		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
 		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
@@ -74,6 +82,7 @@ public class RenderableHolder {
 	    BuildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
 	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.wav").toString());
 	    Arrow=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
+	    Lose=new AudioClip(ClassLoader.getSystemResource("lose.mp3").toString());
 	}
 	public void add(IRenderable entity)
 	{

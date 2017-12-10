@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Scanner;
 
+import Exception.PoorException;
 import Input.InputUtility;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
@@ -257,7 +258,11 @@ public class Board implements IRenderable {
 	private static boolean buyable(int hiringCost) {
 		// TODO Auto-generated method stub
 		if(Money-hiringCost>=0)return true;
-		return false;
+		try {
+			throw new PoorException(hiringCost);
+		} catch (PoorException e) {
+			return false;
+		}
 	}
 	private static boolean Checktoadd() {
 		return isDeyployable() && Placeable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
@@ -272,7 +277,12 @@ public class Board implements IRenderable {
 		return false;
 	}
 	private static boolean Placeable(double mouseX, double mouseY) {
-		return GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0;
+		if( GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
+			return true;
+		else 
+		{
+			return false;
+		}
 	}
 	@Override
 	public int getZ() {

@@ -23,20 +23,20 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-public class WinScreen extends Pane{
+public class LoseScreen extends Pane{
 	private ExitButton Exit;
 	private ReplayButton Replay;
 	private MenuButton Menu;
 	private Label Title;
-	private static final String WIN_TEXT ="YOU CLEAR THE GAME!!!";
+	private static final String WIN_TEXT ="YOU LOSE";
 	private static final Font TEXT_FONT = new Font("Monospace", 80);
-	public WinScreen()
+	public LoseScreen()
 	{
-		RenderableHolder.Victory.play();
-		System.out.println("Winscreen");
+		RenderableHolder.Lose.play();
+		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.Background, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
-		Replay=new ReplayButton("Play Again");
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.LoseBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
+		Replay=new ReplayButton("Retry");
 		Replay.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);
 		Menu=new MenuButton("Main Menu");
 		Menu.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.6);

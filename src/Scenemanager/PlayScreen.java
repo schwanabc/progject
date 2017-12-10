@@ -8,6 +8,7 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -19,7 +20,7 @@ public class PlayScreen extends HBox{
 	private static boolean pausedstate;
 	public static double MiscScreenWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
 	public static double MiscScreenHEIGHT=(SceneManager.SCREEN_HEIGHT);
-
+	public static PlayScreen instance;
 	GameScreen gamescreen;
 	Menubar menubar;
 	AnimationTimer AT,AT2;
@@ -28,6 +29,7 @@ public class PlayScreen extends HBox{
 	Canvas MiscScreen2;
 	PlayScreen()
 	{
+		instance=this;
 		Initialize();
 		AT=new AnimationTimer(){
 			public void handle(long now)
@@ -117,10 +119,13 @@ public class PlayScreen extends HBox{
 		}
 		else if(menubar.getGamestate().isLose())
 		{
-			gamescreen.PaintLoseScreen();
+			RenderableHolder.StopAudio();
+			System.out.println("lose");
+			menubar.getGamestate().EndTimethread();
+			Resetgame();
 			AT.stop();
-			AT2.start();
-			pausedstate=true; 
+			RenderableHolder.getInstance().getEntities().clear();
+			SceneManager.gotoLoseScreen();
 		}
 		
 	}
@@ -148,4 +153,6 @@ public class PlayScreen extends HBox{
 	public static boolean isPausedstate() {
 		return pausedstate;
 	}
+
+
 }

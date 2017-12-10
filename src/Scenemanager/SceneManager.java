@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
 
+import drawing.LoseScreen;
 import drawing.StartScreen;
 import drawing.WaitScreen;
 import drawing.WinScreen;
@@ -18,6 +19,7 @@ public class SceneManager {
 	private  static Scene playScene;
 	private  static Scene waitScene;
 	private  static Scene winScene;
+	private  static Scene loseScene;
 	private  static Scene StartScene;
 	private  static PlayScreen Playscreen;
 	public static String GAMENAME="TOWER HATER 2.0";
@@ -59,6 +61,11 @@ public class SceneManager {
 	public static void gotoWinScreen() {
 		winScene=new Scene(new WinScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
 		primaryStage.setScene(winScene);
+		SceneManager.primaryStage.setFullScreen(true);
+	}
+	public static void gotoLoseScreen() {
+		loseScene=new Scene(new LoseScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
+		primaryStage.setScene(loseScene);
 		SceneManager.primaryStage.setFullScreen(true);
 	}
 	
