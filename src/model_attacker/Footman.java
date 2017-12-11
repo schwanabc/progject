@@ -15,25 +15,22 @@ public class Footman extends Attacker{
 		this.ATK=30;
 		this.DEF=30;
 		this.speed=1;
-		this.RADIUS=8;
-		this.DIAMETER=this.RADIUS*2;
+		this.radius=8;
+		this.diameter=this.radius*2;
 		this.HP=1500;
 		this.MaxHP=HP;
 		this.AttackTick=80;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=240;
-		return HiringCost;
+		hiringCost=240;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.footman, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.footman, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 

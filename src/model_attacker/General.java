@@ -14,24 +14,21 @@ public class General extends Attacker{
 		this.ATK=100;
 		this.DEF=30;
 		this.speed=1;
-		this.RADIUS=12;
-		this.DIAMETER=this.RADIUS*2;
+		this.radius=12;
+		this.diameter=this.radius*2;
 		this.HP=1500;
 		this.MaxHP=HP;
 		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=1000;
-		return HiringCost;
+		hiringCost=1000;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.general,posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.general,posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 

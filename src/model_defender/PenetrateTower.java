@@ -10,7 +10,7 @@ public class PenetrateTower extends Tower{
 
 	public PenetrateTower(double posX, double posY, int posI, int posJ) {
 		super(posX, posY, posI, posJ);
-		this.Shootrange=4;
+		this.shootRange=4;
 		Currentshootingtick=100;
 		Shootingtick=Currentshootingtick;
 	}
@@ -18,12 +18,12 @@ public class PenetrateTower extends Tower{
 	protected void shoot(double theta,int direction) {
 		RenderableHolder.arrowSound.setVolume(0.05);
 		RenderableHolder.arrowSound.play();
-		Gamelogic.addNewObject(new PenetrateBullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
+		Gamelogic.addNewObject(new PenetrateBullet(shootRange,posX+wallWidth/2,posY+wallHeight/2,ATK,theta,direction));
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.penetrateTower,posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.penetrateTower,posX, posY, wallWidth, wallHeight);
 		drawHPbar(gc);
 	}
 

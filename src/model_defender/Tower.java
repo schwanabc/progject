@@ -18,16 +18,16 @@ public class Tower extends Defender{
 		this.DEF=10;
 		this.setHP(500);
 		this.MaxHP=getHP();
-		this.Shootrange=5;
+		this.shootRange=5;
 		Currentshootingtick=60;
 		Shootingtick=Currentshootingtick;
-		this.Wallwidth=Board.BOARD_WIDTH;
-		this.Wallheight=Board.BOARD_HEIGHT;
+		this.wallWidth=Board.BOARD_WIDTH;
+		this.wallHeight=Board.BOARD_HEIGHT;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.normalTower,posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.normalTower,posX, posY, wallWidth, wallHeight);
 		drawHPbar(gc);
 	}
 	protected void ColliedwithAttacker()//find nearest target
@@ -37,7 +37,7 @@ public class Tower extends Defender{
 		int count=0;
 		for(Attacker attacker:Gamelogic.getAttackercontainer())
 		{
-			double dist=Math.hypot(posX+Wallwidth/2-attacker.getPosX(),posY+Wallheight/2-attacker.getPosY());
+			double dist=Math.hypot(posX+wallWidth/2-attacker.getPosX(),posY+wallHeight/2-attacker.getPosY());
 			if(dist<min)
 			{
 				min=dist;
@@ -48,9 +48,9 @@ public class Tower extends Defender{
 		try
 		{
 			Attacker attacker=Gamelogic.getAttackercontainer().get(idx);
-			double x0=posX+Wallwidth/2;
-			double y0=posY+Wallheight/2;
-			double r0=Shootrange*Board.BOARD_RANGE;
+			double x0=posX+wallWidth/2;
+			double y0=posY+wallHeight/2;
+			double r0=shootRange*Board.BOARD_RANGE;
 			double x1=attacker.getPosX();
 			double y1=attacker.getPosY();  
 			double r1=attacker.getRADIUS();
@@ -91,7 +91,7 @@ public class Tower extends Defender{
 	protected void shoot(double theta,int direction) {
 		RenderableHolder.arrowSound.setVolume(0.05);
 		RenderableHolder.arrowSound.play();
-		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
+		Gamelogic.addNewObject(new Bullet(shootRange,posX+wallWidth/2,posY+wallHeight/2,ATK,theta,direction));
 	}
 	public int getZ() {
 		return 2;

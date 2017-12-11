@@ -18,14 +18,11 @@ import model_general.Board;
 import model_general.Entity;
 
 public abstract class Attacker extends Entity implements Ismovable{
-	protected double RADIUS;
-	protected double DIAMETER;
-	protected double WallPriority;
-	protected double TowerPriority;
-	protected double HQPriority;
+	protected double radius;
+	protected double diameter;
 	protected model_defender.Defender currentTarget;
-	protected static int HiringCost;
-	protected static int MinCost=50;
+	protected static int hiringCost;
+	protected static int minCost=50;
 	protected int posXOnBoard,posYOnBoard,countPathLength;
 	protected int boardDMG[][] = new int[Board.BOARD_ROW][Board.BOARD_COLUMN];
 	protected boolean boardVisited[][] = new boolean[Board.BOARD_ROW][Board.BOARD_COLUMN];
@@ -197,7 +194,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	@Override
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.RED);
-		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.fillOval(posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 	@Override
@@ -281,7 +278,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		boolean iscollide=false;
 		for(Defender defender: Gamelogic.getDefendercontainer())
 		{
-			Circle c=new Circle( posX, posY, RADIUS);
+			Circle c=new Circle( posX, posY, radius);
 			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallwidth(),defender.getWallheight());
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
 		        double dist=Math.hypot(defender.getPosX()+defender.getWallwidth()/2-getPosX(),defender.getPosY()+defender.getWallheight()/2-getPosY());
@@ -317,7 +314,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			{
 					double x0=posX;
 					double y0=posY;
-					double r0=RADIUS;
+					double r0=radius;
 					double x1=attacker.getPosX();
 					double y1=attacker.getPosY();
 					double r1=attacker.getRADIUS();
@@ -350,12 +347,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
 		gc.setFill(Color.DARKGREEN);
-		if(ratio!=1)gc.fillRect(posX-RADIUS, posY-RADIUS, DIAMETER-1, 4);
+		if(ratio!=1)gc.fillRect(posX-radius, posY-radius, diameter-1, 4);
 		gc.setFill(Color.ORANGERED);
-		if(ratio!=1)gc.fillRect(posX-RADIUS+DIAMETER*(ratio)-0.3, posY-RADIUS, DIAMETER*(1-ratio), 4);
+		if(ratio!=1)gc.fillRect(posX-radius+diameter*(ratio)-0.3, posY-radius, diameter*(1-ratio), 4);
 
 		gc.setStroke(Color.BLACK);
-		if(ratio!=1)gc.strokeRect(posX-RADIUS, posY-RADIUS, DIAMETER-1, 4);
+		if(ratio!=1)gc.strokeRect(posX-radius, posY-radius, diameter-1, 4);
 	}
 	protected void attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
@@ -378,9 +375,9 @@ public abstract class Attacker extends Entity implements Ismovable{
 		return false;
 	}
 	public double getRADIUS() {
-		return RADIUS;
+		return radius;
 	}
 	public static int getMinCost() {
-		return MinCost;
+		return minCost;
 	}
 }

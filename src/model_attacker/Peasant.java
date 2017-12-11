@@ -13,26 +13,23 @@ public class Peasant extends Attacker{
 		super(posX,posY);
 		this.ATK=30;
 		this.DEF=5;
-		this.RADIUS=8;
+		this.radius=8;
 		this.speed=2;
-		this.DIAMETER=this.RADIUS*2;
+		this.diameter=this.radius*2;
 		this.HP=100;
 		this.MaxHP=HP;
 		this.AttackTick=30;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=10;
-		this.TowerPriority=10;
-		this.HQPriority=80;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=MinCost;
-		return HiringCost;
+		hiringCost=minCost;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.armed_Peasant, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 

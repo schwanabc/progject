@@ -18,25 +18,22 @@ public class Sapper extends Attacker{
 		this.ATK=1;
 		this.DEF=30;
 		this.speed=3;
-		this.RADIUS=7;
-		this.DIAMETER=this.RADIUS*2;
+		this.radius=7;
+		this.diameter=this.radius*2;
 		this.HP=40;
 		this.MaxHP=HP;
 		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=200;
-		return HiringCost;
+		hiringCost=200;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.sapper, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.sapper, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 	@Override

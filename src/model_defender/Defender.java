@@ -5,9 +5,9 @@ import javafx.scene.paint.Color;
 import model_general.Entity;
 
 public abstract class Defender extends Entity {
-	protected double Wallwidth;
-	protected double Wallheight;
-	protected double Shootrange;
+	protected double wallWidth;
+	protected double wallHeight;
+	protected double shootRange;
 	protected int posI,posJ;
 	public Defender(double posX,double posY,int posI,int posJ)
 	{
@@ -21,18 +21,18 @@ public abstract class Defender extends Entity {
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
 		gc.setFill(Color.DARKGREEN);
-		if(ratio!=1)gc.fillRect(posX, posY, Wallwidth, 4);
+		if(ratio!=1)gc.fillRect(posX, posY, wallWidth, 4);
 		gc.setFill(Color.ORANGERED) ;
-		if(ratio!=1)gc.fillRect(posX+Wallwidth*(ratio), posY, Wallwidth*(1-ratio), 4);
+		if(ratio!=1)gc.fillRect(posX+wallWidth*(ratio), posY, wallWidth*(1-ratio), 4);
 		gc.setStroke(Color.BLACK);
-		if(ratio!=1)gc.strokeRect(posX, posY, Wallwidth, 4);
+		if(ratio!=1)gc.strokeRect(posX, posY, wallWidth, 4);
 	}
 	 //UPGRADING BOT
 	public double getWallwidth() {
-		return Wallwidth;
+		return wallWidth;
 	}
 	public double getWallheight() {
-		return Wallheight;
+		return wallHeight;
 	}
 	public int getPosI() {
 		return posI;

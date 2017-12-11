@@ -14,25 +14,22 @@ public class Berserker extends Attacker{
 		this.ATK=100;
 		this.DEF=10;
 		this.speed=1.5;
-		this.RADIUS=8;
-		this.DIAMETER=this.RADIUS*2;
+		this.radius=8;
+		this.diameter=this.radius*2;
 		this.HP=200;
 		this.MaxHP=HP;
 		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=300;
-		return HiringCost;
+		hiringCost=300;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.berserker, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.berserker, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 

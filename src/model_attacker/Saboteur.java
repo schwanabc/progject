@@ -15,25 +15,22 @@ public class Saboteur extends Attacker{
 		this.ATK=25;
 		this.DEF=5;
 		this.speed=2;
-		this.RADIUS=8;
-		this.DIAMETER=this.RADIUS*2;
+		this.radius=8;
+		this.diameter=this.radius*2;
 		this.HP=150;
 		this.MaxHP=HP;
 		this.AttackTick=20;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=200;
-		return HiringCost;
+		hiringCost=200;
+		return hiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.saboteur, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.saboteur, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}
 	@Override
