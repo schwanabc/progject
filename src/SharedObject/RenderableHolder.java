@@ -167,9 +167,7 @@ public class RenderableHolder {
 	public ArrayList<IRenderable> getEntities() {
 		return entities;
 	}
-	public void reboot() {
-		entities.clear();
-	}
+
 
 	
 }
