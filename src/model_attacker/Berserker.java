@@ -33,7 +33,7 @@ public class Berserker extends Attacker{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.berserker, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 
 }

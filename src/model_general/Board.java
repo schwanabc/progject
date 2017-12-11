@@ -36,28 +36,27 @@ public class Board implements IRenderable {
 	public static final int TOTALBOARD=3;
 	public static double HQPOSX;
 	public static double HQPOSY;
-	private static boolean Iswin;
-	private static int[] DefaultMoney= {1500,4000,3000};
-	private static int DefaultNumboard=0;
-	private static int Numboard=0;
-	private static int Money;
-	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
+	private static boolean isWin;
+	private static int[] defaultMoney= {1500,4000,3000};
+	private static int defaultNumBoard=0;
+	private static int numBoard=0;
+	private static int money;
 	private static int board[][];
-	private static int[][] accessibleboard;
+	private static int[][] accessibleBoard;
 	public Board()
 	{	
 
-		Numboard=DefaultNumboard;
-		Iswin=false; 
+		numBoard=defaultNumBoard;
+		isWin=false; 
 		try {
-		Money=DefaultMoney[Numboard];
-		board=ReadBoard(Numboard);
-		fillacessibleboard();
-		setboard();
+		money=defaultMoney[numBoard];
+		board=readBoard(numBoard);
+		fillAcessibleBoard();
+		setBoard();
 		}
 		catch (ArrayIndexOutOfBoundsException e) {SceneManager.gotoWinScreen();System.exit(0); }
 	}
-	private int[][] ReadBoard(int Numboard) {
+	private int[][] readBoard(int Numboard) {
 		
 		int[][] tempboard=new int[BOARD_ROW][BOARD_COLUMN];
 			String fileName="/Stage_"+Integer.toString(Numboard)+".txt";
@@ -81,9 +80,9 @@ public class Board implements IRenderable {
 			}
 		return tempboard;
 	}
-	private void fillacessibleboard() {
+	private void fillAcessibleBoard() {
 		// TODO Auto-generated method stub
-		accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
+		accessibleBoard=new int[BOARD_ROW][BOARD_COLUMN];
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
@@ -96,7 +95,7 @@ public class Board implements IRenderable {
 						for(int l=-1*2;l<=range;l++)
 						{
 							try {
-							accessibleboard[i+k][j+l]=1;
+							accessibleBoard[i+k][j+l]=1;
 							}
 							catch (Exception e) {}
 						}
@@ -104,7 +103,7 @@ public class Board implements IRenderable {
 				}
 				else
 				{
-					if(accessibleboard[i][j]!=1)accessibleboard[i][j]=0;
+					if(accessibleBoard[i][j]!=1)accessibleBoard[i][j]=0;
 				}
 			}
 	}
@@ -130,7 +129,7 @@ public class Board implements IRenderable {
 //		}
 		return towerATK+3;
 	}
-	public void setboard() {
+	public void setBoard() {
 		// TODO Auto-generated method stub
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
@@ -163,7 +162,7 @@ public class Board implements IRenderable {
 			{
 				gc.setFill(Color.WHITE);
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
-				if(accessibleboard[i][j]==1)
+				if(accessibleBoard[i][j]==1)
 				{
 					gc.drawImage(RenderableHolder.stoneTile, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 					gc.setGlobalAlpha(0.15);
@@ -180,7 +179,7 @@ public class Board implements IRenderable {
 					gc.setGlobalAlpha(1);
 
 				}
-				if(accessibleboard[i][j]==0)
+				if(accessibleBoard[i][j]==0)
 				{
 					gc.drawImage(RenderableHolder.grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 				}
@@ -188,17 +187,17 @@ public class Board implements IRenderable {
 	}
 	public static void update()
 	{
-		Checkadded();
+		checkAdded();
 	}
-	private static void Checkadded() {
+	private static void checkAdded() {
 		// TODO Auto-generated method stub
 	//	System.out.println(InputUtility.getTick());
-		if(Checktoadd())
+		if(checkToAdd())
 		{
 			String bot_type=InputUtility.currentChosed;
 			if(bot_type=="Peasant") 
 			{ 
-				if(buyable(Peasant.getHiringCost()))
+				if(isBuyable(Peasant.getHiringCost()))
 				{
 					decreaseMoney(Peasant.getHiringCost());
 					Gamelogic.addNewObject(new Peasant(InputUtility.mouseX,InputUtility.mouseY));
@@ -206,7 +205,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="Footman") 
 			{
-				if(buyable(Footman.getHiringCost()))
+				if(isBuyable(Footman.getHiringCost()))
 				{
 					decreaseMoney(Footman.getHiringCost());
 					Gamelogic.addNewObject(new Footman(InputUtility.mouseX,InputUtility.mouseY));	
@@ -214,7 +213,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="Wardog") 
 			{
-				if(buyable(Wardog.getHiringCost()))
+				if(isBuyable(Wardog.getHiringCost()))
 				{
 					decreaseMoney(Wardog.getHiringCost());
 					Gamelogic.addNewObject(new Wardog(InputUtility.mouseX,InputUtility.mouseY));	
@@ -222,7 +221,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="Berserker") 
 			{
-				if(buyable(Berserker.getHiringCost()))
+				if(isBuyable(Berserker.getHiringCost()))
 				{
 					decreaseMoney(Berserker.getHiringCost());
 					Gamelogic.addNewObject(new Berserker(InputUtility.mouseX,InputUtility.mouseY));	
@@ -230,7 +229,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="Sapper") 
 			{
-				if(buyable(Sapper.getHiringCost()))
+				if(isBuyable(Sapper.getHiringCost()))
 				{
 					decreaseMoney(Sapper.getHiringCost());
 					Gamelogic.addNewObject(new Sapper(InputUtility.mouseX,InputUtility.mouseY));	
@@ -238,7 +237,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="Saboteur") 
 			{
-				if(buyable(Saboteur.getHiringCost()))
+				if(isBuyable(Saboteur.getHiringCost()))
 				{
 					decreaseMoney(Saboteur.getHiringCost());
 					Gamelogic.addNewObject(new Saboteur(InputUtility.mouseX,InputUtility.mouseY));	
@@ -246,7 +245,7 @@ public class Board implements IRenderable {
 			}
 			if(bot_type=="General") 
 			{
-				if(buyable(General.getHiringCost()))
+				if(isBuyable(General.getHiringCost()))
 				{
 					decreaseMoney(General.getHiringCost());
 					Gamelogic.addNewObject(new General(InputUtility.mouseX,InputUtility.mouseY));	
@@ -254,17 +253,17 @@ public class Board implements IRenderable {
 			}
 		}
 	}
-	private static boolean buyable(int hiringCost) {
+	private static boolean isBuyable(int hiringCost) {
 		// TODO Auto-generated method stub
-		if(Money-hiringCost>=0)return true;
+		if(money-hiringCost>=0)return true;
 		try {
 			throw new PoorException();
 		} catch (PoorException e) {
 			return false;
 		}
 	}
-	private static boolean Checktoadd() {
-		return isDeyployable() && Placeable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
+	private static boolean checkToAdd() {
+		return isDeyployable() && isPlaceable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
 	}
 	private static boolean isDeyployable()
 	{
@@ -275,8 +274,8 @@ public class Board implements IRenderable {
 		}
 		return false;
 	}
-	private static boolean Placeable(double mouseX, double mouseY) {
-		if( GameScreen.isIngamescreen() && accessibleboard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
+	private static boolean isPlaceable(double mouseX, double mouseY) {
+		if( GameScreen.isIngamescreen() && accessibleBoard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
 			return true;
 		else 
 		{
@@ -296,10 +295,10 @@ public class Board implements IRenderable {
 		return true;
 	}
 	public static boolean isIswin() {
-		return Iswin;
+		return isWin;
 	}
 	public static void setIswin(boolean iswin) {
-		Iswin = iswin;
+		isWin = iswin;
 	}
 	public static int[][] getBoard() {
 		return board;
@@ -311,28 +310,28 @@ public class Board implements IRenderable {
 		Board.board[i][j]=val;
 	}
 	public static int getMoney() {
-		return Money;
+		return money;
 	}
 	private static void decreaseMoney(int money) {
-		if(Money-money>=0) Money -= money;
+		if(money-money>=0) money -= money;
 	}
 	public static void setMoney(int money) {
-		Money = money;
+		money = money;
 	}
 	public static void addNumboard() {
 		// TODO Auto-generated method stub
-		DefaultNumboard++;
+		defaultNumBoard++;
 	}
 	public static void resetNumboard() {
 		// TODO Auto-generated method stub
-		DefaultNumboard=0;
+		defaultNumBoard=0;
 	}
 	public static void decreaseNumboard() {
 		// TODO Auto-generated method stub
-		if(DefaultNumboard>0)DefaultNumboard--;
+		if(defaultNumBoard>0)defaultNumBoard--;
 	}
 	public static int getDefaultNumboard() {
-		return DefaultNumboard;
+		return defaultNumBoard;
 	}
 
 }

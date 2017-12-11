@@ -13,7 +13,7 @@ public class PenetrateBullet extends Bullet{
 		// TODO Auto-generated constructor stub
 	}
 	@Override
-	protected void BulletAttack(Attacker attacker) {
+	protected void bulletAttack(Attacker attacker) {
 		// TODO Auto-generated method stub
 		double downHP=ATK-attacker.getDEF();
 		if(downHP<=0)downHP=1;

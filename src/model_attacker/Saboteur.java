@@ -34,10 +34,10 @@ public class Saboteur extends Attacker{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.saboteur, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	@Override
-	protected void Attack(Defender defender) {
+	protected void attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
 		if(defender instanceof model_defender.HQ){
 			downHP=ATK*6-defender.getDEF();

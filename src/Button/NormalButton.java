@@ -47,6 +47,7 @@ public class NormalButton extends Canvas implements IsButton{
 		addToListerner();
 
 	}
+	@Override
 	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{

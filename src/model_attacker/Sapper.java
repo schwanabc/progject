@@ -37,10 +37,10 @@ public class Sapper extends Attacker{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.sapper, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	@Override
-	protected void Attack(Defender defender) {
+	protected void attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
 		if(defender instanceof model_defender.Wall && defender.getHP() != 1000)
 		{
@@ -58,15 +58,15 @@ public class Sapper extends Attacker{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-		ColliedwithAttacker();
-		if(ColliedwithDefender()) {
+		colliedWithAttacker();
+		if(colliedWithDefender()) {
 			 return;
 		}
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
 			if(currentTarget instanceof model_defender.HQ)
-				foward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
+				forward((currentTarget.getPosX()+Board.BOARD_WIDTH)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT)-getPosY());
 			else
-				foward((currentTarget.getPosX()+Board.BOARD_WIDTH/2)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
+				forward((currentTarget.getPosX()+Board.BOARD_WIDTH/2)-getPosX(),(currentTarget.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());
 			//System.out.println("Save time");
 		}
 		else {
@@ -89,7 +89,7 @@ public class Sapper extends Attacker{
 					}
 				}
 			}
-			foward(walkX,walkY);
+			forward(walkX,walkY);
 		}
 	}
 

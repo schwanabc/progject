@@ -178,14 +178,14 @@ public abstract class Attacker extends Entity implements Ismovable{
 		}
 	}
 	@Override
-	public void foward(double xAxis,double yAxis)
+	public void forward(double xAxis,double yAxis)
 	{
 		double Calibrator=Math.abs(xAxis)+Math.abs(yAxis);
-		posX += Calibrate(xAxis,Calibrator)*speed;
-		posY += Calibrate(yAxis,Calibrator)*speed;
+		posX += calibrate(xAxis,Calibrator)*speed;
+		posY += calibrate(yAxis,Calibrator)*speed;
 	}
 	@Override
-	public double Calibrate(double velocity, double speed) {
+	public double calibrate(double velocity, double speed) {
 		if(speed != 0)
 			return velocity/speed;
 		else return 0;
@@ -198,7 +198,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.RED);
 		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	@Override
 	public void update() {
@@ -206,8 +206,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 		//need decent moving algorithm
 		double Xregion=GameScreen.GAMESCREEN_WIDTH/2;
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
-		ColliedwithAttacker();
-		if(ColliedwithDefender()) {
+		colliedWithAttacker();
+		if(colliedWithDefender()) {
 //			posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
 //			posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
 //			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
@@ -230,12 +230,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 				countPathLength--;
 				countNotMove = 0;
 			}
-			foward(walkX,walkY);
+			forward(walkX,walkY);
 		}
 		else {
 			double walkX = Board.HQPOSX+Board.BOARD_WIDTH-getPosX();
 			double walkY = Board.HQPOSY+Board.BOARD_HEIGHT-getPosY();
-			foward(walkX,walkY);
+			forward(walkX,walkY);
 		}
 		/*
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
@@ -272,7 +272,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		}
 		*/
 	}
-	protected boolean ColliedwithDefender()
+	protected boolean colliedWithDefender()
 	{
 		int count2=0;
 		currentATKTick++;
@@ -297,19 +297,19 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(currentATKTick>=AttackTick&&iscollide)
 		{
 			currentATKTick=0;
-			Attack(Gamelogic.getDefendercontainer().get(idx));
+			attack(Gamelogic.getDefendercontainer().get(idx));
 		}
 		return iscollide;
 		
 	}
-	protected void ColliedwithAttacker()
+	protected void colliedWithAttacker()
 	{
 		// push 2 time to reduced chance that it will move forward and it only take O(n) time
-		Fluidpush();
-		Fluidpush();
-		Fluidpush();
+		fluidPush();
+		fluidPush();
+		fluidPush();
 	}
-	private void Fluidpush() 
+	private void fluidPush() 
 	{
 		for(Attacker attacker:Gamelogic.getAttackercontainer())
 		{
@@ -329,13 +329,13 @@ public abstract class Attacker extends Entity implements Ismovable{
 						int  n = rand.nextInt(4) + 1;
 						if(n%2==0)
 						{
-							attacker.foward(-(x0-x1+0.01),-(y0-y1));
-							if(attacker.ColliedwithDefender())attacker.foward((x0-x1+0.01),(y0-y1));
+							attacker.forward(-(x0-x1+0.01),-(y0-y1));
+							if(attacker.colliedWithDefender())attacker.forward((x0-x1+0.01),(y0-y1));
 						}
 						else if(n%2==1)
 						{
-							attacker.foward(-(x0-x1-0.01),-(y0-y1));
-							if(attacker.ColliedwithDefender())attacker.foward((x0-x1-0.01),(y0-y1));
+							attacker.forward(-(x0-x1-0.01),-(y0-y1));
+							if(attacker.colliedWithDefender())attacker.forward((x0-x1-0.01),(y0-y1));
 						}
 
 					}
@@ -345,7 +345,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		
 	}
 
-	protected void drawHPbar(GraphicsContext gc) {
+	protected void drawHPBar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
@@ -357,7 +357,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		gc.setStroke(Color.BLACK);
 		if(ratio!=1)gc.strokeRect(posX-RADIUS, posY-RADIUS, DIAMETER-1, 4);
 	}
-	protected void Attack(Defender defender) {
+	protected void attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
 		if(downHP<0)downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp

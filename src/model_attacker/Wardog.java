@@ -34,10 +34,10 @@ public class Wardog extends Attacker{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.wardog, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	@Override
-	protected void Attack(Defender defender) {
+	protected void attack(Defender defender) {
 		double downHP=ATK-defender.getDEF();
 		if(defender instanceof model_defender.HQ){
 			downHP/=2;
