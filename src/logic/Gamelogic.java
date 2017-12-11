@@ -41,8 +41,15 @@ public class Gamelogic {
 		}	
 		for(int i=Defendercontainer.size()-1;i>=0;i--)
 		{ 
-			if(Defendercontainer.get(i).isDestroyed())
+			if(Defendercontainer.get(i).isDestroyed()) {
+				Board.setBoard(Defendercontainer.get(i).getPosI(), Defendercontainer.get(i).getPosJ(), -1);
 				Defendercontainer.remove(i);
+				for(int j=Attackercontainer.size()-1;j>=0;j--)
+				{
+					Attackercontainer.get(j).findBestPath();
+					System.out.println("Find again");
+				}
+			}
 		}	
 
 	}

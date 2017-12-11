@@ -41,23 +41,33 @@ public abstract class Attacker extends Entity implements Ismovable{
 		this.posY=posY;
 		posXOnBoard = (int) (posX/Board.BOARD_WIDTH);
 		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
-		if(posXOnBoard >= Board.BOARD_COLUMN/2)
-			posXOnBoard--;
-		else
-			posXOnBoard++;
-		if(posYOnBoard >= Board.BOARD_ROW/2)
-			posYOnBoard--;
-		else
-			posYOnBoard++;
+//		if(posXOnBoard >= Board.BOARD_COLUMN/2)
+//			posXOnBoard--;
+//		else
+//			posXOnBoard++;
+//		if(posYOnBoard >= Board.BOARD_ROW/2)
+//			posYOnBoard--;
+//		else
+//			posYOnBoard++;
 		findBestPath();
 		//HQPOSY/BOARD_HEIGHT-1;
 		//HQPOSX/BOARD_WIDTH-1*;
 //		System.out.println("Start Pos " +posXOnBoard+" "+posYOnBoard);
 	}
-	protected void findBestPath() {
+	public void findBestPath() {
+		posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
+		posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
 		int inQueueX[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int inQueueY[] = new int[Board.BOARD_COLUMN*Board.BOARD_ROW];
 		int queueFront = 0,queueLastPos = 1;
+		countNotMove = 0;
+		countPathLength = 0;
+		for(int i=0;i<Board.BOARD_COLUMN;i++) {
+			for(int j=0;j<Board.BOARD_ROW;j++) {
+				boardDMG[i][j] = 0;
+				boardVisited[i][j] = false;
+			}
+		}
 		boardVisited[posXOnBoard][posYOnBoard] = true;
 		inQueueX[0] = posXOnBoard;
 		inQueueY[0] = posYOnBoard;
@@ -93,7 +103,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 //						else
 //							System.out.print(boardDMG[i][j]+" ");	
 					}
-					System.out.printf("\n");
+					//System.out.printf("\n");
 				}
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
 					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
