@@ -186,19 +186,19 @@ public class Menubar extends VBox{
 	}
 	private void Choosecurrentbot(int row, int column) {
 		if(row == 0 && column == 0)
-			InputUtility.currentChosed ="Weak_1";
+			InputUtility.currentChosed ="Peasant";
 		else if(row == 0 && column == 1)
-			InputUtility.currentChosed ="Weak_2";
+			InputUtility.currentChosed ="Footman";
 		else if(row == 1 && column == 0)
-			InputUtility.currentChosed ="Weak_3";
+			InputUtility.currentChosed ="Wardog";
 		else if(row == 1 && column == 1)
-			InputUtility.currentChosed ="Weak_4";
+			InputUtility.currentChosed ="Berserker";
 		else if(row == 2 && column == 0)
-			InputUtility.currentChosed ="Weak_5";
+			InputUtility.currentChosed ="Sapper";
 		else if(row == 2 && column == 1)
-			InputUtility.currentChosed ="Weak_6";
+			InputUtility.currentChosed ="Saboteur";
 		else if(row == 3 && column == 0)
-			InputUtility.currentChosed ="Weak_7";
+			InputUtility.currentChosed ="General";
 		else if(row == VTAB-1 && column == HTAB-1)isReset=true;
 		else InputUtility.currentChosed ="x";
 	}

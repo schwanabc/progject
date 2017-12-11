@@ -197,7 +197,7 @@ public class Board implements IRenderable {
 		if(Checktoadd())
 		{
 			String bot_type=InputUtility.currentChosed;
-			if(bot_type=="Weak_1") 
+			if(bot_type=="Peasant") 
 			{ 
 				if(buyable(Peasant.getHiringCost()))
 				{
@@ -205,7 +205,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Peasant(InputUtility.mouseX,InputUtility.mouseY));
 				}
 			}
-			if(bot_type=="Weak_2") 
+			if(bot_type=="Footman") 
 			{
 				if(buyable(Footman.getHiringCost()))
 				{
@@ -213,7 +213,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Footman(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
-			if(bot_type=="Weak_3") 
+			if(bot_type=="Wardog") 
 			{
 				if(buyable(Wardog.getHiringCost()))
 				{
@@ -221,7 +221,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Wardog(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
-			if(bot_type=="Weak_4") 
+			if(bot_type=="Berserker") 
 			{
 				if(buyable(Berserker.getHiringCost()))
 				{
@@ -229,7 +229,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Berserker(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
-			if(bot_type=="Weak_5") 
+			if(bot_type=="Sapper") 
 			{
 				if(buyable(Sapper.getHiringCost()))
 				{
@@ -237,7 +237,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Sapper(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
-			if(bot_type=="Weak_6") 
+			if(bot_type=="Saboteur") 
 			{
 				if(buyable(Saboteur.getHiringCost()))
 				{
@@ -245,7 +245,7 @@ public class Board implements IRenderable {
 					Gamelogic.addNewObject(new Saboteur(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
-			if(bot_type=="Weak_7") 
+			if(bot_type=="General") 
 			{
 				if(buyable(General.getHiringCost()))
 				{
