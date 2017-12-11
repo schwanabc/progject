@@ -105,15 +105,16 @@ public class Menubar extends VBox{
 			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 		else {
 			if(i == 0 && j == 0){
-				gc.fillText("Normal\n\n\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Armed_Peasant, ICONWIDTH*0.3, ICONHEIGHT*0.35, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.fillText("Peasant\n\n\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Armed_Peasant, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 0 && j == 1){
-				gc.fillText("Tank\n\n\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Footman, ICONWIDTH*0.3, ICONHEIGHT*0.35, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.fillText("Footman\n\n\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Footman, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 0){
-				gc.fillText("Fast\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("War dog\n\n\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Wardog, ICONWIDTH*0.5-15, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+10, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 1){
 				gc.fillText("Destroy\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
@@ -125,7 +126,8 @@ public class Menubar extends VBox{
 				gc.fillText("HQ\nAttack\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 			}
 			else if(i == 3 && j == 0){
-				gc.fillText("Boss\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("General\n\n\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.General, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 		}
 	}

@@ -22,6 +22,8 @@ public class RenderableHolder {
 	public static Image LoseBackground;
 	public static Image Armed_Peasant;
 	public static Image Footman;
+	public static Image Wardog;
+	public static Image General;
 	public static Image StoneTile;
 	public static Image Rubble;
 	public static Image stripe;
@@ -70,6 +72,7 @@ public class RenderableHolder {
 		Lose.stop();
 	}
 	public static void Loadresource() {
+		//-------------------------button and icon
 		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
 		ReleaseHome=new Image(ClassLoader.getSystemResource("releasehome.jpg").toString());	
@@ -78,10 +81,16 @@ public class RenderableHolder {
 		PressedExit=new Image(ClassLoader.getSystemResource("pressexit.jpg").toString());
 		ReleasePaused=new Image(ClassLoader.getSystemResource("releasepause.jpg").toString());	
 		PressedPaused=new Image(ClassLoader.getSystemResource("presspause.jpg").toString());
+		//-------------------------background
+		Victorybackground=new Image(ClassLoader.getSystemResource("victorybackground.jpg").toString());
 	    Background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
 	    LoseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
+	    //--------------------------unit--------------------------------------------------
 		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
-	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());	
+	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());
+	    General=new Image(ClassLoader.getSystemResource("general.png").toString());
+	    Wardog=new Image(ClassLoader.getSystemResource("wardog.png").toString());
+	    //--------------------------tile & etc--------------------------------------------------
 		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
 		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
 		ReleaseButton=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
@@ -91,9 +100,9 @@ public class RenderableHolder {
 		NormalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
 		PenetrateTower=new Image(ClassLoader.getSystemResource("penetratetower.jpg").toString());
 		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
-		Victorybackground=new Image(ClassLoader.getSystemResource("victorybackground.jpg").toString());
 		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
 		Grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
+		//---------------------------------sound
 		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());

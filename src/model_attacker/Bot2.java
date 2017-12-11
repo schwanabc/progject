@@ -1,5 +1,6 @@
 package model_attacker;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_defender.Defender;
@@ -13,7 +14,7 @@ public class Bot2 extends Attacker{
 		super(posX,posY);
 		this.ATK=40;
 		this.DEF=5;
-		this.RADIUS=4;
+		this.RADIUS=5;
 		this.speed=4;
 		this.DIAMETER=this.RADIUS*2;
 		this.HP=100;
@@ -32,8 +33,7 @@ public class Bot2 extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.RED);
-		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.Wardog, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
 		drawHPbar(gc);
 	}
 	@Override
