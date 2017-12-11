@@ -9,50 +9,49 @@ import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
 
 import drawing.LoseScreen;
+import drawing.PlayScreen;
 import drawing.StartScreen;
 import drawing.WaitScreen;
 import drawing.WinScreen;
 
 public class SceneManager {
 
-	private  static Stage primaryStage;
-	private  static Scene playScene;
-	private  static Scene waitScene;
-	private  static Scene winScene;
-	private  static Scene loseScene;
-	private  static Scene StartScene;
-	private  static PlayScreen Playscreen;
+	private static Stage primaryStage;
+	private static Scene playScene;
+	private static Scene waitScene;
+	private static Scene winScene;
+	private static Scene loseScene;
+	private static Scene StartScene;
+	private static PlayScreen Playscreen;
 	public static String GAMENAME="TOWER HATER 2.0";
-	public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static double SCREEN_HEIGHT=720;
-	public static double SCREEN_WIDTH=1280;
+	public static final double SCREEN_HEIGHT=720;
+	public static final double SCREEN_WIDTH=1280;
 	public static void setStage(Stage primaryStage) {
 		SceneManager.primaryStage=primaryStage;
 		SceneManager.primaryStage.setTitle(GAMENAME);
 		SceneManager.primaryStage.setHeight(SCREEN_HEIGHT);
 		SceneManager.primaryStage.setWidth(SCREEN_WIDTH);
-		SceneManager.primaryStage.setFullScreen(true);
-		primaryStage.show();
+		SceneManager.primaryStage.setFullScreenExitHint("");
+		SceneManager.primaryStage.centerOnScreen();
+		SceneManager.primaryStage.show();
 	} 
-	public static  void gotoStartScreen() { 
+	public static void gotoStartScreen() { 
 		StartScene=new Scene(new StartScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
 		primaryStage.setScene(StartScene);
-		SceneManager.primaryStage.setFullScreenExitHint("");
 		SceneManager.primaryStage.setFullScreen(true);
-		SceneManager.primaryStage.centerOnScreen();
 	}
-	public static  void gotoPlayScreen() { 
+	public static void gotoPlayScreen() { 
 		InitializeplayScene();
 		primaryStage.setScene(playScene);
 		SceneManager.primaryStage.setFullScreen(true);
-		Playscreen.AT.start();
+		Playscreen.getAT().start();
 	}
 	private static void InitializeplayScene() {
 		Playscreen=new PlayScreen();
 		playScene=new Scene(Playscreen,SCREEN_WIDTH,SCREEN_HEIGHT);
-		Playscreen.gamescreen.requestFocus();
+		Playscreen.getGamescreen().requestFocus();
 	}
-	public static  void gotoWaitScreen() {
+	public static void gotoWaitScreen() {
 		waitScene=new Scene(new WaitScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
 		primaryStage.setScene(waitScene);
 		SceneManager.primaryStage.setFullScreen(true);

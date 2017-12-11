@@ -5,7 +5,6 @@ import Button.ExitIcon;
 
 import java.io.InputStream;
 
-import Scenemanager.PlayScreen;
 import Scenemanager.SceneManager;
 import SharedObject.RenderableHolder;
 import Utility.InputUtility;

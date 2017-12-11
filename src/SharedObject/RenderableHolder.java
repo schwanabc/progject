@@ -24,6 +24,7 @@ public class RenderableHolder {
 	public static Image PressedPaused;
 	public static Image Background;
 	public static Image LoseBackground;
+	public static Image Victorybackground;
 	public static Image Armed_Peasant;
 	public static Image Footman;
 	public static Image Wardog;
@@ -40,12 +41,9 @@ public class RenderableHolder {
 	public static Image NormalTower;
 	public static Image PenetrateTower;
 	public static Image Menubackground;
-	public static Image Victorybackground;
 	public static Image ErrorFrame;
 	public static Image Grass;
-	public static Image Arrow;
 	public static AudioClip Clickedsound; 
-	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
 	public static AudioClip Attack_sword;
 	public static AudioClip BuildingCollapsed;
@@ -53,7 +51,6 @@ public class RenderableHolder {
 	public static AudioClip ArrowSound;
 	public static AudioClip Lose;
 	public static AudioClip Opensong;
-	public static AudioClip Playsong;
 	public static AudioClip Losesong;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
@@ -62,7 +59,7 @@ public class RenderableHolder {
 	{
 		Loadresource();
 	};
-	RenderableHolder()
+	public RenderableHolder()
 	{
 		entities=new ArrayList<IRenderable>();
 		comparator= (IRenderable o1,IRenderable o2) ->
@@ -74,7 +71,6 @@ public class RenderableHolder {
 	}
 	public static void StopAudio() {
 		Clickedsound.stop(); 
-		Clickedmenu.stop();
 		Buttonhover.stop();
 		Attack_sword.stop();
 		BuildingCollapsed.stop();
@@ -118,18 +114,15 @@ public class RenderableHolder {
 		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
 		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
 		Grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
-		Arrow=new Image(ClassLoader.getSystemResource("arrow.png").toString());
 		//---------------------------------sound
 		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
-	    Clickedmenu=new AudioClip(ClassLoader.getSystemResource("buttonmenu.wav").toString());
 	    BuildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
 	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.mp3").toString());
 	    ArrowSound=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
 	    Lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
 	    Opensong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
-	    Playsong=new AudioClip(ClassLoader.getSystemResource("playsong.mp3").toString());
 	    Losesong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
 		}
 		catch(Exception e)
@@ -175,7 +168,7 @@ public class RenderableHolder {
 		return entities;
 	}
 	public void reboot() {
-		instance = new RenderableHolder();
+		entities.clear();
 	}
 
 	

@@ -1,9 +1,8 @@
-package Scenemanager;
+package drawing;
 import Button.PauseIcon;
+import Scenemanager.SceneManager;
 import SharedObject.RenderableHolder;
 import Utility.InputUtility;
-import drawing.GameScreen;
-import drawing.Menubar;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -22,13 +21,14 @@ public class PlayScreen extends HBox{
 	public static double MiscScreenWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
 	public static double MiscScreenHEIGHT=(SceneManager.SCREEN_HEIGHT);
 	public static PlayScreen instance;
-	GameScreen gamescreen;
-	Menubar menubar;
-	AnimationTimer AT,AT2;
-	Gamelogic Gamelogic;
-	Canvas MiscScreen;
-	Canvas MiscScreen2;
-	PlayScreen()
+	private GameScreen gamescreen;
+	private Menubar menubar;
+	private AnimationTimer AT;
+	private AnimationTimer AT2;
+	private Gamelogic Gamelogic;
+	private Canvas MiscScreen;
+	private Canvas MiscScreen2;
+	public PlayScreen()
 	{
 		instance=this;
 		Initialize();
@@ -84,13 +84,11 @@ public class PlayScreen extends HBox{
 		PauseIcon.instance.DrawUnpaused();
 	}	
 	protected void Paintupdated() {
-		// TODO Auto-generated method stub
 		gamescreen.PaintComponent();
 		RenderableHolder.getInstance().update();
 		menubar.update();
 		InputUtility.checkTick();
 		Checkpaused();
-		
 	}
 	private void Checkcondition() {
 		// TODO Auto-generated method stub
@@ -163,6 +161,12 @@ public class PlayScreen extends HBox{
 	}
 	public static boolean isPausedstate() {
 		return pausedstate;
+	}
+	public GameScreen getGamescreen() {
+		return gamescreen;
+	}
+	public AnimationTimer getAT() {
+		return AT;
 	}
 
 

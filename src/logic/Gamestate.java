@@ -1,6 +1,6 @@
 package logic;
 
-import Scenemanager.PlayScreen;
+import drawing.PlayScreen;
 import javafx.animation.AnimationTimer;
 
 public class Gamestate {
