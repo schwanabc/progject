@@ -44,9 +44,9 @@ public class HomeIcon extends Canvas implements IsButton{
 				gc.drawImage(RenderableHolder.PressedHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 				Board.resetNumboard();
 				RenderableHolder.StopAudio();
-				RenderableHolder.Clickedsound.play();
 				PlayScreen.instance.Forceend();
 				SceneManager.gotoStartScreen();
+				RenderableHolder.Clickedsound.play();
 				}
 		});
 	}

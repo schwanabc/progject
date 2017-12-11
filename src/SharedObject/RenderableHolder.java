@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import model_defender.Defender;
@@ -39,15 +43,18 @@ public class RenderableHolder {
 	public static Image Victorybackground;
 	public static Image ErrorFrame;
 	public static Image Grass;
-	public static Image Cash;
+	public static Image Arrow;
 	public static AudioClip Clickedsound; 
 	public static AudioClip Clickedmenu;
 	public static AudioClip Buttonhover;
 	public static AudioClip Attack_sword;
 	public static AudioClip BuildingCollapsed;
 	public static AudioClip Victory;
-	public static AudioClip Arrow;
+	public static AudioClip ArrowSound;
 	public static AudioClip Lose;
+	public static AudioClip Opensong;
+	public static AudioClip Playsong;
+	public static AudioClip Losesong;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -73,8 +80,11 @@ public class RenderableHolder {
 		BuildingCollapsed.stop();
 		Victory.stop();
 		Lose.stop();
+		Opensong.stop();
+		Losesong.stop();
 	}
 	public static void Loadresource() {
+		try {
 		//-------------------------button and icon
 		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
 		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
@@ -108,15 +118,28 @@ public class RenderableHolder {
 		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
 		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
 		Grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
+		Arrow=new Image(ClassLoader.getSystemResource("arrow.png").toString());
 		//---------------------------------sound
 		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
 	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
 	    Clickedmenu=new AudioClip(ClassLoader.getSystemResource("buttonmenu.wav").toString());
 	    BuildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
-	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.wav").toString());
-	    Arrow=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
-	    Lose=new AudioClip(ClassLoader.getSystemResource("lose.mp3").toString());
+	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.mp3").toString());
+	    ArrowSound=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
+	    Lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
+	    Opensong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
+	    Playsong=new AudioClip(ClassLoader.getSystemResource("playsong.mp3").toString());
+	    Losesong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
+		}
+		catch(Exception e)
+		{
+			Alert ar=new Alert(AlertType.ERROR,"Can't load resource",ButtonType.CLOSE);
+			ar.setTitle("Can't load resource");
+			ar.showAndWait();
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 	public void add(IRenderable entity)
 	{

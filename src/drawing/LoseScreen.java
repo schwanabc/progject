@@ -23,6 +23,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 public class LoseScreen extends Pane{
@@ -35,7 +36,23 @@ public class LoseScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public LoseScreen()
 	{
+		RenderableHolder.StopAudio();
 		RenderableHolder.Lose.play();
+		Thread t2 =new Thread(()->
+		 {
+			 while(true)
+			 {
+				 if(RenderableHolder.Lose.isPlaying()==false)
+				 {
+				 RenderableHolder.Losesong.setCycleCount(AudioClip.INDEFINITE);
+				RenderableHolder.Losesong.play();
+				break;
+				 }
+			 }
+		});
+			t2.start();
+
+
 		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.LoseBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));

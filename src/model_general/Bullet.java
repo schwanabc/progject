@@ -52,7 +52,7 @@ public class Bullet extends Entity implements Ismovable{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLUE);
+		gc.setFill(Color.DIMGRAY);
 		gc.fillOval(posX-radius, posY-radius, radius*2, radius*2);
 	}
 	@Override

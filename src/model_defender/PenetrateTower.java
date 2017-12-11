@@ -16,8 +16,8 @@ public class PenetrateTower extends Tower{
 	}
 	@Override
 	protected void shoot(double theta,int direction) {
-		RenderableHolder.Arrow.setVolume(0.05);
-		RenderableHolder.Arrow.play();
+		RenderableHolder.ArrowSound.setVolume(0.05);
+		RenderableHolder.ArrowSound.play();
 		Gamelogic.addNewObject(new PenetrateBullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
 	}
 	@Override

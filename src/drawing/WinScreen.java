@@ -34,6 +34,7 @@ public class WinScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public WinScreen()
 	{
+		RenderableHolder.StopAudio();
 		RenderableHolder.Victory.play();
 		System.out.println("Winscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);

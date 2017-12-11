@@ -35,6 +35,7 @@ public class WaitScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public WaitScreen()
 	{
+		RenderableHolder.StopAudio();
 		RenderableHolder.Victory.play();
 		System.out.println("Waitscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
