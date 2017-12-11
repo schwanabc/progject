@@ -27,7 +27,7 @@ public class Tower extends Defender{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.NormalTower,posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.normalTower,posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 	}
 	protected void ColliedwithAttacker()//find nearest target
@@ -89,8 +89,8 @@ public class Tower extends Defender{
 		ColliedwithAttacker();
 	}
 	protected void shoot(double theta,int direction) {
-		RenderableHolder.ArrowSound.setVolume(0.05);
-		RenderableHolder.ArrowSound.play();
+		RenderableHolder.arrowSound.setVolume(0.05);
+		RenderableHolder.arrowSound.play();
 		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
 	}
 	public int getZ() {

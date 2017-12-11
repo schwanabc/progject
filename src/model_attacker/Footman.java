@@ -33,7 +33,7 @@ public class Footman extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Footman, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
+		gc.drawImage(RenderableHolder.footman, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 

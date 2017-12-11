@@ -24,13 +24,13 @@ public class PauseIcon extends Canvas implements IsButton{
 		isClick=false;
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.ReleasePaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		Addtolisterner();
+		gc.drawImage(RenderableHolder.releasePaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		addToListerner();
 	}
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -45,27 +45,27 @@ public class PauseIcon extends Canvas implements IsButton{
 				{
 					if(isClick==false)
 					{
-						Drawpaused();
+						drawPaused();
 						PlayScreen.instance.Pause();
 					}
 					else
 					{
-						DrawUnpaused();
+						drawUnpaused();
 						PlayScreen.instance.Pause();
 					}
 				}
 		});
 	}
-	public void Drawpaused() {
+	public void drawPaused() {
 		isClick=true;
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.PressedPaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		RenderableHolder.Clickedsound.play();
+		gc.drawImage(RenderableHolder.pressedPaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		RenderableHolder.clickedSound.play();
 	}
-	public void DrawUnpaused() {
+	public void drawUnpaused() {
 		isClick=false;
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.ReleasePaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		RenderableHolder.Clickedsound.play();
+		gc.drawImage(RenderableHolder.releasePaused, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		RenderableHolder.clickedSound.play();
 	}
 }

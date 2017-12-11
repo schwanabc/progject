@@ -37,15 +37,15 @@ public class LoseScreen extends Pane{
 	public LoseScreen()
 	{
 		RenderableHolder.StopAudio();
-		RenderableHolder.Lose.play();
+		RenderableHolder.lose.play();
 		Thread t2 =new Thread(()->
 		 {
 			 while(true)
 			 {
-				 if(RenderableHolder.Lose.isPlaying()==false)
+				 if(RenderableHolder.lose.isPlaying()==false)
 				 {
-				 RenderableHolder.Losesong.setCycleCount(AudioClip.INDEFINITE);
-				RenderableHolder.Losesong.play();
+				 RenderableHolder.loseSong.setCycleCount(AudioClip.INDEFINITE);
+				RenderableHolder.loseSong.play();
 				break;
 				 }
 			 }
@@ -55,7 +55,7 @@ public class LoseScreen extends Pane{
 
 		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.LoseBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.loseBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
 		Retry=new RetryButton("Retry");
 		Retry.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)*1.7/2, SceneManager.SCREEN_HEIGHT*0.4);
 		Menu=new MenuButton("Main Menu");
@@ -65,7 +65,7 @@ public class LoseScreen extends Pane{
 		Title=new Label(WIN_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(1.7*Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
+		Title.relocate(1.7*Utility.getTextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Menu,Retry,Exit,Title);
 	}
 

@@ -11,7 +11,7 @@ public class Utility {
 		FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
 		return  fontLoader.computeStringWidth(text, font);
 	}
-	public static double TextStartWidht(double totalwidth,double fontlenght)
+	public static double getTextStartWidht(double totalwidth,double fontlenght)
 	{
 		return (totalwidth-fontlenght)/2;
 	}

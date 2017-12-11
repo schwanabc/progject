@@ -32,7 +32,7 @@ public class Peasant extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 

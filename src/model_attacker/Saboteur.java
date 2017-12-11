@@ -33,7 +33,7 @@ public class Saboteur extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Saboteur, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.saboteur, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 	@Override

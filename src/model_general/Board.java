@@ -165,7 +165,7 @@ public class Board implements IRenderable {
 				gc.fillRect(BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 				if(accessibleboard[i][j]==1)
 				{
-					gc.drawImage(RenderableHolder.StoneTile, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.drawImage(RenderableHolder.stoneTile, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 					gc.setGlobalAlpha(0.15);
 					gc.drawImage(RenderableHolder.stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
 					gc.setGlobalAlpha(1);
@@ -174,7 +174,7 @@ public class Board implements IRenderable {
 				if(board[i][j]==-1)
 				{
 			
-					gc.drawImage(RenderableHolder.Rubble,BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.drawImage(RenderableHolder.rubble,BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 					gc.setGlobalAlpha(0.15);
 					gc.drawImage(RenderableHolder.stripe, BOARD_WIDTH*j-1, BOARD_HEIGHT*i-1, BOARD_WIDTH+2, BOARD_HEIGHT+2);
 					gc.setGlobalAlpha(1);
@@ -182,7 +182,7 @@ public class Board implements IRenderable {
 				}
 				if(accessibleboard[i][j]==0)
 				{
-					gc.drawImage(RenderableHolder.Grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
+					gc.drawImage(RenderableHolder.grass, BOARD_WIDTH*j, BOARD_HEIGHT*i, BOARD_WIDTH, BOARD_HEIGHT);
 				}
 			}
 	}

@@ -33,11 +33,11 @@ public class StartScreen extends Pane{
 	public StartScreen()
 	{
 		RenderableHolder.StopAudio();
-		RenderableHolder.Opensong.setCycleCount(AudioClip.INDEFINITE);
-		RenderableHolder.Opensong.play();
+		RenderableHolder.openSong.setCycleCount(AudioClip.INDEFINITE);
+		RenderableHolder.openSong.play();
 		System.out.println("startscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.Background, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.background, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
 		Play=new PlayButton("Play");
 		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)/2, SceneManager.SCREEN_HEIGHT*0.4);	
 		Exit=new ExitButton("Exit");
@@ -45,7 +45,7 @@ public class StartScreen extends Pane{
 		Gametitle=new Label(SceneManager.GAMENAME);
 		Gametitle.setFont(TEXT_FONT);
 		Gametitle.setTextFill(Color.CORAL);
-		Gametitle.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
+		Gametitle.relocate(Utility.getTextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Play,Exit,Gametitle);
 	}
 

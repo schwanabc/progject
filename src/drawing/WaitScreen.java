@@ -36,10 +36,10 @@ public class WaitScreen extends Pane{
 	public WaitScreen()
 	{
 		RenderableHolder.StopAudio();
-		RenderableHolder.Victory.play();
+		RenderableHolder.victory.play();
 		System.out.println("Waitscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.Victorybackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.victoryBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
 		Play=new PlayButton("Next Stage");
 		Play.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.SCREEN_HEIGHT*0.4);	
 		Replay=new ReplayButton("Play Again");
@@ -49,7 +49,7 @@ public class WaitScreen extends Pane{
 		Title=new Label(WAIT_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(1.5*Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WAIT_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
+		Title.relocate(1.5*Utility.getTextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WAIT_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Play,Replay,Exit,Title);
 	}
 

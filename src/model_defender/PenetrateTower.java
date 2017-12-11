@@ -16,14 +16,14 @@ public class PenetrateTower extends Tower{
 	}
 	@Override
 	protected void shoot(double theta,int direction) {
-		RenderableHolder.ArrowSound.setVolume(0.05);
-		RenderableHolder.ArrowSound.play();
+		RenderableHolder.arrowSound.setVolume(0.05);
+		RenderableHolder.arrowSound.play();
 		Gamelogic.addNewObject(new PenetrateBullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.PenetrateTower,posX, posY, Wallwidth, Wallheight);
+		gc.drawImage(RenderableHolder.penetrateTower,posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
 	}
 

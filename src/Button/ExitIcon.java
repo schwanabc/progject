@@ -21,13 +21,13 @@ public class ExitIcon extends Canvas implements IsButton{
 		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.ReleaseExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		Addtolisterner();
+		gc.drawImage(RenderableHolder.releaseExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		addToListerner();
 	}
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -41,10 +41,10 @@ public class ExitIcon extends Canvas implements IsButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				GraphicsContext gc=this.getGraphicsContext2D();
-				gc.drawImage(RenderableHolder.PressedExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+				gc.drawImage(RenderableHolder.pressedExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 				Board.resetNumboard();
 				RenderableHolder.StopAudio();
-				RenderableHolder.Clickedsound.play();
+				RenderableHolder.clickedSound.play();
 				PlayScreen.instance.Forceend();
 				System.exit(0);
 				}

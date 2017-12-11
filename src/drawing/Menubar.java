@@ -73,7 +73,7 @@ public class Menubar extends VBox{
 			{
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
-				gc.drawImage(RenderableHolder.ReleaseButton,0,0, ICONWIDTH, ICONHEIGHT);
+				gc.drawImage(RenderableHolder.releaseButton,0,0, ICONWIDTH, ICONHEIGHT);
 				gc.setFont(TEXT_FONT);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
@@ -105,32 +105,32 @@ public class Menubar extends VBox{
 		else {
 			if(i == 0 && j == 0){
 				gc.fillText("Peasant\n\n\n"+model_attacker.Peasant.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Armed_Peasant, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.armed_Peasant, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 0 && j == 1){
 				gc.fillText("Footman\n\n\n"+model_attacker.Footman.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Footman, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.footman, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 0){
 				gc.fillText("War dog\n\n\n"+model_attacker.Wardog.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Wardog, ICONWIDTH*0.5-15, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+10, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.wardog, ICONWIDTH*0.5-15, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+10, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 1){
 				gc.fillText("Berserker\n\n\n"+model_attacker.Berserker.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Berserker, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.berserker, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 2 && j == 0){
 				gc.fillText("Sapper\n\n\n"+model_attacker.Sapper.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Sapper, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.sapper, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 2 && j == 1){
 				gc.fillText("Saboteur\n\n\n"+model_attacker.Saboteur.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.Saboteur, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.saboteur, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 
 			}
 			else if(i == 3 && j == 0){
 				gc.fillText("General\n\n\n"+model_attacker.General.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
-				gc.drawImage(RenderableHolder.General, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+				gc.drawImage(RenderableHolder.general, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 		}
 	}
@@ -172,7 +172,7 @@ public class Menubar extends VBox{
 	}
 
 	private void setHover(GraphicsContext gc,int row,int column) {
-		RenderableHolder.Buttonhover.play();
+		RenderableHolder.buttonHover.play();
 		ColorAdjust colorAdjust=new ColorAdjust();
 		colorAdjust.setBrightness(0.2);
 		menu[row][column].setEffect(colorAdjust);
@@ -202,20 +202,20 @@ public class Menubar extends VBox{
 		else InputUtility.currentChosed ="x";
 	}
 	private void setClick(GraphicsContext gc,int row,int column) {
-		RenderableHolder.Clickedsound.play();
-		gc.drawImage(RenderableHolder.PressButton, 0, 0, ICONWIDTH, ICONHEIGHT);
+		RenderableHolder.clickedSound.play();
+		gc.drawImage(RenderableHolder.pressButton, 0, 0, ICONWIDTH, ICONHEIGHT);
 		Filltext(gc,row,column);
 	}
 	private void setUnClick(GraphicsContext gc,int row,int column) {
 		//RenderableHolder.Clickedmenu.play();
-		gc.drawImage(RenderableHolder.ReleaseButton, 0, 0, ICONWIDTH, ICONHEIGHT);
+		gc.drawImage(RenderableHolder.releaseButton, 0, 0, ICONWIDTH, ICONHEIGHT);
 		Filltext(gc,row,column);
 	}
 	
 	private void PaintMenucanvas(GraphicsContext gc)
 	{
-		gc.drawImage(RenderableHolder.Menubackground, 0, 0, MENU_WIDTH*0.8, ICONPOS*0.8);
-		gc.drawImage(RenderableHolder.ErrorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
+		gc.drawImage(RenderableHolder.menuBackground, 0, 0, MENU_WIDTH*0.8, ICONPOS*0.8);
+		gc.drawImage(RenderableHolder.errorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.BOTTOM);
@@ -298,7 +298,7 @@ public class Menubar extends VBox{
 				 GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 					gc.setFill(Color.RED);
 					gc.setFont(WARN_FONT);
-					gc.fillText(text, Utility.TextStartWidht(MENU_WIDTH, Utility.getFont_width(text,WARN_FONT)), ICONPOS*0.87);
+					gc.fillText(text, Utility.getTextStartWidht(MENU_WIDTH, Utility.getFont_width(text,WARN_FONT)), ICONPOS*0.87);
 			}
 		}.start();
 	}

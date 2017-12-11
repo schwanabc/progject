@@ -33,7 +33,7 @@ public class Wardog extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Wardog, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
+		gc.drawImage(RenderableHolder.wardog, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
 		drawHPbar(gc);
 	}
 	@Override

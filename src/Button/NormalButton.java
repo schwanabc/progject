@@ -40,17 +40,17 @@ public class NormalButton extends Canvas implements IsButton{
 		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.ReleaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		gc.drawImage(RenderableHolder.releaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 		gc.setFont(BUTTON_FONT);
 		gc.setTextBaseline(VPos.CENTER);
-		gc.fillText(text,Utility.TextStartWidht(BUTTON_WIDTH,Utility.getFont_width(text,gc.getFont())), BUTTON_HEIGHT/2);
-		Addtolisterner();
+		gc.fillText(text,Utility.getTextStartWidht(BUTTON_WIDTH,Utility.getFont_width(text,gc.getFont())), BUTTON_HEIGHT/2);
+		addToListerner();
 
 	}
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -64,7 +64,7 @@ public class NormalButton extends Canvas implements IsButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				RenderableHolder.StopAudio();
-				RenderableHolder.Clickedsound.play();
+				RenderableHolder.clickedSound.play();
 				SceneManager.gotoPlayScreen();
 				}
 		});

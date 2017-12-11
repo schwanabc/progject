@@ -14,50 +14,50 @@ import model_defender.Defender;
 import model_defender.HQ;
 import model_general.Board;
 public class RenderableHolder {
-	public static Image ReleaseButtonBackground;	
-	public static Image PressedButtonBackground;
-	public static Image ReleaseHome;	
-	public static Image PressedHome;
-	public static Image ReleaseExit;	
-	public static Image PressedExit;
-	public static Image ReleasePaused;	
-	public static Image PressedPaused;
-	public static Image Background;
-	public static Image LoseBackground;
-	public static Image Victorybackground;
-	public static Image Armed_Peasant;
-	public static Image Footman;
-	public static Image Wardog;
-	public static Image General;
-	public static Image Sapper;
-	public static Image Berserker;
-	public static Image Saboteur;
-	public static Image StoneTile;
-	public static Image Rubble;
+	public static Image releaseButtonBackground;	
+	public static Image pressedButtonBackground;
+	public static Image releaseHome;	
+	public static Image pressedHome;
+	public static Image releaseExit;	
+	public static Image pressedExit;
+	public static Image releasePaused;	
+	public static Image pressedPaused;
+	public static Image background;
+	public static Image loseBackground;
+	public static Image victoryBackground;
+	public static Image armed_Peasant;
+	public static Image footman;
+	public static Image wardog;
+	public static Image general;
+	public static Image sapper;
+	public static Image berserker;
+	public static Image saboteur;
+	public static Image stoneTile;
+	public static Image rubble;
 	public static Image stripe;
-	public static Image ReleaseButton;
-	public static Image PressButton;
+	public static Image releaseButton;
+	public static Image pressButton;
 	public static Image HQ;
-	public static Image NormalTower;
-	public static Image PenetrateTower;
-	public static Image Menubackground;
-	public static Image ErrorFrame;
-	public static Image Grass;
-	public static AudioClip Clickedsound; 
-	public static AudioClip Buttonhover;
-	public static AudioClip Attack_sword;
-	public static AudioClip BuildingCollapsed;
-	public static AudioClip Victory;
-	public static AudioClip ArrowSound;
-	public static AudioClip Lose;
-	public static AudioClip Opensong;
-	public static AudioClip Losesong;
+	public static Image normalTower;
+	public static Image penetrateTower;
+	public static Image menuBackground;
+	public static Image errorFrame;
+	public static Image grass;
+	public static AudioClip clickedSound; 
+	public static AudioClip buttonHover;
+	public static AudioClip attack_Sword;
+	public static AudioClip buildingCollapsed;
+	public static AudioClip victory;
+	public static AudioClip arrowSound;
+	public static AudioClip lose;
+	public static AudioClip openSong;
+	public static AudioClip loseSong;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
 	static
 	{
-		Loadresource();
+		loadResource();
 	};
 	public RenderableHolder()
 	{
@@ -70,60 +70,60 @@ public class RenderableHolder {
 		};
 	}
 	public static void StopAudio() {
-		Clickedsound.stop(); 
-		Buttonhover.stop();
-		Attack_sword.stop();
-		BuildingCollapsed.stop();
-		Victory.stop();
-		Lose.stop();
-		Opensong.stop();
-		Losesong.stop();
+		clickedSound.stop(); 
+		buttonHover.stop();
+		attack_Sword.stop();
+		buildingCollapsed.stop();
+		victory.stop();
+		lose.stop();
+		openSong.stop();
+		loseSong.stop();
 	}
-	public static void Loadresource() {
+	public static void loadResource() {
 		try {
 		//-------------------------button and icon
-		ReleaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
-		PressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
-		ReleaseHome=new Image(ClassLoader.getSystemResource("releasehome.jpg").toString());	
-		PressedHome=new Image(ClassLoader.getSystemResource("presshome.jpg").toString());
-		ReleaseExit=new Image(ClassLoader.getSystemResource("releaseexit.jpg").toString());	
-		PressedExit=new Image(ClassLoader.getSystemResource("pressexit.jpg").toString());
-		ReleasePaused=new Image(ClassLoader.getSystemResource("releasepause.jpg").toString());	
-		PressedPaused=new Image(ClassLoader.getSystemResource("presspause.jpg").toString());
+		releaseButtonBackground=new Image(ClassLoader.getSystemResource("releasebutton.jpg").toString());	
+		pressedButtonBackground=new Image(ClassLoader.getSystemResource("pressbutton.jpg").toString());
+		releaseHome=new Image(ClassLoader.getSystemResource("releasehome.jpg").toString());	
+		pressedHome=new Image(ClassLoader.getSystemResource("presshome.jpg").toString());
+		releaseExit=new Image(ClassLoader.getSystemResource("releaseexit.jpg").toString());	
+		pressedExit=new Image(ClassLoader.getSystemResource("pressexit.jpg").toString());
+		releasePaused=new Image(ClassLoader.getSystemResource("releasepause.jpg").toString());	
+		pressedPaused=new Image(ClassLoader.getSystemResource("presspause.jpg").toString());
 		//-------------------------background
-		Victorybackground=new Image(ClassLoader.getSystemResource("victorybackground.jpg").toString());
-	    Background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
-	    LoseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
+		victoryBackground=new Image(ClassLoader.getSystemResource("victorybackground.jpg").toString());
+	    background=new Image(ClassLoader.getSystemResource("startscreen.jpg").toString());
+	    loseBackground=new Image(ClassLoader.getSystemResource("losescreen.jpg").toString());
 	    //--------------------------unit--------------------------------------------------
-		Armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
-	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());
-	    General=new Image(ClassLoader.getSystemResource("general.png").toString());
-	    Wardog=new Image(ClassLoader.getSystemResource("wardog.png").toString());
-	    Sapper=new Image(ClassLoader.getSystemResource("sapper.png").toString());
-	    Berserker=new Image(ClassLoader.getSystemResource("berserker.png").toString());
-	    Saboteur=new Image(ClassLoader.getSystemResource("saboteur.png").toString());
+		armed_Peasant=new Image(ClassLoader.getSystemResource("Armed_Peasant.png").toString());	
+	    footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());
+	    general=new Image(ClassLoader.getSystemResource("general.png").toString());
+	    wardog=new Image(ClassLoader.getSystemResource("wardog.png").toString());
+	    sapper=new Image(ClassLoader.getSystemResource("sapper.png").toString());
+	    berserker=new Image(ClassLoader.getSystemResource("berserker.png").toString());
+	    saboteur=new Image(ClassLoader.getSystemResource("saboteur.png").toString());
 	    //--------------------------tile & etc--------------------------------------------------
-		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
+		stoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
 		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	
-		ReleaseButton=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
-		PressButton=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
-		Rubble=new Image(ClassLoader.getSystemResource("rubble.png").toString());
+		releaseButton=new Image(ClassLoader.getSystemResource("menureleased.jpg").toString());	
+		pressButton=new Image(ClassLoader.getSystemResource("menupressed.jpg").toString());	
+		rubble=new Image(ClassLoader.getSystemResource("rubble.png").toString());
 		HQ=new Image(ClassLoader.getSystemResource("HQ.png").toString());
-		NormalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
-		PenetrateTower=new Image(ClassLoader.getSystemResource("penetratetower.jpg").toString());
-		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
-		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
-		Grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
+		normalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
+		penetrateTower=new Image(ClassLoader.getSystemResource("penetratetower.jpg").toString());
+		errorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
+		menuBackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
+		grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
 		//---------------------------------sound
-		Clickedsound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
-	    Buttonhover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
-	    Attack_sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
-	    BuildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
-	    Victory=new AudioClip(ClassLoader.getSystemResource("victory.mp3").toString());
-	    ArrowSound=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
-	    Lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
-	    Opensong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
-	    Losesong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
+		clickedSound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
+	    buttonHover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());
+	    attack_Sword=new AudioClip(ClassLoader.getSystemResource("attack_sword.wav").toString());
+	    buildingCollapsed=new AudioClip(ClassLoader.getSystemResource("buildingcollapsed.wav").toString());
+	    victory=new AudioClip(ClassLoader.getSystemResource("victory.mp3").toString());
+	    arrowSound=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
+	    lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
+	    openSong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
+	    loseSong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
 		}
 		catch(Exception e)
 		{
@@ -148,7 +148,7 @@ public class RenderableHolder {
 			{
 				if(entities.get(i) instanceof Defender)
 				{
-					BuildingCollapsed.play();
+					buildingCollapsed.play();
 					Defender defender=(Defender) entities.get(i);
 					Board.setBoard(defender.getPosI(), defender.getPosJ(), -1);
 					if(entities.get(i) instanceof HQ)

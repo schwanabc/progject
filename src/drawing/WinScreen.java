@@ -35,10 +35,10 @@ public class WinScreen extends Pane{
 	public WinScreen()
 	{
 		RenderableHolder.StopAudio();
-		RenderableHolder.Victory.play();
+		RenderableHolder.victory.play();
 		System.out.println("Winscreen");
 		this.setPrefSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT);
-		this.setBackground(new Background(new BackgroundImage(RenderableHolder.Victorybackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
+		this.setBackground(new Background(new BackgroundImage(RenderableHolder.victoryBackground, null, null, null, new BackgroundSize(SceneManager.SCREEN_WIDTH, SceneManager.SCREEN_HEIGHT,true,true,true,true))));
 		Replay=new ReplayButton("Play Again");
 		Replay.relocate((SceneManager.SCREEN_WIDTH-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.SCREEN_HEIGHT*0.4);
 		Menu=new MenuButton("Main Menu");
@@ -48,7 +48,7 @@ public class WinScreen extends Pane{
 		Title=new Label(WIN_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
+		Title.relocate(Utility.getTextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Menu,Replay,Exit,Title);
 	}
 

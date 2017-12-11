@@ -1,5 +1,5 @@
 package Button;
 
 public interface IsButton {
-	public void Addtolisterner();
+	public void addToListerner();
 }

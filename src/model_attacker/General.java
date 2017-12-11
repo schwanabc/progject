@@ -31,7 +31,7 @@ public class General extends Attacker{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.General,posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.general,posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 

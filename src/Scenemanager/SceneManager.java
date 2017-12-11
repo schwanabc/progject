@@ -21,8 +21,8 @@ public class SceneManager {
 	private static Scene waitScene;
 	private static Scene winScene;
 	private static Scene loseScene;
-	private static Scene StartScene;
-	private static PlayScreen Playscreen;
+	private static Scene startScene;
+	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
 	public static final double SCREEN_HEIGHT=720;
 	public static final double SCREEN_WIDTH=1280;
@@ -36,20 +36,20 @@ public class SceneManager {
 		SceneManager.primaryStage.show();
 	} 
 	public static void gotoStartScreen() { 
-		StartScene=new Scene(new StartScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
-		primaryStage.setScene(StartScene);
+		startScene=new Scene(new StartScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
+		primaryStage.setScene(startScene);
 		SceneManager.primaryStage.setFullScreen(true);
 	}
 	public static void gotoPlayScreen() { 
-		InitializeplayScene();
+		initializePlayScene();
 		primaryStage.setScene(playScene);
 		SceneManager.primaryStage.setFullScreen(true);
-		Playscreen.getAT().start();
+		playScreen.getAT().start();
 	}
-	private static void InitializeplayScene() {
-		Playscreen=new PlayScreen();
-		playScene=new Scene(Playscreen,SCREEN_WIDTH,SCREEN_HEIGHT);
-		Playscreen.getGamescreen().requestFocus();
+	private static void initializePlayScene() {
+		playScreen=new PlayScreen();
+		playScene=new Scene(playScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
+		playScreen.getGamescreen().requestFocus();
 	}
 	public static void gotoWaitScreen() {
 		waitScene=new Scene(new WaitScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);

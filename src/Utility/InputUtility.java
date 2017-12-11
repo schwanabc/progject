@@ -9,18 +9,14 @@ public class InputUtility {
 	public static double mouseX;
 	public static double mouseY;
 	public static String currentUI="x";
-	public static KeyCode Lastkey;
+	public static KeyCode lastKey;
 	public static String currentChosed="x"; //currentChosed is called in Menubar.Choosecurrentbot 
 	private static boolean isLeftDown = false;
 	private static boolean isKeyPress = false;
-	private static int Tick= 10;
-	public static final int MAXTICK= Tick;
-	private static ArrayList<KeyCode> keyPressed = new ArrayList<>(); 
-	public static boolean getKeyPressed(KeyCode keycode) {
-		return keyPressed.contains(keycode);
-	}
+	private static int tick= 10;
+	public static final int MAXTICK= tick;
 	public static void setKeyPressed(KeyCode keycode) {
-		Lastkey=keycode;
+		lastKey=keycode;
 		isKeyPress=true;
 	}
 	public static void setKeyReleased() {
@@ -32,7 +28,7 @@ public class InputUtility {
 	
 	public static void mouseLeftRelease(){
 		isLeftDown = false;
-		Tick= MAXTICK;
+		tick= MAXTICK;
 	}
 
 	public static boolean isKeyPress() {
@@ -42,13 +38,13 @@ public class InputUtility {
 		return isLeftDown;
 	}
 	public static int getTick() {
-		return Tick;
+		return tick;
 	}
 	public static void setTick(int tick) {
-		InputUtility.Tick = tick;
+		InputUtility.tick = tick;
 	}
 	public static void addTick() {
-		InputUtility.Tick+=1;
+		InputUtility.tick+=1;
 	}
 	public static void checkTick() {
 		if(isLeftDown)addTick();

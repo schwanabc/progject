@@ -362,8 +362,8 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(downHP<0)downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp
         defender.chekdestroyed(); //temp
-        RenderableHolder.Attack_sword.setVolume(0.1);
-        RenderableHolder.Attack_sword.play();
+        RenderableHolder.attack_Sword.setVolume(0.1);
+        RenderableHolder.attack_Sword.play();
         currentATKTick=0;
 	}
 	protected boolean isHQPos(int nowY,int nowX) {

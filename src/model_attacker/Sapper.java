@@ -36,7 +36,7 @@ public class Sapper extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Sapper, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.sapper, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 	@Override

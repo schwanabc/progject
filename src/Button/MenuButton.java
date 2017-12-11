@@ -9,13 +9,12 @@ public class MenuButton extends NormalButton{
 	public MenuButton(String text)
 	{
 		super(text);
-		Addtolisterner();
 	}
 	@Override
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -28,7 +27,7 @@ public class MenuButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
-				RenderableHolder.Clickedsound.play();
+				RenderableHolder.clickedSound.play();
 				Board.resetNumboard();
 				SceneManager.gotoStartScreen();
 				}

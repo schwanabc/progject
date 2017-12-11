@@ -9,13 +9,12 @@ public class RetryButton extends ReplayButton{
 	public RetryButton(String text)
 	{
 		super(text);
-		Addtolisterner();
 	}
 	@Override
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -29,7 +28,7 @@ public class RetryButton extends ReplayButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				RenderableHolder.StopAudio();
-				RenderableHolder.Clickedsound.play();
+				RenderableHolder.clickedSound.play();
 				SceneManager.gotoPlayScreen();
 				}
 		});

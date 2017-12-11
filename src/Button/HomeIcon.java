@@ -21,13 +21,13 @@ public class HomeIcon extends Canvas implements IsButton{
 		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.ReleaseHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		Addtolisterner();
+		gc.drawImage(RenderableHolder.releaseHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		addToListerner();
 	}
-	public void Addtolisterner() {
+	public void addToListerner() {
 		this.setOnMouseEntered(ev->
 		{
-			RenderableHolder.Buttonhover.play();
+			RenderableHolder.buttonHover.play();
 			colorAdjust.setBrightness(0.1);
 			this.setEffect(colorAdjust);
 		});
@@ -41,12 +41,12 @@ public class HomeIcon extends Canvas implements IsButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				GraphicsContext gc=this.getGraphicsContext2D();
-				gc.drawImage(RenderableHolder.PressedHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+				gc.drawImage(RenderableHolder.pressedHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 				Board.resetNumboard();
 				RenderableHolder.StopAudio();
 				PlayScreen.instance.Forceend();
 				SceneManager.gotoStartScreen();
-				RenderableHolder.Clickedsound.play();
+				RenderableHolder.clickedSound.play();
 				}
 		});
 	}

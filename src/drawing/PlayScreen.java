@@ -81,7 +81,7 @@ public class PlayScreen extends HBox{
 		AT2.stop();
 		if(pausedstate)AT.start();
 		pausedstate=false;
-		PauseIcon.instance.DrawUnpaused();
+		PauseIcon.instance.drawUnpaused();
 	}	
 	protected void Paintupdated() {
 		gamescreen.PaintComponent();
@@ -135,16 +135,16 @@ public class PlayScreen extends HBox{
 	}
 	private void Checkpaused() {
 		// TODO Auto-generated method stub
-		if(InputUtility.isKeyPress()==false && InputUtility.Lastkey==KeyCode.SPACE)
+		if(InputUtility.isKeyPress()==false && InputUtility.lastKey==KeyCode.SPACE)
 		{
 			Pause();
-			InputUtility.Lastkey=null;
+			InputUtility.lastKey=null;
 		}
 	}
 	public void Pause() {
 		if(pausedstate==false)
 		{
-			PauseIcon.instance.Drawpaused();
+			PauseIcon.instance.drawPaused();
 			pausedstate=true; 
 			System.out.print("pause");
 			AT.stop();
@@ -152,7 +152,7 @@ public class PlayScreen extends HBox{
 		}
 		else
 		{
-			PauseIcon.instance.DrawUnpaused();
+			PauseIcon.instance.drawUnpaused();
 			pausedstate=false;
 			System.out.print("unpause");
 			AT2.stop();
