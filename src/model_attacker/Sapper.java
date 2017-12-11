@@ -22,8 +22,8 @@ public class Sapper extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=40;
 		this.MaxHP=HP;
-		this.AttackTick=25;
-		this.currentATKTick=AttackTick;
+		this.attackTick=25;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {
@@ -47,7 +47,7 @@ public class Sapper extends Attacker{
 		if(downHP<0)
 			downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp
-        defender.chekdestroyed(); //temp
+        defender.checkDestroyed(); //temp
         currentATKTick=0;
         
 	}

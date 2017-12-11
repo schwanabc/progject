@@ -153,7 +153,7 @@ public class RenderableHolder {
 					Board.setBoard(defender.getPosI(), defender.getPosJ(), -1);
 					if(entities.get(i) instanceof HQ)
 					{
-						Board.setIswin(true);
+						Board.setIsWin(true);
 					}
 				}
 			//	System.out.println(entities.get(i).getClass().getSimpleName()+" removed");

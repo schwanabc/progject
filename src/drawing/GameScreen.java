@@ -27,7 +27,7 @@ public class GameScreen extends Canvas{
 		addListerner();
 	}
 	
-	public void PaintComponent()
+	public void paintComponent()
 	{
 		GraphicsContext gc=this.getGraphicsContext2D();
 		gc.setFill(Color.LIGHTBLUE);

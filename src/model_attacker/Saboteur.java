@@ -19,8 +19,8 @@ public class Saboteur extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=150;
 		this.MaxHP=HP;
-		this.AttackTick=20;
-		this.currentATKTick=AttackTick;
+		this.attackTick=20;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {
@@ -42,7 +42,7 @@ public class Saboteur extends Attacker{
 		if(downHP<0)
 			downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp
-        defender.chekdestroyed(); //temp
+        defender.checkDestroyed(); //temp
         currentATKTick=0;
         
 	}

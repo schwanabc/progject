@@ -18,8 +18,8 @@ public class Berserker extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=200;
 		this.MaxHP=HP;
-		this.AttackTick=25;
-		this.currentATKTick=AttackTick;
+		this.attackTick=25;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {

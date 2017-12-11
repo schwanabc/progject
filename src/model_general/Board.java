@@ -51,16 +51,16 @@ public class Board implements IRenderable {
 		isWin=false; 
 		try {
 		money=defaultMoney[numBoard];
-		board=ReadBoard(numBoard);
-		fillacessibleboard();
-		setboard();
+		board=readBoard(numBoard);
+		fillAcessibleBoard();
+		setBoard();
 		}
 		catch (ArrayIndexOutOfBoundsException e) {SceneManager.gotoWinScreen();System.exit(0); }
 	}
-	private int[][] ReadBoard(int Numboard) {
+	private int[][] readBoard(int numBoard) {
 		
 		int[][] tempboard=new int[BOARD_ROW][BOARD_COLUMN];
-			String fileName="/Stage_"+Integer.toString(Numboard)+".txt";
+			String fileName="/Stage_"+Integer.toString(numBoard)+".txt";
 			try {
 				Scanner in = new Scanner(new InputStreamReader(Files.class.getResourceAsStream(fileName)));
 				int numline=0;
@@ -81,8 +81,7 @@ public class Board implements IRenderable {
 			}
 		return tempboard;
 	}
-	private void fillacessibleboard() {
-		// TODO Auto-generated method stub
+	private void fillAcessibleBoard() {
 		accessibleBoard=new int[BOARD_ROW][BOARD_COLUMN];
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
@@ -130,8 +129,7 @@ public class Board implements IRenderable {
 //		}
 		return towerATK+3;
 	}
-	public void setboard() {
-		// TODO Auto-generated method stub
+	public void setBoard() {
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
@@ -157,7 +155,6 @@ public class Board implements IRenderable {
 	}
 
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
 			{
@@ -188,12 +185,11 @@ public class Board implements IRenderable {
 	}
 	public static void update()
 	{
-		Checkadded();
+		checkAdded();
 	}
-	private static void Checkadded() {
-		// TODO Auto-generated method stub
+	private static void checkAdded() {
 	//	System.out.println(InputUtility.getTick());
-		if(Checktoadd())
+		if(checkToAdd())
 		{
 			String bot_type=InputUtility.currentChosed;
 			if(bot_type=="Peasant") 
@@ -255,7 +251,6 @@ public class Board implements IRenderable {
 		}
 	}
 	private static boolean buyable(int hiringCost) {
-		// TODO Auto-generated method stub
 		if(money-hiringCost>=0)return true;
 		try {
 			throw new PoorException();
@@ -263,8 +258,8 @@ public class Board implements IRenderable {
 			return false;
 		}
 	}
-	private static boolean Checktoadd() {
-		return isDeyployable() && Placeable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
+	private static boolean checkToAdd() {
+		return isDeyployable() && isPlaceable(InputUtility.mouseX,InputUtility.mouseY) && !InputUtility.currentChosed.equals("x");
 	}
 	private static boolean isDeyployable()
 	{
@@ -275,7 +270,7 @@ public class Board implements IRenderable {
 		}
 		return false;
 	}
-	private static boolean Placeable(double mouseX, double mouseY) {
+	private static boolean isPlaceable(double mouseX, double mouseY) {
 		if( GameScreen.isIngamescreen() && accessibleBoard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
 			return true;
 		else 
@@ -298,7 +293,7 @@ public class Board implements IRenderable {
 	public static boolean isIswin() {
 		return isWin;
 	}
-	public static void setIswin(boolean iswin) {
+	public static void setIsWin(boolean iswin) {
 		Board.isWin = iswin;
 	}
 	public static int[][] getBoard() {
@@ -319,19 +314,16 @@ public class Board implements IRenderable {
 	public static void setMoney(int newmoney) {
 		money = newmoney;
 	}
-	public static void addNumboard() {
-		// TODO Auto-generated method stub
+	public static void addNumBoard() {
 		defaultNumBoard++;
 	}
-	public static void resetNumboard() {
-		// TODO Auto-generated method stub
+	public static void resetNumBoard() {
 		defaultNumBoard=0;
 	}
-	public static void decreaseNumboard() {
-		// TODO Auto-generated method stub
+	public static void decreaseNumBoard() {
 		if(defaultNumBoard>0)defaultNumBoard--;
 	}
-	public static int getDefaultNumboard() {
+	public static int getDefaultNumBoard() {
 		return defaultNumBoard;
 	}
 

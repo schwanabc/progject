@@ -28,7 +28,7 @@ public class Bullet extends Entity implements Ismovable{
 		// TODO Auto-generated method stub
 		return 999;
 	}
-	protected void colliedwithAttacker()
+	protected void colliedWithAttacker()
 	{
 		for(Attacker attacker: logic.Gamelogic.getAttackercontainer())
 		{
@@ -75,7 +75,7 @@ public class Bullet extends Entity implements Ismovable{
 		//System.out.println(angle+" "+direction);
 		if(direction<2)forward(Math.cos(Math.toRadians(angle)),Math.sin(Math.toRadians(angle)));
 		else forward(-1*Math.cos(Math.toRadians(angle)),-1*Math.sin(Math.toRadians(angle)));
-		colliedwithAttacker();
+		colliedWithAttacker();
 	}
 	
 

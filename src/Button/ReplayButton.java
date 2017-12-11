@@ -29,7 +29,7 @@ public class ReplayButton extends NormalButton{
 				{
 				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
-				Board.decreaseNumboard();
+				Board.decreaseNumBoard();
 				SceneManager.gotoPlayScreen();
 				}
 		});

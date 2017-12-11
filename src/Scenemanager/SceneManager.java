@@ -49,7 +49,7 @@ public class SceneManager {
 	private static void initializePlayScene() {
 		playScreen=new PlayScreen();
 		playScene=new Scene(playScreen,SCREEN_WIDTH,SCREEN_HEIGHT);
-		playScreen.getGamescreen().requestFocus();
+		playScreen.getGameScreen().requestFocus();
 	}
 	public static void gotoWaitScreen() {
 		waitScene=new Scene(new WaitScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);

@@ -28,7 +28,7 @@ public class MenuButton extends NormalButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				RenderableHolder.clickedSound.play();
-				Board.resetNumboard();
+				Board.resetNumBoard();
 				SceneManager.gotoStartScreen();
 				}
 		});

@@ -19,8 +19,8 @@ public class Footman extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=1500;
 		this.MaxHP=HP;
-		this.AttackTick=80;
-		this.currentATKTick=AttackTick;
+		this.attackTick=80;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {

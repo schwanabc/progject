@@ -18,8 +18,8 @@ public class General extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=1500;
 		this.MaxHP=HP;
-		this.AttackTick=25;
-		this.currentATKTick=AttackTick;
+		this.attackTick=25;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {

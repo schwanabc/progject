@@ -243,9 +243,9 @@ public class Menubar extends VBox{
 				gc.setTextAlign(TextAlignment.LEFT);
 				gc.setTextBaseline(VPos.TOP);
 				gc.fillText("Money: "+Board.getMoney(), 25, ICONPOS*0.25);
-				gc.fillText("Stage: "+(Board.getDefaultNumboard()+1), 25, ICONPOS*0.40);
+				gc.fillText("Stage: "+(Board.getDefaultNumBoard()+1), 25, ICONPOS*0.40);
 				gc.setTextAlign(TextAlignment.LEFT);
-				Long sec=Gamestate.getsecond();
+				Long sec=Gamestate.getSecond();
 				String second=sec.toString();
 				if(sec<10)second="0"+second;
 				gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,25 , ICONPOS*0.55);

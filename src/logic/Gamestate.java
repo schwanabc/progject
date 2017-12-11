@@ -7,9 +7,9 @@ public class Gamestate {
 	private boolean isWin;
 	private boolean isLose;
 	private static long GAMEBASETIME=151*1000000000L;
-	private long Timeleft;
-	private long prevtime;
-	private long currenttime;
+	private long timeLeft;
+	private long prevTime;
+	private long currentTime;
 	Thread Timethread;
 	public Gamestate()
 	{
@@ -21,13 +21,13 @@ public class Gamestate {
 				while(true)
 				{
 				//	System.out.println(Timeleft);
-					currenttime=System.nanoTime();	
+					currentTime=System.nanoTime();	
 					if(PlayScreen.isPausedstate()==false&&isLose==false &&isWin==false)
 					{
-						Timeleft-=currenttime-prevtime;
-						if(Timeleft<=0)Timeleft=0;
+						timeLeft-=currentTime-prevTime;
+						if(timeLeft<=0)timeLeft=0;
 					}
-					prevtime=currenttime;
+					prevTime=currentTime;
 					Thread.yield();
 				}
 			}
@@ -51,28 +51,28 @@ public class Gamestate {
 	}
 	public long getMinute()
 	{
-		return Timeleft/(60*1000000000L);
+		return timeLeft/(60*1000000000L);
 	}
-	public long getsecond()
+	public long getSecond()
 	{
-		return (Timeleft/1000000000L)%60;
+		return (timeLeft/1000000000L)%60;
 	}
 	public boolean isTimeup()
 	{
-		return Timeleft<=1000000000L;
+		return timeLeft<=1000000000L;
 	}
 	public void initialize() {
 		// TODO Auto-generated method stub
 		isWin=false;
 		isLose=false;
-		Timeleft=GAMEBASETIME;
-		prevtime=System.nanoTime();
+		timeLeft=GAMEBASETIME;
+		prevTime=System.nanoTime();
 	}
 	public Thread getTimethread() {
 		// TODO Auto-generated method stub
 		return Timethread;
 	}
-	public void EndTimethread() {
+	public void endTimethread() {
 		// TODO Auto-generated method stub
 		System.out.println("threadstop");
 		Timethread.interrupt();

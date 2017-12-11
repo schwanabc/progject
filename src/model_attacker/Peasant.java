@@ -18,8 +18,8 @@ public class Peasant extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=100;
 		this.MaxHP=HP;
-		this.AttackTick=30;
-		this.currentATKTick=AttackTick;
+		this.attackTick=30;
+		this.currentATKTick=attackTick;
 	}
 
 	public static int getHiringCost() {

@@ -42,9 +42,9 @@ public class HomeIcon extends Canvas implements IsButton{
 				{
 				GraphicsContext gc=this.getGraphicsContext2D();
 				gc.drawImage(RenderableHolder.pressedHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-				Board.resetNumboard();
+				Board.resetNumBoard();
 				RenderableHolder.stopAudio();
-				PlayScreen.instance.Forceend();
+				PlayScreen.instance.forceEnd();
 				SceneManager.gotoStartScreen();
 				RenderableHolder.clickedSound.play();
 				}

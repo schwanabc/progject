@@ -291,7 +291,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		      }
 			count2++;
 		}
-		if(currentATKTick>=AttackTick&&iscollide)
+		if(currentATKTick>=attackTick&&iscollide)
 		{
 			currentATKTick=0;
 			attack(Gamelogic.getDefendercontainer().get(idx));
@@ -358,7 +358,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double downHP=ATK-defender.getDEF();
 		if(downHP<0)downHP=1;
 		defender.setHP(defender.getHP()-downHP);//temp
-        defender.chekdestroyed(); //temp
+        defender.checkDestroyed(); //temp
         RenderableHolder.attack_Sword.setVolume(0.1);
         RenderableHolder.attack_Sword.play();
         currentATKTick=0;

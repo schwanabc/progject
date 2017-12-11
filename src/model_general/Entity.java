@@ -13,7 +13,7 @@ public abstract class Entity implements IRenderable{
 	protected boolean destroyed,visible;
 	protected double speed;
 	protected int currentATKTick;
-	protected int AttackTick;
+	protected int attackTick;
 	protected Entity()
 	{
 		destroyed=false;
@@ -21,14 +21,14 @@ public abstract class Entity implements IRenderable{
 	}
 	@Override
 	public boolean isDestroyed() {
-		chekdestroyed();
+		checkDestroyed();
 		return destroyed;
 	}
 	@Override
 	public boolean isVisible() {
 		return visible;
 	}
-	public void chekdestroyed()
+	public void checkDestroyed()
 	{
 	//	System.out.println("-----------");
 		if(getHP()<=0||
