@@ -20,7 +20,7 @@ public class Tower extends Defender{
 		this.MaxHP=getHP();
 		this.Shootrange=5;
 		Currentshootingtick=60;
-		Shootingtick=60;
+		Shootingtick=Currentshootingtick;
 		this.Wallwidth=Board.BOARD_WIDTH;
 		this.Wallheight=Board.BOARD_HEIGHT;
 	}
@@ -29,12 +29,6 @@ public class Tower extends Defender{
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.NormalTower,posX, posY, Wallwidth, Wallheight);
 		drawHPbar(gc);
-		
-		/*
-		gc.setStroke(Color.RED);
-		gc.setLineWidth(1);
-		gc.strokeOval(posX-Shootrange*Wallwidth, posY-Shootrange*Wallheight,Wallwidth+2*Shootrange*Wallwidth,Wallheight+2*Shootrange*Wallheight);
-		*/
 	}
 	protected void ColliedwithAttacker()//find nearest target
 	{
@@ -79,7 +73,7 @@ public class Tower extends Defender{
 		}
 		catch(Exception e) {}
 	}
-	private boolean Shootable() {
+	protected boolean Shootable() {
 		if(Currentshootingtick>=Shootingtick)
 		{
 			Currentshootingtick=0;
@@ -94,9 +88,7 @@ public class Tower extends Defender{
 		Currentshootingtick++;
 		ColliedwithAttacker();
 	}
-	private void shoot(double theta,int direction) {
-		// TODO Auto-generated method stub
-		//Gamelogic.addNewObject(new Weak_1(posX,posY));
+	protected void shoot(double theta,int direction) {
 		RenderableHolder.Arrow.setVolume(0.05);
 		RenderableHolder.Arrow.play();
 		Gamelogic.addNewObject(new Bullet(Shootrange,posX+Wallwidth/2,posY+Wallheight/2,ATK,theta,direction));

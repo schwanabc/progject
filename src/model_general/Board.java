@@ -22,6 +22,7 @@ import model_attacker.Bot4;
 import model_attacker.Bot5;
 import model_attacker.Bot6;
 import model_defender.HQ;
+import model_defender.PenetrateTower;
 import model_defender.Wall;
 import model_defender.Tower;
 //1==wall 2==tower 3==HQ (HQ eat 2 tile)
@@ -37,7 +38,7 @@ public class Board implements IRenderable {
 	public static double HQPOSY;
 	private static boolean Iswin;
 	private static int[] DefaultMoney= {1500,4000,3000};
-	private static int DefaultNumboard=1;
+	private static int DefaultNumboard=0;
 	private static int Numboard=0;
 	private static int Money;
 	private static int templateboard[][][]=new int[TOTALBOARD][BOARD_ROW][BOARD_COLUMN];
@@ -119,11 +120,12 @@ public class Board implements IRenderable {
 			for(int j=0;j<BOARD_COLUMN;j++) {
 				int diff = (posX-i>0)?(posX-i):(i-posX);
 				diff += (posY-j>0)?(posY-j):(j-posY);
-				if(board[i][j] == 2 && diff <= 5) {
+				if(board[i][j] == 2 || board[i][j]==4 && diff <= 5) {
 					countTower++;
 				}
 			}
 		}
+		
 		int towerATK = countTower;
 		if(board[posX][posY] == 1)
 			towerATK *= 6;
@@ -151,6 +153,10 @@ public class Board implements IRenderable {
 					HQPOSY=(i+2)*BOARD_HEIGHT;
 					HQPOSX=(j+2)*BOARD_WIDTH;
 					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
+				}
+				if(board[i][j]==4)//HQ
+				{
+					Gamelogic.addNewObject(new PenetrateTower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
 			}
 	}
@@ -257,7 +263,7 @@ public class Board implements IRenderable {
 		// TODO Auto-generated method stub
 		if(Money-hiringCost>=0)return true;
 		try {
-			throw new PoorException(hiringCost);
+			throw new PoorException();
 		} catch (PoorException e) {
 			return false;
 		}

@@ -29,6 +29,7 @@ public class RenderableHolder {
 	public static Image PressButton;
 	public static Image HQ;
 	public static Image NormalTower;
+	public static Image PenetrateTower;
 	public static Image Menubackground;
 	public static Image Victorybackground;
 	public static Image ErrorFrame;
@@ -88,6 +89,7 @@ public class RenderableHolder {
 		Rubble=new Image(ClassLoader.getSystemResource("rubble.png").toString());
 		HQ=new Image(ClassLoader.getSystemResource("HQ.png").toString());
 		NormalTower=new Image(ClassLoader.getSystemResource("tower.jpg").toString());
+		PenetrateTower=new Image(ClassLoader.getSystemResource("penetratetower.jpg").toString());
 		ErrorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
 		Victorybackground=new Image(ClassLoader.getSystemResource("victorybackground.jpg").toString());
 		Menubackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
