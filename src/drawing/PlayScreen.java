@@ -17,17 +17,17 @@ import logic.Gamestate;
 import model_attacker.Attacker;
 import model_general.Board;
 public class PlayScreen extends HBox{
-	private static boolean pausedstate;
-	public static double MiscScreenWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
-	public static double MiscScreenHEIGHT=(SceneManager.SCREEN_HEIGHT);
+	private static boolean pausedState;
+	public static final double MISCSCREENWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
+	public static final double MISCSCREENHEIGHT=(SceneManager.SCREEN_HEIGHT);
 	public static PlayScreen instance;
-	private GameScreen gamescreen;
-	private Menubar menubar;
+	private GameScreen gameScreen;
+	private Menubar menuBar;
 	private AnimationTimer AT;
 	private AnimationTimer AT2;
-	private Gamelogic Gamelogic;
-	private Canvas MiscScreen;
-	private Canvas MiscScreen2;
+	private Gamelogic gameLogic;
+	private Canvas miscScreen;
+	private Canvas miscScreen2;
 	public PlayScreen()
 	{
 		instance=this;
@@ -36,10 +36,10 @@ public class PlayScreen extends HBox{
 			public void handle(long now)
 			{
 			//	System.out.println(Gamestate.getTotaltime()/600000000L);
-				Gamelogic.update();
+				gameLogic.update();
 				Paintupdated();
 				Checkcondition();
-				if(menubar.isReset())Resetgame();
+				if(menuBar.isReset())Resetgame();
 				Checkend();
 			}
 
@@ -47,8 +47,8 @@ public class PlayScreen extends HBox{
 		AT2=new AnimationTimer(){
 			public void handle(long now)
 			{
-				if(menubar.getGamestate().isLose()==false)Paintupdated();
-				if(menubar.isReset())Resetgame();
+				if(menuBar.getGamestate().isLose()==false)Paintupdated();
+				if(menuBar.isReset())Resetgame();
 			}
 		};
 
@@ -56,56 +56,56 @@ public class PlayScreen extends HBox{
 	private void Initialize() {
 		// TODO Auto-generated method stub
 		FillMiscscreen();
-		gamescreen=new GameScreen();
-		menubar=new Menubar();
-		Gamelogic=new Gamelogic();
-		this.getChildren().addAll(MiscScreen,gamescreen,menubar,MiscScreen2);
+		gameScreen=new GameScreen();
+		menuBar=new Menubar();
+		gameLogic=new Gamelogic();
+		this.getChildren().addAll(miscScreen,gameScreen,menuBar,miscScreen2);
 	}
 	private void FillMiscscreen() {
-		MiscScreen=new Canvas(MiscScreenWIDTH,MiscScreenHEIGHT);
-		GraphicsContext gc=MiscScreen.getGraphicsContext2D();
+		miscScreen=new Canvas(MISCSCREENWIDTH,MISCSCREENHEIGHT);
+		GraphicsContext gc=miscScreen.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, MiscScreenWIDTH, MiscScreenHEIGHT);
-		MiscScreen2=new Canvas(MiscScreenWIDTH,MiscScreenHEIGHT);
-		gc=MiscScreen2.getGraphicsContext2D();
+		gc.fillRect(0, 0, MISCSCREENWIDTH, MISCSCREENHEIGHT);
+		miscScreen2=new Canvas(MISCSCREENWIDTH,MISCSCREENHEIGHT);
+		gc=miscScreen2.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, MiscScreenWIDTH, MiscScreenHEIGHT);
+		gc.fillRect(0, 0, MISCSCREENWIDTH, MISCSCREENHEIGHT);
 	}
 	private void Resetgame() {
 		//Dont use gotoplayscreen,as it will make the game blink
-		RenderableHolder.StopAudio();
+		RenderableHolder.stopAudio();
 		RenderableHolder.getInstance().getEntities().clear();
-		Gamelogic=new Gamelogic();
-		menubar.setdefault();
+		gameLogic=new Gamelogic();
+		menuBar.setdefault();
 		InputUtility.currentChosed="x";
 		AT2.stop();
-		if(pausedstate)AT.start();
-		pausedstate=false;
+		if(pausedState)AT.start();
+		pausedState=false;
 		PauseIcon.instance.drawUnpaused();
 	}	
 	protected void Paintupdated() {
-		gamescreen.PaintComponent();
+		gameScreen.PaintComponent();
 		RenderableHolder.getInstance().update();
-		menubar.update();
+		menuBar.update();
 		InputUtility.checkTick();
 		Checkpaused();
 	}
 	private void Checkcondition() {
 		// TODO Auto-generated method stub
-		if(Board.isIswin())menubar.getGamestate().setWin(true);
+		if(Board.isIswin())menuBar.getGamestate().setWin(true);
 		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackercontainer().size()==0)
-			menubar.getGamestate().setLose(true);
-		if(menubar.getGamestate().isTimeup())menubar.getGamestate().setLose(true);
+			menuBar.getGamestate().setLose(true);
+		if(menuBar.getGamestate().isTimeup())menuBar.getGamestate().setLose(true);
 	}
 	void Checkend() {
 		// TODO Auto-generated method stub
 		
-		if(menubar.getGamestate().isWin())
+		if(menuBar.getGamestate().isWin())
 		{
-			RenderableHolder.StopAudio();
+			RenderableHolder.stopAudio();
 			System.out.println("win");
 			Board.addNumboard();
-			menubar.getGamestate().EndTimethread();
+			menuBar.getGamestate().EndTimethread();
 			if(Board.getDefaultNumboard()==Board.TOTALBOARD) 
 			{
 				AT.stop();
@@ -118,11 +118,11 @@ public class PlayScreen extends HBox{
 			SceneManager.gotoWaitScreen();
 			}
 		}
-		else if(menubar.getGamestate().isLose())
+		else if(menuBar.getGamestate().isLose())
 		{
-			RenderableHolder.StopAudio();
+			RenderableHolder.stopAudio();
 			System.out.println("lose");
-			menubar.getGamestate().EndTimethread();
+			menuBar.getGamestate().EndTimethread();
 			Resetgame();
 			Forceend();
 			SceneManager.gotoLoseScreen();
@@ -142,10 +142,10 @@ public class PlayScreen extends HBox{
 		}
 	}
 	public void Pause() {
-		if(pausedstate==false)
+		if(pausedState==false)
 		{
 			PauseIcon.instance.drawPaused();
-			pausedstate=true; 
+			pausedState=true; 
 			System.out.print("pause");
 			AT.stop();
 			AT2.start();
@@ -153,17 +153,17 @@ public class PlayScreen extends HBox{
 		else
 		{
 			PauseIcon.instance.drawUnpaused();
-			pausedstate=false;
+			pausedState=false;
 			System.out.print("unpause");
 			AT2.stop();
 			AT.start();
 		}
 	}
 	public static boolean isPausedstate() {
-		return pausedstate;
+		return pausedState;
 	}
 	public GameScreen getGamescreen() {
-		return gamescreen;
+		return gameScreen;
 	}
 	public AnimationTimer getAT() {
 		return AT;

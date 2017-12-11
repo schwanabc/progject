@@ -32,7 +32,7 @@ public class StartScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public StartScreen()
 	{
-		RenderableHolder.StopAudio();
+		RenderableHolder.stopAudio();
 		RenderableHolder.openSong.setCycleCount(AudioClip.INDEFINITE);
 		RenderableHolder.openSong.play();
 		System.out.println("startscreen");

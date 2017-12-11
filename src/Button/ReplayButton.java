@@ -27,7 +27,7 @@ public class ReplayButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
-				RenderableHolder.StopAudio();
+				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
 				Board.decreaseNumboard();
 				SceneManager.gotoPlayScreen();

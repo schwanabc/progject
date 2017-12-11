@@ -69,7 +69,7 @@ public class RenderableHolder {
 			return -1;
 		};
 	}
-	public static void StopAudio() {
+	public static void stopAudio() {
 		clickedSound.stop(); 
 		buttonHover.stop();
 		attack_Sword.stop();

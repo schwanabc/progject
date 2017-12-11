@@ -63,7 +63,7 @@ public class NormalButton extends Canvas implements IsButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
-				RenderableHolder.StopAudio();
+				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
 				SceneManager.gotoPlayScreen();
 				}

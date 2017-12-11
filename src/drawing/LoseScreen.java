@@ -36,7 +36,7 @@ public class LoseScreen extends Pane{
 	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public LoseScreen()
 	{
-		RenderableHolder.StopAudio();
+		RenderableHolder.stopAudio();
 		RenderableHolder.lose.play();
 		Thread t2 =new Thread(()->
 		 {

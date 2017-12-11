@@ -43,7 +43,7 @@ public class ExitIcon extends Canvas implements IsButton{
 				GraphicsContext gc=this.getGraphicsContext2D();
 				gc.drawImage(RenderableHolder.pressedExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 				Board.resetNumboard();
-				RenderableHolder.StopAudio();
+				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
 				PlayScreen.instance.Forceend();
 				System.exit(0);

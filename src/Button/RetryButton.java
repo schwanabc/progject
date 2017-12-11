@@ -27,7 +27,7 @@ public class RetryButton extends ReplayButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
-				RenderableHolder.StopAudio();
+				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
 				SceneManager.gotoPlayScreen();
 				}

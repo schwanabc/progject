@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void stop()
 	{
 		System.out.println("end");
-		RenderableHolder.StopAudio();
+		RenderableHolder.stopAudio();
 	    System.exit(0);
 	}
 	public static void main(String[] args) { 
