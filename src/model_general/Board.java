@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import Exception.PoorException;
 import Input.InputUtility;
+import Scenemanager.SceneManager;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
@@ -14,13 +15,13 @@ import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import model_attacker.Bot0;
-import model_attacker.Bot1;
-import model_attacker.Bot2;
-import model_attacker.Bot3;
-import model_attacker.Bot4;
-import model_attacker.Bot5;
-import model_attacker.Bot6;
+import model_attacker.Peasant;
+import model_attacker.Footman;
+import model_attacker.Wardog;
+import model_attacker.Berserker;
+import model_attacker.Sapper;
+import model_attacker.Saboteur;
+import model_attacker.General;
 import model_defender.HQ;
 import model_defender.PenetrateTower;
 import model_defender.Wall;
@@ -49,24 +50,21 @@ public class Board implements IRenderable {
 
 		Numboard=DefaultNumboard;
 		Iswin=false; 
-		Money=DefaultMoney[Numboard];
 		try {
+		Money=DefaultMoney[Numboard];
 		board=ReadBoard(Numboard);
-		}
-		catch (java.lang.NullPointerException e) {System.out.println("NO board left"); }
 		fillacessibleboard();
 		setboard();
+		}
+		catch (ArrayIndexOutOfBoundsException e) {SceneManager.gotoWinScreen();System.exit(0); }
 	}
 	private int[][] ReadBoard(int Numboard) {
 		
 		int[][] tempboard=new int[BOARD_ROW][BOARD_COLUMN];
 			String fileName="/Stage_"+Integer.toString(Numboard)+".txt";
-			System.out.println("reading");
 			try {
 				Scanner in = new Scanner(new InputStreamReader(Files.class.getResourceAsStream(fileName)));
 				int numline=0;
-				System.out.println("readalbe");
-
 				while(in.hasNextLine())
 				{
 					System.out.println(numline);
@@ -79,7 +77,6 @@ public class Board implements IRenderable {
 						}
 						numline++;
 				}
-				System.out.println("endread");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -87,7 +84,6 @@ public class Board implements IRenderable {
 	}
 	private void fillacessibleboard() {
 		// TODO Auto-generated method stub
-		System.out.println("Board is refilled");
 		accessibleboard=new int[BOARD_ROW][BOARD_COLUMN];
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
@@ -203,58 +199,58 @@ public class Board implements IRenderable {
 			String bot_type=InputUtility.currentChosed;
 			if(bot_type=="Weak_1") 
 			{ 
-				if(buyable(Bot0.getHiringCost()))
+				if(buyable(Peasant.getHiringCost()))
 				{
-					decreaseMoney(Bot0.getHiringCost());
-					Gamelogic.addNewObject(new Bot0(InputUtility.mouseX,InputUtility.mouseY));
+					decreaseMoney(Peasant.getHiringCost());
+					Gamelogic.addNewObject(new Peasant(InputUtility.mouseX,InputUtility.mouseY));
 				}
 			}
 			if(bot_type=="Weak_2") 
 			{
-				if(buyable(Bot1.getHiringCost()))
+				if(buyable(Footman.getHiringCost()))
 				{
-					decreaseMoney(Bot1.getHiringCost());
-					Gamelogic.addNewObject(new Bot1(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Footman.getHiringCost());
+					Gamelogic.addNewObject(new Footman(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 			if(bot_type=="Weak_3") 
 			{
-				if(buyable(Bot2.getHiringCost()))
+				if(buyable(Wardog.getHiringCost()))
 				{
-					decreaseMoney(Bot2.getHiringCost());
-					Gamelogic.addNewObject(new Bot2(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Wardog.getHiringCost());
+					Gamelogic.addNewObject(new Wardog(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 			if(bot_type=="Weak_4") 
 			{
-				if(buyable(Bot3.getHiringCost()))
+				if(buyable(Berserker.getHiringCost()))
 				{
-					decreaseMoney(Bot3.getHiringCost());
-					Gamelogic.addNewObject(new Bot3(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Berserker.getHiringCost());
+					Gamelogic.addNewObject(new Berserker(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 			if(bot_type=="Weak_5") 
 			{
-				if(buyable(Bot4.getHiringCost()))
+				if(buyable(Sapper.getHiringCost()))
 				{
-					decreaseMoney(Bot4.getHiringCost());
-					Gamelogic.addNewObject(new Bot4(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Sapper.getHiringCost());
+					Gamelogic.addNewObject(new Sapper(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 			if(bot_type=="Weak_6") 
 			{
-				if(buyable(Bot5.getHiringCost()))
+				if(buyable(Saboteur.getHiringCost()))
 				{
-					decreaseMoney(Bot5.getHiringCost());
-					Gamelogic.addNewObject(new Bot5(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(Saboteur.getHiringCost());
+					Gamelogic.addNewObject(new Saboteur(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 			if(bot_type=="Weak_7") 
 			{
-				if(buyable(Bot6.getHiringCost()))
+				if(buyable(General.getHiringCost()))
 				{
-					decreaseMoney(Bot6.getHiringCost());
-					Gamelogic.addNewObject(new Bot6(InputUtility.mouseX,InputUtility.mouseY));	
+					decreaseMoney(General.getHiringCost());
+					Gamelogic.addNewObject(new General(InputUtility.mouseX,InputUtility.mouseY));	
 				}
 			}
 		}

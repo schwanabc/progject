@@ -63,7 +63,6 @@ public class Gamestate {
 	}
 	public void initialize() {
 		// TODO Auto-generated method stub
-		System.out.println("reset"+GAMEBASETIME);
 		isWin=false;
 		isLose=false;
 		Timeleft=GAMEBASETIME;

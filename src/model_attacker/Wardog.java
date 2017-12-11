@@ -5,10 +5,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_defender.Defender;
 
-public class Bot2 extends Attacker{
+public class Wardog extends Attacker{
 
 	//HIGHSPEED ATK
-	public Bot2(double posX,double posY)
+	public Wardog(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);

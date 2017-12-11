@@ -47,7 +47,7 @@ public class WinScreen extends Pane{
 		Title=new Label(WIN_TEXT);
 		Title.setFont(TEXT_FONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(1.5*Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
+		Title.relocate(Utility.TextStartWidht(SceneManager.SCREEN_WIDTH, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.SCREEN_HEIGHT*0.2);
 		this.getChildren().addAll(Menu,Replay,Exit,Title);
 	}
 

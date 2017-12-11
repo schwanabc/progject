@@ -5,34 +5,35 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Bot0 extends Attacker{
+public class Footman extends Attacker{
+	
 
-	public Bot0(double posX,double posY)
+	public Footman(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);
 		this.ATK=30;
-		this.DEF=5;
+		this.DEF=30;
+		this.speed=1;
 		this.RADIUS=8;
-		this.speed=2;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=100;
+		this.HP=1500;
 		this.MaxHP=HP;
-		this.AttackTick=30;
+		this.AttackTick=80;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=10;
-		this.TowerPriority=10;
-		this.HQPriority=80;
+		this.WallPriority=20;
+		this.TowerPriority=30;
+		this.HQPriority=30;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=MinCost;
+		HiringCost=240;
 		return HiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.Armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.Footman, posX-RADIUS, posY-RADIUS, DIAMETER*1.2, DIAMETER*1.2);
 		drawHPbar(gc);
 	}
 

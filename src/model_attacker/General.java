@@ -4,10 +4,10 @@ import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Bot6 extends Attacker{
+public class General extends Attacker{
 	
 	
-	public Bot6(double posX,double posY)
+	public General(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);

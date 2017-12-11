@@ -24,6 +24,9 @@ public class RenderableHolder {
 	public static Image Footman;
 	public static Image Wardog;
 	public static Image General;
+	public static Image Sapper;
+	public static Image Berserker;
+	public static Image Saboteur;
 	public static Image StoneTile;
 	public static Image Rubble;
 	public static Image stripe;
@@ -90,6 +93,9 @@ public class RenderableHolder {
 	    Footman=new Image(ClassLoader.getSystemResource("Footman.png").toString());
 	    General=new Image(ClassLoader.getSystemResource("general.png").toString());
 	    Wardog=new Image(ClassLoader.getSystemResource("wardog.png").toString());
+	    Sapper=new Image(ClassLoader.getSystemResource("sapper.png").toString());
+	    Berserker=new Image(ClassLoader.getSystemResource("berserker.png").toString());
+	    Saboteur=new Image(ClassLoader.getSystemResource("saboteur.png").toString());
 	    //--------------------------tile & etc--------------------------------------------------
 		StoneTile=new Image(ClassLoader.getSystemResource("StoneTile.png").toString());
 		stripe=new Image(ClassLoader.getSystemResource("stripe.jpg").toString());	

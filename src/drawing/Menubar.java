@@ -105,28 +105,32 @@ public class Menubar extends VBox{
 			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 		else {
 			if(i == 0 && j == 0){
-				gc.fillText("Peasant\n\n\n"+model_attacker.Bot0.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Peasant\n\n\n"+model_attacker.Peasant.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 				gc.drawImage(RenderableHolder.Armed_Peasant, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 0 && j == 1){
-				gc.fillText("Footman\n\n\n"+model_attacker.Bot1.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Footman\n\n\n"+model_attacker.Footman.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 				gc.drawImage(RenderableHolder.Footman, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 0){
-				gc.fillText("War dog\n\n\n"+model_attacker.Bot2.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("War dog\n\n\n"+model_attacker.Wardog.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 				gc.drawImage(RenderableHolder.Wardog, ICONWIDTH*0.5-15, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+10, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 1 && j == 1){
-				gc.fillText("Destroy\n"+model_attacker.Bot3.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Berserker\n\n\n"+model_attacker.Berserker.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Berserker, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 2 && j == 0){
-				gc.fillText("Wall\nBomber\n"+model_attacker.Bot4.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Sapper\n\n\n"+model_attacker.Sapper.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Sapper, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 			else if(i == 2 && j == 1){
-				gc.fillText("HQ\nAttack\n"+model_attacker.Bot5.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("Saboteur\n\n\n"+model_attacker.Saboteur.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.drawImage(RenderableHolder.Saboteur, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
+
 			}
 			else if(i == 3 && j == 0){
-				gc.fillText("General\n\n\n"+model_attacker.Bot6.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
+				gc.fillText("General\n\n\n"+model_attacker.General.getHiringCost(), ICONWIDTH*0.5,ICONHEIGHT*0.5);
 				gc.drawImage(RenderableHolder.General, ICONWIDTH*0.5-20, ICONHEIGHT*0.5-20, ICONWIDTH*0.2+20, ICONHEIGHT*0.2+20);
 			}
 		}

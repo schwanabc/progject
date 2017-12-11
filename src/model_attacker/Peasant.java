@@ -1,38 +1,38 @@
 package model_attacker;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Bot3 extends Attacker{
-	
-	
-	public Bot3(double posX,double posY)
+public class Peasant extends Attacker{
+
+	public Peasant(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);
-		this.ATK=100;
-		this.DEF=10;
-		this.speed=1.5;
+		this.ATK=30;
+		this.DEF=5;
 		this.RADIUS=8;
+		this.speed=2;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=200;
+		this.HP=100;
 		this.MaxHP=HP;
-		this.AttackTick=25;
+		this.AttackTick=30;
 		this.currentATKTick=AttackTick;
-		this.WallPriority=20;
-		this.TowerPriority=30;
-		this.HQPriority=30;
+		this.WallPriority=10;
+		this.TowerPriority=10;
+		this.HQPriority=80;
 	}
 
 	public static int getHiringCost() {
-		HiringCost=300;
+		HiringCost=MinCost;
 		return HiringCost;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.GREEN);
-		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.Armed_Peasant, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 

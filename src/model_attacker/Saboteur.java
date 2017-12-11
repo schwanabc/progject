@@ -1,13 +1,14 @@
 package model_attacker;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_defender.Defender;
 
-public class Bot5 extends Attacker{
+public class Saboteur extends Attacker{
 	
 	
-	public Bot5(double posX,double posY)
+	public Saboteur(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);
@@ -32,8 +33,7 @@ public class Bot5 extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.SADDLEBROWN);
-		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.Saboteur, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 	@Override

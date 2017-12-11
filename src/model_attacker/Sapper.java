@@ -1,5 +1,6 @@
 package model_attacker;
 
+import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -7,19 +8,19 @@ import logic.Gamelogic;
 import model_defender.Defender;
 import model_general.Board;
 
-public class Bot4 extends Attacker{
+public class Sapper extends Attacker{
 	
 	
-	public Bot4(double posX,double posY)
+	public Sapper(double posX,double posY)
 	{
 		//all stat is temporary
 		super(posX,posY);
 		this.ATK=1;
 		this.DEF=30;
-		this.speed=4;
+		this.speed=3;
 		this.RADIUS=7;
 		this.DIAMETER=this.RADIUS*2;
-		this.HP=500;
+		this.HP=40;
 		this.MaxHP=HP;
 		this.AttackTick=25;
 		this.currentATKTick=AttackTick;
@@ -35,8 +36,7 @@ public class Bot4 extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLACK);
-		gc.fillOval(posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
+		gc.drawImage(RenderableHolder.Sapper, posX-RADIUS, posY-RADIUS, DIAMETER, DIAMETER);
 		drawHPbar(gc);
 	}
 	@Override
