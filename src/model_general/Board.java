@@ -6,11 +6,11 @@ import java.nio.file.Files;
 import java.util.Scanner;
 
 import Exception.PoorException;
-import Input.InputUtility;
 import Scenemanager.SceneManager;
 import logic.Gamelogic;
 import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
+import Utility.InputUtility;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -34,7 +34,6 @@ public class Board implements IRenderable {
 	public static final double BOARD_WIDTH=GameScreen.GAMESCREEN_WIDTH/BOARD_COLUMN;
 	public static final double BOARD_RANGE=Math.min(BOARD_HEIGHT, BOARD_WIDTH);
 	public static final int TOTALBOARD=3;
-	
 	public static double HQPOSX;
 	public static double HQPOSY;
 	private static boolean Iswin;
@@ -269,7 +268,7 @@ public class Board implements IRenderable {
 	}
 	private static boolean isDeyployable()
 	{
-		if(InputUtility.isLeftDown()&& InputUtility.getTick()>=InputUtility.Maxtick)
+		if(InputUtility.isLeftDown()&& InputUtility.getTick()>=InputUtility.MAXTICK)
 		{
 			InputUtility.setTick(0);
 			return true;
@@ -320,12 +319,6 @@ public class Board implements IRenderable {
 	public static void setMoney(int money) {
 		Money = money;
 	}
-	public static void setTemplateboard(int[][] board,int idx) {
-		try {
-			templateboard[idx] = board;
-			}
-			catch (java.lang.NullPointerException e) {System.out.println("Board Overflow"); }
-	} 
 	public static void addNumboard() {
 		// TODO Auto-generated method stub
 		DefaultNumboard++;

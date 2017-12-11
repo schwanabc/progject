@@ -1,7 +1,7 @@
 package Scenemanager;
 import Button.PauseIcon;
-import Input.InputUtility;
 import SharedObject.RenderableHolder;
+import Utility.InputUtility;
 import drawing.GameScreen;
 import drawing.Menubar;
 import javafx.animation.AnimationTimer;

@@ -2,7 +2,7 @@ package drawing;
 
 import SharedObject.IRenderable;
 import SharedObject.RenderableHolder;
-import Input.InputUtility;
+import Utility.InputUtility;
 import Scenemanager.SceneManager;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
@@ -41,10 +41,10 @@ public class GameScreen extends Canvas{
 	}
 	public void addListerner() {
 		this.setOnKeyPressed((KeyEvent event) -> {
-			InputUtility.setKeyPressed(event.getCode(), true);
+			InputUtility.setKeyPressed(event.getCode());
 		});
 		this.setOnKeyReleased((KeyEvent event) -> {
-			InputUtility.setKeyPressed(event.getCode(), false);
+			InputUtility.setKeyReleased();
 		});
 
 		this.setOnMousePressed((MouseEvent event) -> {
@@ -54,29 +54,24 @@ public class GameScreen extends Canvas{
 
 		this.setOnMouseReleased((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY)
-				InputUtility.mouseLeftRelease();
+				InputUtility.mouseLeftRelease(); 
 		});
 
 		this.setOnMouseEntered((MouseEvent event) -> {
-			InputUtility.mouseOnScreen = true;
 			InputUtility.currentUI="GAME";
 		});
 		this.setOnMouseExited((MouseEvent event) -> {
-			InputUtility.mouseOnScreen = false;
 			InputUtility.currentUI="x";
 		});
 
 		this.setOnMouseMoved((MouseEvent event) -> {
-			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
-			}
+
 		});
 		this.setOnMouseDragged((MouseEvent event) -> {
-			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
-			}
 		});
 	}
 

@@ -5,10 +5,10 @@ import Button.ExitIcon;
 
 import java.io.InputStream;
 
-import Input.InputUtility;
 import Scenemanager.PlayScreen;
 import Scenemanager.SceneManager;
 import SharedObject.RenderableHolder;
+import Utility.InputUtility;
 import Utility.Utility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -252,7 +252,7 @@ public class Menubar extends VBox{
 				gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,25 , ICONPOS*0.55);
 				Thread.yield();
 			});
-		});
+		}); 
 		try {
 		//	t1.join();
 			t1.start();
