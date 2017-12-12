@@ -52,7 +52,7 @@ public class Board implements IRenderable {
 		try {
 		money=defaultMoney[numBoard];
 		board=readBoard(numBoard);
-		fillAcessibleBoard();
+		fillAccessibleBoard();
 		setBoard();
 		}
 		catch (ArrayIndexOutOfBoundsException e) {SceneManager.gotoWinScreen();System.exit(0); }
@@ -81,7 +81,7 @@ public class Board implements IRenderable {
 			}
 		return tempboard;
 	}
-	private void fillAcessibleBoard() {
+	private void fillAccessibleBoard() {
 		accessibleBoard=new int[BOARD_ROW][BOARD_COLUMN];
 		for(int i=0;i<BOARD_ROW;i++)
 			for(int j=0;j<BOARD_COLUMN;j++)
@@ -147,7 +147,7 @@ public class Board implements IRenderable {
 					HQPOSX=(j+2)*BOARD_WIDTH;
 					Gamelogic.addNewObject(new HQ(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
-				if(board[i][j]==4)//HQ
+				if(board[i][j]==4)
 				{
 					Gamelogic.addNewObject(new PenetrateTower(BOARD_WIDTH*j, BOARD_HEIGHT*i,i,j));
 				}
