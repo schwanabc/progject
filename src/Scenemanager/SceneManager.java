@@ -5,8 +5,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
+
+import com.sun.javafx.geom.Rectangle;
 
 import drawing.LoseScreen;
 import drawing.PlayScreen;
@@ -24,9 +27,9 @@ public class SceneManager {
 	private static Scene startScene;
 	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
-	public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final double SCREEN_HEIGHT=screenSize.getHeight();
-	public static final double SCREEN_WIDTH= screenSize.getWidth();
+	public static java.awt.Rectangle rect = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+	public static final double SCREEN_HEIGHT=rect.getHeight()*2/3;
+			public static final double SCREEN_WIDTH= rect.getWidth()*2/3;
 	public static void setStage(Stage primaryStage) {
 		System.out.println(SCREEN_HEIGHT);
 		System.out.println(SCREEN_WIDTH);
