@@ -11,6 +11,7 @@ import sharedobject.RenderableHolder;
 public class Tower extends Defender{
 	protected int currentShootingTick;
 	protected int maxShootingTick;
+	protected double shootRange;
 	public Tower(double posX,double posY,int posI,int posJ)
 	{
 		super(posX,posY,posI,posJ);
@@ -30,7 +31,7 @@ public class Tower extends Defender{
 		gc.drawImage(RenderableHolder.normalTower,posX, posY, wallWidth, wallHeight);
 		drawHPBar(gc);
 	}
-	protected void ColliedwithAttacker()//find nearest target
+	protected void colliedWithAttacker()//find nearest target
 	{
 		double min=999999999;
 		int idx=-1;
@@ -67,13 +68,13 @@ public class Tower extends Defender{
 				double theta = Math.atan(dy/dx);
 				 theta*= 180/Math.PI ;
 			//	 System.out.println(theta);
-				 if(Shootable())
+				 if(isShootable())
 					 {shoot(theta,direction);}
 			}
 		}
 		catch(Exception e) {}
 	}
-	protected boolean Shootable() {
+	protected boolean isShootable() {
 		if(currentShootingTick>=maxShootingTick)
 		{
 			currentShootingTick=0;
@@ -86,7 +87,7 @@ public class Tower extends Defender{
 		
 		// TODO Auto-generated method stub
 		currentShootingTick++;
-		ColliedwithAttacker();
+		colliedWithAttacker();
 	}
 	protected void shoot(double theta,int direction) {
 		RenderableHolder.arrowSound.setVolume(0.05);

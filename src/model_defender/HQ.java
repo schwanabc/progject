@@ -14,7 +14,6 @@ public class HQ extends Defender{
 		this.DEF=0;
 		this.setHP(5000);
 		this.MaxHP=getHP();
-		this.shootRange=0;
 		this.wallWidth=Board.BOARD_WIDTH*4;
 		this.wallHeight=Board.BOARD_HEIGHT*4;
 	}

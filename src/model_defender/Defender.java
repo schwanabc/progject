@@ -7,7 +7,6 @@ import model_general.Entity;
 public abstract class Defender extends Entity {
 	protected double wallWidth;
 	protected double wallHeight;
-	protected double shootRange;
 	protected int posI,posJ;
 	public Defender(double posX,double posY,int posI,int posJ)
 	{

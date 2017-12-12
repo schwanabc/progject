@@ -43,6 +43,7 @@ public class RenderableHolder {
 	public static Image menuBackground;
 	public static Image errorFrame;
 	public static Image grass;
+	public static Image wall;
 	public static AudioClip clickedSound; 
 	public static AudioClip buttonHover;
 	public static AudioClip attack_Sword;
@@ -114,6 +115,7 @@ public class RenderableHolder {
 		errorFrame=new Image(ClassLoader.getSystemResource("errorframe.jpg").toString());
 		menuBackground=new Image(ClassLoader.getSystemResource("menubackground.jpg").toString());
 		grass=new Image(ClassLoader.getSystemResource("grass.png").toString());
+		wall=new Image(ClassLoader.getSystemResource("Wall.jpg").toString());
 		//---------------------------------sound
 		clickedSound = new AudioClip(ClassLoader.getSystemResource("buttonpressed.wav").toString());
 	    buttonHover = new AudioClip(ClassLoader.getSystemResource("buttonhover.wav").toString());

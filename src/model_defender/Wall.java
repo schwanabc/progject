@@ -4,9 +4,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model_general.Board;
+import sharedobject.RenderableHolder;
 
 public class Wall extends Defender{
-	private static Image Wall=new Image(ClassLoader.getSystemResource("Wall.jpg").toString());
 
 	public Wall(double posX,double posY,int posI,int posJ)
 	{
@@ -15,14 +15,13 @@ public class Wall extends Defender{
 		this.DEF=0;
 		this.setHP(1000);
 		this.MaxHP=getHP();
-		this.shootRange=0;
 		this.wallWidth=Board.BOARD_WIDTH;
 		this.wallHeight=Board.BOARD_HEIGHT;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(Wall, posX, posY, wallWidth, wallHeight);
+		gc.drawImage(RenderableHolder.wall, posX, posY, wallWidth, wallHeight);
 
 		drawHPBar(gc);
 	}
