@@ -11,8 +11,8 @@ public class PenetrateTower extends Tower{
 	public PenetrateTower(double posX, double posY, int posI, int posJ) {
 		super(posX, posY, posI, posJ);
 		this.shootRange=4;
-		Currentshootingtick=100;
-		Shootingtick=Currentshootingtick;
+		currentShootingTick=100;
+		maxShootingTick=currentShootingTick;
 	}
 	@Override
 	protected void shoot(double theta,int direction) {

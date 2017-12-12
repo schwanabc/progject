@@ -9,8 +9,8 @@ import model_general.Bullet;
 import sharedobject.RenderableHolder;
 
 public class Tower extends Defender{
-	protected int Currentshootingtick;
-	protected int Shootingtick;
+	protected int currentShootingTick;
+	protected int maxShootingTick;
 	public Tower(double posX,double posY,int posI,int posJ)
 	{
 		super(posX,posY,posI,posJ);
@@ -19,8 +19,8 @@ public class Tower extends Defender{
 		this.setHP(500);
 		this.MaxHP=getHP();
 		this.shootRange=5;
-		Currentshootingtick=60;
-		Shootingtick=Currentshootingtick;
+		currentShootingTick=60;
+		maxShootingTick=currentShootingTick;
 		this.wallWidth=Board.BOARD_WIDTH;
 		this.wallHeight=Board.BOARD_HEIGHT;
 	}
@@ -74,9 +74,9 @@ public class Tower extends Defender{
 		catch(Exception e) {}
 	}
 	protected boolean Shootable() {
-		if(Currentshootingtick>=Shootingtick)
+		if(currentShootingTick>=maxShootingTick)
 		{
-			Currentshootingtick=0;
+			currentShootingTick=0;
 			return true;
 		}
 		return false;
@@ -85,7 +85,7 @@ public class Tower extends Defender{
 	public void update() {
 		
 		// TODO Auto-generated method stub
-		Currentshootingtick++;
+		currentShootingTick++;
 		ColliedwithAttacker();
 	}
 	protected void shoot(double theta,int direction) {

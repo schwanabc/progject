@@ -17,7 +17,6 @@ public abstract class Defender extends Entity {
 		this.posJ=posJ;
 	}
 	protected void drawHPBar(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
 		gc.setFill(Color.DARKGREEN);
@@ -27,7 +26,6 @@ public abstract class Defender extends Entity {
 		gc.setStroke(Color.BLACK);
 		if(ratio!=1)gc.strokeRect(posX, posY, wallWidth, 4);
 	}
-	 //UPGRADING BOT
 	public double getWallWidth() {
 		return wallWidth;
 	}

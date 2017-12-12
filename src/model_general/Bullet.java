@@ -26,7 +26,7 @@ public class Bullet extends Entity implements IMovable{
 	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
-		return 999;
+		return 7;
 	}
 	protected void colliedWithAttacker()
 	{
