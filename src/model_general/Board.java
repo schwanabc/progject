@@ -112,16 +112,16 @@ public class Board implements IRenderable {
 		int countTower = 0;
 		for(int i=0;i<BOARD_ROW;i++) {
 			for(int j=0;j<BOARD_COLUMN;j++) {
-				int diff = (posX-i>0)?(posX-i):(i-posX);
-				diff += (posY-j>0)?(posY-j):(j-posY);
-				if(board[i][j] == 2 || board[i][j]==4 && diff <= 5) {
+				int diff = (posY-j>0)?(posY-j):(j-posY);
+				diff += (posX-i>0)?(posX-i):(i-posX);
+				if(board[j][i] == 2 || board[j][i] ==4 && diff <= 5) {
 					countTower++;
 				}
 			}
 		}
 		
 		int towerATK = countTower;
-		if(board[posX][posY] == 1)
+		if(board[posY][posX] == 1)
 			towerATK *= 4;
 //		else if(board[posX][posY] == -1) {
 //			System.out.println("Find Hole");
