@@ -107,7 +107,7 @@ public class Board implements IRenderable {
 				}
 			}
 	}
-	public static int getTowerAttack(int posY,int posX) {
+	public static int getTowerAttack(int posX,int posY) {
 		//Not finish
 		int countTower = 0;
 		for(int i=0;i<BOARD_ROW;i++) {
@@ -121,8 +121,8 @@ public class Board implements IRenderable {
 		}
 		
 		int towerATK = countTower;
-		if(board[posX][posY] == 1)
-			towerATK *= 5;
+		if(board[posY][posX] == 1)
+			towerATK *= 4;
 //		else if(board[posX][posY] == -1) {
 //			System.out.println("Find Hole");
 //			towerATK *= 0;
