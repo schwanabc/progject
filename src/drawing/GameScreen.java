@@ -21,6 +21,8 @@ public class GameScreen extends Canvas{
 	public GameScreen()
 	{
 		super(GAMESCREEN_WIDTH,GAMESCREEN_HEIGHT);
+		System.out.print(GAMESCREEN_HEIGHT);
+
 		System.out.println(GAMESCREEN_WIDTH);
 		System.out.println(GAMESCREEN_HEIGHT);
 		this.setVisible(true);

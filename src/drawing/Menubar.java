@@ -238,7 +238,7 @@ public class Menubar extends VBox{
 			{
 				GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 				PaintMenucanvas(gc);
-				gc.setFill(Color.BLACK);
+				gc.setFill(Color.WHITE);
 				gc.setFont(TIME_TEXT_FONT);
 				gc.setTextAlign(TextAlignment.LEFT);
 				gc.setTextBaseline(VPos.TOP);
