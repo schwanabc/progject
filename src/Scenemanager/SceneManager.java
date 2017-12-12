@@ -5,11 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
-
-import com.sun.javafx.geom.Rectangle;
 
 import drawing.LoseScreen;
 import drawing.PlayScreen;
@@ -18,6 +15,7 @@ import drawing.WaitScreen;
 import drawing.WinScreen;
 
 public class SceneManager {
+
 	private static Stage primaryStage;
 	private static Scene playScene;
 	private static Scene waitScene;
@@ -26,14 +24,11 @@ public class SceneManager {
 	private static Scene startScene;
 	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
-	public static double SCREEN_HEIGHT;
-	public static double SCREEN_WIDTH;
-	static 
-	{
-		getScreenSize();
-	};
+	public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final double SCREEN_HEIGHT=screenSize.getHeight()*2/3;
+	public static final double SCREEN_WIDTH= screenSize.getWidth()*2/3;
 	public static void setStage(Stage primaryStage) {
-		System.out.println(System.getProperty("os.arch"));
+		System.out.println(SCREEN_HEIGHT);
 		System.out.println(SCREEN_WIDTH);
 		SceneManager.primaryStage=primaryStage;
 		SceneManager.primaryStage.setTitle(GAMENAME);
@@ -42,22 +37,8 @@ public class SceneManager {
 		SceneManager.primaryStage.setFullScreenExitHint("");
 		SceneManager.primaryStage.centerOnScreen();
 		SceneManager.primaryStage.show();
+		SceneManager.primaryStage.setResizable(false);
 	} 
-	private static void getScreenSize() {
-		// TODO Auto-generated method stub
-		if(System.getProperty("os.arch").equals("amd64"))
-		{
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_HEIGHT=screenSize.getHeight()*2/3;
-        SCREEN_WIDTH=screenSize.getWidth()*2/3;
-		}
-		else
-		{
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	        SCREEN_HEIGHT=screenSize.getHeight();
-	        SCREEN_WIDTH=screenSize.getWidth();
-		}
-	}
 	public static void gotoStartScreen() { 
 		startScene=new Scene(new StartScreen(),SCREEN_WIDTH,SCREEN_HEIGHT);
 		primaryStage.setScene(startScene);
