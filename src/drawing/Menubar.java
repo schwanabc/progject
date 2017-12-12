@@ -219,7 +219,7 @@ public class Menubar extends VBox{
 		gc.setFont(TIME_TEXT_FONT);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.BOTTOM);
-		gc.setFill(Color.BLACK);
+		gc.setFill(Color.SADDLEBROWN);
 		gc.fillText("MENU", MENU_WIDTH*0.4,ICONPOS*0.2);
 	}
 	public void setMenutab() {
@@ -238,7 +238,7 @@ public class Menubar extends VBox{
 			{
 				GraphicsContext gc=Menucanvas.getGraphicsContext2D();
 				PaintMenucanvas(gc);
-				gc.setFill(Color.WHITE);
+				gc.setFill(Color.SADDLEBROWN);
 				gc.setFont(TIME_TEXT_FONT);
 				gc.setTextAlign(TextAlignment.LEFT);
 				gc.setTextBaseline(VPos.TOP);
