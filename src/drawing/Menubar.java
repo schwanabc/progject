@@ -1,14 +1,9 @@
 package drawing;
-import Button.PauseIcon;
-import Button.HomeIcon;
-import Button.ExitIcon;
-
 import java.io.InputStream;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.InputUtility;
-import Utility.Utility;
+import button.ExitIcon;
+import button.HomeIcon;
+import button.PauseIcon;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.VPos;
@@ -20,17 +15,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import logic.Gamestate;
+import logic.GameState;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.InputUtility;
+import utility.Utility;
 public class Menubar extends VBox{
-	public static double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
-	public static double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
-	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Aaargh.ttf");
-	private static InputStream fontStream2 = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
-	private static InputStream fontStream3 = ClassLoader.getSystemResourceAsStream("Aaargh.ttf");
-	private static final Font TEXT_FONT = Font.loadFont(fontStream,20);
-	private static final Font TIME_TEXT_FONT = Font.loadFont(fontStream2, 20);
-	private static final Font WARN_FONT = Font.loadFont(fontStream3, 14);
+	public static final double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
+	public static final double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
+	private static final Font TEXT_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"),20);
+	private static final Font TIME_TEXT_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 20);
+	private static final Font WARN_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"), 14);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
 	public static double ICONPOS;
@@ -41,20 +37,19 @@ public class Menubar extends VBox{
 	private GridPane gp;
 	private int choseRow;
 	private int choseColumn;
-	private Gamestate Gamestate;
-	private Canvas Menucanvas;
+	private GameState gameState;
+	private Canvas menuCanvas;
 	private boolean isReset;
-	private HomeIcon HomeIcon;
-	private ExitIcon ExitIcon;
-	private PauseIcon PauseIcon;
+	private HomeIcon homeIcon;
+	private ExitIcon exitIcon;
+	private PauseIcon pauseIcon;
 	public Menubar()
 	{
-	//	this.setBackground(new Background(new BackgroundImage(RenderableHolder.Menubackground, null, null, null, new BackgroundSize(MENU_WIDTH, ICONPOS,true,false,true,false))));
 		instance=this;
 		isReset=false;
 		choseRow=-1;
 		choseColumn=-1;
-		Gamestate=new Gamestate();
+		gameState=new GameState();
 		ICONPOS= MENU_HEIGHT*0.25;
 		ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
 		ICONWIDTH=MENU_WIDTH/HTAB;
@@ -62,7 +57,7 @@ public class Menubar extends VBox{
 		
 	}
 	private void setMenu() {
-		setMenutab();
+		setMenuTab();
 		setIcon();
 	}
 	private void setIcon() {
@@ -77,28 +72,28 @@ public class Menubar extends VBox{
 				gc.setFont(TEXT_FONT);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
-				Filltext(gc,i,j);
+				fillText(gc,i,j);
 				
 				gp.add(menu[i][j], j, i);
-				Checkevent(menu[i][j],i,j);
+				checkEvent(menu[i][j],i,j);
 			}
 		}
 		this.getChildren().add(gp);
-		HomeIcon=new HomeIcon();
-		HomeIcon.setManaged(false);
-		this.getChildren().add(HomeIcon);
-		HomeIcon.relocate(MENU_WIDTH*0.8, 0);
-		ExitIcon=new ExitIcon();
-		ExitIcon.setManaged(false);
-		this.getChildren().add(ExitIcon);
-		ExitIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8/3);
-		PauseIcon=new PauseIcon();
-		PauseIcon.setManaged(false);
-		this.getChildren().add(PauseIcon);
-		PauseIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*2/3);
+		homeIcon=new HomeIcon();
+		homeIcon.setManaged(false);
+		this.getChildren().add(homeIcon);
+		homeIcon.relocate(MENU_WIDTH*0.8, 0);
+		exitIcon=new ExitIcon();
+		exitIcon.setManaged(false);
+		this.getChildren().add(exitIcon);
+		exitIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8/3);
+		pauseIcon=new PauseIcon();
+		pauseIcon.setManaged(false);
+		this.getChildren().add(pauseIcon);
+		pauseIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*2/3);
 	
 	}
-	private void Filltext(GraphicsContext gc,int i, int j) {
+	private void fillText(GraphicsContext gc,int i, int j) {
 		// TODO Auto-generated method stub
 		if(i+1==VTAB&& j+1==HTAB)
 			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
@@ -134,7 +129,7 @@ public class Menubar extends VBox{
 			}
 		}
 	}
-	private void Checkevent(Canvas canvas, int row, int column) {
+	private void checkEvent(Canvas canvas, int row, int column) {
 		GraphicsContext gc=canvas.getGraphicsContext2D();
 		canvas.setOnMouseEntered(ev->
 		{
@@ -167,7 +162,7 @@ public class Menubar extends VBox{
 			}
 			if(!(choseRow+1==VTAB&& choseColumn+1==HTAB))setClick(gc, row, column);
 			else setUnClick(gc, row, column);
-			Choosecurrentbot(row,column);
+			chooseCurrentBot(row,column);
 		});
 	}
 
@@ -183,7 +178,7 @@ public class Menubar extends VBox{
 		colorAdjust.setBrightness(0.0);
 		menu[row][column].setEffect(colorAdjust);
 	}
-	private void Choosecurrentbot(int row, int column) {
+	private void chooseCurrentBot(int row, int column) {
 		if(row == 0 && column == 0)
 			InputUtility.currentChosed ="Peasant";
 		else if(row == 0 && column == 1)
@@ -204,15 +199,15 @@ public class Menubar extends VBox{
 	private void setClick(GraphicsContext gc,int row,int column) {
 		RenderableHolder.clickedSound.play();
 		gc.drawImage(RenderableHolder.pressButton, 0, 0, ICONWIDTH, ICONHEIGHT);
-		Filltext(gc,row,column);
+		fillText(gc,row,column);
 	}
 	private void setUnClick(GraphicsContext gc,int row,int column) {
 		//RenderableHolder.Clickedmenu.play();
 		gc.drawImage(RenderableHolder.releaseButton, 0, 0, ICONWIDTH, ICONHEIGHT);
-		Filltext(gc,row,column);
+		fillText(gc,row,column);
 	}
 	
-	private void PaintMenucanvas(GraphicsContext gc)
+	private void paintMenuCanvas(GraphicsContext gc)
 	{
 		gc.drawImage(RenderableHolder.menuBackground, 0, 0, MENU_WIDTH*0.8, ICONPOS*0.8);
 		gc.drawImage(RenderableHolder.errorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
@@ -222,22 +217,22 @@ public class Menubar extends VBox{
 		gc.setFill(Color.SADDLEBROWN);
 		gc.fillText("MENU", MENU_WIDTH*0.4,ICONPOS*0.2);
 	}
-	public void setMenutab() {
-		Menucanvas=new Canvas(MENU_WIDTH,ICONPOS);
-		GraphicsContext gc=Menucanvas.getGraphicsContext2D();
-		PaintMenucanvas(gc);
+	public void setMenuTab() {
+		menuCanvas=new Canvas(MENU_WIDTH,ICONPOS);
+		GraphicsContext gc=menuCanvas.getGraphicsContext2D();
+		paintMenuCanvas(gc);
 		
-		this.getChildren().add(Menucanvas);
+		this.getChildren().add(menuCanvas);
 	}
 	public void update() {
 		// TODO Auto-generated method stub
 
-		if(Board.isWin())Gamestate.setWin(true);
+		if(Board.isWin())gameState.setWin(true);
 		Thread t1= new Thread(()->{
 			Platform.runLater(()->
 			{
-				GraphicsContext gc=Menucanvas.getGraphicsContext2D();
-				PaintMenucanvas(gc);
+				GraphicsContext gc=menuCanvas.getGraphicsContext2D();
+				paintMenuCanvas(gc);
 				gc.setFill(Color.SADDLEBROWN);
 				gc.setFont(TIME_TEXT_FONT);
 				gc.setTextAlign(TextAlignment.LEFT);
@@ -245,10 +240,10 @@ public class Menubar extends VBox{
 				gc.fillText("Money: "+Board.getMoney(), 25, ICONPOS*0.25);
 				gc.fillText("Stage: "+(Board.getDefaultNumBoard()+1), 25, ICONPOS*0.40);
 				gc.setTextAlign(TextAlignment.LEFT);
-				Long sec=Gamestate.getSecond();
+				Long sec=gameState.getSecond();
 				String second=sec.toString();
 				if(sec<10)second="0"+second;
-				gc.fillText("Time: "+Gamestate.getMinute()+" : "+second,25 , ICONPOS*0.55);
+				gc.fillText("Time: "+gameState.getMinute()+" : "+second,25 , ICONPOS*0.55);
 				Thread.yield();
 			});
 		}); 
@@ -260,8 +255,8 @@ public class Menubar extends VBox{
 			e.printStackTrace();
 		}		
 	}
-	public Gamestate getGamestate() {
-		return Gamestate;
+	public GameState getGameState() {
+		return gameState;
 	}
 	public boolean isReset() {
 		return isReset;
@@ -269,8 +264,8 @@ public class Menubar extends VBox{
 	public void setReset(boolean isReset) {
 		this.isReset = isReset;
 	}
-	public void setdefault() {
-		Gamestate.initialize();
+	public void setDefault() {
+		gameState.initialize();
 		update();
 		isReset=false;
 		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
@@ -279,7 +274,7 @@ public class Menubar extends VBox{
 		choseRow=-1;
 		choseColumn=-1;
 	}
-	public void writepoor(String text) {
+	public void writePoor(String text) {
 		
 		new AnimationTimer(){	
 			long totaltime=0;
@@ -295,7 +290,7 @@ public class Menubar extends VBox{
 					this.stop();
 				}
 				prevtime=currenttime;
-				 GraphicsContext gc=Menucanvas.getGraphicsContext2D();
+				 GraphicsContext gc=menuCanvas.getGraphicsContext2D();
 					gc.setFill(Color.RED);
 					gc.setFont(WARN_FONT);
 					gc.fillText(text, Utility.getTextStartWidht(MENU_WIDTH, Utility.getFont_width(text,WARN_FONT)), ICONPOS*0.87);

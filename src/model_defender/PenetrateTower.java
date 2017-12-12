@@ -1,10 +1,10 @@
 package model_defender;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import logic.Gamelogic;
 import model_general.Bullet;
 import model_general.PenetrateBullet;
+import sharedobject.RenderableHolder;
 
 public class PenetrateTower extends Tower{
 
@@ -24,7 +24,7 @@ public class PenetrateTower extends Tower{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.penetrateTower,posX, posY, wallWidth, wallHeight);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 
 }

@@ -1,9 +1,9 @@
 package model_attacker;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import sharedobject.RenderableHolder;
 
 public class Footman extends Attacker{
 	
@@ -30,7 +30,7 @@ public class Footman extends Attacker{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.footman, posX-radius, posY-radius, diameter, diameter);
+		gc.drawImage(RenderableHolder.footman, posX-radius, posY-radius, diameter*0.9, diameter*0.9);
 		drawHPBar(gc);
 	}
 

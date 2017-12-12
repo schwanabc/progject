@@ -1,4 +1,4 @@
-package Scenemanager;
+package scenemanager;
 
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -66,7 +66,7 @@ public class SceneManager {
 		initializePlayScene();
 		primaryStage.setScene(playScene);
 		SceneManager.primaryStage.setFullScreen(true);
-		playScreen.getAT().start();
+		playScreen.getPlayThread().start();
 	}
 	private static void initializePlayScene() {
 		playScreen=new PlayScreen();

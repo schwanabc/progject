@@ -1,13 +1,10 @@
-package Button;
+package button;
 
 import java.io.InputStream;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.Utility;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -28,8 +25,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.Utility;
 
-public class NormalButton extends Canvas implements IsButton{
+public class NormalButton extends Canvas implements IButton{
 	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
 	private static final Font BUTTON_FONT = Font.loadFont(fontStream, 48);
 	protected ColorAdjust colorAdjust;

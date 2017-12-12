@@ -1,8 +1,8 @@
 package model_attacker;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import sharedobject.RenderableHolder;
 
 public class Berserker extends Attacker{
 	

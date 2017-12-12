@@ -1,9 +1,5 @@
 package drawing;
 
-import SharedObject.IRenderable;
-import SharedObject.RenderableHolder;
-import Utility.InputUtility;
-import Scenemanager.SceneManager;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,6 +9,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import scenemanager.SceneManager;
+import sharedobject.IRenderable;
+import sharedobject.RenderableHolder;
+import utility.InputUtility;
 
 public class GameScreen extends Canvas{
 	public static double GAMESCREEN_HEIGHT=SceneManager.SCREEN_HEIGHT;

@@ -3,12 +3,9 @@ package drawing;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
-import Button.ExitButton;
-import Button.NormalButton;
-import Button.PlayButton;
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.Utility;
+import button.ExitButton;
+import button.NormalButton;
+import button.PlayButton;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,6 +21,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.Utility;
 public class StartScreen extends Pane{
 	private PlayButton Play;
 	private ExitButton Exit;

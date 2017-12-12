@@ -3,10 +3,10 @@ package model_general;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import logic.Ismovable;
+import logic.IMovable;
 import model_attacker.Attacker;
 
-public class Bullet extends Entity implements Ismovable{
+public class Bullet extends Entity implements IMovable{
 	protected double angle;
 	protected double radius;
 	protected double speed;
@@ -30,7 +30,7 @@ public class Bullet extends Entity implements Ismovable{
 	}
 	protected void colliedWithAttacker()
 	{
-		for(Attacker attacker: logic.Gamelogic.getAttackercontainer())
+		for(Attacker attacker: logic.Gamelogic.getAttackerContainer())
 		{
 			Circle c1=new Circle( posX, posY, radius);
 			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.getRADIUS());

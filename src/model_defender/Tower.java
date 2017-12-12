@@ -1,12 +1,12 @@
 package model_defender;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import logic.Gamelogic;
 import model_attacker.Attacker;
 import model_general.Board;
 import model_general.Bullet;
+import sharedobject.RenderableHolder;
 
 public class Tower extends Defender{
 	protected int Currentshootingtick;
@@ -28,14 +28,14 @@ public class Tower extends Defender{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.normalTower,posX, posY, wallWidth, wallHeight);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	protected void ColliedwithAttacker()//find nearest target
 	{
 		double min=999999999;
 		int idx=-1;
 		int count=0;
-		for(Attacker attacker:Gamelogic.getAttackercontainer())
+		for(Attacker attacker:Gamelogic.getAttackerContainer())
 		{
 			double dist=Math.hypot(posX+wallWidth/2-attacker.getPosX(),posY+wallHeight/2-attacker.getPosY());
 			if(dist<min)
@@ -47,7 +47,7 @@ public class Tower extends Defender{
 		}
 		try
 		{
-			Attacker attacker=Gamelogic.getAttackercontainer().get(idx);
+			Attacker attacker=Gamelogic.getAttackerContainer().get(idx);
 			double x0=posX+wallWidth/2;
 			double y0=posY+wallHeight/2;
 			double r0=shootRange*Board.BOARD_RANGE;

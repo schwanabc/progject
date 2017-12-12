@@ -3,18 +3,18 @@ package logic;
 import drawing.PlayScreen;
 import javafx.animation.AnimationTimer;
 
-public class Gamestate {
+public class GameState {
 	private boolean isWin;
 	private boolean isLose;
 	private static long GAMEBASETIME=151*1000000000L;
 	private long timeLeft;
 	private long prevTime;
 	private long currentTime;
-	Thread Timethread;
-	public Gamestate()
+	private Thread timeThread;
+	public GameState()
 	{
 		initialize();
-		Timethread=new Thread(new Runnable()
+		timeThread=new Thread(new Runnable()
 		{
 			@Override
 			public void run() {
@@ -32,7 +32,7 @@ public class Gamestate {
 				}
 			}
 		});
-		Timethread.start();
+		timeThread.start();
 	}
 	public boolean isWin() {
 		return isWin;
@@ -70,12 +70,12 @@ public class Gamestate {
 	}
 	public Thread getTimethread() {
 		// TODO Auto-generated method stub
-		return Timethread;
+		return timeThread;
 	}
 	public void endTimethread() {
 		// TODO Auto-generated method stub
 		System.out.println("threadstop");
-		Timethread.interrupt();
+		timeThread.interrupt();
 	}
 
 }

@@ -1,4 +1,4 @@
-package SharedObject;
+package sharedobject;
 
 import java.util.ArrayList;
 import java.util.Collections;

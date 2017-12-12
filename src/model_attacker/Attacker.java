@@ -2,22 +2,22 @@ package model_attacker;
 
 import java.util.Random;
 
-import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import logic.Gamelogic;
-import logic.Ismovable;
+import logic.IMovable;
 import model_defender.Defender;
 import model_defender.HQ;
 import model_defender.Tower;
 import model_defender.Wall;
 import model_general.Board;
 import model_general.Entity;
+import sharedobject.RenderableHolder;
 
-public abstract class Attacker extends Entity implements Ismovable{
+public abstract class Attacker extends Entity implements IMovable{
 	protected double radius;
 	protected double diameter;
 	protected model_defender.Defender currentTarget;
@@ -278,12 +278,12 @@ public abstract class Attacker extends Entity implements Ismovable{
 		double min=999999999;
 		int idx=-1;
 		boolean iscollide=false;
-		for(Defender defender: Gamelogic.getDefendercontainer())
+		for(Defender defender: Gamelogic.getDefenderContainer())
 		{
 			Circle c=new Circle( posX, posY, radius);
-			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallwidth(),defender.getWallheight());
+			Rectangle r=new Rectangle(defender.getPosX(),defender.getPosY(),defender.getWallWidth(),defender.getWallHeight());
 			if (c.getBoundsInParent().intersects(r.getBoundsInParent())) {
-		        double dist=Math.hypot(defender.getPosX()+defender.getWallwidth()/2-getPosX(),defender.getPosY()+defender.getWallheight()/2-getPosY());
+		        double dist=Math.hypot(defender.getPosX()+defender.getWallWidth()/2-getPosX(),defender.getPosY()+defender.getWallHeight()/2-getPosY());
 				if(dist<min)
 				{
 					min=dist;
@@ -296,7 +296,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 		if(currentATKTick>=attackTick&&iscollide)
 		{
 			currentATKTick=0;
-			attack(Gamelogic.getDefendercontainer().get(idx));
+			attack(Gamelogic.getDefenderContainer().get(idx));
 		}
 		return iscollide;
 		
@@ -310,7 +310,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 	}
 	private void fluidPush() 
 	{
-		for(Attacker attacker:Gamelogic.getAttackercontainer())
+		for(Attacker attacker:Gamelogic.getAttackerContainer())
 		{
 			try
 			{

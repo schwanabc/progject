@@ -1,8 +1,5 @@
-package Button;
+package button;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.Utility;
 import drawing.Menubar;
 import drawing.PlayScreen;
 import javafx.geometry.VPos;
@@ -11,17 +8,21 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.input.MouseButton;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.InputUtility;
+import utility.Utility;
 
-public class ExitIcon extends Canvas implements IsButton{
+public class HomeIcon extends Canvas implements IButton{
 	private ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=Menubar.MENU_WIDTH*0.2+1;
 	public static final double BUTTON_HEIGHT=Menubar.ICONPOS*0.8/3;
 
-	public ExitIcon() {
+	public HomeIcon() {
 		super(BUTTON_WIDTH, BUTTON_HEIGHT);
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.releaseExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+		gc.drawImage(RenderableHolder.releaseHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 		addToListerner();
 	}
 	public void addToListerner() {
@@ -41,12 +42,13 @@ public class ExitIcon extends Canvas implements IsButton{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
 				GraphicsContext gc=this.getGraphicsContext2D();
-				gc.drawImage(RenderableHolder.pressedExit, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
+				gc.drawImage(RenderableHolder.pressedHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
 				Board.resetNumBoard();
 				RenderableHolder.stopAudio();
-				RenderableHolder.clickedSound.play();
 				PlayScreen.instance.forceEnd();
-				System.exit(0);
+				SceneManager.gotoStartScreen();
+				RenderableHolder.clickedSound.play();
+				InputUtility.reset();
 				}
 		});
 	}

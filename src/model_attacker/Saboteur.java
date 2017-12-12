@@ -1,9 +1,9 @@
 package model_attacker;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_defender.Defender;
+import sharedobject.RenderableHolder;
 
 public class Saboteur extends Attacker{
 	

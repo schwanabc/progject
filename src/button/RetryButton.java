@@ -1,12 +1,12 @@
-package Button;
+package button;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
 
-public class MenuButton extends NormalButton{
-	public MenuButton(String text)
+public class RetryButton extends ReplayButton{
+	public RetryButton(String text)
 	{
 		super(text);
 	}
@@ -27,9 +27,9 @@ public class MenuButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+				RenderableHolder.stopAudio();
 				RenderableHolder.clickedSound.play();
-				Board.resetNumBoard();
-				SceneManager.gotoStartScreen();
+				SceneManager.gotoPlayScreen();
 				}
 		});
 	}

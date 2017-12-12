@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.0" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="false" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="Button.ReplayButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/ReplayButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="button.ReplayButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/ReplayButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="139" x="3189" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="SharedObject.RenderableHolder" project="prog_meth final" 
-    file="/prog_meth final/src/SharedObject/RenderableHolder.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="sharedobject.RenderableHolder" project="prog_meth final" 
+    file="/prog_meth final/src/sharedobject/RenderableHolder.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="929" width="237" x="96" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Button.RetryButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/RetryButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="button.RetryButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/RetryButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="139" x="3189" y="1584"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="Button.IsButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/IsButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="5" language="java" name="button.IButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/IButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="83" width="139" x="3890" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="Button.ExitButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/ExitButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="button.ExitButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/ExitButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="139" x="3368" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Button.HomeIcon" project="prog_meth final" 
-    file="/prog_meth final/src/Button/HomeIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="button.HomeIcon" project="prog_meth final" 
+    file="/prog_meth final/src/button/HomeIcon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="155" width="169" x="3756" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="logic.Gamestate" project="prog_meth final" 
-    file="/prog_meth final/src/logic/Gamestate.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="logic.GameState" project="prog_meth final" 
+    file="/prog_meth final/src/logic/GameState.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="407" width="153" x="373" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Button.NormalButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/NormalButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="button.NormalButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/NormalButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="191" width="169" x="3547" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Button.MenuButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/MenuButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="button.MenuButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/MenuButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="139" x="3547" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Button.PauseIcon" project="prog_meth final" 
-    file="/prog_meth final/src/Button/PauseIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="button.PauseIcon" project="prog_meth final" 
+    file="/prog_meth final/src/button/PauseIcon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="227" width="169" x="3965" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -154,8 +154,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Scenemanager.SceneManager" project="prog_meth final" 
-    file="/prog_meth final/src/Scenemanager/SceneManager.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="18" language="java" name="scenemanager.SceneManager" project="prog_meth final" 
+    file="/prog_meth final/src/scenemanager/SceneManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="407" width="170" x="999" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -226,8 +226,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="Utility.Utility" project="prog_meth final" 
-    file="/prog_meth final/src/Utility/Utility.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="26" language="java" name="utility.Utility" project="prog_meth final" 
+    file="/prog_meth final/src/utility/Utility.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="119" width="244" x="1406" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -235,8 +235,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="27" language="java" name="SharedObject.IRenderable" project="prog_meth final" 
-    file="/prog_meth final/src/SharedObject/IRenderable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="27" language="java" name="sharedobject.IRenderable" project="prog_meth final" 
+    file="/prog_meth final/src/sharedobject/IRenderable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="137" width="175" x="5723" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -244,8 +244,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="28" language="java" name="Button.PlayButton" project="prog_meth final" 
-    file="/prog_meth final/src/Button/PlayButton.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="28" language="java" name="button.PlayButton" project="prog_meth final" 
+    file="/prog_meth final/src/button/PlayButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="83" width="124" x="3726" y="921"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -307,8 +307,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="35" language="java" name="Button.ExitIcon" project="prog_meth final" 
-    file="/prog_meth final/src/Button/ExitIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="35" language="java" name="button.ExitIcon" project="prog_meth final" 
+    file="/prog_meth final/src/button/ExitIcon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="155" width="169" x="4174" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -352,8 +352,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="40" language="java" name="logic.Ismovable" project="prog_meth final" 
-    file="/prog_meth final/src/logic/Ismovable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="40" language="java" name="logic.IMovable" project="prog_meth final" 
+    file="/prog_meth final/src/logic/IMovable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="101" width="195" x="3734" y="1584"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -361,8 +361,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="41" language="java" name="Utility.InputUtility" project="prog_meth final" 
-    file="/prog_meth final/src/Utility/InputUtility.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="41" language="java" name="utility.InputUtility" project="prog_meth final" 
+    file="/prog_meth final/src/utility/InputUtility.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="425" width="190" x="2957" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -388,8 +388,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="44" language="java" name="Exception.PoorException" project="prog_meth final" 
-    file="/prog_meth final/src/Exception/PoorException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="44" language="java" name="exception.PoorException" project="prog_meth final" 
+    file="/prog_meth final/src/exception/PoorException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="83" width="123" x="3384" y="-48"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -397,117 +397,117 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="45">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <realization id="46">    
+  <realization id="45">    
     <end type="SOURCE" refId="30"/>    
     <end type="TARGET" refId="40"/>  
   </realization>  
-  <generalization id="47">    
-    <end type="SOURCE" refId="42"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <generalization id="48">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <realization id="49">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <realization id="53">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="40"/>  
-  </realization>  
-  <generalization id="54">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="37"/>  
-  </generalization>  
-  <realization id="55">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="27"/>  
-  </realization>  
-  <generalization id="56">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <generalization id="57">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <generalization id="58">    
+  <generalization id="46">    
     <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="37"/>    
+  <generalization id="47">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="48">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <realization id="50">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="30"/>    
     <end type="TARGET" refId="25"/>  
   </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <realization id="55">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <realization id="59">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
   <realization id="60">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
   <generalization id="61">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <generalization id="63">    
-    <end type="SOURCE" refId="30"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="25"/>  
   </generalization>  
-  <realization id="64">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="27"/>  
-  </realization>  
-  <realization id="65">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="66">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="37"/>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
   </generalization>  
-  <generalization id="67">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="30"/>  
-  </generalization>  
-  <generalization id="68">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <realization id="69">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="70">    
+  <generalization id="63">    
     <end type="SOURCE" refId="28"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <generalization id="71">    
-    <end type="SOURCE" refId="33"/>    
+  <generalization id="64">    
+    <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="30"/>  
   </generalization>  
-  <generalization id="72">    
+  <generalization id="65">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="66">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="67">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <realization id="68">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="30"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

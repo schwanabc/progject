@@ -1,8 +1,8 @@
-package Button;
+package button;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
 
 public class ExitButton extends NormalButton{
 	public ExitButton(String text)

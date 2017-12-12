@@ -1,9 +1,9 @@
 package application;
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

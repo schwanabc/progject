@@ -1,4 +1,4 @@
-package Utility;
+package utility;
 
 import java.util.ArrayList;
 
@@ -48,6 +48,14 @@ public class InputUtility {
 	}
 	public static void checkTick() {
 		if(isLeftDown)addTick();
+	}
+	public static void reset() {
+		currentUI="x";
+		lastKey=null;
+		currentChosed="x";
+		isLeftDown=false;
+		isKeyPress=false;
+		tick=MAXTICK;
 	}
 	
 }

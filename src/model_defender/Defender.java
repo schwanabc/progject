@@ -16,7 +16,7 @@ public abstract class Defender extends Entity {
 		this.posI=posI;
 		this.posJ=posJ;
 	}
-	protected void drawHPbar(GraphicsContext gc) {
+	protected void drawHPBar(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
@@ -28,10 +28,10 @@ public abstract class Defender extends Entity {
 		if(ratio!=1)gc.strokeRect(posX, posY, wallWidth, 4);
 	}
 	 //UPGRADING BOT
-	public double getWallwidth() {
+	public double getWallWidth() {
 		return wallWidth;
 	}
-	public double getWallheight() {
+	public double getWallHeight() {
 		return wallHeight;
 	}
 	public int getPosI() {

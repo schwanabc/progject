@@ -1,8 +1,5 @@
 package drawing;
-import Button.PauseIcon;
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.InputUtility;
+import button.PauseIcon;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
@@ -13,9 +10,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import logic.Gamelogic;
-import logic.Gamestate;
+import logic.GameState;
 import model_attacker.Attacker;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.InputUtility;
 public class PlayScreen extends HBox{
 	private static boolean pausedState;
 	public static final double MISCSCREENWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
@@ -23,8 +23,8 @@ public class PlayScreen extends HBox{
 	public static PlayScreen instance;
 	private GameScreen gameScreen;
 	private Menubar menuBar;
-	private AnimationTimer AT;
-	private AnimationTimer AT2;
+	private AnimationTimer playThread;
+	private AnimationTimer pauseThread;
 	private Gamelogic gameLogic;
 	private Canvas miscScreen;
 	private Canvas miscScreen2;
@@ -32,7 +32,7 @@ public class PlayScreen extends HBox{
 	{
 		instance=this;
 		initialize();
-		AT=new AnimationTimer(){
+		playThread=new AnimationTimer(){
 			public void handle(long now)
 			{
 			//	System.out.println(Gamestate.getTotaltime()/600000000L);
@@ -44,10 +44,10 @@ public class PlayScreen extends HBox{
 			}
 
 		};
-		AT2=new AnimationTimer(){
+		pauseThread=new AnimationTimer(){
 			public void handle(long now)
 			{
-				if(menuBar.getGamestate().isLose()==false)Paintupdated();
+				if(menuBar.getGameState().isLose()==false)Paintupdated();
 				if(menuBar.isReset())resetGame();
 			}
 		};
@@ -76,12 +76,12 @@ public class PlayScreen extends HBox{
 		RenderableHolder.stopAudio();
 		RenderableHolder.getInstance().getEntities().clear();
 		gameLogic=new Gamelogic();
-		menuBar.setdefault();
-		InputUtility.currentChosed="x";
-		AT2.stop();
-		if(pausedState)AT.start();
+		menuBar.setDefault();
+		pauseThread.stop();
+		if(pausedState)playThread.start();
 		pausedState=false;
 		PauseIcon.instance.drawUnpaused();
+		InputUtility.reset();
 	}	
 	protected void Paintupdated() {
 		gameScreen.paintComponent();
@@ -92,23 +92,23 @@ public class PlayScreen extends HBox{
 	}
 	private void Checkcondition() {
 		// TODO Auto-generated method stub
-		if(Board.isWin())menuBar.getGamestate().setWin(true);
-		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackercontainer().size()==0)
-			menuBar.getGamestate().setLose(true);
-		if(menuBar.getGamestate().isTimeup())menuBar.getGamestate().setLose(true);
+		if(Board.isWin())menuBar.getGameState().setWin(true);
+		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackerContainer().size()==0)
+			menuBar.getGameState().setLose(true);
+		if(menuBar.getGameState().isTimeup())menuBar.getGameState().setLose(true);
 	}
 	void Checkend() {
 		// TODO Auto-generated method stub
 		
-		if(menuBar.getGamestate().isWin())
+		if(menuBar.getGameState().isWin())
 		{
 			RenderableHolder.stopAudio();
 			System.out.println("win");
 			Board.addNumBoard();
-			menuBar.getGamestate().endTimethread();
+			menuBar.getGameState().endTimethread();
 			if(Board.getDefaultNumBoard()==Board.TOTALBOARD) 
 			{
-				AT.stop();
+				playThread.stop();
 				RenderableHolder.getInstance().getEntities().clear();
 				SceneManager.gotoWinScreen();}
 			else
@@ -118,18 +118,18 @@ public class PlayScreen extends HBox{
 			SceneManager.gotoWaitScreen();
 			}
 		}
-		else if(menuBar.getGamestate().isLose())
+		else if(menuBar.getGameState().isLose())
 		{
 			RenderableHolder.stopAudio();
 			System.out.println("lose");
-			menuBar.getGamestate().endTimethread();
+			menuBar.getGameState().endTimethread();
 			resetGame();
 			forceEnd();
 			SceneManager.gotoLoseScreen();
 		}
 	}
 	public void forceEnd() {
-		AT.stop();
+		playThread.stop();
 		RenderableHolder.getInstance().getEntities().clear();
 
 	}
@@ -137,26 +137,26 @@ public class PlayScreen extends HBox{
 		// TODO Auto-generated method stub
 		if(InputUtility.isKeyPress()==false && InputUtility.lastKey==KeyCode.SPACE)
 		{
-			Pause();
+			pause();
 			InputUtility.lastKey=null;
 		}
 	}
-	public void Pause() {
+	public void pause() {
 		if(pausedState==false)
 		{
 			PauseIcon.instance.drawPaused();
 			pausedState=true; 
 			System.out.print("pause");
-			AT.stop();
-			AT2.start();
+			playThread.stop();
+			pauseThread.start();
 		}
 		else
 		{
 			PauseIcon.instance.drawUnpaused();
 			pausedState=false;
 			System.out.print("unpause");
-			AT2.stop();
-			AT.start();
+			pauseThread.stop();
+			playThread.start();
 		}
 	}
 	public static boolean isPausedstate() {
@@ -165,8 +165,8 @@ public class PlayScreen extends HBox{
 	public GameScreen getGameScreen() {
 		return gameScreen;
 	}
-	public AnimationTimer getAT() {
-		return AT;
+	public AnimationTimer getPlayThread() {
+		return playThread;
 	}
 
 

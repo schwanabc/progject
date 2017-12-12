@@ -1,4 +1,4 @@
-package Exception;
+package exception;
 
 import drawing.Menubar;
 import drawing.PlayScreen;
@@ -15,7 +15,7 @@ public class PoorException extends Exception {
 
 	public PoorException() {
 		String text="YOU CANT AFFORD THIS UNIT";
-		Menubar.instance.writepoor(text);
+		Menubar.instance.writePoor(text);
 	}
 
 }

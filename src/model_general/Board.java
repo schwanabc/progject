@@ -5,13 +5,9 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Scanner;
 
-import Exception.PoorException;
-import Utility.InputUtility;
-import Scenemanager.SceneManager;
 import logic.Gamelogic;
-import SharedObject.IRenderable;
-import SharedObject.RenderableHolder;
 import drawing.GameScreen;
+import exception.PoorException;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -25,6 +21,10 @@ import model_attacker.General;
 import model_defender.HQ;
 import model_defender.PenetrateTower;
 import model_defender.Wall;
+import scenemanager.SceneManager;
+import sharedobject.IRenderable;
+import sharedobject.RenderableHolder;
+import utility.InputUtility;
 import model_defender.Tower;
 //1==wall 2==tower 3==HQ (HQ eat 2 tile)
 public class Board implements IRenderable {

@@ -1,9 +1,9 @@
-package Button;
+package button;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
 import javafx.scene.input.MouseButton;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
 
 public class ReplayButton extends NormalButton{
 	public ReplayButton(String text)

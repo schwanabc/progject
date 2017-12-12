@@ -1,8 +1,5 @@
-package Button;
+package button;
 
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.Utility;
 import drawing.Menubar;
 import drawing.PlayScreen;
 import javafx.geometry.VPos;
@@ -11,8 +8,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.input.MouseButton;
 import model_general.Board;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.Utility;
 
-public class PauseIcon extends Canvas implements IsButton{
+public class PauseIcon extends Canvas implements IButton{
 	public static PauseIcon instance;
 	private ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=Menubar.MENU_WIDTH*0.2+1;
@@ -46,12 +46,12 @@ public class PauseIcon extends Canvas implements IsButton{
 					if(isClick==false)
 					{
 						drawPaused();
-						PlayScreen.instance.Pause();
+						PlayScreen.instance.pause();
 					}
 					else
 					{
 						drawUnpaused();
-						PlayScreen.instance.Pause();
+						PlayScreen.instance.pause();
 					}
 				}
 		});

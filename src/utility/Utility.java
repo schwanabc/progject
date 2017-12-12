@@ -1,4 +1,4 @@
-package Utility;
+package utility;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;

@@ -1,7 +1,7 @@
 package model_general;
 
-import SharedObject.IRenderable;
 import drawing.GameScreen;
+import sharedobject.IRenderable;
 
 public abstract class Entity implements IRenderable{
 	protected double posX;

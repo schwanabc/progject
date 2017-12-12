@@ -1,12 +1,11 @@
 package model_defender;
 
-import SharedObject.RenderableHolder;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model_general.Board;
+import sharedobject.RenderableHolder;
 
 public class HQ extends Defender{
-	private static final int Wallwidth = 0;
 
 	public HQ(double posX,double posY,int posI,int posJ)
 	{
@@ -29,7 +28,7 @@ public class HQ extends Defender{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.HQ, posX-5, posY-5, wallWidth+5, wallHeight+10);
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 
 	@Override

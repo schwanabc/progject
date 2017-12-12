@@ -1,12 +1,12 @@
 package model_attacker;
 
-import SharedObject.RenderableHolder;
 import drawing.GameScreen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import logic.Gamelogic;
 import model_defender.Defender;
 import model_general.Board;
+import sharedobject.RenderableHolder;
 
 public class Sapper extends Attacker{
 	
@@ -69,7 +69,7 @@ public class Sapper extends Attacker{
 		else {
 			double min = 999999999;
 			double walkX = 0,walkY = 0;
-			for(Defender defender: Gamelogic.getDefendercontainer()) {
+			for(Defender defender: Gamelogic.getDefenderContainer()) {
 				if(!(defender instanceof model_defender.Wall))
 					continue;
 				double dist = Math.hypot((defender.getPosX()+Board.BOARD_WIDTH/2)-getPosX(), (defender.getPosY()+Board.BOARD_HEIGHT/2)-getPosY());

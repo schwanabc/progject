@@ -24,7 +24,7 @@ public class Wall extends Defender{
 		// TODO Auto-generated method stub
 		gc.drawImage(Wall, posX, posY, wallWidth, wallHeight);
 
-		drawHPbar(gc);
+		drawHPBar(gc);
 	}
 	
 	@Override

@@ -3,13 +3,10 @@ package drawing;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
-import Button.ExitButton;
-import Button.MenuButton;
-import Button.NormalButton;
-import Button.ReplayButton;
-import Scenemanager.SceneManager;
-import SharedObject.RenderableHolder;
-import Utility.Utility;
+import button.ExitButton;
+import button.MenuButton;
+import button.NormalButton;
+import button.ReplayButton;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,6 +21,9 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import scenemanager.SceneManager;
+import sharedobject.RenderableHolder;
+import utility.Utility;
 public class WinScreen extends Pane{
 	private ExitButton Exit;
 	private ReplayButton Replay;
