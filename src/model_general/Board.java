@@ -308,11 +308,11 @@ public class Board implements IRenderable {
 	public static int getMoney() {
 		return money;
 	}
-	private static void decreaseMoney(int decreasemoney) {
-		if(Board.money-decreasemoney>=0) Board.money -= decreasemoney;
+	private static void decreaseMoney(int decreaseMoney) {
+		if(Board.money-decreaseMoney>=0) Board.money -= decreaseMoney;
 	}
-	public static void setMoney(int newmoney) {
-		money = newmoney;
+	public static void setMoney(int newMoney) {
+		money = newMoney;
 	}
 	public static void addNumBoard() {
 		defaultNumBoard++;
