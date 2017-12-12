@@ -46,7 +46,7 @@ public class Gamelogic {
 				defenderContainer.remove(i);
 				for(int j=attackerContainer.size()-1;j>=0;j--)
 				{
-					if(attackerContainer.get(j) instanceof model_attacker.Sapper)
+					if(!(attackerContainer.get(j) instanceof model_attacker.Sapper))
 						attackerContainer.get(j).findBestPath();
 					System.out.println("Find again");
 				}

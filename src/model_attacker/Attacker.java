@@ -92,16 +92,16 @@ public abstract class Attacker extends Entity implements IMovable{
 			
 			if(isHQPos(nowX,nowY)) { //HQ
 				countPathLength = 0;
-				for(int i=0;i<Board.BOARD_ROW;i++) {
-					for(int j=0;j<Board.BOARD_COLUMN;j++) {
-						if(Board.getBoard(i,j) == -1)
-							System.out.println(i+" "+j+" *"+boardDMG[i][j]+"* ");	
-//							System.out.print(boardDMG[i][j]+" ");	
-//						else
-//							System.out.print(boardDMG[i][j]+" ");	
-					}
-					//System.out.printf("\n");
-				}
+//				for(int i=0;i<Board.BOARD_ROW;i++) {
+//					for(int j=0;j<Board.BOARD_COLUMN;j++) {
+////						if(Board.getBoard(i,j) == -1)
+////							System.out.println(i+" "+j+" *"+boardDMG[i][j]+"* ");	
+////							System.out.print(boardDMG[i][j]+" ");	
+////						else
+////							System.out.print(boardDMG[i][j]+" ");	
+//					}
+//					//System.out.printf("\n");
+//				}
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
 					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
 					posToGoX[countPathLength] = nowX;
