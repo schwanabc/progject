@@ -20,7 +20,7 @@ public class Sapper extends Attacker{
 		this.speed=3;
 		this.radius=7;
 		this.diameter=this.radius*2;
-		this.HP=40;
+		this.HP=80;
 		this.MaxHP=HP;
 		this.attackTick=25;
 		this.currentATKTick=attackTick;

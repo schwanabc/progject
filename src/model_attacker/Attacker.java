@@ -208,7 +208,9 @@ public abstract class Attacker extends Entity implements Ismovable{
 //			posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
 //			posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
 //			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
-			 return;
+			findBestPath();
+			if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) > 0 || isHQPos(posToGoY[countPathLength],posToGoX[countPathLength]))
+				return;
 		}
 		
 		
@@ -219,7 +221,7 @@ public abstract class Attacker extends Entity implements Ismovable{
 			double disWalkY = (walkY > 0)?walkY:-walkY;
 			countNotMove++;
 			//System.out.println("count"+countNotMove);
-			if((disWalkX <= 5 && disWalkY <= 5) || countNotMove*speed >= 35.0) {
+			if((disWalkX <= 3 && disWalkY <= 3) || countNotMove*speed >= 35.0) {
 //				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
 //					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
 //					//while(true);
@@ -364,14 +366,14 @@ public abstract class Attacker extends Entity implements Ismovable{
         currentATKTick=0;
 	}
 	protected boolean isHQPos(int nowY,int nowX) {
-		if(Board.getBoard(nowX, nowY) == 3)
-			return true;
-		if(nowX > 3 && nowY > 3 && Board.getBoard(nowX-3,nowY-3) == 3)
-			return true;
-		if(nowX > 3 && Board.getBoard(nowX-3,nowY) == 3)
-			return true;
-		if(nowY > 3 && Board.getBoard(nowX,nowY-3) == 3)
-			return true;
+		if(nowX > 3 && nowY > 3) {
+			for(int i=0;i<=3;i++) {
+				for(int j=0;j<=3;j++) {
+					if(Board.getBoard(nowX-i,nowY-j) == 3)
+						return true;
+				}
+			}
+		}
 		return false;
 	}
 	public double getRADIUS() {
