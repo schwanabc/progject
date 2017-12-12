@@ -54,8 +54,8 @@ public class SceneManager {
 		else
 		{
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	        SCREEN_HEIGHT=screenSize.getHeight()*3;
-	        SCREEN_WIDTH=screenSize.getWidth()*3;
+	        SCREEN_HEIGHT=screenSize.getHeight();
+	        SCREEN_WIDTH=screenSize.getWidth();
 		}
 	}
 	public static void gotoStartScreen() { 
