@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="false" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Button.ReplayButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/ReplayButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="139" x="3189" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="SharedObject.RenderableHolder" project="prog_meth final" 
+    file="/prog_meth final/src/SharedObject/RenderableHolder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="929" width="237" x="96" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="model_general.Bullet" project="prog_meth final" 
+    file="/prog_meth final/src/model_general/Bullet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="281" width="274" x="4069" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Button.RetryButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/RetryButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="139" x="3189" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="Button.IsButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/IsButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="139" x="3890" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="Button.ExitButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/ExitButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="139" x="3368" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="Button.HomeIcon" project="prog_meth final" 
+    file="/prog_meth final/src/Button/HomeIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="169" x="3756" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="logic.Gamestate" project="prog_meth final" 
+    file="/prog_meth final/src/logic/Gamestate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="407" width="153" x="373" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="Button.NormalButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/NormalButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="191" width="169" x="3547" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Button.MenuButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/MenuButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="139" x="3547" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="model_attacker.Saboteur" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Saboteur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="175" x="3969" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="drawing.WinScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/WinScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="209" width="157" x="566" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="model_defender.PenetrateTower" project="prog_meth final" 
+    file="/prog_meth final/src/model_defender/PenetrateTower.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="226" x="5474" y="1851"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="Button.PauseIcon" project="prog_meth final" 
+    file="/prog_meth final/src/Button/PauseIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="227" width="169" x="3965" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="model_attacker.Berserker" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Berserker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="175" x="4184" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="drawing.PlayScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/PlayScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="497" width="196" x="763" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="model_attacker.Footman" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Footman.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="175" x="4399" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="Scenemanager.SceneManager" project="prog_meth final" 
+    file="/prog_meth final/src/Scenemanager/SceneManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="407" width="170" x="999" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="model_defender.HQ" project="prog_meth final" 
+    file="/prog_meth final/src/model_defender/HQ.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="175" x="5689" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="model_general.PenetrateBullet" project="prog_meth final" 
+    file="/prog_meth final/src/model_general/PenetrateBullet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="326" x="3368" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="drawing.StartScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/StartScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="157" x="1209" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="model_attacker.General" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/General.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="175" x="4614" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="model_defender.Wall" project="prog_meth final" 
+    file="/prog_meth final/src/model_defender/Wall.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="175" x="5904" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="model_defender.Tower" project="prog_meth final" 
+    file="/prog_meth final/src/model_defender/Tower.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="227" width="175" x="5474" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="model_general.Entity" project="prog_meth final" 
+    file="/prog_meth final/src/model_general/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="443" width="146" x="4970" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="Utility.Utility" project="prog_meth final" 
+    file="/prog_meth final/src/Utility/Utility.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="244" x="1406" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="27" language="java" name="SharedObject.IRenderable" project="prog_meth final" 
+    file="/prog_meth final/src/SharedObject/IRenderable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="175" x="5723" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="28" language="java" name="Button.PlayButton" project="prog_meth final" 
+    file="/prog_meth final/src/Button/PlayButton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="124" x="3726" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="drawing.GameScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/GameScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="205" x="1690" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="model_attacker.Attacker" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Attacker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="623" width="211" x="4614" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="model_attacker.Sapper" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Sapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="175" x="4829" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="application.Main" project="prog_meth final" 
+    file="/prog_meth final/src/application/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="124" x="1935" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="model_attacker.Peasant" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Peasant.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="175" x="5044" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="logic.Gamelogic" project="prog_meth final" 
+    file="/prog_meth final/src/logic/Gamelogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="336" x="2099" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="Button.ExitIcon" project="prog_meth final" 
+    file="/prog_meth final/src/Button/ExitIcon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="169" x="4174" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="drawing.WaitScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/WaitScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="209" width="157" x="2475" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="model_defender.Defender" project="prog_meth final" 
+    file="/prog_meth final/src/model_defender/Defender.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="209" x="5474" y="921"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="model_general.Board" project="prog_meth final" 
+    file="/prog_meth final/src/model_general/Board.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="821" width="217" x="5723" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="drawing.Menubar" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/Menubar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="821" width="245" x="2672" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="logic.Ismovable" project="prog_meth final" 
+    file="/prog_meth final/src/logic/Ismovable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="195" x="3734" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="Utility.InputUtility" project="prog_meth final" 
+    file="/prog_meth final/src/Utility/InputUtility.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="425" width="190" x="2957" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="model_attacker.Wardog" project="prog_meth final" 
+    file="/prog_meth final/src/model_attacker/Wardog.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="175" x="5259" y="1584"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="drawing.LoseScreen" project="prog_meth final" 
+    file="/prog_meth final/src/drawing/LoseScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="209" width="157" x="3187" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="Exception.PoorException" project="prog_meth final" 
+    file="/prog_meth final/src/Exception/PoorException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="123" x="3384" y="-48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <realization id="46">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <realization id="49">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <realization id="53">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <realization id="55">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="59">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <realization id="60">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="61">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <realization id="64">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <realization id="65">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <generalization id="67">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="68">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="69">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
