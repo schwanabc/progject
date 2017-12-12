@@ -92,7 +92,7 @@ public class PlayScreen extends HBox{
 	}
 	private void Checkcondition() {
 		// TODO Auto-generated method stub
-		if(Board.isIswin())menuBar.getGamestate().setWin(true);
+		if(Board.isWin())menuBar.getGamestate().setWin(true);
 		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackercontainer().size()==0)
 			menuBar.getGamestate().setLose(true);
 		if(menuBar.getGamestate().isTimeup())menuBar.getGamestate().setLose(true);

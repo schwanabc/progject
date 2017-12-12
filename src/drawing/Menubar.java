@@ -232,7 +232,7 @@ public class Menubar extends VBox{
 	public void update() {
 		// TODO Auto-generated method stub
 
-		if(Board.isIswin())Gamestate.setWin(true);
+		if(Board.isWin())Gamestate.setWin(true);
 		Thread t1= new Thread(()->{
 			Platform.runLater(()->
 			{

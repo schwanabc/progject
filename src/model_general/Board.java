@@ -290,11 +290,11 @@ public class Board implements IRenderable {
 	public boolean isVisible() {
 		return true;
 	}
-	public static boolean isIswin() {
+	public static boolean isWin() {
 		return isWin;
 	}
-	public static void setIsWin(boolean iswin) {
-		Board.isWin = iswin;
+	public static void setIsWin(boolean isWin) {
+		Board.isWin = isWin;
 	}
 	public static int[][] getBoard() {
 		return board;
