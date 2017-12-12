@@ -25,8 +25,8 @@ public class SceneManager {
 	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
 	public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final double SCREEN_HEIGHT=screenSize.getHeight()*2/3;
-	public static final double SCREEN_WIDTH= screenSize.getWidth()*2/3;
+	public static final double SCREEN_HEIGHT=screenSize.getHeight();
+	public static final double SCREEN_WIDTH= screenSize.getWidth();
 	public static void setStage(Stage primaryStage) {
 		System.out.println(SCREEN_HEIGHT);
 		System.out.println(SCREEN_WIDTH);
