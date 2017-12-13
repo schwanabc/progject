@@ -32,8 +32,6 @@ public class LoseScreen extends Pane{
 	private MenuButton Menu;
 	private Label Title;
 	private static final String WIN_TEXT ="YOU LOSE";
-	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf");
-	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public LoseScreen()
 	{
 		RenderableHolder.stopAudio();
@@ -44,7 +42,6 @@ public class LoseScreen extends Pane{
 			 {
 				 if(RenderableHolder.lose.isPlaying()==false)
 				 {
-				 RenderableHolder.loseSong.setCycleCount(AudioClip.INDEFINITE);
 				RenderableHolder.loseSong.play();
 				break;
 				 }
@@ -63,9 +60,9 @@ public class LoseScreen extends Pane{
 		Exit=new ExitButton("Exit");
 		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.7/2, SceneManager.screenHeight*0.8);
 		Title=new Label(WIN_TEXT);
-		Title.setFont(TEXT_FONT);
+		Title.setFont(RenderableHolder.SCREENTEXTFONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(1.7*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WIN_TEXT, TEXT_FONT)), SceneManager.screenHeight*0.2);
+		Title.relocate(1.7*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WIN_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(Menu,Retry,Exit,Title);
 	}
 

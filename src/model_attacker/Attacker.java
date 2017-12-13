@@ -329,11 +329,21 @@ public abstract class Attacker extends Entity implements IMovable{
 						if(n%2==0)
 						{
 							attacker.forward(-(x0-x1+0.01),-(y0-y1));
+							if(attacker.collideWithDefender())
+								{
+								attacker.forward((x0-x1+0.01),(y0-y1));
+								if(!this.collideWithDefender())this.forward((x0-x1+0.01), (y0-y1));
+								}
 							if(attacker.collideWithDefender())attacker.forward((x0-x1+0.01),(y0-y1));
 						}
 						else if(n%2==1)
 						{
 							attacker.forward(-(x0-x1-0.01),-(y0-y1));
+							if(attacker.collideWithDefender())
+								{
+								attacker.forward((x0-x1-0.01),(y0-y1));
+								if(!this.collideWithDefender())this.forward((x0-x1-0.01), (y0-y1));
+								}
 							if(attacker.collideWithDefender())attacker.forward((x0-x1-0.01),(y0-y1));
 						}
 
@@ -345,7 +355,6 @@ public abstract class Attacker extends Entity implements IMovable{
 	}
 
 	protected void drawHPBar(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		double ratio=(HP/MaxHP);
 		if(ratio<0)ratio=0;
 		gc.setFill(Color.DARKGREEN);

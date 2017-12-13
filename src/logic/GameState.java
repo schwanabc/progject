@@ -62,18 +62,15 @@ public class GameState {
 		return timeLeft<=1000000000L;
 	}
 	public void initialize() {
-		// TODO Auto-generated method stub
 		isWin=false;
 		isLose=false;
 		timeLeft=GAMEBASETIME;
 		prevTime=System.nanoTime();
 	}
 	public Thread getTimethread() {
-		// TODO Auto-generated method stub
 		return timeThread;
 	}
 	public void endTimethread() {
-		// TODO Auto-generated method stub
 		System.out.println("threadstop");
 		timeThread.interrupt();
 	}

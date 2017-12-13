@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.text.Font;
 import model_defender.Defender;
 import model_defender.HQ;
 import model_general.Board;
@@ -53,6 +54,7 @@ public class RenderableHolder {
 	public static AudioClip lose;
 	public static AudioClip openSong;
 	public static AudioClip loseSong;
+	public static Font SCREENTEXTFONT;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -126,6 +128,8 @@ public class RenderableHolder {
 	    lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
 	    openSong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
 	    loseSong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
+	    //----font
+	    SCREENTEXTFONT=Font.loadFont(ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf"), 80);
 		}
 		catch(Exception e)
 		{

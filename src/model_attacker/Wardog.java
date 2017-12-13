@@ -29,7 +29,6 @@ public class Wardog extends Attacker{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.wardog, posX-radius, posY-radius, diameter*1.2, diameter*1.2);
 		drawHPBar(gc);
 	}

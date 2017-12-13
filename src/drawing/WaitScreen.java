@@ -31,8 +31,6 @@ public class WaitScreen extends Pane{
 	private ReplayButton Replay;
 	private Label Title;
 	private static final String WAIT_TEXT="YOU WIN";
-	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf");
-	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public WaitScreen()
 	{
 		RenderableHolder.stopAudio();
@@ -47,9 +45,9 @@ public class WaitScreen extends Pane{
 		Exit=new ExitButton("Exit");
 		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
 		Title=new Label(WAIT_TEXT);
-		Title.setFont(TEXT_FONT);
+		Title.setFont(RenderableHolder.SCREENTEXTFONT);
 		Title.setTextFill(Color.RED);
-		Title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, TEXT_FONT)), SceneManager.screenHeight*0.2);
+		Title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(Play,Replay,Exit,Title);
 	}
 

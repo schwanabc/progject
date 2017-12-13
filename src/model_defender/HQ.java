@@ -19,22 +19,16 @@ public class HQ extends Defender{
 	}
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
 		return 3;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.HQ, posX-5, posY-5, wallWidth+5, wallHeight+10);
 		drawHPBar(gc);
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		//temporary win (Actually,it will change the stage)
-
-	}
+	public void update() {}
 
 }

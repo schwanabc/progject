@@ -27,7 +27,6 @@ public class Tower extends Defender{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.normalTower,posX, posY, wallWidth, wallHeight);
 		drawHPBar(gc);
 	}
@@ -84,8 +83,6 @@ public class Tower extends Defender{
 	}
 	@Override
 	public void update() {
-		
-		// TODO Auto-generated method stub
 		currentShootingTick++;
 		colliedWithAttacker();
 	}

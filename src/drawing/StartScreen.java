@@ -28,12 +28,9 @@ public class StartScreen extends Pane{
 	private PlayButton Play;
 	private ExitButton Exit;
 	private Label Gametitle;
-	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf");
-	private static final Font TEXT_FONT = Font.loadFont(fontStream, 80);
 	public StartScreen()
 	{
 		RenderableHolder.stopAudio();
-		RenderableHolder.openSong.setCycleCount(AudioClip.INDEFINITE);
 		RenderableHolder.openSong.play();
 		System.out.println("startscreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
@@ -43,9 +40,9 @@ public class StartScreen extends Pane{
 		Exit=new ExitButton("Exit");
 		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.6);
 		Gametitle=new Label(SceneManager.GAMENAME);
-		Gametitle.setFont(TEXT_FONT);
+		Gametitle.setFont(RenderableHolder.SCREENTEXTFONT);
 		Gametitle.setTextFill(Color.CORAL);
-		Gametitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, TEXT_FONT)), SceneManager.screenHeight*0.2);
+		Gametitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(Play,Exit,Gametitle);
 	}
 

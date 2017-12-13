@@ -22,7 +22,6 @@ public class PenetrateTower extends Tower{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.penetrateTower,posX, posY, wallWidth, wallHeight);
 		drawHPBar(gc);
 	}

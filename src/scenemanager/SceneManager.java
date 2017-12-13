@@ -40,7 +40,6 @@ public class SceneManager {
 		SceneManager.primaryStage.setResizable(false);
 	} 
 	private static void getScreensize() {
-		// TODO Auto-generated method stub
 		System.out.println(System.getProperty("os.name"));
 		if(System.getProperty("os.name").equals("Windows 10"))
 		{

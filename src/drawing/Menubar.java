@@ -94,7 +94,6 @@ public class Menubar extends VBox{
 	
 	}
 	private void fillText(GraphicsContext gc,int i, int j) {
-		// TODO Auto-generated method stub
 		if(i+1==VTAB&& j+1==HTAB)
 			gc.fillText("Reset", ICONWIDTH*0.5,ICONHEIGHT*0.5);
 		else {
@@ -225,7 +224,6 @@ public class Menubar extends VBox{
 		this.getChildren().add(menuCanvas);
 	}
 	public void update() {
-		// TODO Auto-generated method stub
 
 		if(Board.isWin())gameState.setWin(true);
 		Thread t1= new Thread(()->{
@@ -251,7 +249,6 @@ public class Menubar extends VBox{
 		//	t1.join();
 			t1.start();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}

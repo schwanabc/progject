@@ -28,7 +28,6 @@ public class Berserker extends Attacker{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.berserker, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}

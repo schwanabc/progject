@@ -25,7 +25,6 @@ public class Bullet extends Entity implements IMovable{
 	}
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
 		return 7;
 	}
 	protected void colliedWithAttacker()
@@ -42,7 +41,6 @@ public class Bullet extends Entity implements IMovable{
 	}
 
 	protected void bulletAttack(Attacker attacker) {
-		// TODO Auto-generated method stub
 		double downHP=ATK-attacker.getDEF();
 		if(downHP<=0)downHP=1;
 		attacker.setHP(attacker.getHP() -downHP);//temp
@@ -51,7 +49,6 @@ public class Bullet extends Entity implements IMovable{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.setFill(Color.DIMGRAY);
 		gc.fillOval(posX-radius, posY-radius, radius*2, radius*2);
 	}
@@ -65,13 +62,11 @@ public class Bullet extends Entity implements IMovable{
 	}
 	@Override
 	public double calibrate(double velocity, double speed) {
-		// TODO Auto-generated method stub
 		if(speed!=0)return velocity/speed;
 		else return 0;
 	}
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		//System.out.println(angle+" "+direction);
 		if(direction<2)forward(Math.cos(Math.toRadians(angle)),Math.sin(Math.toRadians(angle)));
 		else forward(-1*Math.cos(Math.toRadians(angle)),-1*Math.sin(Math.toRadians(angle)));

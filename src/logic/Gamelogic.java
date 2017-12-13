@@ -23,7 +23,6 @@ public class Gamelogic {
 		RenderableHolder.getInstance().add(entity);
 	}
 	public void update() {
-		// TODO Auto-generated method stub
 		Board.update();
 		for(Entity entity: entityContainer)
 		{

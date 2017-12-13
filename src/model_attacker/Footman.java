@@ -29,7 +29,6 @@ public class Footman extends Attacker{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.footman, posX-radius, posY-radius, diameter*0.9, diameter*0.9);
 		drawHPBar(gc);
 	}

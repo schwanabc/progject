@@ -29,7 +29,6 @@ public class Saboteur extends Attacker{
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.saboteur, posX-radius, posY-radius, diameter, diameter);
 		drawHPBar(gc);
 	}

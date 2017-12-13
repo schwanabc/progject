@@ -54,7 +54,6 @@ public class PlayScreen extends HBox{
 
 	}
 	private void initialize() {
-		// TODO Auto-generated method stub
 		fillMiscscreen();
 		gameScreen=new GameScreen();
 		menuBar=new Menubar();
@@ -91,14 +90,12 @@ public class PlayScreen extends HBox{
 		checkPaused();
 	}
 	private void Checkcondition() {
-		// TODO Auto-generated method stub
 		if(Board.isWin())menuBar.getGameState().setWin(true);
 		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackerContainer().size()==0)
 			menuBar.getGameState().setLose(true);
 		if(menuBar.getGameState().isTimeup())menuBar.getGameState().setLose(true);
 	}
 	void Checkend() {
-		// TODO Auto-generated method stub
 		
 		if(menuBar.getGameState().isWin())
 		{
@@ -134,7 +131,6 @@ public class PlayScreen extends HBox{
 
 	}
 	private void checkPaused() {
-		// TODO Auto-generated method stub
 		if(InputUtility.isKeyPress()==false && InputUtility.lastKey==KeyCode.SPACE)
 		{
 			pause();
