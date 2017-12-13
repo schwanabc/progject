@@ -79,10 +79,7 @@ public class RenderableHolder {
 		buildingCollapsed.stop();
 		victory.stop();
 		lose.stop();
-		try {
-		if(!SceneManager.getPrimaryStage().getScene().getRoot().toString().contains("characterDescribeScreen")&&openSong.isPlaying())openSong.stop();
-		}
-		catch (Exception e) {}
+		openSong.stop();
 		loseSong.stop();
 	}
 	public static void loadResource() {

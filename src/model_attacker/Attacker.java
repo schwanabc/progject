@@ -308,7 +308,7 @@ public abstract class Attacker extends Entity implements IMovable{
 	}
 	protected void collideWithAttacker()
 	{
-		// push 2 time to reduced chance that it will move forward and it only take O(n) time
+		// push 3 time to reduced chance that it will move forward and it only take O(n) time
 		fluidPush();
 		fluidPush();
 		fluidPush();
@@ -340,7 +340,7 @@ public abstract class Attacker extends Entity implements IMovable{
 							attacker.forward((x0-x1+0.01),(y0-y1));
 							if(!this.collideWithDefender())this.forward((x0-x1+xSlide), (y0-y1),0.1);
 						}
-						if(attacker.collideWithDefender())attacker.forward((x0-x1+xSlide),(y0-y1),0.1);
+					//	if(attacker.collideWithDefender())attacker.forward((x0-x1+xSlide),(y0-y1),0.1);
 					}
 			}
 			catch(Exception e) {}

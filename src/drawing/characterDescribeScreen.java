@@ -33,10 +33,11 @@ public class characterDescribeScreen extends Pane{
 	private Label characterName[] = new Label[7];
 	private Label characterDescribeText[] = new Label[7];
 	private Image characterImage[] = new Image[7];
-	private String headerText = "Character Describe";
+	private String headerText = "Character Description";
+	private Canvas characterImageSet;
 	public characterDescribeScreen()
 	{
-		//RenderableHolder.stopAudio();
+		RenderableHolder.stopAudio();
 	//	RenderableHolder.openSong.play();
 		System.out.println("Character Describe");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
@@ -83,7 +84,18 @@ public class characterDescribeScreen extends Pane{
 		Title.setFont(RenderableHolder.SCREENTEXTFONT);
 		Title.setTextFill(Color.RED);
 		Title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.05);
-		this.getChildren().addAll(Menu,Play,Title);
+		Canvas characterImageSet=new Canvas(SceneManager.screenWidth, SceneManager.screenHeight);
+		GraphicsContext gc=characterImageSet.getGraphicsContext2D();
+		gc.drawImage(RenderableHolder.armed_Peasant,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.20,40, 40);
+		gc.drawImage(RenderableHolder.footman,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.32,40, 40);
+		gc.drawImage(RenderableHolder.wardog,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.46,40, 40);
+		gc.drawImage(RenderableHolder.berserker,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.58,40, 40);
+		gc.drawImage(RenderableHolder.sapper,SceneManager.screenWidth*0.66, SceneManager.screenHeight*0.20,40, 40);
+		gc.drawImage(RenderableHolder.saboteur,SceneManager.screenWidth*0.66, SceneManager.screenHeight*0.32,40, 40);
+		gc.drawImage(RenderableHolder.general,SceneManager.screenWidth*0.66, SceneManager.screenHeight*0.46,40, 40);
+		characterImageSet.relocate(0, 0);
+		this.getChildren().addAll(characterImageSet,Menu,Play,Title);
+		
 	}
 
 }

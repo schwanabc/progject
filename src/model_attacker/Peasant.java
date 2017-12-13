@@ -18,7 +18,7 @@ public class Peasant extends Attacker{
 		this.diameter=this.radius*2;
 		this.HP=100;
 		this.MaxHP=HP;
-		this.attackTick=30;
+		this.attackTick=60;
 		this.currentATKTick=attackTick;
 	}
 
