@@ -24,6 +24,7 @@ public class Gamelogic {
 	}
 	public void update() {
 		// TODO Auto-generated method stub
+		Board.update();
 		for(Entity entity: entityContainer)
 		{
 			entity.update();
