@@ -24,7 +24,6 @@ public class Gamelogic {
 	}
 	public void update() {
 		// TODO Auto-generated method stub
-		Board.update();
 		for(Entity entity: entityContainer)
 		{
 			entity.update();
@@ -63,8 +62,8 @@ public class Gamelogic {
 	public static CopyOnWriteArrayList<Defender> getDefenderContainer() {
 		return defenderContainer;
 	}
-	public static boolean isDefenderContain(Defender x) {
-		return defenderContainer.contains(x);
+	public static boolean isDefenderContain(Defender defender) {
+		return defenderContainer.contains(defender);
 	}
 
 }

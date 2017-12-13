@@ -18,8 +18,8 @@ import sharedobject.RenderableHolder;
 import utility.InputUtility;
 public class PlayScreen extends HBox{
 	private static boolean pausedState;
-	public static final double MISCSCREENWIDTH=(SceneManager.SCREEN_WIDTH-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
-	public static final double MISCSCREENHEIGHT=(SceneManager.SCREEN_HEIGHT);
+	public static final double MISCSCREENWIDTH=(SceneManager.screenWidth-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
+	public static final double MISCSCREENHEIGHT=(SceneManager.screenHeight);
 	public static PlayScreen instance;
 	private GameScreen gameScreen;
 	private Menubar menuBar;

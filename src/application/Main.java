@@ -9,7 +9,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			SceneManager.setStage(primaryStage);
-			SceneManager.gotoStartScreen();
+			SceneManager.gotoWinScreen();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

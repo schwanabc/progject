@@ -15,7 +15,7 @@ import sharedobject.RenderableHolder;
 import utility.InputUtility;
 
 public class GameScreen extends Canvas{
-	public static double GAMESCREEN_HEIGHT=SceneManager.SCREEN_HEIGHT;
+	public static double GAMESCREEN_HEIGHT=SceneManager.screenHeight;
 	public static double GAMESCREEN_WIDTH=GAMESCREEN_HEIGHT;
 	
 	public GameScreen()

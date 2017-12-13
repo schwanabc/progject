@@ -30,8 +30,7 @@ import sharedobject.RenderableHolder;
 import utility.Utility;
 
 public class NormalButton extends Canvas implements IButton{
-	private static InputStream fontStream = ClassLoader.getSystemResourceAsStream("Pamela.ttf");
-	private static final Font BUTTON_FONT = Font.loadFont(fontStream, 48);
+	private static final Font BUTTON_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 48);
 	protected ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=400;
 	public static final double BUTTON_HEIGHT=100;

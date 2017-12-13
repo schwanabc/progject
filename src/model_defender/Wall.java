@@ -22,7 +22,6 @@ public class Wall extends Defender{
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.wall, posX, posY, wallWidth, wallHeight);
-
 		drawHPBar(gc);
 	}
 	
