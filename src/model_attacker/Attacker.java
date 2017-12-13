@@ -203,8 +203,8 @@ public abstract class Attacker extends Entity implements IMovable{
 		//need decent moving algorithm
 		double Xregion=GameScreen.GAMESCREEN_WIDTH/2;
 		double Yregion=GameScreen.GAMESCREEN_HEIGHT/2;
-		colliedWithAttacker();
-		if(colliedWithDefender()) {
+		collideWithAttacker();
+		if(collideWithDefender()) {
 //			posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
 //			posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
 //			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
@@ -271,7 +271,7 @@ public abstract class Attacker extends Entity implements IMovable{
 		}
 		*/
 	}
-	protected boolean colliedWithDefender()
+	protected boolean collideWithDefender()
 	{
 		int count2=0;
 		currentATKTick++;
@@ -301,7 +301,7 @@ public abstract class Attacker extends Entity implements IMovable{
 		return iscollide;
 		
 	}
-	protected void colliedWithAttacker()
+	protected void collideWithAttacker()
 	{
 		// push 2 time to reduced chance that it will move forward and it only take O(n) time
 		fluidPush();
@@ -329,12 +329,12 @@ public abstract class Attacker extends Entity implements IMovable{
 						if(n%2==0)
 						{
 							attacker.forward(-(x0-x1+0.01),-(y0-y1));
-							if(attacker.colliedWithDefender())attacker.forward((x0-x1+0.01),(y0-y1));
+							if(attacker.collideWithDefender())attacker.forward((x0-x1+0.01),(y0-y1));
 						}
 						else if(n%2==1)
 						{
 							attacker.forward(-(x0-x1-0.01),-(y0-y1));
-							if(attacker.colliedWithDefender())attacker.forward((x0-x1-0.01),(y0-y1));
+							if(attacker.collideWithDefender())attacker.forward((x0-x1-0.01),(y0-y1));
 						}
 
 					}

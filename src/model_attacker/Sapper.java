@@ -55,8 +55,8 @@ public class Sapper extends Attacker{
 	public void update() {
 		// UPGRADING
 		//need decent moving algorithm
-		colliedWithAttacker();
-		if(colliedWithDefender()) {
+		collideWithAttacker();
+		if(collideWithDefender()) {
 			 return;
 		}
 		else if(currentTarget != null && Gamelogic.isDefenderContain(currentTarget)) {
