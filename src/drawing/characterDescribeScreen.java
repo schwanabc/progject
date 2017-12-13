@@ -30,7 +30,7 @@ public class characterDescribeScreen extends Pane{
 	private PlayButton Play;
 	private MenuButton Menu;
 	private Label Title;
-	private Label characterName[];
+	private Label characterName[] = new Label[7];
 	private Label characterDescribeText[] = new Label[7];
 	private Image characterImage[] = new Image[7];
 	private String headerText = "Character Describe";
@@ -57,13 +57,27 @@ public class characterDescribeScreen extends Pane{
 		String charName[] = {"Peasant","Footman","Wardog","Berserker","Sapper","Saboteur","General"};
 		for(int i=0;i<7;i++) {
 			characterName[i] = new Label(charName[i]);
+			characterName[i].setFont(new Font(25));
+			characterName[i].setTextFill(Color.RED);
+			if(i<4)
+				characterName[i].relocate(100, SceneManager.screenHeight*0.13*(i+1.5));
+			else
+				characterName[i].relocate(SceneManager.screenWidth/2+100, SceneManager.screenHeight*0.13*(i-2.5));
+			this.getChildren().add(characterName[i]);
 		}
 		String charDes[] = {"The Cheapest - Low Price Low Return","The Tanker - High Health Low Damage",
 				"The Fastest - High Speed Unit But Deal Half Damage to HQ",
-				"The Destroyer - High Damage Low Health","Wall Bomber - Suicide Attack To Wall",
+				"The Destroyer - High Damage Low Health","Wall Bomber - Suicide Attack to Wall",
 				"The HQ Hater - Deal Extra Massive Damage to HQ","The Strongest - High Price High Return"};
 		for(int i=0;i<7;i++) {
 			characterDescribeText[i] = new Label(charDes[i]);
+			characterDescribeText[i].setFont(new Font(15));
+			characterDescribeText[i].setTextFill(Color.RED);
+			if(i<4)
+				characterDescribeText[i].relocate(140, SceneManager.screenHeight*0.13*(i+2));
+			else
+				characterDescribeText[i].relocate(SceneManager.screenWidth/2+140, SceneManager.screenHeight*0.13*(i-2));
+			this.getChildren().add(characterDescribeText[i]);
 		}
 		
 		Title.setFont(RenderableHolder.SCREENTEXTFONT);
