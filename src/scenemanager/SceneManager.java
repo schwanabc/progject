@@ -13,6 +13,7 @@ import drawing.PlayScreen;
 import drawing.StartScreen;
 import drawing.WaitScreen;
 import drawing.WinScreen;
+import drawing.characterDescribeScreen;
 
 public class SceneManager {
 
@@ -22,6 +23,7 @@ public class SceneManager {
 	private static Scene winScene;
 	private static Scene loseScene;
 	private static Scene startScene;
+	private static Scene characterDescribeScreen;
 	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
 	public static double screenHeight;
@@ -86,5 +88,9 @@ public class SceneManager {
 		primaryStage.setScene(loseScene);
 		SceneManager.primaryStage.setFullScreen(true);
 	}
-	
+	public static void gotoCharacterScreen() {
+		characterDescribeScreen=new Scene(new characterDescribeScreen(),screenWidth,screenHeight);
+		primaryStage.setScene(characterDescribeScreen);
+		SceneManager.primaryStage.setFullScreen(true);
+	}
 }
