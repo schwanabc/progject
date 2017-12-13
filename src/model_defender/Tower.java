@@ -54,7 +54,7 @@ public class Tower extends Defender{
 			double r0=shootRange*Board.BOARD_RANGE;
 			double x1=attacker.getPosX();
 			double y1=attacker.getPosY();  
-			double r1=attacker.getRADIUS();
+			double r1=attacker.getRadius();
 			
 			if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1))
 			{

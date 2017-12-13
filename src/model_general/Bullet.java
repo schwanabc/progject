@@ -33,7 +33,7 @@ public class Bullet extends Entity implements IMovable{
 		for(Attacker attacker: logic.Gamelogic.getAttackerContainer())
 		{
 			Circle c1=new Circle( posX, posY, radius);
-			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.getRADIUS());
+			Circle c2=new Circle( attacker.getPosX(),  attacker.getPosY(), attacker.getRadius());
 			if (c1.getBoundsInParent().intersects(c2.getBoundsInParent())) {
 		        bulletAttack(attacker);
 		        break;

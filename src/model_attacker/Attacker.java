@@ -319,7 +319,7 @@ public abstract class Attacker extends Entity implements IMovable{
 					double r0=radius;
 					double x1=attacker.getPosX();
 					double y1=attacker.getPosY();
-					double r1=attacker.getRADIUS();
+					double r1=attacker.getRadius();
 					
 					if(Math.hypot(x0-x1, y0-y1) <= (r0 + r1) && Math.hypot(x0-x1, y0-y1)!=0)
 					{
@@ -365,18 +365,18 @@ public abstract class Attacker extends Entity implements IMovable{
         RenderableHolder.attack_Sword.play();
         currentATKTick=0;
 	}
-	protected boolean isHQPos(int nowY,int nowX) {
+	protected boolean isHQPos(int nowX,int nowY) {
 		if(nowX > 3 && nowY > 3) {
 			for(int i=0;i<=3;i++) {
 				for(int j=0;j<=3;j++) {
-					if(Board.getBoard(nowX-i,nowY-j) == 3)
+					if(Board.getBoard(nowY-j,nowX-i) == 3)
 						return true;
 				}
 			}
 		}
 		return false;
 	}
-	public double getRADIUS() {
+	public double getRadius() {
 		return radius;
 	}
 	public static int getMinCost() {
