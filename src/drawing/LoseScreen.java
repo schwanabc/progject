@@ -35,21 +35,19 @@ public class LoseScreen extends Pane{
 	public LoseScreen()
 	{
 		RenderableHolder.stopAudio();
-		RenderableHolder.lose.play();
+		if(!RenderableHolder.lose.isPlaying())RenderableHolder.lose.play();
 		Thread t2 =new Thread(()->
 		 {
 			 while(true)
 			 {
-				 if(RenderableHolder.lose.isPlaying()==false)
+				 if(!RenderableHolder.lose.isPlaying())
 				 {
-				RenderableHolder.loseSong.play();
-				break;
+					 if(!RenderableHolder.loseSong.isPlaying())RenderableHolder.loseSong.play();
+					 break;
 				 }
 			 }
 		});
-			t2.start();
-
-
+		t2.start();
 		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.loseBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));

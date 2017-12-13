@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import model_defender.Defender;
 import model_defender.HQ;
 import model_general.Board;
+import scenemanager.SceneManager;
 public class RenderableHolder {
 	public static Image releaseButtonBackground;	
 	public static Image pressedButtonBackground;
@@ -73,13 +74,15 @@ public class RenderableHolder {
 		};
 	}
 	public static void stopAudio() {
-		clickedSound.stop(); 
 		buttonHover.stop();
 		attack_Sword.stop();
 		buildingCollapsed.stop();
 		victory.stop();
 		lose.stop();
-		openSong.stop();
+		try {
+		if(!SceneManager.getPrimaryStage().getScene().getRoot().toString().contains("characterDescribeScreen")&&openSong.isPlaying())openSong.stop();
+		}
+		catch (Exception e) {}
 		loseSong.stop();
 	}
 	public static void loadResource() {

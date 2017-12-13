@@ -181,6 +181,11 @@ public abstract class Attacker extends Entity implements IMovable{
 		posX += calibrate(xAxis,Calibrator)*speed;
 		posY += calibrate(yAxis,Calibrator)*speed;
 	}
+	private void forward(double xAxis, double yAxis, double friction) {
+		double Calibrator=Math.abs(xAxis)+Math.abs(yAxis);
+		posX += calibrate(xAxis,Calibrator)*speed*friction;
+		posY += calibrate(yAxis,Calibrator)*speed*friction;
+	}
 	@Override
 	public double calibrate(double velocity, double speed) {
 		if(speed != 0)
@@ -326,27 +331,16 @@ public abstract class Attacker extends Entity implements IMovable{
 						
 						Random rand = new Random();
 						int  n = rand.nextInt(4) + 1;
-						if(n%2==0)
+						double xSlide=0;
+						if(n%2==0) xSlide+=0.01;
+						else xSlide-=0.01;
+						attacker.forward(-(x0-x1+0.01),-(y0-y1));
+						if(attacker.collideWithDefender())
 						{
-							attacker.forward(-(x0-x1+0.01),-(y0-y1));
-							if(attacker.collideWithDefender())
-								{
-								attacker.forward((x0-x1+0.01),(y0-y1));
-								if(!this.collideWithDefender())this.forward((x0-x1+0.01), (y0-y1));
-								}
-							if(attacker.collideWithDefender())attacker.forward((x0-x1+0.01),(y0-y1));
+							attacker.forward((x0-x1+0.01),(y0-y1));
+							if(!this.collideWithDefender())this.forward((x0-x1+xSlide), (y0-y1),0.1);
 						}
-						else if(n%2==1)
-						{
-							attacker.forward(-(x0-x1-0.01),-(y0-y1));
-							if(attacker.collideWithDefender())
-								{
-								attacker.forward((x0-x1-0.01),(y0-y1));
-								if(!this.collideWithDefender())this.forward((x0-x1-0.01), (y0-y1));
-								}
-							if(attacker.collideWithDefender())attacker.forward((x0-x1-0.01),(y0-y1));
-						}
-
+						if(attacker.collideWithDefender())attacker.forward((x0-x1+xSlide),(y0-y1),0.1);
 					}
 			}
 			catch(Exception e) {}

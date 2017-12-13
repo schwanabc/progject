@@ -26,6 +26,7 @@ public class characterButton extends NormalButton{
 		{
 			if(ev.getButton()==MouseButton.PRIMARY)
 				{
+					System.out.print("characterclick");
 					RenderableHolder.clickedSound.play();
 					SceneManager.gotoCharacterScreen();
 				}

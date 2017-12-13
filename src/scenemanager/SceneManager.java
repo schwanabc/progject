@@ -93,4 +93,7 @@ public class SceneManager {
 		primaryStage.setScene(characterDescribeScreen);
 		SceneManager.primaryStage.setFullScreen(true);
 	}
+	public static Stage getPrimaryStage() {
+		return primaryStage;
+	}
 }
