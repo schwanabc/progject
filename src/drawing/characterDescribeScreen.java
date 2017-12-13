@@ -30,7 +30,7 @@ public class characterDescribeScreen extends Pane{
 	private PlayButton Play;
 	private MenuButton Menu;
 	private Label Title;
-	private Label characterName[] = new Label[7];
+	private Label characterName[];
 	private Label characterDescribeText[] = new Label[7];
 	private Image characterImage[] = new Image[7];
 	private String headerText = "Character Describe";
@@ -47,6 +47,24 @@ public class characterDescribeScreen extends Pane{
 		Menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
 		Title=new Label(headerText);
 		characterImage[0] = RenderableHolder.armed_Peasant;
+		characterImage[1] = RenderableHolder.footman;
+		characterImage[2] = RenderableHolder.wardog;
+		characterImage[3] = RenderableHolder.berserker;
+		characterImage[4] = RenderableHolder.sapper;
+		characterImage[5] = RenderableHolder.saboteur;
+		characterImage[6] = RenderableHolder.general;
+		
+		String charName[] = {"Peasant","Footman","Wardog","Berserker","Sapper","Saboteur","General"};
+		for(int i=0;i<7;i++) {
+			characterName[i] = new Label(charName[i]);
+		}
+		String charDes[] = {"The Cheapest - Low Price Low Return","The Tanker - High Health Low Damage",
+				"The Fastest - High Speed Unit But Deal Half Damage to HQ",
+				"The Destroyer - High Damage Low Health","Wall Bomber - Suicide Attack To Wall",
+				"The HQ Hater - Deal Extra Massive Damage to HQ","The Strongest - High Price High Return"};
+		for(int i=0;i<7;i++) {
+			characterDescribeText[i] = new Label(charDes[i]);
+		}
 		
 		Title.setFont(RenderableHolder.SCREENTEXTFONT);
 		Title.setTextFill(Color.RED);
