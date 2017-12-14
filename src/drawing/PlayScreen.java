@@ -75,12 +75,12 @@ public class PlayScreen extends HBox{
 		RenderableHolder.stopAudio();
 		RenderableHolder.getInstance().getEntities().clear();
 		gameLogic=new Gamelogic();
-		menuBar.setDefault();
 		pauseThread.stop();
 		if(pausedState)playThread.start();
 		pausedState=false;
 		PauseIcon.instance.drawUnpaused();
 		InputUtility.reset();
+		menuBar.setDefault();
 	}	
 	protected void Paintupdated() {
 		gameScreen.paintComponent();
@@ -120,8 +120,11 @@ public class PlayScreen extends HBox{
 			RenderableHolder.stopAudio();
 			System.out.println("lose");
 			menuBar.getGameState().endTimethread();
+			System.out.println("lose2");
 			resetGame();
+			System.out.println("lose2");
 			forceEnd();
+			System.out.println("Ending");
 			SceneManager.gotoLoseScreen();
 		}
 	}
