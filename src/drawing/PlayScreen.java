@@ -37,17 +37,17 @@ public class PlayScreen extends HBox{
 			{
 			//	System.out.println(Gamestate.getTotaltime()/600000000L);
 				gameLogic.update();
-				Paintupdated();
-				Checkcondition();
+				paintUpdated();
+				checkCondition();
 				if(menuBar.isReset())resetGame();
-				Checkend();
+				checkEnd();
 			}
 
 		};
 		pauseThread=new AnimationTimer(){
 			public void handle(long now)
 			{
-				if(menuBar.getGameState().isLose()==false)Paintupdated();
+				if(menuBar.getGameState().isLose()==false)paintUpdated();
 				if(menuBar.isReset())resetGame();
 			}
 		};
@@ -82,20 +82,20 @@ public class PlayScreen extends HBox{
 		InputUtility.reset();
 		menuBar.setDefault();
 	}	
-	protected void Paintupdated() {
+	protected void paintUpdated() {
 		gameScreen.paintComponent();
 		RenderableHolder.getInstance().update();
 		menuBar.update();
 		InputUtility.checkTick();
 		checkPaused();
 	}
-	private void Checkcondition() {
+	private void checkCondition() {
 		if(Board.isWin())menuBar.getGameState().setWin(true);
 		if(Board.getMoney()<=Attacker.getMinCost() && logic.Gamelogic.getAttackerContainer().size()==0)
 			menuBar.getGameState().setLose(true);
 		if(menuBar.getGameState().isTimeup())menuBar.getGameState().setLose(true);
 	}
-	void Checkend() {
+	void checkEnd() {
 		
 		if(menuBar.getGameState().isWin())
 		{
