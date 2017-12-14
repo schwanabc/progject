@@ -1,5 +1,5 @@
 package button;
 
 public interface IButton {
-	public void addToListerner();
+	public void addToListener();
 }

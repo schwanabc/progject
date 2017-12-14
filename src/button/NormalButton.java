@@ -30,7 +30,6 @@ import sharedobject.RenderableHolder;
 import utility.Utility;
 
 public class NormalButton extends Canvas implements IButton{
-	private static final Font BUTTON_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 48);
 	protected ColorAdjust colorAdjust;
 	public static final double BUTTON_WIDTH=400;
 	public static final double BUTTON_HEIGHT=100;
@@ -40,14 +39,14 @@ public class NormalButton extends Canvas implements IButton{
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.releaseButtonBackground, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		gc.setFont(BUTTON_FONT);
+		gc.setFont(RenderableHolder.buttonFont);
 		gc.setTextBaseline(VPos.CENTER);
 		gc.fillText(text,Utility.getTextStartWidht(BUTTON_WIDTH,Utility.getFont_width(text,gc.getFont())), BUTTON_HEIGHT/2);
-		addToListerner();
+		addToListener();
 
 	}
 	@Override
-	public void addToListerner() {
+	public void addToListener() {
 		this.setOnMouseEntered(ev->
 		{
 			RenderableHolder.buttonHover.play();

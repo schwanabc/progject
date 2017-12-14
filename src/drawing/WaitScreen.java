@@ -30,7 +30,7 @@ public class WaitScreen extends Pane{
 	private ExitButton exit;
 	private ReplayButton replay;
 	private Label title;
-	private static final String WAIT_TEXT="YOU WIN";
+	private final String WAIT_TEXT="YOU WIN";
 	public WaitScreen()
 	{
 		RenderableHolder.stopAudio();

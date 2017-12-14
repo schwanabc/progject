@@ -62,6 +62,7 @@ public class RenderableHolder {
 	public static Font chooseIconFont;
 	public static Font menuFont;
 	public static Font wariningFont;
+	public static Font buttonFont;
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -150,6 +151,7 @@ public class RenderableHolder {
 	    openSong=new Media(ClassLoader.getSystemResource("opensong.mp3").toString());
 	    loseSong=new Media(ClassLoader.getSystemResource("losesong.mp3").toString());
 	    //----font
+	    buttonFont= Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 48);
 	    screenTextFont=Font.loadFont(ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf"), 80);
 	    chooseIconFont= Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"),20);
 	    menuFont = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 20);

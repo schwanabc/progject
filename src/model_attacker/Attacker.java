@@ -32,7 +32,6 @@ public abstract class Attacker extends Entity implements IMovable{
 	protected int posToGoY[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
 	protected int countNotMove;
 	protected boolean HQATK;
-	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
 		this.posX=posX;
@@ -337,7 +336,7 @@ public abstract class Attacker extends Entity implements IMovable{
 		fluidPush();
 		fluidPush();
 	}
-	private void fluidPush() 
+	protected void fluidPush() 
 	{
 		for(Attacker attacker:Gamelogic.getAttackerContainer())
 		{

@@ -29,7 +29,7 @@ public class StartScreen extends Pane{
 	private PlayButton play;
 	private ExitButton exit;
 	private CharacterButton character;
-	private Label gametitle;
+	private Label gameTitle;
 	public StartScreen()
 	{
 		RenderableHolder.stopAudio();
@@ -43,10 +43,10 @@ public class StartScreen extends Pane{
 		character.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.6);
 		exit=new ExitButton("Exit");
 		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.8);
-		gametitle=new Label(SceneManager.GAMENAME);
-		gametitle.setFont(RenderableHolder.screenTextFont);
-		gametitle.setTextFill(Color.CORAL);
-		gametitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.2);
-		this.getChildren().addAll(play,character,exit,gametitle);
+		gameTitle=new Label(SceneManager.GAMENAME);
+		gameTitle.setFont(RenderableHolder.screenTextFont);
+		gameTitle.setTextFill(Color.CORAL);
+		gameTitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.2);
+		this.getChildren().addAll(play,character,exit,gameTitle);
 	}
 }

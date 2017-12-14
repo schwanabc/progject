@@ -29,7 +29,7 @@ public class WinScreen extends Pane{
 	private ReplayButton replay;
 	private MenuButton menu;
 	private Label title;
-	private static final String WIN_TEXT ="YOU CLEAR THE GAME!!!";
+	private final String WIN_TEXT ="YOU CLEAR THE GAME!!!";
 	public WinScreen()
 	{
 		RenderableHolder.stopAudio();

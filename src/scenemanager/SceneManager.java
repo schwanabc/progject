@@ -23,7 +23,7 @@ public class SceneManager {
 	private static Scene winScene;
 	private static Scene loseScene;
 	private static Scene startScene;
-	private static Scene characterDescribeScreen;
+	private static Scene characterDescribeScene;
 	private static PlayScreen playScreen;
 	public static String GAMENAME="TOWER HATER 2.0";
 	public static double screenHeight;
@@ -89,8 +89,8 @@ public class SceneManager {
 		SceneManager.primaryStage.setFullScreen(true);
 	}
 	public static void gotoCharacterScreen() {
-		characterDescribeScreen=new Scene(new CharacterDescribeScreen(),screenWidth,screenHeight);
-		primaryStage.setScene(characterDescribeScreen);
+		characterDescribeScene=new Scene(new CharacterDescribeScreen(),screenWidth,screenHeight);
+		primaryStage.setScene(characterDescribeScene);
 		SceneManager.primaryStage.setFullScreen(true);
 	}
 	public static Stage getPrimaryStage() {

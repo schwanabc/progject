@@ -11,7 +11,7 @@ public class MenuButton extends NormalButton{
 		super(text);
 	}
 	@Override
-	public void addToListerner() {
+	public void addToListener() {
 		this.setOnMouseEntered(ev->
 		{
 			RenderableHolder.buttonHover.play();

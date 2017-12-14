@@ -32,8 +32,7 @@ public class CharacterDescribeScreen extends Pane{
 	private Label title;
 	private Label characterName[] = new Label[7];
 	private Label characterDescribeText[] = new Label[7];
-	private Image characterImage[] = new Image[7];
-	private String headerText = "Character Description";
+	private final String HEADERTEXT = "Character Description";
 	private Canvas characterImageSet;
 	public CharacterDescribeScreen()
 	{
@@ -46,14 +45,7 @@ public class CharacterDescribeScreen extends Pane{
 		play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*0.5/2, SceneManager.screenHeight*0.8);	
 		menu=new MenuButton("Main Menu");
 		menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
-		title=new Label(headerText);
-		characterImage[0] = RenderableHolder.armed_Peasant;
-		characterImage[1] = RenderableHolder.footman;
-		characterImage[2] = RenderableHolder.wardog;
-		characterImage[3] = RenderableHolder.berserker;
-		characterImage[4] = RenderableHolder.sapper;
-		characterImage[5] = RenderableHolder.saboteur;
-		characterImage[6] = RenderableHolder.general;
+		title=new Label(HEADERTEXT);
 		
 		String charName[] = {"Peasant","Footman","Wardog","Berserker","Sapper","Saboteur","General"};
 		for(int i=0;i<7;i++) {
@@ -83,8 +75,8 @@ public class CharacterDescribeScreen extends Pane{
 		
 		title.setFont(RenderableHolder.screenTextFont);
 		title.setTextFill(Color.RED);
-		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.05);
-		Canvas characterImageSet=new Canvas(SceneManager.screenWidth, SceneManager.screenHeight);
+		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(HEADERTEXT, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.05);
+		characterImageSet=new Canvas(SceneManager.screenWidth, SceneManager.screenHeight);
 		GraphicsContext gc=characterImageSet.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.armed_Peasant,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.20,40, 40);
 		gc.drawImage(RenderableHolder.footman,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.32,40, 40);

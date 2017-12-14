@@ -23,9 +23,9 @@ public class HomeIcon extends Canvas implements IButton{
 		colorAdjust=new ColorAdjust();
 		GraphicsContext gc=this.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.releaseHome, 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT);
-		addToListerner();
+		addToListener();
 	}
-	public void addToListerner() {
+	public void addToListener() {
 		this.setOnMouseEntered(ev->
 		{
 			RenderableHolder.buttonHover.play();

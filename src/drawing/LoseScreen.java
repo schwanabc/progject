@@ -31,7 +31,7 @@ public class LoseScreen extends Pane{
 	private RetryButton retry;
 	private MenuButton menu;
 	private Label title;
-	private static final String LOSE_TEXT ="YOU LOSE";
+	private final String LOSE_TEXT ="YOU LOSE";
 	public LoseScreen()
 	{
 		RenderableHolder.stopAudio();

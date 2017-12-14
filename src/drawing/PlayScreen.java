@@ -92,7 +92,7 @@ public class PlayScreen extends HBox{
 		InputUtility.reset();
 		menuBar.setDefault();
 	}	
-	protected void paintUpdated() {
+	private void paintUpdated() {
 		gameScreen.paintComponent();
 		RenderableHolder.getInstance().update();
 		menuBar.update();
@@ -103,7 +103,7 @@ public class PlayScreen extends HBox{
 			menuBar.getGameState().setLose(true);
 		if(menuBar.getGameState().isTimeup())menuBar.getGameState().setLose(true);
 	}
-	void checkEnd() {
+	private void checkEnd() {
 		
 		if(menuBar.getGameState().isWin())
 		{
