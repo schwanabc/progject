@@ -4,8 +4,8 @@ import javafx.scene.input.MouseButton;
 import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 
-public class characterButton extends NormalButton{
-	public characterButton(String text)
+public class CharacterButton extends NormalButton{
+	public CharacterButton(String text)
 	{
 		super(text);
 	}

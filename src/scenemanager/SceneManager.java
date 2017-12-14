@@ -13,7 +13,7 @@ import drawing.PlayScreen;
 import drawing.StartScreen;
 import drawing.WaitScreen;
 import drawing.WinScreen;
-import drawing.characterDescribeScreen;
+import drawing.CharacterDescribeScreen;
 
 public class SceneManager {
 
@@ -89,7 +89,7 @@ public class SceneManager {
 		SceneManager.primaryStage.setFullScreen(true);
 	}
 	public static void gotoCharacterScreen() {
-		characterDescribeScreen=new Scene(new characterDescribeScreen(),screenWidth,screenHeight);
+		characterDescribeScreen=new Scene(new CharacterDescribeScreen(),screenWidth,screenHeight);
 		primaryStage.setScene(characterDescribeScreen);
 		SceneManager.primaryStage.setFullScreen(true);
 	}

@@ -26,7 +26,7 @@ import javafx.scene.text.Font;
 import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 import utility.Utility;
-public class characterDescribeScreen extends Pane{
+public class CharacterDescribeScreen extends Pane{
 	private PlayButton Play;
 	private MenuButton Menu;
 	private Label Title;
@@ -35,7 +35,7 @@ public class characterDescribeScreen extends Pane{
 	private Image characterImage[] = new Image[7];
 	private String headerText = "Character Description";
 	private Canvas characterImageSet;
-	public characterDescribeScreen()
+	public CharacterDescribeScreen()
 	{
 		RenderableHolder.stopAudio();
 	//	RenderableHolder.openSong.play();

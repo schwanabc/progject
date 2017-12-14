@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import button.ExitButton;
 import button.NormalButton;
 import button.PlayButton;
-import button.characterButton;
+import button.CharacterButton;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -28,7 +28,7 @@ import utility.Utility;
 public class StartScreen extends Pane{
 	private PlayButton Play;
 	private ExitButton Exit;
-	private characterButton Character;
+	private CharacterButton Character;
 	private Label Gametitle;
 	public StartScreen()
 	{
@@ -39,7 +39,7 @@ public class StartScreen extends Pane{
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.background, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,false,false,false,true))));
 		Play=new PlayButton("Play");
 		Play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.4);	
-		Character=new characterButton("Character");
+		Character=new CharacterButton("Character");
 		Character.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.6);
 		Exit=new ExitButton("Exit");
 		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.8);
