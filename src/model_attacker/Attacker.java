@@ -104,13 +104,17 @@ public abstract class Attacker extends Entity implements IMovable{
 //					}
 //					//System.out.printf("\n");
 //				}
+				int tempX = lastRow[nowX][nowY];
+				int tempY = lastColumn[nowX][nowY];
+				nowX = tempX;
+				nowY = tempY;
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
 					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
 					posToGoX[countPathLength] = nowX;
 					posToGoY[countPathLength] = nowY;
 					countPathLength++;
-					int tempX = lastRow[nowX][nowY];
-					int tempY = lastColumn[nowX][nowY];
+					tempX = lastRow[nowX][nowY];
+					tempY = lastColumn[nowX][nowY];
 					nowX = tempX;
 					nowY = tempY;
 				}
@@ -229,9 +233,14 @@ public abstract class Attacker extends Entity implements IMovable{
 				return;
 			findBestPath();
 		}
-		
-		
-		if(countPathLength >= 0) {
+		if(countPathLength == 1) {
+			double walkX = Board.HQPOSX-getPosX();
+			double walkY = Board.HQPOSY-getPosY();
+			HQATK = true;
+			System.out.println("HQATK2");
+			forward(walkX,walkY);
+		}
+		else if(countPathLength >= 0) {
 			double walkX = (posToGoX[countPathLength])*Board.BOARD_WIDTH+Board.BOARD_WIDTH/2-getPosX();
 			double walkY = (posToGoY[countPathLength])*Board.BOARD_HEIGHT+Board.BOARD_HEIGHT/2-getPosY();
 			double disWalkX = (walkX > 0)?walkX:-walkX;
@@ -245,6 +254,8 @@ public abstract class Attacker extends Entity implements IMovable{
 //				}else
 				if(countPathLength != 0)
 					countPathLength--;
+				else
+					HQATK = true;
 				countNotMove = 0;
 			}
 			forward(walkX,walkY);
