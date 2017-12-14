@@ -22,32 +22,29 @@ import sharedobject.RenderableHolder;
 import utility.InputUtility;
 import utility.Utility;
 public class Menubar extends VBox{
-	public static final double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
-	public static final double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
-	private static final int VTAB=4;
-	private static final int HTAB=2;
-	public static double ICONPOS;
-	public static double ICONHEIGHT;
-	public static double ICONWIDTH;
+	public final static double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
+	public final static double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
+	private final int VTAB=4;
+	private final int HTAB=2;
+	public static final double ICONPOS=MENU_HEIGHT*0.25;
+	private final double ICONHEIGHT;
+	private final double ICONWIDTH;
 	public static Menubar instance; 
-	private Canvas[][] menu=new Canvas[VTAB][HTAB];
+	private Canvas[][] icon;
 	private GridPane gp;
-	private int choseRow;
-	private int choseColumn;
+	private int choseRow=-1;
+	private int choseColumn=-1;
 	private GameState gameState;
 	private Canvas menuCanvas;
-	private boolean isReset;
+	private boolean isReset=false;
 	private HomeIcon homeIcon;
 	private ExitIcon exitIcon;
 	private PauseIcon pauseIcon;
 	public Menubar()
 	{
 		instance=this;
-		isReset=false;
-		choseRow=-1;
-		choseColumn=-1;
+		icon=new Canvas[VTAB][HTAB];
 		gameState=new GameState();
-		ICONPOS= MENU_HEIGHT*0.25;
 		ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
 		ICONWIDTH=MENU_WIDTH/HTAB;
 		setMenu();
@@ -63,16 +60,16 @@ public class Menubar extends VBox{
 		{
 			for(int j=0;j<HTAB;j++)
 			{
-				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
-				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
+				icon[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
+				GraphicsContext gc=icon[i][j].getGraphicsContext2D();
 				gc.drawImage(RenderableHolder.releaseButton,0,0, ICONWIDTH, ICONHEIGHT);
 				gc.setFont(RenderableHolder.chooseIconFont);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				fillText(gc,i,j);
 				
-				gp.add(menu[i][j], j, i);
-				checkEvent(menu[i][j],i,j);
+				gp.add(icon[i][j], j, i);
+				checkEvent(icon[i][j],i,j);
 			}
 		}
 		this.getChildren().add(gp);
@@ -148,7 +145,7 @@ public class Menubar extends VBox{
 			{
 				try
 				{
-					GraphicsContext temp=menu[choseRow][choseColumn].getGraphicsContext2D();
+					GraphicsContext temp=icon[choseRow][choseColumn].getGraphicsContext2D();
 					setUnClick(temp,choseRow,choseColumn);
 					setUnHover(temp,choseRow,choseColumn);
 				}
@@ -166,13 +163,13 @@ public class Menubar extends VBox{
 		RenderableHolder.buttonHover.play();
 		ColorAdjust colorAdjust=new ColorAdjust();
 		colorAdjust.setBrightness(0.2);
-		menu[row][column].setEffect(colorAdjust);
+		icon[row][column].setEffect(colorAdjust);
 	}
 	private void setUnHover(GraphicsContext gc,int row,int column) {
 		
 		ColorAdjust colorAdjust=new ColorAdjust();
 		colorAdjust.setBrightness(0.0);
-		menu[row][column].setEffect(colorAdjust);
+		icon[row][column].setEffect(colorAdjust);
 	}
 	private void chooseCurrentBot(int row, int column) {
 		if(row == 0 && column == 0)
@@ -262,9 +259,9 @@ public class Menubar extends VBox{
 		gameState.initialize();
 		update();
 		isReset=false;
-		GraphicsContext gc=menu[choseRow][choseColumn].getGraphicsContext2D();
+		GraphicsContext gc=icon[choseRow][choseColumn].getGraphicsContext2D();
 		setUnClick(gc, choseRow, choseColumn);
-		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setUnClick(menu[VTAB-1][HTAB-1].getGraphicsContext2D(), VTAB-1, HTAB-1);
+		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setUnClick(icon[VTAB-1][HTAB-1].getGraphicsContext2D(), VTAB-1, HTAB-1);
 		choseRow=-1;
 		choseColumn=-1;
 	}

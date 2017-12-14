@@ -22,7 +22,7 @@ public class GameState {
 				{
 				//	System.out.println(Timeleft);
 					currentTime=System.nanoTime();	
-					if(PlayScreen.isPausedstate()==false&&isLose==false &&isWin==false)
+					if(PlayScreen.instance.isPausedstate()==false&&isLose==false &&isWin==false)
 					{
 						timeLeft-=currentTime-prevTime;
 						if(timeLeft<=0)timeLeft=0;

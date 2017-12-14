@@ -17,7 +17,7 @@ import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 import utility.InputUtility;
 public class PlayScreen extends HBox{
-	private static boolean pausedState;
+	private boolean pausedState;
 	public static final double MISCSCREENWIDTH=(SceneManager.screenWidth-(GameScreen.GAMESCREEN_WIDTH+Menubar.MENU_WIDTH))/2;
 	public static final double MISCSCREENHEIGHT=(SceneManager.screenHeight);
 	public static PlayScreen instance;
@@ -155,7 +155,7 @@ public class PlayScreen extends HBox{
 			playThread.start();
 		}
 	}
-	public static boolean isPausedstate() {
+	public boolean isPausedstate() {
 		return pausedState;
 	}
 	public GameScreen getGameScreen() {
