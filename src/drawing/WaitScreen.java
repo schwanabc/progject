@@ -26,10 +26,10 @@ import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 import utility.Utility;
 public class WaitScreen extends Pane{
-	private PlayButton Play;
-	private ExitButton Exit;
-	private ReplayButton Replay;
-	private Label Title;
+	private PlayButton play;
+	private ExitButton exit;
+	private ReplayButton replay;
+	private Label title;
 	private static final String WAIT_TEXT="YOU WIN";
 	public WaitScreen()
 	{
@@ -38,17 +38,17 @@ public class WaitScreen extends Pane{
 		System.out.println("Waitscreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.victoryBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
-		Play=new PlayButton("Next Stage");
-		Play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.4);	
-		Replay=new ReplayButton("Play Again");
-		Replay.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.6);
-		Exit=new ExitButton("Exit");
-		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
-		Title=new Label(WAIT_TEXT);
-		Title.setFont(RenderableHolder.SCREENTEXTFONT);
-		Title.setTextFill(Color.RED);
-		Title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
-		this.getChildren().addAll(Play,Replay,Exit,Title);
+		play=new PlayButton("Next Stage");
+		play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.4);	
+		replay=new ReplayButton("Play Again");
+		replay.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.6);
+		exit=new ExitButton("Exit");
+		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
+		title=new Label(WAIT_TEXT);
+		title.setFont(RenderableHolder.SCREENTEXTFONT);
+		title.setTextFill(Color.RED);
+		title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
+		this.getChildren().addAll(play,replay,exit,title);
 	}
 
 }

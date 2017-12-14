@@ -25,10 +25,10 @@ import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 import utility.Utility;
 public class WinScreen extends Pane{
-	private ExitButton Exit;
-	private ReplayButton Replay;
-	private MenuButton Menu;
-	private Label Title;
+	private ExitButton exit;
+	private ReplayButton replay;
+	private MenuButton menu;
+	private Label title;
 	private static final String WIN_TEXT ="YOU CLEAR THE GAME!!!";
 	public WinScreen()
 	{
@@ -37,17 +37,17 @@ public class WinScreen extends Pane{
 		System.out.println("Winscreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.victoryBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
-		Replay=new ReplayButton("Play Again");
-		Replay.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.4);
-		Menu=new MenuButton("Main Menu");
-		Menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.6);
-		Exit=new ExitButton("Exit");
-		Exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
-		Title=new Label(WIN_TEXT);
-		Title.setFont(RenderableHolder.SCREENTEXTFONT);
-		Title.setTextFill(Color.RED);
-		Title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WIN_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
-		this.getChildren().addAll(Menu,Replay,Exit,Title);
+		replay=new ReplayButton("Play Again");
+		replay.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.4);
+		menu=new MenuButton("Main Menu");
+		menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.6);
+		exit=new ExitButton("Exit");
+		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
+		title=new Label(WIN_TEXT);
+		title.setFont(RenderableHolder.SCREENTEXTFONT);
+		title.setTextFill(Color.RED);
+		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WIN_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
+		this.getChildren().addAll(menu,replay,exit,title);
 	}
 
 }

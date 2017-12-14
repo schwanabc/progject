@@ -27,9 +27,9 @@ import scenemanager.SceneManager;
 import sharedobject.RenderableHolder;
 import utility.Utility;
 public class CharacterDescribeScreen extends Pane{
-	private PlayButton Play;
-	private MenuButton Menu;
-	private Label Title;
+	private PlayButton play;
+	private MenuButton menu;
+	private Label title;
 	private Label characterName[] = new Label[7];
 	private Label characterDescribeText[] = new Label[7];
 	private Image characterImage[] = new Image[7];
@@ -42,11 +42,11 @@ public class CharacterDescribeScreen extends Pane{
 		System.out.println("Character Describe");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.background, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
-		Play=new PlayButton("Play");
-		Play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*0.5/2, SceneManager.screenHeight*0.8);	
-		Menu=new MenuButton("Main Menu");
-		Menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
-		Title=new Label(headerText);
+		play=new PlayButton("Play");
+		play.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*0.5/2, SceneManager.screenHeight*0.8);	
+		menu=new MenuButton("Main Menu");
+		menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
+		title=new Label(headerText);
 		characterImage[0] = RenderableHolder.armed_Peasant;
 		characterImage[1] = RenderableHolder.footman;
 		characterImage[2] = RenderableHolder.wardog;
@@ -81,9 +81,9 @@ public class CharacterDescribeScreen extends Pane{
 			this.getChildren().add(characterDescribeText[i]);
 		}
 		
-		Title.setFont(RenderableHolder.SCREENTEXTFONT);
-		Title.setTextFill(Color.RED);
-		Title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.05);
+		title.setFont(RenderableHolder.SCREENTEXTFONT);
+		title.setTextFill(Color.RED);
+		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.05);
 		Canvas characterImageSet=new Canvas(SceneManager.screenWidth, SceneManager.screenHeight);
 		GraphicsContext gc=characterImageSet.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.armed_Peasant,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.20,40, 40);
@@ -94,7 +94,7 @@ public class CharacterDescribeScreen extends Pane{
 		gc.drawImage(RenderableHolder.saboteur,SceneManager.screenWidth*0.66, SceneManager.screenHeight*0.32,40, 40);
 		gc.drawImage(RenderableHolder.general,SceneManager.screenWidth*0.66, SceneManager.screenHeight*0.46,40, 40);
 		characterImageSet.relocate(0, 0);
-		this.getChildren().addAll(characterImageSet,Menu,Play,Title);
+		this.getChildren().addAll(characterImageSet,menu,play,title);
 		
 	}
 
