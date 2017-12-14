@@ -31,7 +31,7 @@ public class LoseScreen extends Pane{
 	private RetryButton retry;
 	private MenuButton menu;
 	private Label title;
-	private static final String WIN_TEXT ="YOU LOSE";
+	private static final String LOSE_TEXT ="YOU LOSE";
 	public LoseScreen()
 	{
 		RenderableHolder.stopAudio();
@@ -57,10 +57,10 @@ public class LoseScreen extends Pane{
 		menu.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.7/2, SceneManager.screenHeight*0.6);
 		exit=new ExitButton("Exit");
 		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.7/2, SceneManager.screenHeight*0.8);
-		title=new Label(WIN_TEXT);
+		title=new Label(LOSE_TEXT);
 		title.setFont(RenderableHolder.SCREENTEXTFONT);
 		title.setTextFill(Color.RED);
-		title.relocate(1.7*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WIN_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
+		title.relocate(1.7*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(LOSE_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(menu,retry,exit,title);
 	}
 
