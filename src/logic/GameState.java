@@ -6,10 +6,8 @@ import javafx.animation.AnimationTimer;
 public class GameState {
 	private boolean isWin;
 	private boolean isLose;
-	private static long GAMEBASETIME=151*1000000000L;
+	private final long GAMEBASETIME=151*1000000000L;
 	private long timeLeft;
-	private long prevTime;
-	private long currentTime;
 	private Thread timeThread;
 	public GameState()
 	{
@@ -18,6 +16,9 @@ public class GameState {
 		{
 			@Override
 			public void run() {
+				long prevTime;
+				long currentTime;
+				prevTime=System.nanoTime();
 				while(true)
 				{
 				//	System.out.println(Timeleft);
@@ -65,7 +66,6 @@ public class GameState {
 		isWin=false;
 		isLose=false;
 		timeLeft=GAMEBASETIME;
-		prevTime=System.nanoTime();
 	}
 	public Thread getTimethread() {
 		return timeThread;

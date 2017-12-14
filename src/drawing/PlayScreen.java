@@ -38,6 +38,8 @@ public class PlayScreen extends HBox{
 			//	System.out.println(Gamestate.getTotaltime()/600000000L);
 				gameLogic.update();
 				paintUpdated();
+				InputUtility.checkTick();
+				checkPaused();
 				checkCondition();
 				if(menuBar.isReset())resetGame();
 				checkEnd();
@@ -86,8 +88,6 @@ public class PlayScreen extends HBox{
 		gameScreen.paintComponent();
 		RenderableHolder.getInstance().update();
 		menuBar.update();
-		InputUtility.checkTick();
-		checkPaused();
 	}
 	private void checkCondition() {
 		if(Board.isWin())menuBar.getGameState().setWin(true);
@@ -105,9 +105,9 @@ public class PlayScreen extends HBox{
 			menuBar.getGameState().endTimethread();
 			if(Board.getDefaultNumBoard()==Board.TOTALBOARD) 
 			{
-				playThread.stop();
-				RenderableHolder.getInstance().getEntities().clear();
-				SceneManager.gotoWinScreen();}
+				forceEnd() ;
+				SceneManager.gotoWinScreen();
+			}
 			else
 			{
 			resetGame();
@@ -118,13 +118,9 @@ public class PlayScreen extends HBox{
 		else if(menuBar.getGameState().isLose())
 		{
 			RenderableHolder.stopAudio();
-			System.out.println("lose");
 			menuBar.getGameState().endTimethread();
-			System.out.println("lose2");
 			resetGame();
-			System.out.println("lose2");
 			forceEnd();
-			System.out.println("Ending");
 			SceneManager.gotoLoseScreen();
 		}
 	}
