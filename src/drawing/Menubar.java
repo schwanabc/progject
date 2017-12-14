@@ -27,11 +27,11 @@ public class Menubar extends VBox{
 	private final int VTAB=4;
 	private final int HTAB=2;
 	public static final double ICONPOS=MENU_HEIGHT*0.25;
-	private final double ICONHEIGHT;
-	private final double ICONWIDTH;
+	private final double ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
+	private final double ICONWIDTH=MENU_WIDTH/HTAB;
 	public static Menubar instance; 
 	private Canvas[][] icon;
-	private GridPane gp;
+	private GridPane gridPane;
 	private int choseRow=-1;
 	private int choseColumn=-1;
 	private GameState gameState;
@@ -45,17 +45,14 @@ public class Menubar extends VBox{
 		instance=this;
 		icon=new Canvas[VTAB][HTAB];
 		gameState=new GameState();
-		ICONHEIGHT=(MENU_HEIGHT-ICONPOS)/VTAB;
-		ICONWIDTH=MENU_WIDTH/HTAB;
-		setMenu();
-		
+		setMenuBar();
 	}
-	private void setMenu() {
+	private void setMenuBar() {
 		setMenuTab();
 		setIcon();
 	}
 	private void setIcon() {
-		gp=new GridPane();
+		gridPane=new GridPane();
 		for(int i=0;i<VTAB;i++)
 		{
 			for(int j=0;j<HTAB;j++)
@@ -67,12 +64,11 @@ public class Menubar extends VBox{
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				fillText(gc,i,j);
-				
-				gp.add(icon[i][j], j, i);
+				gridPane.add(icon[i][j], j, i);
 				checkEvent(icon[i][j],i,j);
 			}
 		}
-		this.getChildren().add(gp);
+		this.getChildren().add(gridPane);
 		homeIcon=new HomeIcon();
 		homeIcon.setManaged(false);
 		this.getChildren().add(homeIcon);
@@ -85,7 +81,6 @@ public class Menubar extends VBox{
 		pauseIcon.setManaged(false);
 		this.getChildren().add(pauseIcon);
 		pauseIcon.relocate(MENU_WIDTH*0.8, ICONPOS*0.8*2/3);
-	
 	}
 	private void fillText(GraphicsContext gc,int i, int j) {
 		if(i+1==VTAB&& j+1==HTAB)
@@ -140,9 +135,8 @@ public class Menubar extends VBox{
 		});
 		canvas.setOnMouseClicked(ev->
 		{
-			
 			if(row!=choseRow ||column!=choseColumn)
-			{
+			{	
 				try
 				{
 					GraphicsContext temp=icon[choseRow][choseColumn].getGraphicsContext2D();
@@ -210,17 +204,16 @@ public class Menubar extends VBox{
 		gc.setFill(Color.SADDLEBROWN);
 		gc.fillText("MENU", MENU_WIDTH*0.4,ICONPOS*0.2);
 	}
-	public void setMenuTab() {
+	private void setMenuTab() {
 		menuCanvas=new Canvas(MENU_WIDTH,ICONPOS);
 		GraphicsContext gc=menuCanvas.getGraphicsContext2D();
 		paintMenuCanvas(gc);
-		
 		this.getChildren().add(menuCanvas);
 	}
 	public void update() {
 
 		if(Board.isWin())gameState.setWin(true);
-		Thread t1= new Thread(()->{
+		new Thread(()->{
 			Platform.runLater(()->
 			{
 				GraphicsContext gc=menuCanvas.getGraphicsContext2D();
@@ -238,13 +231,7 @@ public class Menubar extends VBox{
 				gc.fillText("Time: "+gameState.getMinute()+" : "+second,25 , ICONPOS*0.55);
 				Thread.yield();
 			});
-		}); 
-		try {
-		//	t1.join();
-			t1.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
+		}).start();
 	}
 	public GameState getGameState() {
 		return gameState;
@@ -257,8 +244,8 @@ public class Menubar extends VBox{
 	}
 	public void setDefault() {
 		gameState.initialize();
-		update();
 		isReset=false;
+		update();
 		GraphicsContext gc=icon[choseRow][choseColumn].getGraphicsContext2D();
 		setUnClick(gc, choseRow, choseColumn);
 		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setUnClick(icon[VTAB-1][HTAB-1].getGraphicsContext2D(), VTAB-1, HTAB-1);
