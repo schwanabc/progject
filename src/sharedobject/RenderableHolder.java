@@ -55,7 +55,10 @@ public class RenderableHolder {
 	public static AudioClip lose;
 	public static AudioClip openSong;
 	public static AudioClip loseSong;
-	public static Font SCREENTEXTFONT;
+	public static Font screenTextFont;
+	public static Font chooseIconFont= Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"),20);
+	public static Font menuFont = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 20);
+	public static Font wariningFont = Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"), 14);
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static RenderableHolder instance = new RenderableHolder();
@@ -129,7 +132,7 @@ public class RenderableHolder {
 	    openSong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
 	    loseSong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
 	    //----font
-	    SCREENTEXTFONT=Font.loadFont(ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf"), 80);
+	    screenTextFont=Font.loadFont(ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf"), 80);
 		}
 		catch(Exception e)
 		{

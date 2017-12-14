@@ -44,9 +44,9 @@ public class StartScreen extends Pane{
 		exit=new ExitButton("Exit");
 		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)/2, SceneManager.screenHeight*0.8);
 		gametitle=new Label(SceneManager.GAMENAME);
-		gametitle.setFont(RenderableHolder.SCREENTEXTFONT);
+		gametitle.setFont(RenderableHolder.screenTextFont);
 		gametitle.setTextFill(Color.CORAL);
-		gametitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
+		gametitle.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(SceneManager.GAMENAME, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(play,character,exit,gametitle);
 	}
 }

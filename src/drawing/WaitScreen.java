@@ -45,9 +45,9 @@ public class WaitScreen extends Pane{
 		exit=new ExitButton("Exit");
 		exit.relocate((SceneManager.screenWidth-NormalButton.BUTTON_WIDTH)*1.5/2, SceneManager.screenHeight*0.8);
 		title=new Label(WAIT_TEXT);
-		title.setFont(RenderableHolder.SCREENTEXTFONT);
+		title.setFont(RenderableHolder.screenTextFont);
 		title.setTextFill(Color.RED);
-		title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.2);
+		title.relocate(1.5*Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(WAIT_TEXT, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.2);
 		this.getChildren().addAll(play,replay,exit,title);
 	}
 

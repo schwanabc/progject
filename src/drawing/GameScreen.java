@@ -21,19 +21,12 @@ public class GameScreen extends Canvas{
 	public GameScreen()
 	{
 		super(GAMESCREEN_WIDTH,GAMESCREEN_HEIGHT);
-		System.out.print(GAMESCREEN_HEIGHT);
-
-		System.out.println(GAMESCREEN_WIDTH);
-		System.out.println(GAMESCREEN_HEIGHT);
-		this.setVisible(true);
-		addListerner();
+		addListener();
 	}
 	
 	public void paintComponent()
-	{
+	{	
 		GraphicsContext gc=this.getGraphicsContext2D();
-		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(0, 0, GAMESCREEN_WIDTH, GAMESCREEN_HEIGHT);
 		for(IRenderable entity: RenderableHolder.getInstance().getEntities())
 		{
 			if (entity.isVisible() && !entity.isDestroyed()) {
@@ -41,43 +34,37 @@ public class GameScreen extends Canvas{
 			}
 		}
 	}
-	public void addListerner() {
+	public void addListener() {
 		this.setOnKeyPressed((KeyEvent event) -> {
 			InputUtility.setKeyPressed(event.getCode());
 		});
 		this.setOnKeyReleased((KeyEvent event) -> {
 			InputUtility.setKeyReleased();
 		});
-
 		this.setOnMousePressed((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY)
 				InputUtility.mouseLeftDown();
 		});
-
 		this.setOnMouseReleased((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY)
 				InputUtility.mouseLeftRelease(); 
 		});
-
 		this.setOnMouseEntered((MouseEvent event) -> {
 			InputUtility.currentUI="GAME";
 		});
 		this.setOnMouseExited((MouseEvent event) -> {
 			InputUtility.currentUI="x";
 		});
-
 		this.setOnMouseMoved((MouseEvent event) -> {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
-
 		});
 		this.setOnMouseDragged((MouseEvent event) -> {
 				InputUtility.mouseX = event.getX();
 				InputUtility.mouseY = event.getY();
 		});
 	}
-
-	public static boolean isIngamescreen() {
+	public static boolean isInGameScreen() {
 		if(InputUtility.currentUI.equals("GAME"))return true;
 		return false;
 	}

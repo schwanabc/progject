@@ -24,9 +24,6 @@ import utility.Utility;
 public class Menubar extends VBox{
 	public static final double MENU_WIDTH=GameScreen.GAMESCREEN_WIDTH*0.33;
 	public static final double MENU_HEIGHT=GameScreen.GAMESCREEN_HEIGHT;
-	private static final Font TEXT_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"),20);
-	private static final Font TIME_TEXT_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Pamela.ttf"), 20);
-	private static final Font WARN_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"), 14);
 	private static final int VTAB=4;
 	private static final int HTAB=2;
 	public static double ICONPOS;
@@ -69,7 +66,7 @@ public class Menubar extends VBox{
 				menu[i][j]=new Canvas(ICONWIDTH,ICONHEIGHT);
 				GraphicsContext gc=menu[i][j].getGraphicsContext2D();
 				gc.drawImage(RenderableHolder.releaseButton,0,0, ICONWIDTH, ICONHEIGHT);
-				gc.setFont(TEXT_FONT);
+				gc.setFont(RenderableHolder.chooseIconFont);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setTextBaseline(VPos.CENTER);
 				fillText(gc,i,j);
@@ -210,7 +207,7 @@ public class Menubar extends VBox{
 	{
 		gc.drawImage(RenderableHolder.menuBackground, 0, 0, MENU_WIDTH*0.8, ICONPOS*0.8);
 		gc.drawImage(RenderableHolder.errorFrame, 0, ICONPOS*0.8, MENU_WIDTH+2, ICONPOS*0.2);
-		gc.setFont(TIME_TEXT_FONT);
+		gc.setFont(RenderableHolder.menuFont);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setTextBaseline(VPos.BOTTOM);
 		gc.setFill(Color.SADDLEBROWN);
@@ -232,7 +229,7 @@ public class Menubar extends VBox{
 				GraphicsContext gc=menuCanvas.getGraphicsContext2D();
 				paintMenuCanvas(gc);
 				gc.setFill(Color.SADDLEBROWN);
-				gc.setFont(TIME_TEXT_FONT);
+				gc.setFont(RenderableHolder.menuFont);
 				gc.setTextAlign(TextAlignment.LEFT);
 				gc.setTextBaseline(VPos.TOP);
 				gc.fillText("Money: "+Board.getMoney(), 25, ICONPOS*0.25);
@@ -289,8 +286,8 @@ public class Menubar extends VBox{
 				prevtime=currenttime;
 				 GraphicsContext gc=menuCanvas.getGraphicsContext2D();
 					gc.setFill(Color.RED);
-					gc.setFont(WARN_FONT);
-					gc.fillText(text, Utility.getTextStartWidht(MENU_WIDTH, Utility.getFont_width(text,WARN_FONT)), ICONPOS*0.87);
+					gc.setFont(RenderableHolder.wariningFont);
+					gc.fillText(text, Utility.getTextStartWidht(MENU_WIDTH, Utility.getFont_width(text,RenderableHolder.wariningFont)), ICONPOS*0.87);
 			}
 		}.start();
 	}

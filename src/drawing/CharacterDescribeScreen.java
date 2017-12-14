@@ -81,9 +81,9 @@ public class CharacterDescribeScreen extends Pane{
 			this.getChildren().add(characterDescribeText[i]);
 		}
 		
-		title.setFont(RenderableHolder.SCREENTEXTFONT);
+		title.setFont(RenderableHolder.screenTextFont);
 		title.setTextFill(Color.RED);
-		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.SCREENTEXTFONT)), SceneManager.screenHeight*0.05);
+		title.relocate(Utility.getTextStartWidht(SceneManager.screenWidth, Utility.getFont_width(headerText, RenderableHolder.screenTextFont)), SceneManager.screenHeight*0.05);
 		Canvas characterImageSet=new Canvas(SceneManager.screenWidth, SceneManager.screenHeight);
 		GraphicsContext gc=characterImageSet.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.armed_Peasant,SceneManager.screenWidth*0.16, SceneManager.screenHeight*0.20,40, 40);

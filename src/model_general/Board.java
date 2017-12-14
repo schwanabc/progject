@@ -271,7 +271,7 @@ public class Board implements IRenderable {
 		return false;
 	}
 	private static boolean isPlaceable(double mouseX, double mouseY) {
-		if( GameScreen.isIngamescreen() && accessibleBoard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
+		if( GameScreen.isInGameScreen() && accessibleBoard[(int) (mouseY/BOARD_HEIGHT)][(int) (mouseX/BOARD_WIDTH)]==0)
 			return true;
 		else 
 		{
