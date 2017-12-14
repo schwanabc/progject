@@ -243,15 +243,23 @@ public class Menubar extends VBox{
 		this.isReset = isReset;
 	}
 	public void setDefault() {
-		gameState.initialize();
-		isReset=false;
-		update();
+		try
+		{
 		GraphicsContext gc=icon[choseRow][choseColumn].getGraphicsContext2D();
 		setUnClick(gc, choseRow, choseColumn);
 		if(choseRow==VTAB-1&&choseColumn==HTAB-1)setUnClick(icon[VTAB-1][HTAB-1].getGraphicsContext2D(), VTAB-1, HTAB-1);
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			
+		}
 		choseRow=-1;
 		choseColumn=-1;
-	}
+		gameState.initialize();
+		isReset=false;
+		update();
+		
+	} 	
 	public void writePoor(String text) {
 		
 		new AnimationTimer(){	
