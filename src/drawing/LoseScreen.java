@@ -35,20 +35,8 @@ public class LoseScreen extends Pane{
 	public LoseScreen()
 	{
 		RenderableHolder.stopAudio();
-		if(!RenderableHolder.lose.isPlaying())RenderableHolder.lose.play();
-		Thread t2 =new Thread(()->
-		 {
-			 while(true)
-			 {
-				 if(!RenderableHolder.lose.isPlaying())
-				 {
-					 if(!RenderableHolder.loseSong.isPlaying())RenderableHolder.loseSong.play();
-					 break;
-				 }
-			 }
-		});
-		t2.start();
-		System.out.println("Losescreen");
+		RenderableHolder.startMusic(RenderableHolder.loseSong);
+//		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.loseBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
 		retry=new RetryButton("Retry");

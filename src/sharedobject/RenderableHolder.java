@@ -10,6 +10,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import model_defender.Defender;
 import model_defender.HQ;
@@ -53,8 +55,9 @@ public class RenderableHolder {
 	public static AudioClip victory;
 	public static AudioClip arrowSound;
 	public static AudioClip lose;
-	public static AudioClip openSong;
-	public static AudioClip loseSong;
+	public static Media openSong;
+	public static Media loseSong;
+	private static MediaPlayer mediaPlayer;
 	public static Font screenTextFont;
 	public static Font chooseIconFont;
 	public static Font menuFont;
@@ -76,14 +79,29 @@ public class RenderableHolder {
 			return -1;
 		};
 	}
+	public static void startMusic(Media media)
+	{
+		stopMusic();
+		mediaPlayer=new MediaPlayer(media);
+		mediaPlayer.setCycleCount(Integer.MAX_VALUE);
+		mediaPlayer.play();
+	}
+	public static void stopMusic()
+	{
+		try {
+		mediaPlayer.stop();
+		}
+		catch(NullPointerException e)
+		{}
+	}
 	public static void stopAudio() {
 		buttonHover.stop();
 		attack_Sword.stop();
 		buildingCollapsed.stop();
 		victory.stop();
 		lose.stop();
-		openSong.stop();
-		loseSong.stop();
+		stopMusic();
+		
 	}
 	public static void loadResource() {
 		try {
@@ -129,8 +147,8 @@ public class RenderableHolder {
 	    victory=new AudioClip(ClassLoader.getSystemResource("victory.mp3").toString());
 	    arrowSound=new AudioClip(ClassLoader.getSystemResource("arrow.wav").toString());
 	    lose=new AudioClip(ClassLoader.getSystemResource("lose.wav").toString());
-	    openSong=new AudioClip(ClassLoader.getSystemResource("opensong.mp3").toString());
-	    loseSong=new AudioClip(ClassLoader.getSystemResource("losesong.mp3").toString());
+	    openSong=new Media(ClassLoader.getSystemResource("opensong.mp3").toString());
+	    loseSong=new Media(ClassLoader.getSystemResource("losesong.mp3").toString());
 	    //----font
 	    screenTextFont=Font.loadFont(ClassLoader.getSystemResourceAsStream("Penumbra-HalfSerif-Std_35114.ttf"), 80);
 	    chooseIconFont= Font.loadFont(ClassLoader.getSystemResourceAsStream("Aaargh.ttf"),20);

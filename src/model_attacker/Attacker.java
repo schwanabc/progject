@@ -89,8 +89,8 @@ public abstract class Attacker extends Entity implements IMovable{
 			int nowY = inQueueY[queueFront];
 			queueFront++;
 			
-			if(Board.getBoard(nowY,nowX) == -1)
-				System.out.println("Hole "+boardDMG[nowX][nowY]);
+//			if(Board.getBoard(nowY,nowX) == -1)
+//				System.out.println("Hole "+boardDMG[nowX][nowY]);
 			
 			if(isHQPos(nowX,nowY)) { //HQ
 				countPathLength = 0;
@@ -104,17 +104,17 @@ public abstract class Attacker extends Entity implements IMovable{
 //					}
 //					//System.out.printf("\n");
 //				}
-				int tempX = lastRow[nowX][nowY];
-				int tempY = lastColumn[nowX][nowY];
-				nowX = tempX;
-				nowY = tempY;
+//				int tempX = lastRow[nowX][nowY];
+//				int tempY = lastColumn[nowX][nowY];
+//				nowX = tempX;
+//				nowY = tempY;
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
-					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
+//					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
 					posToGoX[countPathLength] = nowX;
 					posToGoY[countPathLength] = nowY;
 					countPathLength++;
-					tempX = lastRow[nowX][nowY];
-					tempY = lastColumn[nowX][nowY];
+					int tempX = lastRow[nowX][nowY];
+					int tempY = lastColumn[nowX][nowY];
 					nowX = tempX;
 					nowY = tempY;
 				}
@@ -226,7 +226,7 @@ public abstract class Attacker extends Entity implements IMovable{
 //			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
 			if(HQATK || isHQPos(posToGoY[countPathLength],posToGoX[countPathLength])) {
 				HQATK = true;
-				System.out.println("HQATK");
+//				System.out.println("HQATK");
 				return;
 			}
 			if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) > 0)
@@ -237,7 +237,7 @@ public abstract class Attacker extends Entity implements IMovable{
 			double walkX = Board.HQPOSX-getPosX();
 			double walkY = Board.HQPOSY-getPosY();
 			HQATK = true;
-			System.out.println("HQATK2");
+//			System.out.println("HQATK2");
 			forward(walkX,walkY);
 		}
 		else if(countPathLength >= 0) {

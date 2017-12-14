@@ -38,8 +38,8 @@ public class Board implements IRenderable {
 	public static double HQPOSX;
 	public static double HQPOSY;
 	private static boolean isWin;
-	private static int[] defaultMoney= {1500,4000,3000,3000,3000};
-	private static int defaultNumBoard=0;
+	private static int[] defaultMoney= {1500,4000,3000,3000,4000};
+	private static int defaultNumBoard=4;
 	private static int numBoard=0;
 	private static int money;
 	private static int board[][];
@@ -66,7 +66,7 @@ public class Board implements IRenderable {
 				int numline=0;
 				while(in.hasNextLine())
 				{
-					System.out.println(numline);
+//					System.out.println(numline);
 					String line;
 						line = in.nextLine().trim();
 						if(line==null)break;

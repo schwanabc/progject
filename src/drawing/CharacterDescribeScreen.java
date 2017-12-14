@@ -39,7 +39,7 @@ public class CharacterDescribeScreen extends Pane{
 	{
 		RenderableHolder.stopAudio();
 	//	RenderableHolder.openSong.play();
-		System.out.println("Character Describe");
+//		System.out.println("Character Describe");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.background, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
 		play=new PlayButton("Play");

@@ -39,8 +39,7 @@ public class PlayScreen extends HBox{
 				gameLogic.update();
 				paintUpdated();
 				InputUtility.checkTick();
-				checkPaused();
-				checkCondition();
+				playStateCheck();
 				if(menuBar.isReset())resetGame();
 				checkEnd();
 			}
@@ -49,11 +48,20 @@ public class PlayScreen extends HBox{
 		pauseThread=new AnimationTimer(){
 			public void handle(long now)
 			{
-				if(menuBar.getGameState().isLose()==false)paintUpdated();
+				if(menuBar.getGameState().isLose()==false)
+					{
+					paintUpdated();
+					playStateCheck();
+					}
 				if(menuBar.isReset())resetGame();
 			}
 		};
 
+	}
+	private void playStateCheck() {
+		// TODO Auto-generated method stub
+		checkPaused();
+		checkCondition();
 	}
 	private void initialize() {
 		fillMiscscreen();
@@ -100,7 +108,7 @@ public class PlayScreen extends HBox{
 		if(menuBar.getGameState().isWin())
 		{
 			RenderableHolder.stopAudio();
-			System.out.println("win");
+//			System.out.println("win");
 			Board.addNumBoard();
 			menuBar.getGameState().endTimethread();
 			if(Board.getDefaultNumBoard()==Board.TOTALBOARD) 
@@ -121,6 +129,13 @@ public class PlayScreen extends HBox{
 			menuBar.getGameState().endTimethread();
 			resetGame();
 			forceEnd();
+//			System.out.println("lose");
+			menuBar.getGameState().endTimethread();
+//			System.out.println("lose2");
+			resetGame();
+//			System.out.println("lose2");
+			forceEnd();
+//			System.out.println("Ending");
 			SceneManager.gotoLoseScreen();
 		}
 	}
@@ -137,11 +152,12 @@ public class PlayScreen extends HBox{
 		}
 	}
 	public void pause() {
+		RenderableHolder.stopAudio();
 		if(pausedState==false)
 		{
 			PauseIcon.instance.drawPaused();
 			pausedState=true; 
-			System.out.print("pause");
+//			System.out.print("pause");
 			playThread.stop();
 			pauseThread.start();
 		}
@@ -149,7 +165,7 @@ public class PlayScreen extends HBox{
 		{
 			PauseIcon.instance.drawUnpaused();
 			pausedState=false;
-			System.out.print("unpause");
+//			System.out.print("unpause");
 			pauseThread.stop();
 			playThread.start();
 		}

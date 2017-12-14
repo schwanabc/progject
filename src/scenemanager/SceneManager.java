@@ -42,7 +42,7 @@ public class SceneManager {
 		SceneManager.primaryStage.setResizable(false);
 	} 
 	private static void getScreensize() {
-		System.out.println(System.getProperty("os.name"));
+//		System.out.println(System.getProperty("os.name"));
 		if(System.getProperty("os.name").equals("Windows 10"))
 		{
 			screenHeight= Toolkit.getDefaultToolkit().getScreenSize().getHeight()*2/3;

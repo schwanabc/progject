@@ -33,8 +33,8 @@ public class StartScreen extends Pane{
 	public StartScreen()
 	{
 		RenderableHolder.stopAudio();
-		if(!RenderableHolder.openSong.isPlaying())RenderableHolder.openSong.play();
-		System.out.println("startscreen");
+		RenderableHolder.startMusic(RenderableHolder.openSong);
+//		System.out.println("startscreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.background, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,false,false,false,true))));
 		play=new PlayButton("Play");
