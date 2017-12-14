@@ -27,7 +27,7 @@ public class Bullet extends Entity implements IMovable{
 	public int getZ() {
 		return 7;
 	}
-	protected void colliedWithAttacker()
+	protected void collideWithAttacker()
 	{
 		for(Attacker attacker: logic.Gamelogic.getAttackerContainer())
 		{
@@ -70,7 +70,7 @@ public class Bullet extends Entity implements IMovable{
 		//System.out.println(angle+" "+direction);
 		if(direction<2)forward(Math.cos(Math.toRadians(angle)),Math.sin(Math.toRadians(angle)));
 		else forward(-1*Math.cos(Math.toRadians(angle)),-1*Math.sin(Math.toRadians(angle)));
-		colliedWithAttacker();
+		collideWithAttacker();
 	}
 	
 
