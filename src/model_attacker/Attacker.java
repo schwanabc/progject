@@ -31,6 +31,7 @@ public abstract class Attacker extends Entity implements IMovable{
 	protected int posToGoX[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
 	protected int posToGoY[] = new int[Board.BOARD_ROW*Board.BOARD_COLUMN];
 	protected int countNotMove;
+	protected boolean HQATK;
 	public Attacker(){}
 	public Attacker(double posX,double posY)
 	{
@@ -38,6 +39,7 @@ public abstract class Attacker extends Entity implements IMovable{
 		this.posY=posY;
 		posXOnBoard = (int) (posX/Board.BOARD_WIDTH);
 		posYOnBoard = (int) (posY/Board.BOARD_HEIGHT);
+		HQATK = false;
 //		if(posXOnBoard >= Board.BOARD_COLUMN/2)
 //			posXOnBoard--;
 //		else
@@ -112,7 +114,12 @@ public abstract class Attacker extends Entity implements IMovable{
 					nowX = tempX;
 					nowY = tempY;
 				}
-				countPathLength--;
+				if(countPathLength != 0)
+					countPathLength--;
+				else {
+					posToGoX[0] = posXOnBoard;
+					posToGoY[0] = posYOnBoard;
+				}
 				break;
 			}
 			if(nowX != 0 && !boardVisited[nowX-1][nowY]) {
@@ -213,9 +220,14 @@ public abstract class Attacker extends Entity implements IMovable{
 //			posXOnBoard = (int) (getPosX()/Board.BOARD_WIDTH);
 //			posYOnBoard = (int) (getPosY()/Board.BOARD_HEIGHT);
 //			System.out.println("atk "+posXOnBoard+" "+posYOnBoard);
-			findBestPath();
-			if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) > 0 || isHQPos(posToGoY[countPathLength],posToGoX[countPathLength]))
+			if(HQATK || isHQPos(posToGoY[countPathLength],posToGoX[countPathLength])) {
+				HQATK = true;
+				System.out.println("HQATK");
 				return;
+			}
+			if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) > 0)
+				return;
+			findBestPath();
 		}
 		
 		
@@ -226,12 +238,13 @@ public abstract class Attacker extends Entity implements IMovable{
 			double disWalkY = (walkY > 0)?walkY:-walkY;
 			countNotMove++;
 			//System.out.println("count"+countNotMove);
-			if((disWalkX <= 3 && disWalkY <= 3) || countNotMove*speed >= 35.0) {
+			if((disWalkX <= 3 && disWalkY <= 3) || countNotMove*speed >= 30.0) {
 //				if(Board.getBoard(posToGoY[countPathLength],posToGoX[countPathLength]) == -1) {
 //					System.out.println("Now" + posToGoX[countPathLength]+" "+posToGoY[countPathLength]);
 //					//while(true);
 //				}else
-				countPathLength--;
+				if(countPathLength != 0)
+					countPathLength--;
 				countNotMove = 0;
 			}
 			forward(walkX,walkY);
