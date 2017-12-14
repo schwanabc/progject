@@ -47,7 +47,7 @@ public class Gamelogic {
 				{
 					if(!(attackerContainer.get(j) instanceof model_attacker.Sapper))
 						attackerContainer.get(j).findBestPath();
-					System.out.println("Find again");
+//					System.out.println("Find again");
 				}
 			}
 		}	
