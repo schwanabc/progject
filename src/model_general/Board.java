@@ -66,7 +66,7 @@ public class Board implements IRenderable {
 				int numline=0;
 				while(in.hasNextLine())
 				{
-					System.out.println(numline);
+//					System.out.println(numline);
 					String line;
 						line = in.nextLine().trim();
 						if(line==null)break;

@@ -35,7 +35,7 @@ public class WaitScreen extends Pane{
 	{
 		RenderableHolder.stopAudio();
 		RenderableHolder.victory.play();
-		System.out.println("Waitscreen");
+//		System.out.println("Waitscreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.victoryBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
 		play=new PlayButton("Next Stage");

@@ -48,7 +48,7 @@ public class LoseScreen extends Pane{
 			 }
 		});
 		t2.start();
-		System.out.println("Losescreen");
+//		System.out.println("Losescreen");
 		this.setPrefSize(SceneManager.screenWidth, SceneManager.screenHeight);
 		this.setBackground(new Background(new BackgroundImage(RenderableHolder.loseBackground, null, null, null, new BackgroundSize(SceneManager.screenWidth, SceneManager.screenHeight,true,true,true,true))));
 		retry=new RetryButton("Retry");

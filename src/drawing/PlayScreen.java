@@ -100,7 +100,7 @@ public class PlayScreen extends HBox{
 		if(menuBar.getGameState().isWin())
 		{
 			RenderableHolder.stopAudio();
-			System.out.println("win");
+//			System.out.println("win");
 			Board.addNumBoard();
 			menuBar.getGameState().endTimethread();
 			if(Board.getDefaultNumBoard()==Board.TOTALBOARD) 
@@ -118,13 +118,13 @@ public class PlayScreen extends HBox{
 		else if(menuBar.getGameState().isLose())
 		{
 			RenderableHolder.stopAudio();
-			System.out.println("lose");
+//			System.out.println("lose");
 			menuBar.getGameState().endTimethread();
-			System.out.println("lose2");
+//			System.out.println("lose2");
 			resetGame();
-			System.out.println("lose2");
+//			System.out.println("lose2");
 			forceEnd();
-			System.out.println("Ending");
+//			System.out.println("Ending");
 			SceneManager.gotoLoseScreen();
 		}
 	}
@@ -145,7 +145,7 @@ public class PlayScreen extends HBox{
 		{
 			PauseIcon.instance.drawPaused();
 			pausedState=true; 
-			System.out.print("pause");
+//			System.out.print("pause");
 			playThread.stop();
 			pauseThread.start();
 		}
@@ -153,7 +153,7 @@ public class PlayScreen extends HBox{
 		{
 			PauseIcon.instance.drawUnpaused();
 			pausedState=false;
-			System.out.print("unpause");
+//			System.out.print("unpause");
 			pauseThread.stop();
 			playThread.start();
 		}

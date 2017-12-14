@@ -71,7 +71,7 @@ public class GameState {
 		return timeThread;
 	}
 	public void endTimethread() {
-		System.out.println("threadstop");
+//		System.out.println("threadstop");
 		timeThread.interrupt();
 	}
 
