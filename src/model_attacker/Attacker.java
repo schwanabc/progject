@@ -104,17 +104,17 @@ public abstract class Attacker extends Entity implements IMovable{
 //					}
 //					//System.out.printf("\n");
 //				}
-				int tempX = lastRow[nowX][nowY];
-				int tempY = lastColumn[nowX][nowY];
-				nowX = tempX;
-				nowY = tempY;
+//				int tempX = lastRow[nowX][nowY];
+//				int tempY = lastColumn[nowX][nowY];
+//				nowX = tempX;
+//				nowY = tempY;
 				while(nowX != posXOnBoard || nowY != posYOnBoard) {
 					System.out.println(nowX +" "+ nowY +" "+Board.getBoard(nowY, nowX));
 					posToGoX[countPathLength] = nowX;
 					posToGoY[countPathLength] = nowY;
 					countPathLength++;
-					tempX = lastRow[nowX][nowY];
-					tempY = lastColumn[nowX][nowY];
+					int tempX = lastRow[nowX][nowY];
+					int tempY = lastColumn[nowX][nowY];
 					nowX = tempX;
 					nowY = tempY;
 				}
